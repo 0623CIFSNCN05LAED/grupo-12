@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/styles.css"> 
-    
-        <script src="https://kit.fontawesome.com/adc9d4d85c.js" crossorigin="anonymous"></script>
-    
-        <title>BikeWorld</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/styles.css"> 
+
+    <script src="https://kit.fontawesome.com/adc9d4d85c.js" crossorigin="anonymous"></script>
+
+    <title>BikeWorld</title>
+</head>
 
 <body class="bg-ligh-grey">
     
     <header class="bg-grey p-20">
-        
-        <div class="flex-header">
+           <div class="flex-header">
            <div class="m-logo">
-              <img src="/images/logo.png" class="logo" alt="Logo BikeWorld">  
-            </div>
+              <img src="/images/logo.png" class="logo" alt="Logo BikeWorld" onclick="window.location='/'">
+              </div>
             <div class="search-container">
               <input type="text" id="search" placeholder="Buscar bicicletas...">
               <button type="button" id="search-button">Buscar</button>
@@ -37,30 +36,26 @@
               <i class="fa-solid fa-bars"></i>
               </a>
             <div class="user-cart m-user-cart flex-user">
-                <a href="/login" class="mr"> Ingresá </a><i class="fa-solid fa-user fa-lg p-right"></i>
+              <i class="fa-solid fa-user fa-lg p-right"></i>
               <i class="fa-solid fa-cart-shopping fa-lg"></i>
         </div>
-        </div> 
-        
+        </div>          
     </div> 
 
-
      <nav class="main-navbar">
-        <ul class="f-navbar">
-        <li><a href="#">Bikes</a></li>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Clothing</a></li>
-        <li><a href="#">Official Stores</a></li>
-        <li><a href="#">Contact</a></li>
-        </ul>
+        <ul class="search-container flex-home">
+            <li><a href="/product-detail">Products</a></li>
+            <li><a href="/product-cart">Shop</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            </ul>
     </nav>        
+            
             
     </header>
 
-    <main class="bgc-login flex-user f-column main-size">
-      <p class="ml mt-2 bold">
-        Ingresá
-      </p>  
+    <main >
+      <p class="ml mt-2 bold boton-formulario"> Ingresá </p>  
         
         <form action="" method="GET" class="ml">
 
@@ -81,14 +76,14 @@
           
           </form>       
           
-          <div class="ml">
+          <div class="ml relative">
             <a href="#" class="mr"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class=""><i class="fab fa-google-plus-g"></i></a>
         </div>
         <span class="ml font-size-10">o utiliza tu cuenta</span>  
 
         <div class="ml">
-        <p class="font-size-15 mt-2">
+        <p class="font1 mt-5 mb-5">
          Aún no sos usuario?
         <a href="/register"> Registrate </a>   
 
@@ -99,7 +94,7 @@
     </main>    
     
 </body>
-<footer class="bg-grey">
+<footer class="bg-grey padding-footer">
     
     <ul class="flex-footer m-box-footer padding-footer-login">
         <li class="p-footer box-footer"><a href="#">Contact</a></li>

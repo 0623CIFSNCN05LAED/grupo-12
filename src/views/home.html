@@ -19,12 +19,13 @@
 
     <title>BikeWorld</title>
 </head>
+
 <body class="bg-ligh-grey">
+    
     <header class="bg-grey p-20">
-        
-        <div class="flex-header">
+           <div class="flex-header">
            <div class="m-logo">
-              <img src="/images/logo.png" class="logo" alt="Logo BikeWorld">  
+            <img src="/images/logo.png" class="logo" alt="Logo BikeWorld" onclick="window.location='/'">
             </div>
             <div class="search-container">
               <input type="text" id="search" placeholder="Buscar bicicletas...">
@@ -38,22 +39,16 @@
               <i class="fa-solid fa-user fa-lg p-right"></i>
               <i class="fa-solid fa-cart-shopping fa-lg"></i>
         </div>
-        </div> 
-            
-        
-        
+        </div>          
     </div> 
 
-    
-
-     <nav class="main-navbar">
-        <ul class="f-navbar">
-        <li><a href="#">Bikes</a></li>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Cloting</a></li>
-        <li><a href="#">Oficial stores</a></li>
-        <li><a href="#">Contact</a></li>
-        </ul>
+     <nav class="main-navbar ">
+        <ul class="search-container flex-home">
+            <li><a href="/product-detail">Products</a></li>
+            <li><a href="/product-cart">Shop</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            </ul>
     </nav>        
             
     </header>
