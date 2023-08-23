@@ -20,7 +20,7 @@
     <title>BikeWorld</title>
 </head>
 
-<body class="bg-ligh-grey">
+<body class="bg-ligh-grey bg-img">
     
     <header class="bg-grey p-20">
            <div class="flex-header">
@@ -35,10 +35,10 @@
               <a href="#" class="hamburguer-buttom">
               <i class="fa-solid fa-bars"></i>
               </a>
-            <div class="user-cart m-user-cart flex-user">
-              <i class="fa-solid fa-user fa-lg p-right"></i>
-              <i class="fa-solid fa-cart-shopping fa-lg"></i>
-        </div>
+              <div class="user-cart m-user-cart flex-user">
+                <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i></a>
+                <a href="/product-cart"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+          </div>
         </div>          
     </div> 
 
@@ -52,11 +52,9 @@
     </nav>        
             
     </header>
-
-    <h1 class="copy-header">Registrate!</h1>
-
-
-    <form action="index.php" method="post" class="vw-90">
+    <main>
+        <form action="index.php" method="post" class="vw-90 bg-register">
+        <h1 class="register">Registrate!</h1>
         <div>
             <label for="nombre">Nombre y apellido:</label>
             <input type="text" name="nombre" id="nombre" pattern="[a-zA-Z ]" />
@@ -73,19 +71,26 @@
             <label for="domicilio">Domicilio:</label>
             <input type="text" name="domicilio" id="domicilio" />
           </div>
-          <div>
-            <label for="perfil">Perfil del usuario:</label>
-            <input type="radio" name="perfil" value="comprar" /> Comprar
-            <input type="radio" name="perfil" value="vender" /> Vender
-          </div>
-          <div>
+
+          <div class="flex-cat"> 
             <label for="categorias">Categorías de Bicicletas buscadas:</label>
-            <input type="checkbox" name="categorias[]" value="mont" /> Montaña
-            <input type="checkbox" name="categorias[]" value="ruta" /> Ruta
-            <input type="checkbox" name="categorias[]" value="elec" /> Electrica
-            <input type="checkbox" name="categorias[]" value="fam" /> Familiar
-            <input type="checkbox" name="categorias[]" value="Paseo" /> Paseo
+            <div class="item-cat">
+              <input type="checkbox" name="categorias[]" value="mont"/> <p class="w-100">Montaña</p> 
+            </div>
+            <div class="item-cat">
+              <input type="checkbox" name="categorias[]" value="ruta" /> <p class="w-100">Ruta</p> 
+            </div>
+            <div class="item-cat">
+              <input type="checkbox" name="categorias[]" value="elec" /> <p class="w-100">Electrica</p> 
+            </div>
+            <div class="item-cat">
+              <input type="checkbox" name="categorias[]" value="fam" /> <p class="w-100">Familiar</p> 
+            </div>
+            <div class="item-cat">
+              <input type="checkbox" name="categorias[]" value="Paseo" /> <p class="w-100">Paseo</p> 
+            </div>
           </div>
+
           <div>
             <label for="contraseña">Contraseña:</label>
             <input type="password" name="contraseña" id="contraseña" />
@@ -100,6 +105,9 @@
         </div>
 
     </form>
+    
+  </main>
+    
 
 
 </body>

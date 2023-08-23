@@ -20,7 +20,7 @@
     <title>BikeWorld</title>
 </head>
 
-<body class="bg-ligh-grey">
+<body class="bg-ligh-grey bg-img">
     
     <header class="bg-grey p-20">
            <div class="flex-header">
@@ -35,10 +35,10 @@
               <a href="#" class="hamburguer-buttom">
               <i class="fa-solid fa-bars"></i>
               </a>
-            <div class="user-cart m-user-cart flex-user">
-              <i class="fa-solid fa-user fa-lg p-right"></i>
-              <i class="fa-solid fa-cart-shopping fa-lg"></i>
-        </div>
+              <div class="user-cart m-user-cart flex-user">
+                <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i></a>
+                <a href="/product-cart"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+          </div>
         </div>          
     </div> 
 
@@ -52,9 +52,9 @@
     </nav>        
             
      </header>
-
-        <article class="product mx-auto bg-white my-1 product-shadow w-50 md-w-50 lg-w-25">
-        <img class="w-50 mx-auto" src="/images/Product1-bike.jpg" alt="Imagen del producto" />
+    <main>
+        <article class="mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product">
+        <img class="w-50 mx-auto m-pic" src="/images/Product1-bike.jpg" alt="Imagen del producto" />
         <div class="bt-1 border-grey p-1 relative flex flex-wrap">
             <i class="fa-solid fa-truck truck-icon"></i>
             <p class="text-xl mr-1">$142.770</p>
@@ -67,6 +67,8 @@
                 Si está buscando una bicicleta de montaña que pueda manejarlo todo, esta es la opción perfecta para usted. Ordene su bicicleta hoy!</p>
         </div>
     </article>
+</main>
+        
 
 
 </body>

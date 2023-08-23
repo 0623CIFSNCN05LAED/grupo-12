@@ -5,6 +5,14 @@ ul{
 *{
     box-sizing: border-box;
 }
+.search-container a:link {color: black; text-decoration: none }
+.search-container a:hover {color: black; text-decoration: none }
+.search-container a:visited {color: black; text-decoration: none }
+.fa-solid, .fa-cart a:link {color: black; text-decoration: none }
+footer a:link {color: black; text-decoration: none }
+footer a:visited {color: black; text-decoration: none }
+body a:link {text-decoration: none;}
+
 body{
     font-family: 'Roboto Condensed', sans-serif;
     display: flex;
@@ -13,10 +21,11 @@ body{
 .search-container {
     display: flex;
     align-items: center;
-    max-width: 400px;
+    max-width: 40%;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    
 }
 
 #search {
@@ -182,7 +191,7 @@ form {
     margin-bottom: 10px;
   }
   
-  input {
+  main input{
     display: flex;
     width: 100%;
     margin: auto;
@@ -190,6 +199,11 @@ form {
     margin-bottom: 20px;
     border: 2px solid #ccc;
     border-radius: 5px;
+   
+  }
+  .bg-register{
+    background-color: #ebebeb;
+    padding: auto;
   }
   .boton-formulario{
     display: block;
@@ -221,7 +235,12 @@ form {
   .w-50 {
     width: 50%;
   }
-  
+  .p-20{
+    padding: 20px;
+  }
+  .p-10{
+    padding: 10px;
+  }
   .p-1 {
     padding: 8px;
   }
@@ -233,8 +252,68 @@ form {
   .mx-auto {
     margin-left: auto;
     margin-right: auto;
+ } 
+ .bg-img{
+    background-image: url("/images/portada.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+ } 
+ .m-main-log{
+    margin-top: 150px;
+    margin-bottom: 150px;
  }
-
+ .register{
+       text-align: center;
+       padding: 10px;
+ } 
+ .flex-cat{
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+ }
+.item-cat{
+    display: flex;
+    flex-direction: row-reverse;
+} 
+.w-100{
+    width: 100px
+}
+.b-product{
+    border-radius: 5%;
+} 
+.m-pic{
+    margin: 10px;
+}
+.flex-log{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.flex-send{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.box-cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ebebeb;
+    border-radius: 5%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 50%;
+}
+td{
+    padding-left: 10px;
+}
+.flex-buy{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
 
 @media(max-width: 768px){
@@ -271,6 +350,9 @@ form {
     .box-footer{
         margin-left: 10px;
         margin-right: 10px;
+    }
+    .box-cart{
+        width: 80%;
     }
     
 }

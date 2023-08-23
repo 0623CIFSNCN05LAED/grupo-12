@@ -20,7 +20,7 @@
     <title>BikeWorld</title>
 </head>
 
-<body class="bg-ligh-grey">
+<body class="bg-ligh-grey bg-img">
     
     <header class="bg-grey p-20">
            <div class="flex-header">
@@ -35,10 +35,10 @@
               <a href="#" class="hamburguer-buttom">
               <i class="fa-solid fa-bars"></i>
               </a>
-            <div class="user-cart m-user-cart flex-user">
-              <i class="fa-solid fa-user fa-lg p-right"></i>
-              <i class="fa-solid fa-cart-shopping fa-lg"></i>
-        </div>
+              <div class="user-cart m-user-cart flex-user">
+                <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i></a>
+                <a href="/product-cart"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+          </div>
         </div>          
     </div> 
 
@@ -53,30 +53,28 @@
             
             
     </header>
+  
 
-    <main >
-      <p class="ml mt-2 bold boton-formulario"> Ingresá </p>  
+    <main class="m-main-log">
         
-        <form action="" method="GET" class="ml">
+        
+        <form action="" method="GET" class="bg-ligh-grey flex-log">
 
             <div>
               <div class="font1 mt-5 mb-5">
-                <input type="text" name="user" id="user" placeholder="Nombre de Usuario" class="font1 w-100 mw h25" required pattern="\w{2,}" title="El nombre de Usuario debe tener al menos 2 letras">
+                <input type="text" name="user" id="user" placeholder="Nombre de Usuario" required pattern="\w{2,}" title="El nombre de Usuario debe tener al menos 2 letras">
               </div>
           
               <div class="font1 mt-5 mb-5">
-                <input type="password" name="password" id="password" placeholder="Contraseña" class="font1 w-100 mw h25" required pattern=".{6,}" title="La contraseña deberá tener al menos 6 letras">
-                <p class="font-size-10 mt-4px"><a href="#"> Olvidé mi contraseña </a></p>
+                <input type="password" name="password" id="password" placeholder="Contraseña" required pattern=".{6,}" title="La contraseña deberá tener al menos 6 letras">
+                <p class="center"><a href="#"> Olvidé mi contraseña </a></p>
               </div>
-          
-              <div class="font1 mt-5 mb-1">
-                <button type="submit" value="Enviar" class="font1 w-100 flex-grow mw" formaction="/"> Enviar </button>
+              <div class="flex-send">
+                <button type="submit" value="Enviar" formaction="/"> Enviar </button>
               </div>
             </div>
-          
-          </form>       
-          
-          <div class="ml relative">
+            <p class="ml mt-2 bold boton-formulario"> Ingresá </p>
+          <div class="ml relative p-10">
             <a href="#" class="mr"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class=""><i class="fab fa-google-plus-g"></i></a>
         </div>
@@ -87,9 +85,13 @@
          Aún no sos usuario?
         <a href="/register"> Registrate </a>   
 
-        </p>    
+        </p>
+      </div>    
+          </form>       
+          
+          
 
-    </div>
+    
           
     </main>    
     
