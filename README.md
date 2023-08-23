@@ -64,3 +64,6 @@ Sitios modelo:
 3- https://scott-montevideo.com.uy/
 4- https://venzoargentina.com.ar/
 5- https://www.nitrobikes.com.ar/
+
+Tablero organizativo:
+https://trello.com/invite/b/aO497DpP/ATTI7692bc0f50ca76c736bed8a6de9fa92aB9528EA5/bikeworld
