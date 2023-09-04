@@ -57,14 +57,16 @@
         <img class="w-50 mx-auto m-pic" src="/images/Product1-bike.jpg" alt="Imagen del producto" />
         <div class="bt-1 border-grey p-1 relative flex flex-wrap">
             <i class="fa-solid fa-truck truck-icon"></i>
-            <p class="text-xl mr-1">$142.770</p>
-            <p class="color-green text-lg">40% OFF</p>
-            <h3 class="text-lg description w-100">Bicicleta BW 2023</h3>
-            <p>Esta bicicleta de montaña es perfecta para aquellos que buscan una bicicleta versátil que pueda manejar una variedad de terrenos. Tiene una suspensión delantera que absorbe los impactos de los senderos accidentados, y los neumáticos anchos brindan una buena tracción en superficies resbaladizas. La bicicleta también tiene una transmisión de 21 velocidades, lo que le permite cambiar de marcha fácilmente para adaptarse a diferentes condiciones de conducción.
-
-                Esta bicicleta es una gran opción para aquellos que buscan una bicicleta de montaña que sea divertida de conducir y confiable. Está hecha con materiales de alta calidad y está construida para durar. También es fácil de mantener, por lo que podrá disfrutarla durante muchos años.
-                
-                Si está buscando una bicicleta de montaña que pueda manejarlo todo, esta es la opción perfecta para usted. Ordene su bicicleta hoy!</p>
+            <p class="text-xl mr-1"><% bikes.forEach(function (bike){%>
+                <%= bike.precio%>     
+                <%  }); %></p>
+            <h3 class="text-lg description w-100">
+                <% bikes.forEach(function (bike){%>
+                <%= bike.modelo%>     
+                <%  }); %> </h3>
+            <p><% bikes.forEach(function (bike){%>
+                <%= bike.descripcion%>     
+                <%  }); %></p>
         </div>
     </article>
 </main>
