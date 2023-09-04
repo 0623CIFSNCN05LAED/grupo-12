@@ -57,16 +57,15 @@
         <img class="w-50 mx-auto m-pic" src="/images/Product1-bike.jpg" alt="Imagen del producto" />
         <div class="bt-1 border-grey p-1 relative flex flex-wrap">
             <i class="fa-solid fa-truck truck-icon"></i>
-            <p class="text-xl mr-1"><% bikes.forEach(function (bike){%>
+            <p class="text-xl mr-1">
                 <%= bike.precio%>     
-                <%  }); %></p>
+                </p>
             <h3 class="text-lg description w-100">
-                <% bikes.forEach(function (bike){%>
                 <%= bike.modelo%>     
-                <%  }); %> </h3>
-            <p><% bikes.forEach(function (bike){%>
-                <%= bike.descripcion%>     
-                <%  }); %></p>
+             </h3>
+            <p>
+                <%= bike.descripcion%>
+            </p>
         </div>
     </article>
 </main>

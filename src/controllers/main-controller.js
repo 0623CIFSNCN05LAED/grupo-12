@@ -9,6 +9,6 @@ module.exports = {
   productDetail: (req, res) =>{
     const id = req.params.id;
     const bike= bikes.find((bike) => bike.id == id);
-    res.render("product-detail", {'bikes' : bikes});
+    res.render("product-detail", {'bike' : bike});
   }
 };
