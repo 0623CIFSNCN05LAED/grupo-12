@@ -7,35 +7,7 @@
 <body class="bg-ligh-grey bg-img">
     
     <header class="bg-grey p-20">
-           <div class="flex-header">
-           <div class="m-logo">
-              <img src="/images/logo.png" class="logo" alt="Logo BikeWorld" onclick="window.location='/'">
-              </div>
-            <div class="search-container">
-              <input type="text" id="search" placeholder="Buscar bicicletas...">
-              <button type="button" id="search-button">Buscar</button>
-           </div>
-           <div class="m-hamburger">
-              <a href="#" class="hamburguer-buttom">
-              <i class="fa-solid fa-bars"></i>
-              </a>
-              <div class="user-cart m-user-cart flex-user">
-                <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i></a>
-                <a href="/product-cart"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
-          </div>
-        </div>          
-    </div> 
-
-     <nav class="main-navbar">
-        <ul class="search-container flex-home">
-            <li><a href="/product-detail">Products</a></li>
-            <li><a href="/product-cart">Shop</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-            </ul>
-    </nav>        
-            
-            
+      <%- include("partials/header") %>        
     </header>
   
 
