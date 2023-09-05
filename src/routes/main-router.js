@@ -6,6 +6,8 @@ const router = Router();
 
 router.get("/", mainController.home);
 router.get("/login", mainController.login);
-router.get("/product-detail/:id?", mainController.productDetail)
+router.get("/product-detail/bikes/:id?", mainController.productDetailBikes)
+router.get("/product-detail/clothes/:id?", mainController.productDetailClothes)
+router.get("/product-detail/accessories/:id?", mainController.productDetailAccessories)
 
 module.exports = router;
