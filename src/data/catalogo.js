@@ -28,7 +28,7 @@ const bikes =[
       img: "/images/bmx.jpg"
     }
   ]
-const accesorios = [
+const accessories = [
   {
     id:1,
     modelo: "Casco BW Raptor",
@@ -83,4 +83,8 @@ const clothes = [
 
 ]
 
-module.exports = bikes, clothes, accesorios;
+module.exports = {
+  bikes,
+  clothes,
+  accessories
+}
