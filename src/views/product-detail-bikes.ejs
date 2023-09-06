@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey bg-img">
+    
+    <header class="bg-grey p-20">
+        <%- include("partials/header") %>        
+    </header>
+
+    <main>
+        <article class="mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product">
+        <img class="w-50 mx-auto m-pic" src=<%= bike.img %> alt="Imagen del producto" />
+        <div class="bt-1 border-grey p-1 relative flex flex-wrap">
+            <i class="fa-solid fa-truck truck-icon"></i>
+            <p class="text-xl mr-1">
+                <%= bike.precio%>     
+                </p>
+            <h3 class="text-lg description w-100">
+                <%= bike.modelo%>     
+             </h3>
+            <p>
+                <%= bike.descripcion%>
+            </p>
+        </div>
+    </article>
+</main>
+        
+
+
+</body>
+
+<footer class="bg-grey padding-footer">
+     <%- include("partials/footer") %>
+    </footer>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey">
+    
+    <header class="bg-grey p-20">
+        <%- include("partials/header") %>        
+    </header>
+
+    <img src="/images/portada.png" class="portada" alt="Portada">
+    
+    <main class="mx-auto pd-main"> 
+        <section class="flex-home">
+            <div class="flex-main">
+                <a href="/bikes" class="box">BICICLETAS</a>
+                <img src="/images/bicis2.png" class="fotos-main" alt="bicis2">
+            </div>
+
+            <div class="flex-main"> 
+                <a href="/accessories" class="box">ACCESORIOS</a>
+                <img src="/images/kitbici.png" class="fotos-main" alt="kitbici">
+            </div>
+        </section>
+
+        <section class="flex-home"> 
+            <div class="flex-main"> 
+                <a href="clothes" class="box">INDUMENTARIA</a>
+                <img src="/images/ropabici.png" class="fotos-main" alt="ropabici">
+            </div>
+            
+            <div class="flex-main">
+                <a href="#" class="box">LOCALES</a>
+                <img src="/images/stores.png" class="fotos-main" alt="stores">
+            </div>    
+        </section>
+    </main>
+    
+</body>
+<footer class="bg-grey padding-footer">
+    
+    <%- include("partials/footer") %>
+    
+</footer>
+</html>
