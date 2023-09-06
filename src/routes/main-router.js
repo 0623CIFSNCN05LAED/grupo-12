@@ -12,5 +12,7 @@ router.get("/clothes", mainController.productListClothes)
 router.get("/clothes/:id", mainController.productDetailClothes);
 router.get("/accessories", mainController.productListAccessories);
 router.get("/accessories/:id", mainController.productDetailAccessories);
+router.get("/register", mainController.register)
+router.get("/product-cart", mainController.productCart)
 
 module.exports = router;

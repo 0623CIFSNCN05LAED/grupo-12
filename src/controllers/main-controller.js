@@ -13,6 +13,15 @@ module.exports = {
     res.render("login");
   },
 
+  register: (req, res) => {
+    res.render("register");
+  },
+
+  productCart: (req, res) => {
+    res.render("product-cart");
+  },
+
+
   productDetailBikes: (req, res) =>{
     const id = req.params.id;
     const bike= bikes.find((bike) => bike.id == id);

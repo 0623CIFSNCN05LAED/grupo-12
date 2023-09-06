@@ -18,16 +18,3 @@ app.set("views", "./src/views");
 app.use(mainRoute);
 
 
-app. get("/product-cart", (req, res) => {
-    res.sendFile (path.resolve (__dirname, "views/product-cart.html"))
-})
-
-app. get("/register", (req, res) => {
-    res.sendFile (path.resolve (__dirname, "views/register.html"))
-})
-
-
-
-
-
-
