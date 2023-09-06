@@ -5,12 +5,12 @@ ul{
 *{
     box-sizing: border-box;
 }
-.search-container a:link {color: black; text-decoration: none }
-.search-container a:hover {color: black; text-decoration: none }
-.search-container a:visited {color: black; text-decoration: none }
-.fa-solid, .fa-cart a:link {color: black; text-decoration: none }
-footer a:link {color: black; text-decoration: none }
-footer a:visited {color: black; text-decoration: none }
+.search-container a:link {color: rgb(255, 255, 255); text-decoration: none }
+.search-container a:hover {color: rgb(255, 255, 255); text-decoration: none }
+.search-container a:visited {color: rgb(255, 255, 255); text-decoration: none }
+.fa-solid, .fa-cart a:link {color: rgb(0, 0, 0); text-decoration: none}
+footer a:link {color: rgb(255, 255, 255); text-decoration: none }
+footer a:visited {color: white; text-decoration: none }
 body a:link {text-decoration: none;}
 
 body{
@@ -18,13 +18,14 @@ body{
     display: flex;
     flex-direction: column;
 }
+
 .search-container {
     display: flex;
     align-items: center;
     max-width: 40%;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     
 }
 
@@ -33,6 +34,7 @@ body{
     padding: 5px 10px 5px 10px;
     border: none;
     border-radius: 5px 0 0 5px;
+    width: 1000px;
 }
 
 #search-button {
@@ -40,24 +42,47 @@ body{
     background-color: black;
     border: none;
     border-radius: 0 5px 5px 0;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 #search-button:hover {
     background-color: #0056b3;
 }
+
 .m-user-cart{
     margin: 20px;
 }
+
+.h-text {
+    font-family: sans-serif;
+}
+
+.h-text1 {
+    padding: 7px;
+    margin-left: 100px;
+}
+
+.h-text2 {
+    padding: 7px;
+    margin-right: 100px;
+}
+
+.top-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F3AA21;
+}
+
 .logo{
+    box-sizing:content-box;
     border-radius: 50%;
     width: 70%;
+    padding-left: 30px;
+    padding-top: 10px;
 }
-.flex-logo{
-    display: flex;
-    justify-content: left ;
-}
+
 .flex-user{
     display: flex;
 } 
@@ -65,15 +90,16 @@ body{
 .flex-header{
     display: flex;
     justify-content: space-between;
-    margin-left: 10px;
-    
+    background-color: white;
+    height: 125px;
 }
+
 .p-right{
     padding-right: 15px;
 }
+
 .bg-grey{
-    background-color: #484e52;
-    
+    background-color: #000000;
 }
 
 .bg-ligh-grey{
@@ -84,6 +110,7 @@ body{
 .f-navbar{
     color: #F3AA21;
 }
+
 .hamburguer-buttom{
     background-color: black;
     color: grey;
@@ -100,23 +127,38 @@ body{
     margin: 0;
     padding: 0;
     padding-bottom: 10px;
-    color: #F3AA21
+    color: #ffffff;
+    justify-content: center;
 }
+
+.dropdown-box {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    border-radius: 5px;
+    
+}
+
+
 .mx-auto{
     margin-left: auto;
     margin-right: auto;
 }
+
 .center{
     text-align: center;
 }
+
 .portada{
     width: 100%;
 }
+
 .fotos-main{
     width: 200%;
     height: 200%;
     padding: 20px;
 }
+
 .flex-home{
     display: flex;
     justify-content: space-around;
@@ -131,18 +173,34 @@ body{
     background-color: rgba(0, 0, 0, 0.9);
     width: 150px;
     padding: 10px;
-    color: gray;
+    margin-bottom: 200px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.9);
 }
+
+
+.titulo-cuadro {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: rgb(0, 0, 0);
+    margin-top: 200px;
+    margin-left: 280px;
+    font-size: 36px;
+}
+
+
 .flex-main{
     display: flex;
     justify-content: center;
     align-items: flex-end;
     max-width: 50%;
-
 }
+
 .p-b-main{
     padding-bottom: 20px;
 }
+
 .m-main{
     margin-bottom: 20px;
 }
@@ -158,20 +216,22 @@ body{
     justify-content: center;
 } 
 .box-footer{
+    
     margin-left: 50px;
     margin-right: 50px;
-    background-color: #ebebeb;
+    background-color: #F3AA21;
     text-align: center;
     width: 150px;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: gray;
+    color: black;
 
 } 
 .padding-footer{
     padding-top: 100px;
     padding-bottom: 100px;
 } 
+
 .pd-main{
     padding-bottom: 10px;
 }
@@ -181,7 +241,7 @@ form {
     max-width: 320px;
     margin: 0 auto;
     padding: 10px;
-      border-radius: 5px;
+    border-radius: 5px;
   }
   
   
@@ -205,9 +265,10 @@ form {
     background-color: #ebebeb;
     padding: auto;
   }
+
   .boton-formulario{
     display: block;
-     background-color: #03264C;
+    background-color: #03264C;
     text-align: center;
     border: none;
     font-size: 20px;
@@ -235,15 +296,15 @@ form {
   .w-50 {
     width: 50%;
   }
-  .p-20{
-    padding: 20px;
-  }
+
   .p-10{
     padding: 10px;
   }
+
   .p-1 {
     padding: 8px;
   }
+
   .my-1 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -253,6 +314,7 @@ form {
     margin-left: auto;
     margin-right: auto;
  } 
+
  .bg-img{
     background-image: url("/images/portada.png");
     background-repeat: no-repeat;
@@ -271,30 +333,37 @@ form {
       flex-direction: column;
       align-items: stretch;
  }
+
 .item-cat{
     display: flex;
     flex-direction: row-reverse;
 } 
+
 .w-100{
     width: 100px
 }
+
 .b-product{
     border-radius: 5%;
 } 
+
 .m-pic{
     margin: 10px;
 }
+
 .flex-log{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
 }
+
 .flex-send{
     display: flex;
     justify-content: center;
     padding: 10px;
 }
+
 .box-cart{
     display: flex;
     flex-direction: column;
@@ -306,14 +375,17 @@ form {
     margin-bottom: 50px;
     width: 50%;
 }
+
 td{
     padding-left: 10px;
 }
+
 .flex-buy{
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
+
 
 
 @media(max-width: 768px){
@@ -331,10 +403,9 @@ td{
 
     }
     .m-logo{
-        margin: auto;
-        padding: auto;;
-        
+        box-sizing: border-box; 
     }
+
     .portada{
         width: 100%;
     }
@@ -342,7 +413,9 @@ td{
         display: none;
     }
     .m-hamburger{
-        margin: 40px;
+        
+        margin: 60px;
+        justify-content: space-between;
     }
     header{
         border: auto;
@@ -383,7 +456,6 @@ td{
             padding: 20px;
         }
         .flex-header{
-            margin: 20px;
             display: flex;
             align-items: center;
         }
@@ -414,6 +486,7 @@ td{
         }
         .main-navbar a{
             font-size: 19px;
+            color: #ebebeb;
         }
         
 }       

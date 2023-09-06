@@ -22,73 +22,97 @@
 
 <body class="bg-ligh-grey">
     
-    <header class="bg-grey p-20">
-           <div class="flex-header">
-           <div class="m-logo">
-            <img src="/images/logo.png" class="logo" alt="Logo BikeWorld" onclick="window.location='/'">
+    <header class="bg-grey">
+
+        <div class="top-header">
+            <div class="h-text1">
+                <h5>HASTA 12 CUOTAS FIJAS | ENVÍO GRATIS A PARTIR DE $ 30.000</h5>
             </div>
-            <div class="search-container">
+            <div class="h-text2">
+                <h5><i class="fa-solid fa-location-dot" style="color: #000000;"></i> Av. del Libertador 15400 - Buenos Aires, Argentina</h5>
+            </div>
+        </div>
+
+        <div class="flex-header">
+            <div class="m-logo">
+                <img src="/images/logo.png" class="logo" alt="Logo BikeWorld" onclick="window.location='/'">
+            </div>
+                <div class="search-container">
               <input type="text" id="search" placeholder="Buscar bicicletas...">
               <button type="button" id="search-button">Buscar</button>
-           </div>
+                </div>
            <div class="m-hamburger">
               <a href="#" class="hamburguer-buttom">
               <i class="fa-solid fa-bars"></i>
               </a>
             <div class="user-cart m-user-cart flex-user">
-              <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i></a>
-              <a href="/product-cart"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
-        </div>
-        </div>          
-    </div> 
+              <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i>Mi cuenta</a>
+              <a href="/product-cart"><i class="fa-solid fa-cart-shopping fa-lg"></i>$ 0</a>
+            </div>
+            </div>          
+        </div> 
 
-     <nav class="main-navbar ">
-        <ul class="search-container flex-home">
-            <li><a href="/product-detail">Products</a></li>
-            <li><a href="/product-cart">Shop</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+        <nav class="main-navbar">
+            <ul class="dropdown-box">
+                <li><a href="/product-detail">PRODUCTOS</a></li>
+                <li><a href="/product-cart">SHOP</a></li>
             </ul>
-    </nav>        
+        </nav>        
             
     </header>
 
+
     <img src="/images/portada.png" class="portada" alt="Portada">
     
+
     <main class="mx-auto pd-main"> 
         <section class="flex-home">
+            <div> 
+                <h1 class ="titulo-cuadro">BICICLETAS</h1>
+            </div>  
+            <div class="flex-main">
+                <a href="#" class="box">VER MÁS</a>
+                <img src="/images/bicis2.png" class="fotos-main" alt="bicis2">
+            </div>
             
-            
-        <div class="flex-main">
-            <a href="#" class="box">Bikes</a>
-            <img src="/images/bicis2.png" class="fotos-main" alt="bicis2">
-        </div>
-        <div class="flex-main"> 
-            <a href="#" class="box">Accessories</a>
-            <img src="/images/kitbici.png" class="fotos-main" alt="kitbici">
-        </div>
-        <div class="flex-main"> 
-            <a href="#" class="box">Cloting</a>
-            <img src="/images/ropabici.png" class="fotos-main" alt="ropabici">
-        </div>
-        <div class="flex-main">
-            <a href="#" class="box ">Stores</a>
-            <img src="/images/stores.png" class="fotos-main" alt="stores">
-        </div>    
+            <div>
+                <h1 class ="titulo-cuadro">ACCESORIOS</h1>
+            </div>
+            <div class="flex-main"> 
+                <a href="#" class="box">VER MÁS</a>
+                <img src="/images/kitbici.png" class="fotos-main" alt="kitbici">
+            </div>
         </section>
 
+        <section class="flex-home"> 
+            <div>
+                <h1 class ="titulo-cuadro">INDUMENTARIA</h1>
+            </div>
+            <div class="flex-main"> 
+                <a href="#" class="box">VER MÁS</a>
+                <img src="/images/ropabici.png" class="fotos-main" alt="ropabici">
+            </div>
+            
+            <div>
+                <h1 class ="titulo-cuadro">LOCALES</h1>
+            </div>
+            <div class="flex-main">
+                <a href="#" class="box">VER MÁS</a>
+                <img src="/images/stores.png" class="fotos-main" alt="stores">
+            </div>    
+        </section>
     </main>
     
 </body>
 <footer class="bg-grey padding-footer">
     
     <ul class="flex-footer m-box-footer">
-        <li class="p-footer box-footer"><a href="#">Contact</a></li>
+        <li class="p-footer box-footer"><a href="#">Contacto</a></li>
         <li class="p-footer-i"><a href="#"><i class="fa-brands fa-instagram fa-xl" style="color: #e3e3e3;"></i></a></li>
         <li class="p-footer-i"><a href="#"><i class="fa-brands fa-facebook fa-xl" style="color: #e2e2e2;"></i></a></li>
         <li class="p-footer-i"><a href="#"><i class="fa-brands fa-youtube fa-xl" style="color: #e2e2e2;"></i></a></li>
         <li class="p-footer-i"><a href="#"><i class="fa-brands fa-twitter fa-xl" style="color: #e2e2e2;"></i></a></li>
-        <li class="p-footer box-footer"><a href="#">Community</a></li>
+        <li class="p-footer box-footer"><a href="#">Comunidad</a></li>
     </ul>
     
 </footer>
