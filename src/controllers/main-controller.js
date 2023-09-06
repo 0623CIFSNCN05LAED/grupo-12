@@ -29,6 +29,21 @@ module.exports = {
     const id = req.params.id;
     const accessory= accessories.find((accessory) => accessory.id == id);
     res.render("product-detail-accessories", {'accessory' : accessory});
-  }
+  },
+
+  productListBikes: (req, res) =>{
+    
+    res.render("product-list-bikes", {bycicles : bikes } );
+  },
+
+  productListClothes: (req, res) =>{
+    
+    res.render("product-list-clothes" , {clothing : clothes } );
+  },
+
+  productListAccessories: (req, res) =>{
+    
+    res.render("product-list-accessories", {accessories : accessories } );
+  },
 
 };
