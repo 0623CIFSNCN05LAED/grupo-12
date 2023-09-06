@@ -16,8 +16,9 @@
            
             <p class="text-xl mr-1">
                 <% bycicles.forEach(bike =>{ %>
-                    <img class="w-50 mx-auto m-pic" src=<%= bike.img %> alt="Imagen del producto" />
-                    <a href="/product-detail/bikes/:id?/<%= bike.id %>">
+                    
+                    <a href="/bikes/<%= bike.id %>">
+                        <img class="w-50 mx-auto m-pic" src=<%= bike.img %> alt="Imagen del producto" />
                         <h4><%= bike.modelo  %></h4>
                         <p class="ps-text-grey">
                         <%= bike.precio  %>

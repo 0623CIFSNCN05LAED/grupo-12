@@ -32,17 +32,17 @@ module.exports = {
   },
 
   productListBikes: (req, res) =>{
-    
+    const id= req.params.id;
     res.render("product-list-bikes", {bycicles : bikes } );
   },
 
   productListClothes: (req, res) =>{
-    
+    const id= req.params.id;
     res.render("product-list-clothes" , {clothing : clothes } );
   },
 
   productListAccessories: (req, res) =>{
-    
+    const id= req.params.id;
     res.render("product-list-accessories", {accessories : accessories } );
   },
 

@@ -16,8 +16,9 @@
            
             <p class="text-xl mr-1">
                 <% accessories.forEach(accessories =>{ %>
-                    <img class="w-50 mx-auto m-pic" src=<%= accessories.img %> alt="Imagen del producto" />
-                    <a href="/product-detail/accessories/:id?/<%= accessories.id %>">
+                    
+                    <a href="/accessories/<%= accessories.id %>">
+                        <img class="w-50 mx-auto m-pic" src=<%= accessories.img %> alt="Imagen del producto" />
                         <h4><%= accessories.modelo  %></h4>
                         <p class="ps-text-grey">
                          <%= accessories.precio  %>
