@@ -33,6 +33,7 @@ RETROSPECTIVA SPRINT 3
 
 //  Comenzar a hacer  // 
 -Pushear y pullear continuamente cualquier modificación que este terminada para compartir y mantener actualizado al equipo
+Lucila lograr comunicacion mas focalizada y fluida con el equipo
 
 
 //  Hacer mas  // 
