@@ -97,6 +97,9 @@ body{
 .p-right{
     padding-right: 15px;
 }
+.m-left{
+    margin-left: 5px;
+}
 
 .bg-grey{
     background-color: #000000;
