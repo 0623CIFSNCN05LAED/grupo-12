@@ -42,4 +42,8 @@ module.exports={
         res.render("product-list-accessories", {accessories : accessories } );
       },
 
+      productCreate: (req, res) =>{
+        res.render("product-create-form")
+      }
+
 }

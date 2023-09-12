@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey">
+    
+<header class="bg-grey p-20">
+        <%- include("partials/header") %>        
+</header>
+
+<main>
+    <form action="/product" method="POST" class="create-form">
+    <div class="m-pic">
+        <label for="modelo">Nombre Del Producto:</label>
+        <input type="text" id="modelo"  name="modelo" placeholder="Bicicleta BW Race" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="precio">Precio del producto:</label>
+        <input type="text" id= "precio" name="precio" placeholder="$159.700" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="descripcion">Descripcion</label>
+        <textarea id="descripcion" name="descripcion" class="control box-formulario"></textarea>
+    </div>
+    <div class="m-pic">
+        <label for="img">Imagen del producto</label>
+        <input type="file" id="img" name="img">
+    </div>
+    <div class="m-pic">
+        <button type="reset" class="boton-formulario m-pic">Borrar</button>
+        <button type="submit" class="boton-formulario m-pic">Guardar</button>
+    </div>
+
+    </form> 
+</main>
+
+<footer class="bg-grey padding-footer">
+    
+        <%- include("partials/footer") %>
+        
+</footer>
+</html>
