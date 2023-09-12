@@ -4,6 +4,8 @@ const path = require("path");
 
 const app = express(); 
 
+app.use(express.urlencoded({ extended: false }));
+
 const mainRoute = require("./routes/main-router");
 const productRouter = require ("./routes/products-router");
 const userRouter = require ("./routes/user-router")

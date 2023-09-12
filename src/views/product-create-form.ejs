@@ -11,10 +11,18 @@
 </header>
 
 <main>
-    <form action="/product" method="POST" class="create-form">
+    <form action="/products-router" method="POST" class="create-form">
     <div class="m-pic">
         <label for="modelo">Nombre Del Producto:</label>
         <input type="text" id="modelo"  name="modelo" placeholder="Bicicleta BW Race" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="tipo">Tipo de Producto</label>
+        <select name="tipo" id="tipo">
+            <option value="bicicletas">Bicicletas</option>
+            <option value="ropa">Ropa</option>
+            <option value="accesorios">Accesorios</option>
+        </select>
     </div>
     <div class="m-pic">
         <label for="precio">Precio del producto:</label>
