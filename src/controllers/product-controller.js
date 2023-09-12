@@ -2,13 +2,14 @@ const bikes= require("../data/catalogo/bikes");
 const clothes = require ("../data/catalogo/clothes")
 const accessories = require ("../data/catalogo/accessories")
 
+const productService = require("../services/productServices");
+
 module.exports={
 
     productCart: (req, res) => {
         res.render("product-cart");
       },
-    
-    
+        
       productDetailBikes: (req, res) =>{
         const id = req.params.id;
         const bike= bikes.find((bike) => bike.id == id);
@@ -44,6 +45,45 @@ module.exports={
 
       productCreate: (req, res) =>{
         res.render("product-create-form")
-      }
+      },
+      
+      productStoreBikes: (req, res) => {
+        const product = {
+          modelo: req.body.modelo,
+          descripcion: req.body.descripcion,
+          tipo: req.body.tipo,
+          precio: Number(req.body.precio),
+          img: req.file ? req.file.filename : null,
+        };
+        console.log(product);
+        
+        switch (req.body.tipo) {
+          case 'Bicicletas':
+            const bikes = productService.getBikes();
+            bikes.push(product);
+            saveBikes(bikes);
+            break;
+          case 'Ropa':
+            const clothes = productService.getClothes()
+            clothes.push(product);
+            saveClothes(clothes);
+            break;
+          case 'Accesorios':
+            const accessories = productService.getAccessories();
+            accessories.push(product);
+            saveAccessories(accessories);
+            break;
+          default:
+            break;
+        }
+    
+        res.redirect("/");
+      },
+    
+    };
 
-}
+      
+
+
+
+
