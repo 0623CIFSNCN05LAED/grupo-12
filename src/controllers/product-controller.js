@@ -1,8 +1,6 @@
-const catalogo= require("../data/catalogo");
-
-const bikes= catalogo.bikes;
-const clothes= catalogo.clothes;
-const accessories= catalogo.accessories;
+const bikes= require("../data/catalogo/bikes");
+const clothes = require ("../data/catalogo/clothes")
+const accessories = require ("../data/catalogo/accessories")
 
 module.exports={
 

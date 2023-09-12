@@ -9,10 +9,14 @@ ul{
 .search-container, ul a:hover {color: rgb(255, 255, 255); text-decoration: none }
 .search-container,ul a:visited {color: rgb(255, 255, 255); text-decoration: none }
 
+nav a[href="/product-cart"]:link {color: rgb(255, 255, 255); text-decoration: none }
+nav a[href="/product-cart"]:hover {color: rgb(255, 255, 255); text-decoration: none }
+nav a[href="/product-cart"]:visited {color: rgb(255, 255, 255); text-decoration: none }
+
 a[href="/login"], a[href="/product-cart"]:link {color: rgb(0, 0, 0); text-decoration: none}
 a[href="/login"], a[href="/product-cart"]:hover {color: rgb(0, 0, 0); text-decoration: none }
 a[href="/login"], a[href="/product-cart"]:visited {color: rgb(0, 0, 0); text-decoration: none }
-
+ 
 footer a:link {color: rgb(255, 255, 255); text-decoration: none }
 footer a:visited {color: white; text-decoration: none }
 
