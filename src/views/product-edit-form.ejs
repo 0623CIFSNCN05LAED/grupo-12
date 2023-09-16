@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey">
+    
+<header class="bg-grey p-20">
+        <%- include("partials/header") %>        
+</header>
+
+<main>
+     <h2> Editar producto </h2> <!-- Aca deberia llegar el producto actual que estas editando VER -->
+    <form action="/products-router" method="POST" class="create-form">
+    <div class="m-pic">
+        <label for="modelo">Nombre Del Producto:</label>
+        <input type="text" id="modelo"  name="modelo" placeholder="Inserte nombre del producto" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="tipo">Tipo de Producto</label>
+        <select name="tipo" id="tipo">
+            <option value="bicicletas">Bicicletas</option>
+            <option value="ropa">Ropa</option>
+            <option value="accesorios">Accesorios</option>
+        </select>
+    </div>
+    <div class="m-pic">
+        <label for="precio">Precio del producto:</label>
+        <input type="text" id= "precio" name="precio" placeholder="Inserte el precio del producto" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="descripcion">Descripcion</label>
+        <textarea id="descripcion" name="descripcion" class="control box-formulario"></textarea>
+    </div>
+    <div class="m-pic">
+        <label for="img">Imagen del producto</label>
+        <input type="file" id="img" name="img">
+    </div>
+    <div class="m-pic">
+        <button type="reset" class="boton-formulario m-pic">Borrar</button>
+        <button type="submit" class="boton-formulario m-pic">Editar producto</button>
+        <button type="submit" class="boton-formulario m-pic">Guardar</button>
+    </div>
+
+    </form> 
+</main>
+
+<footer class="bg-grey padding-footer">
+    
+        <%- include("partials/footer") %>
+        
+</footer>
+</html>

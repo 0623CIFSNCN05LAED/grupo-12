@@ -79,8 +79,33 @@ module.exports={
     
         res.redirect("/");
       },
+
+      productEdit: (req, res) => {          //ver a partir de esta linea 83, copiado todo desde Clase 29 
+        // const id = req.params.id;
+        // const product = productService.getProduct(id);
+        res.render("product-edit-form"); //deberia ser res.render("product-edit-form", { product }); 
+      },
+      // Update - Method to update
+      update: (req, res) => {
+        const product = req.body;
+        const id = req.params.id;
+        const image = req.file
+          ? req.file.filename
+          : productService.getProduct(id).image;
+        product.image = image;
+        productService.updateProduct(id, product);
+        res.redirect("/products");
+      },
     
+      // Delete - Delete one product from DB
+      destroy: (req, res) => {
+        const id = req.params.id;
+        productService.deleteProduct(id);
+        res.redirect("/products");
+      },
     };
+    
+    
 
       
 
