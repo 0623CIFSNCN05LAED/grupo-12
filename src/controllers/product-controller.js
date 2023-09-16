@@ -58,20 +58,20 @@ module.exports={
         console.log(product);
         
         switch (req.body.tipo) {
-          case 'Bicicletas':
+          case 'bicicletas':
             const bikes = productService.getBikes();
             bikes.push(product);
-            saveBikes(bikes);
+            productService.saveBikes(bikes);
             break;
-          case 'Ropa':
+          case 'ropa':
             const clothes = productService.getClothes()
             clothes.push(product);
-            saveClothes(clothes);
+            productService.saveClothes(clothes);
             break;
-          case 'Accesorios':
+          case 'accesorios':
             const accessories = productService.getAccessories();
             accessories.push(product);
-            saveAccessories(accessories);
+            productService.saveAccessories(accessories);
             break;
           default:
             break;
