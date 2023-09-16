@@ -1,36 +1,95 @@
-[ 
-    
-    
-        { 
-        "id":1,
-        "tipo": "bicicleta",
-        "modelo":"Bicicleta BW Street",
-        "precio": "$138.500",
-        "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
-        "img": "/images/products/street.jpg" 
-      },
-      { 
-        "id":2,
-        "tipo": "bicicleta",
-        "modelo": "Bicicleta BW Mountain",
-        "precio": "$142.770",
-        "descripcion": "Esta bicicleta de montaña es perfecta para aquellos que buscan una bicicleta versátil que pueda manejar una variedad de terrenos. Tiene una suspensión delantera que absorbe los impactos de los senderos accidentados, y los neumáticos anchos brindan una buena tracción en superficies resbaladizas. La bicicleta también tiene una transmisión de 21 velocidades, lo que le permite cambiar de marcha fácilmente para adaptarse a diferentes condiciones de conducción.",
-        "img": "/images/products/Product1-bike.jpg"
-      },
-      { 
-        "id":3,
-        "tipo": "bicicleta",
-        "modelo": "Bicicleta BW Race",
-        "precio": "$193.250",
-        "descripcion": "Perfiles de tubo optimizados en el túnel de viento, ruedas prémium de carbono aerodinámicas e integración de todos los cables para reducir la resistencia al aire. Esta bicicleta es nuestra interpretación de lo que debe ser una bicicleta de carreras aerodinámica.",
-        "img": "/images/products/race.jpg"
-      },
-      {
-        "id":4,
-        "tipo": "bicicleta",
-        "modelo": "Bicicleta BW BMX",
-        "precio": "$141.370",
-        "descripcion":"Excelente modelo de BMX profesional. La BW BMX es una excelente alternativa que combina una estructura principal fuerte, de cuadro , horquilla y manubrio, con un equipamiento restante que acompaña a la perfección para lograr una opción completa para salir a andar y disfrutar de saltos y trucos. En su construcción se utiliza tuberia de Cromo de calidad , lo que le da resistencia. Y posee terminaciones de alta gama, con una estética atractiva que se culmina con cubiertas anchas de buena agarre y prestaciones. Sin dudas, un excelente modelo que recomendamos para el rider que quiere arrancar con todo o bien, progresar en el deporte llevando su nivel más allá del iniciante, pasando por un intermedio y un poco avanzado también.",
-        "img": "/images/products/bmx.jpg"
-      }
-    ]
+[ {
+    "id": 1,
+    "marca":"slp",
+    "nombre":"SLP E-Bike MTB EM-2",
+    "rodado":"29",
+    "tamaño-cuadro":"l",
+    "categoria": "electrica",
+    "precio": "$1.538.500",
+    "descripcion": "La bicicleta E-BIKE EM-2 es nuestra MTB con asistencia eléctrica pensada para todo tipo de aventuras. Te permite recorrer terrenos mucho más complejos y realizar recorridos más largos sin tanto desgaste físico. La mejor parte: desde el punto de vista ambiental son inofensivas, ya que no contaminan, no generan ruido ni emisiones. VELOCIDAD MÁXIMA: 25km/hAUTONOMÍA DE BATERÍA: 40kmTIEMPO DE CARGA: 5-6HSPOTENCIA: 240W, 36V",
+    "img": "/images/products/Electrica.jpg"
+  },{
+    "id": 2,
+    "marca":"specialdzed",
+    "nombre":"E-MTB",
+    "rodado":"27.5",
+    "tamaño":"m",
+    "categoria": "electrica",
+    "precio": "$5.138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/Electrica-1.jpg"
+  },{
+    "id": 3,
+    "nombre":"everyday",
+    "rodado":"",
+    "tamaño":"",
+    "categoria": "Bicicleta BW Street",
+    "precio": "$138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/street.jpg"
+  },{
+    "id": 4,
+    "nombre":"",
+    "rodado":"",
+    "tamaño":"",
+    "categoria": "Bicicleta BW Street",
+    "precio": "$138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/street.jpg"
+  },{
+    "id": 5,
+    "nombre":"",
+    "rodado":"",
+    "tamaño":"",
+    "categoria": "Bicicleta BW Street",
+    "precio": "$138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/street.jpg"
+  },{
+    "id": 6,
+    "nombre":"",
+    "rodado":"",
+    "tamaño":"",
+    "categoria": "Bicicleta BW Street",
+    "precio": "$138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/street.jpg"
+  },{
+    "id": 7,
+    "nombre":"",
+    "rodado":"",
+    "tamaño":"",
+    "categoria": "Bicicleta BW Street",
+    "precio": "$138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/street.jpg"
+  },{
+    "id": 8,
+    "nombre":"",
+    "rodado":"",
+    "tamaño":"",
+    "categoria": "Bicicleta BW Street",
+    "precio": "$138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/street.jpg"
+  },{
+    "id": 9,
+    "nombre":"",
+    "rodado":"",
+    "tamaño":"",
+    "categoria": "Bicicleta BW Street",
+    "precio": "$138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/street.jpg"
+  },{
+    "id": 10,
+    "nombre":"",
+    "rodado":"",
+    "tamaño":"",
+    "categoria": "Bicicleta BW Street",
+    "precio": "$138.500",
+    "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible con la Bicicleta BW Street",
+    "img": "/images/products/street.jpg"
+  }
+  
+]

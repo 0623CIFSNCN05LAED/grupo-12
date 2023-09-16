@@ -1,4 +1,4 @@
-const products = require("./catalogo/products")
+const products = require("./catalogo/bikes")
 const users = require("./users/users");
 
 const db = {
