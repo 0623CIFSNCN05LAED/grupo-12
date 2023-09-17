@@ -1,7 +1,3 @@
-const bikes= require("../data/catalogo/bikes");
-const clothes = require ("../data/catalogo/clothes")
-const accessories = require ("../data/catalogo/accessories")
-
 const productService = require("../services/productServices");
 
 module.exports={
@@ -16,31 +12,9 @@ module.exports={
         res.render("product-detail-bikes", {'bike' : bike});
       },
     
-      productDetailClothes: (req, res) =>{
-        const id = req.params.id;
-        const cloth= clothes.find((cloth) => cloth.id == id);
-        res.render("product-detail-clothes", {'cloth' : cloth});
-      },
-    
-      productDetailAccessories: (req, res) =>{
-        const id = req.params.id;
-        const accessory= accessories.find((accessory) => accessory.id == id);
-        res.render("product-detail-accessories", {'accessory' : accessory});
-      },
-    
       productListBikes: (req, res) =>{
-        const id= req.params.id;
-        res.render("product-list-bikes", {bycicles : bikes } );
-      },
-    
-      productListClothes: (req, res) =>{
-        const id= req.params.id;
-        res.render("product-list-clothes" , {clothing : clothes } );
-      },
-    
-      productListAccessories: (req, res) =>{
-        const id= req.params.id;
-        res.render("product-list-accessories", {accessories : accessories } );
+        const bikes = productService.getAllBikes();
+        res.render("product-list-bikes", { bikes } );
       },
 
       productCreate: (req, res) =>{
