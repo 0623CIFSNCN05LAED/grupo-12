@@ -1,3 +1,4 @@
+const { log } = require("console");
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
@@ -28,10 +29,26 @@ module.exports = {
       const products = this.getBikes();
       const newProduct = {
         id: uuidv4(),
-        ...product,
+        ...product,   // el resto de las propiedades del producto (sin contar el nuevo id que se le da)
       };
       products.push(newProduct);
       this.saveBikes(products);
       
+    },
+
+    update: function(id, product){
+      console.log(`updatin produc ${product.nombre}`);
+      const products = this.getBikes();
+      const productToEdit = products.find( (product) => product.id == id );
+      Object.assign(productToEdit, product) // ESTUDIAR ESTO https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+      this.saveBikes(products);
+      return product;
+    },
+
+    destroy: function(id){
+      console.log(`destroying produc ${product.nombre}`);
+      const product = this.getBikes();
+      const nonDestroyedBikes = products.filter( (product) => product.id != id );
+      this.saveBikes(nonDestroyedBikes);
     }
 } 

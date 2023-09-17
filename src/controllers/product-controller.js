@@ -34,31 +34,28 @@ module.exports={
           img: req.file ? req.file.filename : null,
         };
         productService.createBike(product);
-        res.redirect("/");
+        res.redirect("/bikes");
       },
 
-      productEdit: (req, res) => {          //ver a partir de esta linea 83, copiado todo desde Clase 29 
-        // const id = req.params.id;
-        // const product = productService.getProduct(id);
-        res.render("product-edit-form"); //deberia ser res.render("product-edit-form", { product }); 
+      productEdit: (req, res) => {        // Aca obtenes la bici que vas a editar, mediante el id 
+        const id = req.params.id;
+        const product = productService.getBike(id);
+        res.render("product-edit-form", { product }); 
       },
-      // Update - Method to update
+
       update: (req, res) => {
         const product = req.body;
         const id = req.params.id;
-        const image = req.file
-          ? req.file.filename
-          : productService.getProduct(id).image;
+        const image = req.file ? req.file.filename : productService.getBike(id).image;
         product.image = image;
-        productService.updateProduct(id, product);
-        res.redirect("/products");
+        productService.updateBikes(id, product);
+        res.redirect("/bikes");
       },
     
-      // Delete - Delete one product from DB
       destroy: (req, res) => {
         const id = req.params.id;
-        productService.deleteProduct(id);
-        res.redirect("/products");
+        productService.destroyProduct(id);        
+        res.redirect("/bikes");
       },
     };
     

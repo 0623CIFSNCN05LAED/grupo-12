@@ -8,14 +8,27 @@ const productService = {
         return db.products.findAll();
       },
 
-    getBikeForID:function(id){
+    getBike: (id) => {
+      return db.products.findById(id);
+    },  
+
+    getBikeForID: function(id){
       const bike = db.products.findById(id);
       return bike;
     },
 
     createBike: (product) => {
       db.products.create(product)
+    },
+
+    updateBikes: (product) => {
+      db.products.update(id, product);
+    },
+
+    destroyProduct: (id) => {
+      db.products.destroy(id);
     }
+     
 } 
 
 module.exports = productService;
