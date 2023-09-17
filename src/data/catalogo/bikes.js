@@ -10,33 +10,14 @@ module.exports = {
         return bikes;
         
       },
-    getClothes: function () {
-        const productsFilePath = path.join(__dirname, "./clothes.json");
-        const clothes = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
-        return clothes;
-      },
-    getAccessories: function () {
-        const productsFilePath = path.join(__dirname, "./accessories.json");
-        const accessiores = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
-        return accessiores;
-    }, 
+    
      saveBikes : (bikes) => {
       const bikesFilePath = path.join(__dirname, "./bikes.json");
       fs.writeFileSync(bikesFilePath, JSON.stringify(bikes, null, 2));
-    },
-    
-     saveAccessories : (accessories) => {
-      const accessoriesFilePath = path.join(__dirname, "./accessories.json");
-      fs.writeFileSync(accessoriesFilePath, JSON.stringify(accessories, null, 2));
-    },
-    
-    saveClothes : (clothes) => {
-      const clothesFilePath = path.join(__dirname, "./clothes.json");
-      fs.writeFileSync(clothesFilePath, JSON.stringify(clothes, null, 2));
     }, 
 
     findAll: function () {
-      return this.getProducts();
+      return this.getBikes();
     }, 
 
     findById: function (id) {

@@ -8,12 +8,9 @@ const productService = {
     createProduct: (product) => {
         db.products.create(product);
       },
-      getBikes: function () {
-        const productsFilePath = path.join(__dirname, "../data/catalogo/bikes.json");
-        const bikes = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
-        return bikes;
-        
-      },
+      getAllBikes: function () {
+        return db.products.findAll();
+  },
     getClothes: function () {
         const productsFilePath = path.join(__dirname, "../data/catalogo/clothes.json");
         const clothes = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
