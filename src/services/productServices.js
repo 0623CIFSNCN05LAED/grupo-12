@@ -21,7 +21,7 @@ const productService = {
       db.products.create(product)
     },
 
-    updateBikes: (product) => {
+    updateBikes: (id, product) => {
       db.products.update(id, product);
     },
 

@@ -30,10 +30,8 @@ router.get("/cart", productController.productCart);
 router.get("/create", productController.productCreate);
 router.post("/", upload.single("img"), productController.productStoreBikes);
 
-router.post("/", productController.productStoreBikes);
-
 router.get("/edit/:id", productController.productEdit);
-router.put("/:id", upload.single("img"), productController.productEdit);
+router.put("/:id", upload.single("img"), productController.update);
 
 router.delete("/:id", productController.destroy)
 

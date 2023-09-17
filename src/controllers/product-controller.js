@@ -39,15 +39,15 @@ module.exports={
 
       productEdit: (req, res) => {        // Aca obtenes la bici que vas a editar, mediante el id 
         const id = req.params.id;
-        const product = productService.getBike(id);
-        res.render("product-edit-form", { product }); 
+        const bike = productService.getBike(id);
+        res.render("product-edit-form", { bike }); 
       },
 
       update: (req, res) => {
         const product = req.body;
         const id = req.params.id;
-        const image = req.file ? req.file.filename : productService.getBike(id).image;
-        product.image = image;
+        const img = req.file ? req.file.filename : productService.getBike(id).img;
+        product.img = img;
         productService.updateBikes(id, product);
         res.redirect("/bikes");
       },

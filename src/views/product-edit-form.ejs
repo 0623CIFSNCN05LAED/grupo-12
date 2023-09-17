@@ -11,23 +11,27 @@
 </header>
 
 <main>
-     <h2> Editar producto </h2> <!-- Aca deberia llegar el producto actual que estas editando VER -->
-    <form action="/bikes/<%= bike.id %>_method=PUT" method="POST" class="create-form">
+     <h2> Editar producto </h2>
+    <form action="/bikes/<%= bike.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="create-form">
     <div class="m-pic">
         <label for="nombre">Nombre Del Producto:</label>
-        <input type="text" id="nombre"  name="nombre" placeholder="Inserte nombre del producto" class="control box-formulario">
+        <input type="text" id="nombre"  name="nombre" placeholder="Inserte nombre del producto" class="control box-formulario"
+        value="<%= bike.nombre %>">
     </div>
     <div class="m-pic">
         <label for="marca">Marca del producto:</label>
-        <input type="text" id="marca" name="marca" placeholder="Vairo" class="control box-formulario">
+        <input type="text" id="marca" name="marca" placeholder="Vairo" class="control box-formulario"
+        value="<%= bike.marca %>">
     </div>
     <div class="m-pic">
         <label for="rodado">Rodado:</label>
-        <input type="text" id="rodado" name="rodado" placeholder="29" class="control box-formulario">
+        <input type="text" id="rodado" name="rodado" placeholder="29" class="control box-formulario"
+        value="<%= bike.rodado %>">
     </div>
     <div class="m-pic">
         <label for="tamaño">Tamaño del cuadro:</label>
-        <input type="text" name="tamaño" id="tamaño" placeholder="XL" class="control box-formulario">
+        <input type="text" name="tamaño" id="tamaño" placeholder="XL" class="control box-formulario"
+        value="<%= bike.tamaño %>">
     </div>
     <div class="m-pic">
         <label for="categoria">Categoría de Bicicleta</label>
@@ -42,11 +46,12 @@
     </div>
     <div class="m-pic">
         <label for="precio">Precio del producto:</label>
-        <input type="text" id= "precio" name="precio" placeholder="$159.700" class="control box-formulario">
+        <input type="text" id= "precio" name="precio" placeholder="$159.700" class="control box-formulario"
+        value="<%= bike.precio %>">
     </div>
     <div class="m-pic">
         <label for="descripcion">Descripcion:</label>
-        <textarea id="descripcion" name="descripcion" class="control box-formulario"></textarea>
+        <textarea id="descripcion" name="descripcion" class="control box-formulario"><%= bike.descripcion %></textarea>
     </div>
     <div class="m-pic">
         <label for="img">Imagen del producto</label>
@@ -55,13 +60,10 @@
     <div class="m-pic">
         <button type="reset" class="boton-formulario m-pic">Borrar</button>
         <button type="submit" class="boton-formulario m-pic">Editar producto</button>
-        <button type="submit" class="boton-formulario m-pic">Guardar</button>
     </div>
     </form>
-    <form action="/bikes/<%= bike.id %>_method=DELETE" method="POST" class="create-form">
+    <form action="/bikes/<%= bike.id %>?_method=DELETE" method="POST" class="create-form">
     <div class="m-pic">
-    <label for="id"> ID del producto a eliminar </label> 
-    <input type="text" name="id" id="id" placeholder="Número del Id a eliminar" class="control box-formulario">
     <button type="submit" class="boton-formulario m-pic"> DESTROY </button>   
 </div>    
 
