@@ -13,15 +13,29 @@
 <main>
     <form action="/products-router" method="POST" class="create-form">
     <div class="m-pic">
-        <label for="modelo">Nombre Del Producto:</label>
-        <input type="text" id="modelo"  name="modelo" placeholder="Bicicleta BW Race" class="control box-formulario">
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" id="nombre"  name="nombre" placeholder="Bicicleta BW Race" class="control box-formulario">
     </div>
     <div class="m-pic">
-        <label for="tipo">Tipo de Producto</label>
-        <select name="tipo" id="tipo">
-            <option value="bicicletas">Bicicletas</option>
-            <option value="ropa">Ropa</option>
-            <option value="accesorios">Accesorios</option>
+        <label for="marca">Marca del producto:</label>
+        <input type="text" id="marca" name="marca" placeholder="Vairo" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="rodado">Rodado:</label>
+        <input type="text" id="rodado" name="rodado" placeholder="29" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="tamaño">Tamaño del cuadro:</label>
+        <input type="text" name="tamaño" id="tamaño" placeholder="XL" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="categoria">Categoria de la bicicleta:</label>
+        <select name="categoria" id="categoria">
+            <option value="electrica">Electrica</option>
+            <option value="freestyle">Freestyle/BMX</option>
+            <option value="mountain-bike">Mountain Bike</option>
+            <option value="paseo">Paseo/Urban</option>
+            <option value="ruta">Ruta/Triatlon</option>
         </select>
     </div>
     <div class="m-pic">
@@ -29,7 +43,7 @@
         <input type="text" id= "precio" name="precio" placeholder="$159.700" class="control box-formulario">
     </div>
     <div class="m-pic">
-        <label for="descripcion">Descripcion</label>
+        <label for="descripcion">Descripcion:</label>
         <textarea id="descripcion" name="descripcion" class="control box-formulario"></textarea>
     </div>
     <div class="m-pic">

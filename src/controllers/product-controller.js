@@ -8,8 +8,8 @@ module.exports={
         
       productDetailBikes: (req, res) =>{
         const id = req.params.id;
-        const bike= bikes.find((bike) => bike.id == id);
-        res.render("product-detail-bikes", {'bike' : bike});
+        const bike= productService.getBikeForID(id);
+        res.render("product-detail-bikes", { bike });
       },
     
       productListBikes: (req, res) =>{
@@ -23,34 +23,17 @@ module.exports={
       
       productStoreBikes: (req, res) => {
         const product = {
-          modelo: req.body.modelo,
+          marca: req.body.marca,
+          nombre: req.body.nombre,
+          rodado: req.body.rodado,
+          tamaño: req.body.tamaño,
+          categoria: req.body.categoria,
           descripcion: req.body.descripcion,
           tipo: req.body.tipo,
           precio: Number(req.body.precio),
           img: req.file ? req.file.filename : null,
         };
-        console.log(product);
-        
-        switch (req.body.tipo) {
-          case 'bicicletas':
-            const bikes = productService.getBikes();
-            bikes.push(product);
-            productService.saveBikes(bikes);
-            break;
-          case 'ropa':
-            const clothes = productService.getClothes()
-            clothes.push(product);
-            productService.saveClothes(clothes);
-            break;
-          case 'accesorios':
-            const accessories = productService.getAccessories();
-            accessories.push(product);
-            productService.saveAccessories(accessories);
-            break;
-          default:
-            break;
-        }
-    
+        productService.createBike(product);
         res.redirect("/");
       },
 

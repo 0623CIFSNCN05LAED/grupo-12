@@ -1,112 +1,124 @@
-[ {
+[
+  {
     "id": 1,
-    "marca":"slp",
-    "nombre":"SLP E-Bike MTB EM-2",
-    "rodado":"29",
-    "tamaño-cuadro":"l",
+    "marca": "slp",
+    "nombre": "SLP E-Bike MTB EM-2",
+    "rodado": "29",
+    "tamaño": "l",
     "categoria": "electrica",
     "precio": "$1.538.500",
     "descripcion": "La bicicleta E-BIKE EM-2 es nuestra MTB con asistencia eléctrica pensada para todo tipo de aventuras. Te permite recorrer terrenos mucho más complejos y realizar recorridos más largos sin tanto desgaste físico. La mejor parte: desde el punto de vista ambiental son inofensivas, ya que no contaminan, no generan ruido ni emisiones. VELOCIDAD MÁXIMA: 25km/hAUTONOMÍA DE BATERÍA: 40kmTIEMPO DE CARGA: 7-8HS POTENCIA: 240W, 36V",
     "img": "/images/products/Electrica.jpg"
-  },{
+  },
+  {
     "id": 2,
-    "marca":"specialized",
-    "nombre":"E-MTB",
-    "rodado":"27.5",
-    "tamaño":"m",
+    "marca": "specialized",
+    "nombre": "E-MTB",
+    "rodado": "27.5",
+    "tamaño": "m",
     "categoria": "electrica",
     "precio": "$5.138.500",
     "descripcion": "La bicicleta E-MTB cuenta con asistencia eléctrica. Te permite recorrer terrenos mucho más complejos y realizar recorridos más largos sin tanto desgaste físico. La mejor parte: desde el punto de vista ambiental son inofensivas, ya que no contaminan, no generan ruido ni emisiones. VELOCIDAD MÁXIMA: 25km/hAUTONOMÍA DE BATERÍA: 40kmTIEMPO DE CARGA: 5-6HS POTENCIA: 240W, 36V",
     "img": "/images/products/Electrica-1.jpg"
-  },{
+  },
+  {
     "id": 3,
     "marca": "everyday",
-    "nombre":"everyday Tyron",
-    "rodado":"20",
-    "tamaño":"s",
+    "nombre": "everyday Tyron",
+    "rodado": "20",
+    "tamaño": "s",
     "categoria": "freestyle",
     "precio": "$200.500",
     "descripcion": "Para realizar tus mayores aventuras. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Freestyle.jpg"
-  },{
+  },
+  {
     "id": 4,
     "marca": "hoodrich",
-    "nombre":"hoodrich bmx",
-    "rodado":"20",
-    "tamaño":"s",
+    "nombre": "hoodrich bmx",
+    "rodado": "20",
+    "tamaño": "s",
     "categoria": "freestyle",
     "precio": "$250.000",
     "descripcion": "Para romper toda la plaza con tus piruetas! Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Freestyle-1.jpg"
-  },{
+  },
+  {
     "id": 5,
-    "marca":"wilier",
-    "nombre":"wilier plus",
-    "rodado":"29",
-    "tamaño":"l",
+    "marca": "wilier",
+    "nombre": "wilier plus",
+    "rodado": "29",
+    "tamaño": "l",
     "categoria": "Mountan Bike",
     "precio": "$800.000",
     "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/MTB.jpg"
-  },{
+  },
+  {
     "id": 6,
-    "marca":"fuji",
-    "nombre":"fuji place",
-    "rodado":"28",
-    "tamaño":"m",
+    "marca": "fuji",
+    "nombre": "fuji place",
+    "rodado": "28",
+    "tamaño": "m",
     "categoria": "Mountan Bike",
     "precio": "$900.900",
     "descripcion": "Tu mejor aliada en la naturaleza, desplegable para llevarla en el auto. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/MTB-1.jpg"
-  },{
+  },
+  {
     "id": 7,
-    "marca":"slp",
-    "nombre":"federosa",
-    "rodado":"26",
-    "tamaño":"m",
+    "marca": "slp",
+    "nombre": "federosa",
+    "rodado": "26",
+    "tamaño": "m",
     "categoria": "Paseo",
     "precio": "$290.000",
     "descripcion": "Suficientemente ligera como para llevarla en el tren. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Paseo.jpg"
-  },{
+  },
+  {
     "id": 8,
-    "marca":"moma",
-    "nombre":"urban wrt500",
-    "rodado":"29",
-    "tamaño":"l",
+    "marca": "moma",
+    "nombre": "urban wrt500",
+    "rodado": "29",
+    "tamaño": "l",
     "categoria": "Paseo",
     "precio": "$600.000",
     "descripcion": "Ideal para tus paseos por la ciudad! Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Paseo-1.jpg"
-  },{
+  },
+  {
     "id": 9,
-    "marca":"fuji",
-    "nombre":"racer3000",
-    "rodado":"29",
-    "tamaño":"l",
+    "marca": "fuji",
+    "nombre": "racer3000",
+    "rodado": "29",
+    "tamaño": "l",
     "categoria": "ruta",
     "precio": "$800.000",
     "descripcion": "Ligera como una pluma. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Ruta.jpg"
-  },{
+  },
+  {
     "id": 10,
-    "marca":"wilier",
-    "nombre":"pathfinder",
-    "rodado":"28",
-    "tamaño":"m",
+    "marca": "wilier",
+    "nombre": "pathfinder",
+    "rodado": "28",
+    "tamaño": "m",
     "categoria": "ruta",
     "precio": "$900.000",
     "descripcion": "Extremadamente veloz. Y con potencia de sobra para llevarte a la oficina. Equipada para pedalear por la ciudad. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Ruta-1.jpg"
-  },{
+  },
+  {
     "id": 11,
-    "marca":"kestrel",
-    "nombre":"triatlon",
-    "rodado":"29",
-    "tamaño":"l",
+    "marca": "kestrel",
+    "nombre": "triatlon",
+    "rodado": "29",
+    "tamaño": "l",
     "categoria": "ruta",
     "precio": "$1.500.000",
     "descripcion": "Calidad superior. Gana sola las carreras. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Tria.jpg"
-  }  
+  }
+  
 ]
