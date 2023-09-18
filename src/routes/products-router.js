@@ -28,11 +28,11 @@ router.get("/bikes/:id", productController.productDetailBikes);
 router.get("/cart", productController.productCart);
 
 router.get("/create", productController.productCreate);
-router.post("/", upload.single("img"), productController.productStoreBikes);
+router.post("/bikes", upload.single("img"), productController.productStoreBikes);
 
 router.get("/edit/:id", productController.productEdit);
-router.put("/:id", upload.single("img"), productController.update);
+router.put("/bikes/:id", upload.single("img"), productController.update);
 
-router.delete("/:id", productController.destroy)
+router.delete("/bikes/:id", productController.destroy)
 
 module.exports = router;

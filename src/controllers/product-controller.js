@@ -31,7 +31,7 @@ module.exports={
           descripcion: req.body.descripcion,
           tipo: req.body.tipo,
           precio: Number(req.body.precio),
-          img: req.file ? req.file.filename : null,
+          img: req.file ? "/images/products/" + req.file.filename : null,
         };
         productService.createBike(product);
         res.redirect("/bikes");

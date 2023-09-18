@@ -119,16 +119,5 @@
     "precio": 1500000,
     "descripcion": "Calidad superior. Gana sola las carreras. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Tria.jpg"
-  },
-  {
-    "id": "a855357b-616b-4421-bf8a-c6be92d63359",
-    "marca": "SLP",
-    "nombre": "Bici piola",
-    "rodado": "28",
-    "tamaño": "L",
-    "categoria": "paseo",
-    "descripcion": "blab ",
-    "precio": 500,
-    "img": null
   }
 ]

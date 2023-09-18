@@ -37,7 +37,7 @@ module.exports = {
     },
 
     update: function(id, product){
-      console.log(`updatin produc ${product.nombre}`);
+      console.log(`updating produc ${product.nombre}`);
       const products = this.getBikes();
       const productToEdit = products.find( (product) => product.id == id );
       Object.assign(productToEdit, product) // ESTUDIAR ESTO https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
@@ -46,8 +46,8 @@ module.exports = {
     },
 
     destroy: function(id){
-      console.log(`destroying produc ${product.nombre}`);
-      const product = this.getBikes();
+      console.log(`destroying produc ${id}`);
+      const products = this.getBikes();
       const nonDestroyedBikes = products.filter( (product) => product.id != id );
       this.saveBikes(nonDestroyedBikes);
     }
