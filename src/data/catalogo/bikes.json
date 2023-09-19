@@ -119,5 +119,15 @@
     "precio": 1500000,
     "descripcion": "Calidad superior. Gana sola las carreras. Muévete de una forma más rápida y sostenible.",
     "img": "/images/products/Tria.jpg"
+  },
+  {
+    "id": "43d3f0be-662a-4e67-a0ab-8567986c9bc8",
+    "marca": "Vairo",
+    "nombre": "prueba",
+    "rodado": "29",
+    "categoria": "ruta",
+    "descripcion": "sdsad",
+    "precio": 700000,
+    "img": "/images/products/img-1695092737076.jpeg"
   }
 ]

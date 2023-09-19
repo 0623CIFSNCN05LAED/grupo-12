@@ -26,6 +26,7 @@ router.get("/bikes", productController.productListBikes);
 router.get("/bikes/:id", productController.productDetailBikes);
 
 router.get("/bikes/category/:categoria", productController.filterCategory)
+router.get("/bikes/id:", productController.filterCategory)
 
 router.get("/cart", productController.productCart);
 
