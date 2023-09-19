@@ -27,6 +27,10 @@ const productService = {
 
     destroyProduct: (id) => {
       db.products.destroy(id);
+    },
+
+    getBikesForCategory: (categoria) =>{
+      return db.products.filterCategory(categoria);
     }
      
 } 

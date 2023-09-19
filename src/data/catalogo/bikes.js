@@ -50,5 +50,13 @@ module.exports = {
       const products = this.getBikes();
       const nonDestroyedBikes = products.filter( (product) => product.id != id );
       this.saveBikes(nonDestroyedBikes);
-    }
+    },
+
+    filterCategory: function(categoria){
+      const products = this.getBikes();
+      const productosFiltrados = products.filter(product => product.categoria === categoria);
+      return productosFiltrados;
+    },
+    
 } 
+

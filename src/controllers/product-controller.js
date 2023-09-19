@@ -57,6 +57,12 @@ module.exports={
         productService.destroyProduct(id);        
         res.redirect("/bikes");
       },
+
+      filterCategory: (req, res) =>{
+        const categoria = req.params.categoria;
+        const bikes= productService.getBikesForCategory(categoria)
+        res.render("product-category", { bikes });
+      }
     };
     
     
