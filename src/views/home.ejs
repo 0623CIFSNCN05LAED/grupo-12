@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey">
+    
+    <header class="bg-grey p-20">
+        <%- include("partials/header") %>        
+    </header>
+
+    <img src="/images/portada.png" class="portada" alt="Portada">
+    
+    <main class="mx-auto pd-main"> 
+        <section class="flex-home">
+            <div class="flex-main">
+                <a href="/bikes/category/ruta" class="box">RUTA/TRIA</a>
+                <img src="/images/carrera-home.jpeg" class="fotos-main" alt="bicis2">
+            </div>
+
+            <div class="flex-main"> 
+                <a href="/bikes/category/mountain-bike" class="box">MOUNTAIN BIKE</a>
+                <img src="/images/montaña-home.jpg" class="fotos-main" alt="kitbici">
+            </div>
+        </section>
+
+        <section class="flex-home"> 
+            <div class="flex-main"> 
+                <a href="/bikes/category/paseo" class="box">URBANA/PASEO</a>
+                <img src="/images/urbana-home.jpg" class="fotos-main" alt="ropabici">
+            </div>
+            
+            <div class="flex-main">
+                <a href="/bikes/category/electrica" class="box">ELECTRICA</a>
+                <img src="/images/electrica-home.jpg" class="fotos-main" alt="stores">
+            </div>
+            <div class="flex-main">
+                <a href="/bikes/category/freestyle" class="box">FREESTYLE</a>
+                <img src="/images/freestyle-home.jpg" class="fotos-main" alt="stores">
+            </div>    
+        </section>
+    </main>
+    
+</body>
+<footer class="bg-grey padding-footer">
+    
+    <%- include("partials/footer") %>
+    
+</footer>
+</html>

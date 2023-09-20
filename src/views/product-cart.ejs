@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey bg-img">
+    
+    <header class="bg-grey p-20">
+      <%- include("partials/header") %>  
+    </header>
+    
+    <main><form action="" class="box-cart">
+      
+        <h1>Carrito de compras</h1>
+  <table class="font1 mt-5 mb-5">
+    <thead class="font1 mt-5 mb-5">
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Producto 1</td>
+        <td><select name="Cantidad" id="">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </td>
+        <td>\$100</td>
+        <td>\$100</td>
+      </tr>
+      <tr>
+        <td>Producto 2</td>
+        <td><select name="Cantidad" id="">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </td>
+        <td>\$50</td>
+        <td>\$100</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="2">Total</th>
+        <th>\$200</th>
+      </tr>
+    </tfoot>
+  </table>
+  
+  <h2>Método de envío</h2>
+  <p>
+    <input type="radio" name="shipping_method" value="24_hours"> Envío en 24 horas (\$10)
+    <input type="radio" name="shipping_method" value="shipping"> Envío por encomienda (\$20)
+  </p>
+  
+    <div class="flex-buy">
+    <input type="submit" value="Comprar" class="center" formaction="/home">
+  
+</form>
+  
+  
+</div>
+      
+</main>
+    
+</body>
+    
+<footer class="bg-grey padding-footer">
+   <%- include("partials/footer") %>
+</footer>
+</html>

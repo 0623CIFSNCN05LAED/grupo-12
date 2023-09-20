@@ -27,8 +27,6 @@ Puntos a mejorar
 
 
 
-
-
 RETROSPECTIVA SPRINT 3
 
 //  Comenzar a hacer  // 

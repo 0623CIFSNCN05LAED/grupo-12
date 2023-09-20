@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey bg-img">
+    
+    <header class="bg-grey p-20">
+      <%- include("partials/header") %>        
+    </header>
+  
+
+    <main class="m-main-log">
+        
+        
+        <form action="" method="GET" class="bg-ligh-grey flex-log">
+
+            <div>
+              <div class="font1 mt-5 mb-5">
+                <input type="text" name="user" id="user" placeholder="Nombre de Usuario" required pattern="\w{2,}" title="El nombre de Usuario debe tener al menos 2 letras">
+              </div>
+          
+              <div class="font1 mt-5 mb-5">
+                <input type="password" name="password" id="password" placeholder="Contraseña" required pattern=".{6,}" title="La contraseña deberá tener al menos 6 letras">
+                <p class="center"><a href="#"> Olvidé mi contraseña </a></p>
+              </div>
+              <div class="flex-send">
+                <button type="submit" value="Enviar" formaction="/"> Enviar </button>
+              </div>
+            </div>
+            <p class="ml mt-2 bold boton-formulario"> Ingresá </p>
+          <div class="ml relative p-10">
+            <a href="#" class="mr"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class=""><i class="fab fa-google-plus-g"></i></a>
+        </div>
+        <span class="ml font-size-10">o utiliza tu cuenta</span>  
+
+        <div class="ml">
+        <p class="font1 mt-5 mb-5">
+         Aún no sos usuario?
+        <a href="/register"> Registrate </a>   
+
+        </p>
+      </div>    
+          </form>       
+          
+          
+
+    
+          
+    </main>    
+    
+</body>
+<footer class="bg-grey padding-footer">
+    
+  <%- include("partials/footer") %>
+    
+</footer>
+
+</html>

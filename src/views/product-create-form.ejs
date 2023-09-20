@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey">
+    
+<header class="bg-grey p-20">
+        <%- include("partials/header") %>        
+</header>
+
+<main>
+    <form action="/bikes" method="POST" class="create-form" enctype="multipart/form-data">
+    <div class="m-pic">
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" id="nombre"  name="nombre" placeholder="Bicicleta BW Race" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="marca">Marca del producto:</label>
+        <input type="text" id="marca" name="marca" placeholder="Vairo" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="rodado">Rodado:</label>
+        <input type="text" id="rodado" name="rodado" placeholder="29" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="tamaño">Tamaño del cuadro:</label>
+        <input type="text" name="tamaño" id="tamaño" placeholder="XL" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="categoria">Categoria de la bicicleta:</label>
+        <select name="categoria" id="categoria">
+            <option value="electrica">Electrica</option>
+            <option value="freestyle">Freestyle/BMX</option>
+            <option value="mountain-bike">Mountain Bike</option>
+            <option value="paseo">Paseo/Urban</option>
+            <option value="ruta">Ruta/Triatlon</option>
+        </select>
+    </div>
+    <div class="m-pic">
+        <label for="precio">Precio del producto:</label>
+        <input type="text" id= "precio" name="precio" placeholder="$159.700" class="control box-formulario">
+    </div>
+    <div class="m-pic">
+        <label for="descripcion">Descripcion:</label>
+        <textarea id="descripcion" name="descripcion" class="control box-formulario"></textarea>
+    </div>
+    <div class="m-pic">
+        <label for="img">Imagen del producto</label>
+        <input type="file" id="img" name="img">
+    </div>
+    <div class="m-pic">
+        <button type="reset" class="boton-formulario m-pic">Borrar</button>
+        <button type="submit" class="boton-formulario m-pic">Guardar</button>
+    </div>
+
+    </form> 
+</main>
+
+<footer class="bg-grey padding-footer">
+    
+        <%- include("partials/footer") %>
+        
+</footer>
+</html>
