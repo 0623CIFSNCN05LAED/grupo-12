@@ -1,0 +1,20 @@
+<article class="mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product"> 
+    <div class="flex-buttom p-10">
+        <button type="button" class="boton-formulario">
+            <a href="/edit/<%= bike.id %>" class="c-white">Editar producto</a>
+        </button>
+    </div>
+<img class="w-50 mx-auto m-pic" src="<%= bike.img %>" alt="Imagen del producto" />
+<div class="bt-1 border-grey p-1 relative flex flex-wrap">
+    <i class="fa-solid fa-truck truck-icon"></i>
+    <p class="text-xl mr-1"> $
+        <%= bike.precio%>     
+        </p>
+    <h3 class="text-lg description w-100">
+        <%= bike.modelo%>     
+     </h3>
+    <p>
+        <%= bike.descripcion%>
+    </p>
+</div>
+</article>

@@ -61,7 +61,7 @@ module.exports={
       filterCategory: (req, res) =>{
         const categoria = req.params.categoria;
         const bikes= productService.getBikesForCategory(categoria)
-        res.render("product-category", { bikes });
+        res.render("product-category", { bikes, categoria });
       }
     };
     

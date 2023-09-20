@@ -22,6 +22,10 @@ footer a:visited {color: white; text-decoration: none }
 
 body a:link {text-decoration: none;} 
 
+a.c-white:visited{ color: #ffffff;}
+a.c-white:hover{ color: #ffffff;}
+a.c-white:link{ color: #ffffff;}
+
 article a:link {color: rgb(0, 0, 20); text-decoration: none }
 article a:hover {color: rgb(0, 0, 0); text-decoration: none }
 article a:visited {color: rgb(0, 0, 0); text-decoration: none }
@@ -399,7 +403,17 @@ td{
     display: flex;
     justify-content: center;
     margin-top: 20px;
+} 
+
+.flex-buttom{
+    display: flex;
+    justify-content: center;
+} 
+
+.p-10{
+    padding: 10px;
 }
+
 
 
 
