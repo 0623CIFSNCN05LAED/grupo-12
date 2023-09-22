@@ -11,28 +11,9 @@
     </header>
 
     <main>
-        <article class="mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product">        
-        <div class="bt-1 border-grey p-1 relative flex flex-wrap">
-           
-            <p class="text-xl mr-1">
-                <% bikes.forEach(bike =>{ %>
-                    
-                    <a href="/bikes/<%= bike.id %>">
-                        <img class="w-50 mx-auto m-pic" src=<%= bike.img %> alt="Imagen del producto" />
-                        <h4><%= bike.nombre  %></h4>
-                        <p class="ps-text-grey"> $
-                        <%= bike.precio  %>
-                        </p>
-                    </a>
-                    <br />
-                    <%   }) %>
-            </p>
-        </div>
-    </article>
+        <%- include("partials/product-list") %>
 </main>
         
-
-
 </body>
 
 <footer class="bg-grey padding-footer">
