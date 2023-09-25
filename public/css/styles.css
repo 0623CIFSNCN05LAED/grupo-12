@@ -126,7 +126,9 @@ body{
     background-color: #ebebeb;
 } 
 
-
+.p-10{
+    padding: 10px;
+}
 .f-navbar{
     color: #F3AA21;
 }
@@ -159,6 +161,11 @@ body{
     
 }
 
+.text-xl{
+    font-weight: bold;
+    box-shadow: #F3AA21;
+    padding: 10px;
+}
 
 .mx-auto{
     margin-left: auto;
@@ -168,7 +175,11 @@ body{
 .center{
     text-align: center;
 }
-
+.a-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .portada{
     width: 100%;
 }
@@ -413,6 +424,17 @@ td{
 .p-10{
     padding: 10px;
 }
+
+.truck-icon {
+    color:#F3AA21;
+    border: #F3AA21 solid 1px;
+    border-radius: 50%;
+    padding: 5px;
+    position: absolute;
+    right: 15px;
+    top: -15px;
+    transition: transform 0.5s ease-in-out;
+  }
 
 
 

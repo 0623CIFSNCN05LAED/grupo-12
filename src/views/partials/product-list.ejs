@@ -6,11 +6,11 @@
                         <a href="/create" class="c-white">Crear producto</a>
                     </button>
                 </div>
-        <p class="text-xl mr-1">
+        <p class="text-xl mr-1 flex-buttom mx-auto">
             <% bikes.forEach(bike =>{ %>
                 
                 <a href="/bikes/<%= bike.id %>">
-                    <img class="w-50 mx-auto m-pic" src=<%= bike.img %> alt="Imagen del producto" />
+                    <img class="flex-buy w-50 mx-auto m-pic flex-buttom" src=<%= bike.img %> alt="Imagen del producto" />
                     <h4><%= bike.nombre  %></h4>
                     <p class="ps-text-grey"> $
                     <%= bike.precio  %>
