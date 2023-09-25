@@ -1,12 +1,18 @@
 const express = require("express");
 const path = require("path");
 const methodOverride = require('method-override')
-const session = require(express.session);
+const session = require("express.session");
 const app = express(); 
 
 app.use(express.static(path.join(__dirname,"../public")));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+
+app.use(session({ // Configura express-session
+    secret: 'tuClaveSecreta', 
+    resave: false,
+    saveUninitialized: true
+  }));
 
 const mainRoute = require("./routes/main-router");
 const productRouter = require ("./routes/products-router");
