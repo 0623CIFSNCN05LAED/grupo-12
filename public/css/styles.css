@@ -436,8 +436,14 @@ td{
     transition: transform 0.5s ease-in-out;
   }
 
-
-
+  .label{
+    display: flex;
+    justify-content: space-evenly;
+} 
+.shipment{
+display: flex;
+justify-content: center;
+} /* APLICA A LOS METODOS DE ENVIO DE PRODUCT CART VER */
 
 @media(max-width: 768px){
     .user-cart{
