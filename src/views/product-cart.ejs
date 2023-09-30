@@ -16,16 +16,17 @@
   <table class="font1 mt-5 mb-5">
     <thead class="font1 mt-5 mb-5">
       <tr>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Total</th>
+        <th> Producto</th>
+        <th> Cantidad</th>
+        <th> Precio</th>
+        <th> Total</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Producto 1</td>
         <td><select name="Cantidad" id="">
+          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -38,12 +39,13 @@
           <option value="10">10</option>
         </select>
       </td>
-        <td>\$100</td>
-        <td>\$100</td>
+        <td>$ --</td>
+        <td>$ --</td>
       </tr>
       <tr>
         <td>Producto 2</td>
         <td><select name="Cantidad" id="">
+          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -56,26 +58,31 @@
           <option value="10">10</option>
         </select>
       </td>
-        <td>\$50</td>
-        <td>\$100</td>
+        <td>$ --</td>
+        <td>$ --</td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
         <th colspan="2">Total</th>
-        <th>\$200</th>
+        <th>$ --</th>
       </tr>
     </tfoot>
   </table>
   
-  <h2>Método de envío</h2>
-  <p>
-    <input type="radio" name="shipping_method" value="24_hours"> Envío en 24 horas (\$10)
-    <input type="radio" name="shipping_method" value="shipping"> Envío por encomienda (\$20)
-  </p>
+  <h2 class="flex-buy">Método de envío</h2>
+  <div class="center my-1 shipment">
+    <label> Envío en 24 horas ($5.000) </label>
+    <input type="radio" name="shipping_method" value="24_hours"> 
+  </div>
+  <div class="center my-1 shipment">
+    <label>Envío por encomienda ($3.000)</label>
+    <input type="radio" name="shipping_method" value="shipping"> 
+  </div>
+  
   
     <div class="flex-buy">
-    <input type="submit" value="Comprar" class="center" formaction="/home">
+    <input type="submit" value="Pagar" class="center" formaction="/home">
   
 </form>
   
