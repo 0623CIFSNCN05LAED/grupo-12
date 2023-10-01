@@ -8,20 +8,22 @@
                 </div>
 
         <div>
-        <p class="text-xl mr-1 mx-auto">
+        <div class="text-xl mr-1 mx-auto">
                       
             <% bikes.forEach(bike =>{ %>
-              
-                <a href="/bikes/<%= bike.id %>">
+            </div>
+            <div class="box-list"> 
+                <a class="a-center w-full" href="/bikes/<%= bike.id %>">
                     <img class="flex-buy w-50 mx-auto m-pic" src=<%= bike.img %> alt="Imagen del producto" />
+            </div> 
                     <h4><%= bike.nombre  %></h4>
-                    <p class="ps-text-grey"> $
+                    <p>    ..</p>
+                    <p class="text-price"> $
                     <%= bike.precio  %>
                     </p>
                 </a>
                 <br />
                     <% }) %>
-        </p>
-    </div>
+        </div>
    
 </article>
