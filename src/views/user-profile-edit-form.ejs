@@ -10,11 +10,11 @@
       <%- include("partials/header") %>
     </header>
     <main>
-        <form action="/register" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
+        <form action="" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
         <h1 class="register">Registrate!</h1>
         <div>
             <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" />
+            <input type="text" name="nombre" id="nombre" pattern="[a-zA-Z ]" />
           </div>
           <div>
             <label for="apellido">Apellido:</label>
@@ -70,8 +70,8 @@
             <input type="file" id="avatar" name="avatar">
           </div>
           <div>
-          <input type="submit" value="Enviar" class="boton-formulario"/>
-          <input type="reset" value="Borrar" class="boton-formulario"/>
+          <input type="submit" value="Editar" class="boton-formulario"/>
+          <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
         </div>
 
     </form>
