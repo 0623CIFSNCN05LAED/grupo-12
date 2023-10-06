@@ -46,7 +46,7 @@ module.exports = {
     },
 
     destroy: function(id){
-      console.log(`destroying produc ${id}`);
+      console.log(`Destroying produc ${id}`);
       const products = this.getBikes();
       const nonDestroyedBikes = products.filter( (product) => product.id != id );
       this.saveBikes(nonDestroyedBikes);
