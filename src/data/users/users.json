@@ -6,7 +6,13 @@
     "email": "fredmond0@clickbank.net",
     "password": "dM4|4Zd\"",
     "category": "Admin",
-    "avatar": "/images/avatars/polloCorazon.jpg"
+    "avatar": "/images/avatars/polloCorazon.jpg",
+    "nombre": "",
+    "apellido": "",
+    "nacimiento": "",
+    "domicilio": "",
+    "NumContacto": "",
+    "contraseÃ±a": ""
   },
   {
     "id": 2,
@@ -88,5 +94,17 @@
     "password": "mB6\\\"yOjjMRm(cc",
     "category": "Customer",
     "avatar": "/images/avatars/kipa.jpg"
+  },
+  {
+    "id": "b8d16f0f-c3a8-474c-8ccf-dea87727e777",
+    "nombre": "Sebastian",
+    "apellido": "Montero",
+    "email": "sebamontero15@gmail.com",
+    "nacimiento": "1997-11-07",
+    "NumContacto": "1138313030",
+    "domicilio": "Calle falsa 123",
+    "avatar": "/images/users/avatar-1696694829117.png",
+    "contraseÃ±a": "",
+    "confirmar_contraseÃ±a": "asd"
   }
 ]

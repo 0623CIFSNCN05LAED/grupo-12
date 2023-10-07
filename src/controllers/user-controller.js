@@ -8,6 +8,17 @@ module.exports={
 
   registerForm: (req, res) => {
     res.render("register");
+  }, 
+
+  userList: (req, res) => {
+    const users = userServices.getAllUsers();
+    res.render("users-list", { users });
+  }, 
+
+  userDetail: (req, res) =>{ 
+    const id = req.params.id;
+    const user = userServices.getUserById(id); 
+    res.render("user-detail", { user });
   },
 
   register: (req, res) => {
@@ -17,6 +28,7 @@ module.exports={
       email: req.body.email,
       nacimiento: req.body.nacimiento,
       contraseña: req.body.contraseña,
+      confirmarContraseña: req.body.confirmarContraseña,
       NumContacto: Number(req.body.NumContacto),
       domicilio: req.body.domicilio,
       avatar: req.file ? "/images/users/" + req.file.filename : null,
@@ -39,12 +51,12 @@ module.exports={
     const user = req.body;
     const id = req.params.id;
     userServices.updateUser(id, user);
-    res.redirect("/users/:id");
+    res.redirect("/");
   }, 
 
   destroy: (req, res) => {
     const id = req.params.id;
-    userServices.deleteUser(id);
+    userServices.destroyUser(id);
     res.redirect("/");
   }
 

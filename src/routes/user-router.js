@@ -16,17 +16,20 @@ const storage = multer.diskStorage({
   
   const upload = multer({
     storage: storage,
-  });
+  }); 
+
+usersRouter.get("/users", userController.userList); 
+usersRouter.get("/:id/users", userController.userDetail);
 
 usersRouter.get("/login", userController.login);
 usersRouter.get("/register", userController.registerForm); 
 usersRouter.post("/register", upload.single("avatar"), userController.register); 
 
-usersRouter.delete("/:id/delete", userController.destroy);
+usersRouter.delete("/:id", userController.destroy);
   
 usersRouter.get("/:id", userController.profile);
   
-usersRouter.get("/:id/edit", userController.profileEdit);
+usersRouter.get("/:id/user", userController.profileEdit);
 usersRouter.put("/:id/edit",upload.single("avatar"), userController.update);  
 
 
