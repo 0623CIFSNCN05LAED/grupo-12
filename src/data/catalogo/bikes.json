@@ -1,16 +1,5 @@
 [
   {
-    "id": 1,
-    "marca": "slp",
-    "nombre": "SLP E-Bike MTB EM-2",
-    "rodado": "29",
-    "tamaño": "l",
-    "categoria": "electrica",
-    "precio": 1538500,
-    "descripcion": "La bicicleta E-BIKE EM-2 es nuestra MTB con asistencia eléctrica pensada para todo tipo de aventuras. Te permite recorrer terrenos mucho más complejos y realizar recorridos más largos sin tanto desgaste físico. La mejor parte: desde el punto de vista ambiental son inofensivas, ya que no contaminan, no generan ruido ni emisiones. VELOCIDAD MÁXIMA: 25km/hAUTONOMÍA DE BATERÍA: 40kmTIEMPO DE CARGA: 7-8HS POTENCIA: 240W, 36V",
-    "img": "/images/products/Electrica.jpg"
-  },
-  {
     "id": 2,
     "marca": "specialized",
     "nombre": "E-MTB",

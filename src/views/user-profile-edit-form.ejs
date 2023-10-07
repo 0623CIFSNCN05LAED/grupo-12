@@ -10,69 +10,65 @@
       <%- include("partials/header") %>
     </header>
     <main>
-        <form action="" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
+        <form action="/<%= user.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
         <h1 class="register">Registrate!</h1>
         <div>
             <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" pattern="[a-zA-Z ]" />
+            <input type="text" name="nombre" id="nombre" 
+            value="<%= user.nombre %>">
           </div>
           <div>
             <label for="apellido">Apellido:</label>
-            <input type="text" name="apellido" id="apellido" />
+            <input type="text" name="apellido" id="apellido" 
+            value="<%= user.apellido %>">
           </div>
           <div>
             <label for="nacimiento">Fecha de nacimiento:</label>
-            <input type="date" name="nacimiento" id="nacimiento" />
+            <input type="date" name="nacimiento" id="nacimiento" 
+            value="<%= user.nacimiento %>">
           </div>
           <div>
             <label for="domicilio">Domicilio:</label>
-            <input type="text" name="domicilio" id="domicilio">
+            <input type="text" name="domicilio" id="domicilio" 
+            value="<%= user.domicilio %>">
           </div>
           <div>
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="email" id="email" 
+            value="<%= user.email %>">
           </div> 
           <div>
             <label for="NumContacto">Numero de contacto:</label>
-            <input type="text" name="NumContacto" id="NumContacto">
-          </div>
-
-          <div class="flex-cat"> 
-            <label for="categorias">Categorías de Bicicletas buscadas:</label>
-            <div class="item-cat">
-              <input type="checkbox" name="categorias[]" value="mont"/> <p class="w-100">Montaña</p> 
-            </div>
-            <div class="item-cat">
-              <input type="checkbox" name="categorias[]" value="ruta" /> <p class="w-100">Ruta</p> 
-            </div>
-            <div class="item-cat">
-              <input type="checkbox" name="categorias[]" value="elec" /> <p class="w-100">Electrica</p> 
-            </div>
-            <div class="item-cat">
-              <input type="checkbox" name="categorias[]" value="fam" /> <p class="w-100">Familiar</p> 
-            </div>
-            <div class="item-cat">
-              <input type="checkbox" name="categorias[]" value="Paseo" /> <p class="w-100">Paseo</p> 
-            </div>
-          </div>
-
-          <div>
-            <label for="contraseña">Contraseña:</label>
-            <input type="password" name="contraseña" id="contraseña" />
+            <input type="text" name="NumContacto" id="NumContacto" 
+            value="<%= user.NumContacto %>">
           </div>
           <div>
-            <label for="confirmar_contraseña">Confirmar contraseña:</label>
-            <input type="password" name="confirmar_contraseña" id="confirmar_contraseña" />
+            <label for="contraseña">Nueva Contraseña:</label>
+            <input type="password" name="contraseña" id="contraseña" 
+            value="<%= user.contraseña %>">
+          </div>
+          <div>
+            <label for="confirmarContraseña">Confirmar nueva contraseña:</label>
+            <input type="password" name="" id="confirmarContraseña" 
+            value="<%= user.confirmarContraseña %>">
           </div> 
 
           <div>
             <label for="avatar">Avatar:</label>
-            <input type="file" id="avatar" name="avatar">
+            <input type="file" id="avatar" name="avatar" 
+            value="<%= user.avatar %>">
           </div>
           <div>
           <input type="submit" value="Editar" class="boton-formulario"/>
           <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
-        </div>
+        
+        </div> 
+        <form action="/<%= user.id %>?_method=DELETE" method="POST" class="create-form">
+          <div class="m-pic">
+          <button type="submit" class="boton-formulario m-pic"> DESTROY </button>   
+      </div>    
+      
+          </form>     
 
     </form>
     
