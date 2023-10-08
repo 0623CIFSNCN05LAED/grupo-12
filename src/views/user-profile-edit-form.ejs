@@ -11,7 +11,7 @@
     </header>
     <main>
         <form action="/<%= user.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
-        <h1 class="register">Registrate!</h1>
+        <h1 class="register">Edita tu perfil</h1>
         <div>
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" id="nombre" 
@@ -63,19 +63,16 @@
           <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
         
         </div> 
-        <form action="/<%= user.id %>?_method=DELETE" method="POST" class="create-form">
+    </form>
+
+    <form action="/<%= user.id %>?_method=DELETE" method="POST" class="bg-register flex-buttom">
           <div class="m-pic">
-          <button type="submit" class="boton-formulario m-pic"> DESTROY </button>   
+          <button type="submit" class="boton-formulario m-pic c-red"> DESTROY </button>   
       </div>    
       
-          </form>     
-
-    </form>
-    
+          </form>
   </main>
     
-
-
 </body>
 <footer class="bg-grey padding-footer">
   <%- include("partials/footer") %>

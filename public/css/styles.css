@@ -455,7 +455,11 @@ td{
 .shipment{
 display: flex;
 justify-content: center;
-} /* APLICA A LOS METODOS DE ENVIO DE PRODUCT CART VER */
+} /* APLICA A LOS METODOS DE ENVIO DE PRODUCT CART VER */ 
+
+.c-red{
+    background-color: #CD5C5C;
+}
 
 @media(max-width: 768px){
     .user-cart{
