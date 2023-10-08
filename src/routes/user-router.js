@@ -4,6 +4,7 @@ const multer = require('multer');
 const userController = require("../controllers/user-controller"); 
 const usersRouter = express.Router();
 
+
 const storage = multer.diskStorage({
     destination: path.join(__dirname, '../../public/images/users'),
     filename: function (req, file, cb) {
@@ -13,6 +14,8 @@ const storage = multer.diskStorage({
       );
     },
   });
+
+
   
   const upload = multer({
     storage: storage,
