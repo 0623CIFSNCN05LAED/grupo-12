@@ -12,53 +12,53 @@
     <main>
         <form action="/<%= user.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
         <h1 class="register">Edita tu perfil</h1>
-        <div>
+        <div class="m-pic">
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" id="nombre" 
             value="<%= user.nombre %>">
           </div>
-          <div>
+          <div class="m-pic">
             <label for="apellido">Apellido:</label>
             <input type="text" name="apellido" id="apellido" 
             value="<%= user.apellido %>">
           </div>
-          <div>
+          <div class="m-pic">
             <label for="nacimiento">Fecha de nacimiento:</label>
             <input type="date" name="nacimiento" id="nacimiento" 
             value="<%= user.nacimiento %>">
           </div>
-          <div>
+          <div class="m-pic">
             <label for="domicilio">Domicilio:</label>
             <input type="text" name="domicilio" id="domicilio" 
             value="<%= user.domicilio %>">
           </div>
-          <div>
+          <div class="m-pic">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" 
             value="<%= user.email %>">
           </div> 
-          <div>
+          <div class="m-pic">
             <label for="NumContacto">Numero de contacto:</label>
             <input type="text" name="NumContacto" id="NumContacto" 
             value="<%= user.NumContacto %>">
           </div>
-          <div>
+          <div class="m-pic">
             <label for="contraseña">Nueva Contraseña:</label>
             <input type="password" name="contraseña" id="contraseña" 
             value="<%= user.contraseña %>">
           </div>
-          <div>
+          <div class="m-pic">
             <label for="confirmarContraseña">Confirmar nueva contraseña:</label>
             <input type="password" name="" id="confirmarContraseña" 
             value="<%= user.confirmarContraseña %>">
           </div> 
 
-          <div>
+          <div class="m-pic">
             <label for="avatar">Avatar:</label>
             <input type="file" id="avatar" name="avatar" 
             value="<%= user.avatar %>">
           </div>
-          <div>
+          <div class="m-pic">
           <input type="submit" value="Editar" class="boton-formulario"/>
           <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
         
