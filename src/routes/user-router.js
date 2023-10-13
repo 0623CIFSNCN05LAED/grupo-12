@@ -1,8 +1,11 @@
-const express = require("express");
+const express = require("express");//requerir solamente ROUTER de express
 const path = require('path');
 const multer = require('multer');
 const userController = require("../controllers/user-controller"); 
-const usersRouter = express.Router();
+const usersRouter = express.Router(); 
+const validations = require("../validaciones/login-validation") 
+const validateForm = require("../middlewares/validate-form"); 
+
 
 
 const storage = multer.diskStorage({
@@ -24,7 +27,9 @@ const storage = multer.diskStorage({
 usersRouter.get("/users", userController.userList); 
 usersRouter.get("/:id/users", userController.userDetail);
 
-usersRouter.get("/login", userController.login);
+usersRouter.get("/login", userController.showLogin); 
+usersRouter.post("/login", validations, validateForm, userController.login);
+
 usersRouter.get("/register", userController.registerForm); 
 usersRouter.post("/register", upload.single("avatar"), userController.register); 
 

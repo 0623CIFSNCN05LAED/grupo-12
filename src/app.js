@@ -11,7 +11,7 @@ app.use(methodOverride("_method"));
 app.use(session({ // Configura express-session
     secret: 'tuClaveSecreta', 
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false,
   }));
 
 const mainRoute = require("./routes/main-router");

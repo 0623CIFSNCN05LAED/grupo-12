@@ -2,8 +2,13 @@ const productService = require("../services/productServices");
 
 module.exports={
 
-    productCart: (req, res) => {
-        res.render("product-cart");
+    productCart: (req, res) => { 
+      console.log(req.session); 
+      const data = req.session.userData; 
+        res.render("product-cart", {
+          email: data.email, 
+          password: data.password,
+        }); 
       },
         
       productDetailBikes: (req, res) =>{

@@ -14,11 +14,11 @@
     <main class="m-main-log">
         
         
-        <form action="" method="GET" class="bg-ligh-grey flex-log">
+        <form action="/login" method="POST" class="bg-ligh-grey flex-log">
 
             <div>
               <div class="font1 mt-5 mb-5">
-                <input type="text" name="user" id="user" placeholder="Nombre de Usuario" required pattern="\w{2,}" title="El nombre de Usuario debe tener al menos 2 letras">
+                <input type="text" name="email" id="email" placeholder="Email" title="El email de Usuario debe tener al menos 2 letras">
               </div>
           
               <div class="font1 mt-5 mb-5">
@@ -29,7 +29,7 @@
                 <button type="submit" value="Enviar" formaction="/"> Enviar </button>
               </div>
             </div>
-            <p class="ml mt-2 bold boton-formulario"> Ingresá </p>
+            <input type="submit" value="Ingresá" class="ml mt-2 bold boton-formulario">
           <div class="ml relative p-10">
             <a href="#" class="mr"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class=""><i class="fab fa-google-plus-g"></i></a>
@@ -44,12 +44,7 @@
         </p>
       </div>    
           </form>       
-          
-          
-
-    
-          
-    </main>    
+</main>    
     
 </body>
 <footer class="bg-grey padding-footer">

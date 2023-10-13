@@ -2,8 +2,17 @@ const userServices = require("../services/usersServices");
 
 module.exports={
     
-    login: (req, res) => {
+    showLogin: (req, res) => {
     res.render("login");
+  }, 
+
+  login: (req, res) =>{
+    const data = req.body; 
+    console.log(data) 
+
+    req.session.userData = data;
+
+    res.redirect("/")
   },
 
   registerForm: (req, res) => {

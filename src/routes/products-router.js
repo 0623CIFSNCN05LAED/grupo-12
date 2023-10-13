@@ -2,6 +2,7 @@ const express = require("express");
 const path = require('path');
 const multer = require('multer');
 const productsRouter = express.Router();
+const userGuard = require("../middlewares/user-guard");
 
 const storage = multer.diskStorage({
  destination: path.join(__dirname, '../../public/images/products'),
@@ -29,7 +30,7 @@ productsRouter.get("/bikes/:id", productController.productDetailBikes);
 productsRouter.get("/bikes/category/:categoria", productController.filterCategory)
 productsRouter.get("/bikes/id:", productController.filterCategory)
 
-productsRouter.get("/cart", productController.productCart);
+productsRouter.get("/cart",userGuard, productController.productCart);
 
 productsRouter.get("/create", productController.productCreate);
 productsRouter.post("/bikes", upload.single("img"), productController.productStoreBikes);
