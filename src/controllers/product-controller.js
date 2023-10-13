@@ -8,7 +8,7 @@ module.exports={
         
       productDetailBikes: (req, res) =>{
         const id = req.params.id;
-        const bike= productService.getBikeForID(id);
+        const bike= productService.getBike(id);
         res.render("product-detail-bikes", { bike });
       },
     
