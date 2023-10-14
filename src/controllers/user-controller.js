@@ -1,5 +1,6 @@
 const userServices = require("../services/usersServices");
-const { validationResult } = require('express-validator')
+const { validationResult } = require('express-validator') 
+const bcrypt = require("bcrypt");
 
 module.exports={
     
@@ -7,26 +8,53 @@ module.exports={
     res.render("login");
   }, 
 
-  login: (req, res) =>{
+  login: (req, res) =>{ 
+    console.log("Controlador login se está ejecutando.");
     const data = req.body; 
     console.log(data) 
 
-    req.session.userData = data;
-
-    res.redirect("/")
-  },
-
-  loginValidation: (req, res) => {    /* VER SI ESTO VA ACA */
-    const resultValidation = validationResult(req);
+     const resultValidation = validationResult(req);
     if (resultValidation.errors.length > 0) {
       return res.render('login', { 
-        errors: resultValidation.mapped(),
-        oldData: req.body
+        errors: resultValidation.mapped(), 
+        oldData: req.body,
+
         });
-      }   
+      } 
+      
+      const findUser = userServices.getByEmail("email", req.body.email);
+      if (!findUser) {
+        return res.render("login",{
+          errors: {
+            email:{
+              msg: "Este email no se encuentra registrado"
+            }
+          },
+          oldData: req.body
+        });
+      } 
+    
+    if (req.body.recordame != undefined) {
+      res.cookie("recordame", req.body.email, { maxAge: 200000 });
+    } 
+
+    const passwordMatch = bcrypt.compareSync(req.body.contraseña, findUser.contraseña);
+    if (!passwordMatch) {
+      return res.render("login",{
+        errors: {
+          contraseña:{
+            msg: "Los datos son incorrectos. Verifique y vuelva a intentar"
+          }
+        },
+        oldData: req.body
+      });
+    } else {
+      req.session.userData = findUser;
+      return res.redirect("/");
+    }
   },
 
-  registerForm: (req, res) => {
+    registerForm: (req, res) => {
     res.render("register");
   }, 
 
@@ -47,8 +75,7 @@ module.exports={
       apellido: req.body.apellido,
       email: req.body.email,
       nacimiento: req.body.nacimiento,
-      contraseña: req.body.contraseña,
-      confirmarContraseña: req.body.confirmarContraseña,
+      contraseña: bcrypt.hashSync(req.body.contraseña, 8),
       NumContacto: Number(req.body.NumContacto),
       domicilio: req.body.domicilio,
       avatar: req.file ? "/images/users/" + req.file.filename : null,

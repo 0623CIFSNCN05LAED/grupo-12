@@ -24,6 +24,11 @@ module.exports = {
         const user = this.getUsers().find((user) => user.id == id);
         return user;
       }, 
+    findByField: function (field, text){
+      const allUsers = this.findAll();
+      const userEmail = allUsers.find(user => user[field] === text);
+      return userEmail || null;
+    },   
     
     create: function (user) {
         console.log(`Creating user ${user.email}`);

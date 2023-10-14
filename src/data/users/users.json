@@ -94,5 +94,16 @@
     "password": "mB6\\\"yOjjMRm(cc",
     "category": "Customer",
     "avatar": "/images/avatars/kipa.jpg"
+  },
+  {
+    "id": "8bea1af1-6b7f-4a21-8873-0beaf9afe6d5",
+    "nombre": "Sebastian",
+    "apellido": "Montero",
+    "email": "sebamontero@hotmail.es",
+    "nacimiento": "1111-11-11",
+    "contraseña": "$2b$08$DRH8V1klN4I1ZxRx8/QOTe.9NiBMhJqPENROjHvwx7.z//ZhIc7c2",
+    "NumContacto": 1138313027,
+    "domicilio": "Calle falsa 123",
+    "avatar": "/images/users/avatar-1697306658921.png"
   }
 ]

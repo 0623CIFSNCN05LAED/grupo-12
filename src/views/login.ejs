@@ -11,7 +11,7 @@
     </header>
   
 
-    <main class="m-main-log">
+    <main class="m-main-log"> 
       
 
         <form action="/login" method="POST" class="bg-ligh-grey flex-log">
@@ -24,20 +24,20 @@
                 id="email" 
                 placeholder="Email" 
                 title="El email de Usuario debe tener al menos 2 letras"
-                value="<% locals.oldData ? oldData.email : null %>">
+                value="<%= locals.oldData ? oldData.email : null %>">
               </div>
               <% if (locals.errors && errors.email) { %>
-                <div class="text-danger">
+                <div>
                   <%= errors.email.msg %> 
                 </div>  
               <% } %>
 
           
               <div class="font1 mt-5 mb-5">
-                <input type="password" name="password" id="password" placeholder="Contraseña" required pattern=".{6,}" title="La contraseña deberá tener al menos 6 letras">
-                <% if (locals.errors && errors.password) { %>
-                  <div class="text-danger">
-                    <%= errors.password.msg %> 
+                <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña" title="La contraseña deberá tener al menos 6 letras">
+                <% if (locals.errors && errors.contraseña) { %>
+                  <div>
+                    <%= errors.contraseña.msg %> 
                   </div>  
                 <% } %>
                 <p class="center"><a href="#"> Olvidé mi contraseña </a></p>

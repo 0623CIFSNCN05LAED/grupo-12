@@ -7,7 +7,7 @@ module.exports = [
     .bail() 
     .isEmail() 
     .withMessage("Debe ser un email valido "),
-    body("password")
+    body("contraseña")
     .notEmpty()
     .withMessage("Debe completar este campo") 
     .isLength({ min: 6 })

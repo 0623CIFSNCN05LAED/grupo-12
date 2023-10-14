@@ -10,6 +10,9 @@ const userServices = {
     getUserById: (id) => {
       const user = db.users.findById(id);
       return user;
+    }, 
+    getByEmail: (email, text) => {
+       return db.users.findByField(email, text)
     },
     createUser: (user) => {
       db.users.create(user);
