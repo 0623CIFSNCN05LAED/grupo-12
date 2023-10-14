@@ -1,4 +1,5 @@
 const userServices = require("../services/usersServices");
+const { validationResult } = require('express-validator')
 
 module.exports={
     
@@ -13,6 +14,16 @@ module.exports={
     req.session.userData = data;
 
     res.redirect("/")
+  },
+
+  loginValidation: (req, res) => {    /* VER SI ESTO VA ACA */
+    const resultValidation = validationResult(req);
+    if (resultValidation.errors.length > 0) {
+      return res.render('login', { 
+        errors: resultValidation.mapped(),
+        oldData: req.body
+        });
+      }   
   },
 
   registerForm: (req, res) => {

@@ -12,22 +12,37 @@
   
 
     <main class="m-main-log">
-        
-        
+      
+
         <form action="/login" method="POST" class="bg-ligh-grey flex-log">
 
             <div>
+              <h2 class=" center"> Login </h2>
               <div class="font1 mt-5 mb-5">
-                <input type="text" name="email" id="email" placeholder="Email" title="El email de Usuario debe tener al menos 2 letras">
+                <input type="text" 
+                name="email" 
+                id="email" 
+                placeholder="Email" 
+                title="El email de Usuario debe tener al menos 2 letras"
+                value="<% locals.oldData ? oldData.email : null %>">
               </div>
+              <% if (locals.errors && errors.email) { %>
+                <div class="text-danger">
+                  <%= errors.email.msg %> 
+                </div>  
+              <% } %>
+
           
               <div class="font1 mt-5 mb-5">
                 <input type="password" name="password" id="password" placeholder="Contraseña" required pattern=".{6,}" title="La contraseña deberá tener al menos 6 letras">
+                <% if (locals.errors && errors.password) { %>
+                  <div class="text-danger">
+                    <%= errors.password.msg %> 
+                  </div>  
+                <% } %>
                 <p class="center"><a href="#"> Olvidé mi contraseña </a></p>
               </div>
-              <div class="flex-send">
-                <button type="submit" value="Enviar" formaction="/"> Enviar </button>
-              </div>
+              
             </div>
             <input type="submit" value="Ingresá" class="ml mt-2 bold boton-formulario">
           <div class="ml relative p-10">

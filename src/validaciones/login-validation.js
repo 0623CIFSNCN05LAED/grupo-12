@@ -1,4 +1,4 @@
-const { body } = require("express-validator"); 
+const { body } = require("express-validator"); /* podriamos usar check tambien */
 
 module.exports = [ 
     body("email")
@@ -6,6 +6,10 @@ module.exports = [
     .withMessage("Debe completar este campo") 
     .bail() 
     .isEmail() 
-    .withMessage("Debe ser un email valido ")
+    .withMessage("Debe ser un email valido "),
+    body("password")
+    .notEmpty()
+    .withMessage("Debe completar este campo") 
+    .isLength({ min: 6 })
 ]
     
