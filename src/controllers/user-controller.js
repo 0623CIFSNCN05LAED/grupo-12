@@ -1,6 +1,6 @@
-const userServices = require("../services/usersServices");
+const userServices = require('../services/usersServices');
 const { validationResult } = require('express-validator') 
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
 module.exports={
     
@@ -38,11 +38,11 @@ module.exports={
       res.cookie("recordame", req.body.email, { maxAge: 200000 });
     } 
 
-    const passwordMatch = bcrypt.compareSync(req.body.contraseña, findUser.contraseña);
+    const passwordMatch = bcrypt.compareSync(req.body.password, findUser.password);
     if (!passwordMatch) {
       return res.render("login",{
         errors: {
-          contraseña:{
+          password:{
             msg: "Los datos son incorrectos. Verifique y vuelva a intentar"
           }
         },
@@ -69,13 +69,13 @@ module.exports={
     res.render("user-detail", { user });
   },
 
-  register: (req, res) => {
+  register: (req, res) => { 
     const user = {
       nombre: req.body.nombre,
       apellido: req.body.apellido,
       email: req.body.email,
       nacimiento: req.body.nacimiento,
-      contraseña: bcrypt.hashSync(req.body.contraseña, 8),
+      password: bcrypt.hashSync(req.body.password, 5),
       NumContacto: Number(req.body.NumContacto),
       domicilio: req.body.domicilio,
       avatar: req.file ? "/images/users/" + req.file.filename : null,

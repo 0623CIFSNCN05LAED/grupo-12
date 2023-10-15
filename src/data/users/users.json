@@ -101,9 +101,20 @@
     "apellido": "Montero",
     "email": "sebamontero@hotmail.es",
     "nacimiento": "1111-11-11",
-    "contraseña": "$2b$08$DRH8V1klN4I1ZxRx8/QOTe.9NiBMhJqPENROjHvwx7.z//ZhIc7c2",
+    "password": "$2b$08$DRH8V1klN4I1ZxRx8/QOTe.9NiBMhJqPENROjHvwx7.z//ZhIc7c2",
     "NumContacto": 1138313027,
     "domicilio": "Calle falsa 123",
     "avatar": "/images/users/avatar-1697306658921.png"
+  },
+  {
+    "id": "4961986f-0cb0-42e8-8ace-00be7c1111b6",
+    "nombre": "Sebastian",
+    "apellido": "Montero",
+    "email": "sebamontero15@gmail.com",
+    "nacimiento": "1111-11-11",
+    "password": "$2b$05$NhTMJ2Z09F4A.7XaYwW.mevwsArTkvPJuh/FfX6cW8W142Qzpe7Fe",
+    "NumContacto": 1138313030,
+    "domicilio": "Calle falsa 123",
+    "avatar": "/images/users/avatar-1697388264534.PNG"
   }
 ]
