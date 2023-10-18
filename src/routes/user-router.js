@@ -3,7 +3,8 @@ const path = require('path');
 const multer = require('multer');
 const userController = require("../controllers/user-controller"); 
 const usersRouter = express.Router(); 
-const validations = require("../validaciones/login-validation") 
+const validations = require("../validaciones/login-validation");
+const registerValidations = require("../validaciones/register-validation"); /* quizas una sola validacion alcance para las dos */
 const validateForm = require("../middlewares/validate-form"); 
 
 
@@ -31,7 +32,7 @@ usersRouter.get("/login", userController.showLogin);
 usersRouter.post("/login", validations, validateForm, userController.login);
 
 usersRouter.get("/register", userController.registerForm); 
-usersRouter.post("/register", upload.single("avatar"), userController.register); 
+usersRouter.post("/register", upload.single("avatar"), registerValidations, validateForm, userController.register); /* agregue el MDW de validateForm */
 
 usersRouter.delete("/:id", userController.destroy);
   

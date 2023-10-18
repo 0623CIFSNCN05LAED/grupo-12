@@ -27,7 +27,7 @@
                 value="<%= locals.oldData ? oldData.email : null %>">
               </div>
               <% if (locals.errors && errors.email) { %>
-                <div>
+                <div class="red-text">
                   <%= errors.email.msg %> 
                 </div>  
               <% } %>
@@ -36,7 +36,7 @@
               <div class="font1 mt-5 mb-5">
                 <input type="password" name="password" id="password" placeholder="Contraseña" title="La contraseña deberá tener al menos 6 letras">
                 <% if (locals.errors && errors.contraseña) { %>
-                  <div>
+                  <div class="red-text">
                     <%= errors.contraseña.msg %> 
                   </div>  
                 <% } %>

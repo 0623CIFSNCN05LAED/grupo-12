@@ -79,7 +79,14 @@ module.exports={
       NumContacto: Number(req.body.NumContacto),
       domicilio: req.body.domicilio,
       avatar: req.file ? "/images/users/" + req.file.filename : null,
-    };
+    }
+    
+     const resultValidation = validationResult(req);
+    if (resultValidation.errors.length > 0) {
+      return res.render('register', { 
+        errors: resultValidation.mapped(), 
+        oldData: req.body})
+      }
     userServices.createUser(user);
     res.redirect("/");
   }, 

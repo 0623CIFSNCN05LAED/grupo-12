@@ -461,6 +461,10 @@ justify-content: center;
     background-color: #CD5C5C;
 }
 
+.red-text{
+    color: red;
+}
+
 @media(max-width: 768px){
     .user-cart{
         display: none;
