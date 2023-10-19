@@ -463,7 +463,43 @@ justify-content: center;
 
 .red-text{
     color: red;
+} 
+
+.img-perfil{
+    width: 10% ; 
+    border-radius: 50%; 
+} 
+
+.w{
+    width: 75%;
+} 
+
+.flex-img{
+    display: flex; 
+    justify-content: flex-end; 
+    
+} 
+
+.flex-profile{
+    display: flex;
+    justify-content: center;
+     
+} 
+
+.img-profile{ 
+    border-radius: 50%;
+
+} 
+
+.m-5{
+    margin: 2px;
+}  
+
+.m-right{
+    margin-right: 40px;
 }
+
+
 
 @media(max-width: 768px){
     .user-cart{

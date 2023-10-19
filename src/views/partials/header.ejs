@@ -20,18 +20,40 @@
      <div class="m-hamburger">
         <a href="#" class="hamburguer-buttom">
         <i class="fa-solid fa-bars"></i>
-        </a>
-      <div class="user-cart m-user-cart flex-user">
-        <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i>Mi cuenta</a>
-        <a href="/cart"><i class="fa-solid fa-cart-shopping fa-lg m-left"></i>$ 0</a>
+        </a>  
+
+        <div class="flex-img m-right">
+          <% if (userData) { %> 
+          <h4 class="m-5">Hola!</h4>
+          <p class="m-5"><%= userData.nombre %></p>
+          <p class="m-5"><%= userData.apellido %></p> 
+        <% } %>
       </div>
+        
+        <div class="user-cart m-user-cart flex-user">
+            <% if (userData) { %> 
+              <a href="/profile" class="w flex-img">
+                <img src="<%= userData.avatar %>" alt="Imagen de perfil" class="img-perfil">
+              </a> 
+              <a href="/logout">Cerrar sesion</a>
+            <% } else { %>
+              <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i>Login</a>
+            <% } %>
+            <a href="/cart"><i class="fa-solid fa-cart-shopping fa-lg m-left"></i>$ 0</a>
+          </div>
       </div>          
   </div> 
 
   <nav class="main-navbar">
       <ul class="dropdown-box">
-          <li><a href="/bikes">PRODUCTOS</a></li>
-          <li><a href="/register">REGISTRATE</a></li>
+        
+          <% if (!userData) { %>
+          <li><a href="/register">REGISTRATE</a></li> 
+          <% } else { %> 
+          <li><a href="/profile">MI PERFIL</a></li> 
+          <% } %> 
+          <li><a href="/bikes">PRODUCTOS</a></li> 
+          
           <li><a href="/cart">SHOP</a></li>
       </ul>
   </nav>        

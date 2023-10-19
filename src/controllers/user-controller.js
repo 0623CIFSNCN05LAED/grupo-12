@@ -34,16 +34,19 @@ module.exports={
         });
       } 
     
-    if (req.body.recordame != undefined) {
-      res.cookie("recordame", req.body.email, { maxAge: 200000 });
-    } 
+      if (req.body.recordame === "true") {
+        res.cookie("recordame", req.body.email, { maxAge: 200000 });
+      } else {
+
+        res.clearCookie("recordame");
+      } 
 
     const passwordMatch = bcrypt.compareSync(req.body.password, findUser.password);
     if (!passwordMatch) {
       return res.render("login",{
         errors: {
-          password:{
-            msg: "Los datos son incorrectos. Verifique y vuelva a intentar"
+          email:{
+            msg: "La contraseña es incorrecta"
           }
         },
         oldData: req.body
@@ -83,13 +86,32 @@ module.exports={
     
      const resultValidation = validationResult(req);
     if (resultValidation.errors.length > 0) {
-      return res.render('register', { 
+      return res.render("register", { 
         errors: resultValidation.mapped(), 
         oldData: req.body})
-      }
-    userServices.createUser(user);
-    res.redirect("/");
-  }, 
+      } 
+      
+    const checkEmail = userServices.getByEmail("email", req.body.email) 
+    if (checkEmail) {
+      return res.render("register",{
+        errors: {
+          email:{
+            msg: "Este email se encuentra registrado"
+          }
+        },
+        oldData: req.body
+      });
+    } else {
+      userServices.createUser(user);
+      return res.redirect("/");
+    }  
+      
+    }, 
+    logout: (req, res) => {
+      res.clearCookie("recordame");
+      req.session.destroy();
+      return res.redirect("/");
+    },
 
   profileEdit: (req, res) => {
     const id = req.params.id;

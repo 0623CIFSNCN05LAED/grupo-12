@@ -1,4 +1,5 @@
-const { body } = require("express-validator"); /* podriamos usar check tambien */
+const { body } = require("express-validator"); /* podriamos usar check tambien */ 
+const path = require('path');
 
 module.exports = [ 
     body("nombre")

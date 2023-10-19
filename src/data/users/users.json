@@ -96,58 +96,36 @@
     "avatar": "/images/avatars/kipa.jpg"
   },
   {
-    "id": "8bea1af1-6b7f-4a21-8873-0beaf9afe6d5",
+    "id": "e95abc02-d0a0-4f0a-963b-f1c2b245c4e3",
     "nombre": "Sebastian",
     "apellido": "Montero",
     "email": "sebamontero@hotmail.es",
-    "nacimiento": "1111-11-11",
-    "password": "$2b$08$DRH8V1klN4I1ZxRx8/QOTe.9NiBMhJqPENROjHvwx7.z//ZhIc7c2",
+    "nacimiento": "2222-02-22",
+    "password": "$2b$05$.PW.s9mg.6hCxZ6ddhOUteJihjVm299/LtbwMWT.of.yFzpU0kplK",
     "NumContacto": 1138313027,
     "domicilio": "Calle falsa 123",
-    "avatar": "/images/users/avatar-1697306658921.png"
+    "avatar": "/images/users/avatar-1697664483498.jpg"
   },
   {
-    "id": "4961986f-0cb0-42e8-8ace-00be7c1111b6",
+    "id": "1b792bb1-d0d0-4f63-b2dc-9a41d4350d93",
     "nombre": "Sebastian",
     "apellido": "Montero",
     "email": "sebamontero15@gmail.com",
-    "nacimiento": "1111-11-11",
-    "password": "$2b$05$NhTMJ2Z09F4A.7XaYwW.mevwsArTkvPJuh/FfX6cW8W142Qzpe7Fe",
-    "NumContacto": 1138313030,
+    "nacimiento": "2222-02-22",
+    "password": "$2b$05$tM0c38R/oFwPnlxSm8WHCeTKmjj8PVopu9KRwpzyQ5f8olf5T7hA.",
+    "NumContacto": 1138313027,
     "domicilio": "Calle falsa 123",
-    "avatar": "/images/users/avatar-1697388264534.PNG"
+    "avatar": "/images/users/avatar-1697668248960.jpg"
   },
   {
-    "id": "25c34e2c-eacc-4299-b1ad-92f1d0bde74e",
-    "nombre": "",
-    "apellido": "d",
-    "email": "",
-    "nacimiento": "",
-    "password": "$2b$05$aB4ys66TlLARTYXyUtlvT.rE189WZwFH5oZUw2Fn7DMOSpb63M1Ee",
-    "NumContacto": 0,
-    "domicilio": "",
-    "avatar": null
-  },
-  {
-    "id": "a409f3de-f862-4cb5-b44f-ad1579bcab1e",
-    "nombre": "luis",
-    "apellido": "",
-    "email": "",
-    "nacimiento": "",
-    "password": "$2b$05$9p9OmXR8TRJ6uPjOzBRsYe/KUZl07roTPecTR96uvbq86JTwsnlPu",
-    "NumContacto": 0,
-    "domicilio": "",
-    "avatar": null
-  },
-  {
-    "id": "66a84f73-1791-49d7-ac85-f87db79eb25d",
-    "nombre": "Luis",
-    "apellido": "Lucero",
-    "email": "luismarialucero@gmail.com",
-    "nacimiento": "",
-    "password": "$2b$05$dYizQ6iKiot7sDa9tZtv7.hen4IpvHRMXQ5KgdfDvwmh4gksk/7s6",
-    "NumContacto": 0,
-    "domicilio": "",
-    "avatar": null
+    "id": "98680ca7-f03d-45b7-9ebf-ff4969da0865",
+    "nombre": "Sebastian",
+    "apellido": "Montero",
+    "email": "seba@hotmail.com",
+    "nacimiento": "2222-02-22",
+    "password": "$2b$05$KGUPG3H4fFbY.d4qXW/jdeKJ7RAenpUXLziGYhwTIJaW1BDVHRN9S",
+    "NumContacto": 1138313027,
+    "domicilio": "Calle falsa 123",
+    "avatar": "/images/users/avatar-1697668722097.png"
   }
 ]

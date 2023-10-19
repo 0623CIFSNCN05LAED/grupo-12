@@ -24,7 +24,7 @@
                 id="email" 
                 placeholder="Email" 
                 title="El email de Usuario debe tener al menos 2 letras"
-                value="<%= locals.oldData ? oldData.email : null %>">
+                value="<%= locals.oldData ? locals.oldData.email : null %>">
               </div>
               <% if (locals.errors && errors.email) { %>
                 <div class="red-text">
@@ -43,7 +43,11 @@
                 <p class="center"><a href="#"> Olvidé mi contraseña </a></p>
               </div>
               
-            </div>
+            </div> 
+            <label for="recordame"> Recordame
+              <input type="checkbox" name="recordame" value="true">  
+            </label>
+             
             <input type="submit" value="Ingresá" class="ml mt-2 bold boton-formulario">
           <div class="ml relative p-10">
             <a href="#" class="mr"><i class="fab fa-facebook-f"></i></a>

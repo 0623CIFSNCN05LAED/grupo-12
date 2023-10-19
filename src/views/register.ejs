@@ -14,7 +14,7 @@
         <h1 class="register">Registrate!</h1>
         <div>
             <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" value="<%= locals.oldData ? oldData.nombre : null %>">
+            <input type="text" name="nombre" id="nombre" value="<%= locals.oldData ? locals.oldData.nombre : null %>">
           </div>
           <% if (locals.errors && errors.nombre) { %>
             <div class="red-text">
@@ -24,7 +24,7 @@
 
           <div>
             <label for="apellido">Apellido:</label>
-            <input type="text" name="apellido" id="apellido" value="<%= locals.oldData ? oldData.apellido : null %>">
+            <input type="text" name="apellido" id="apellido" value="<%= locals.oldData ? locals.oldData.apellido : null %>">
           </div>
           <% if (locals.errors && errors.apellido) { %>
             <div class="red-text">
@@ -34,7 +34,7 @@
 
           <div>
             <label for="nacimiento">Fecha de nacimiento:</label>
-            <input type="date" name="nacimiento" id="nacimiento" value="<%= locals.oldData ? oldData.nacimiento : null %>">
+            <input type="date" name="nacimiento" id="nacimiento" value="<%= locals.oldData ? locals.oldData.nacimiento : null %>">
           </div>
           <% if (locals.errors && errors.nacimiento) { %>
             <div class="red-text">
@@ -44,7 +44,7 @@
 
           <div>
             <label for="domicilio">Domicilio:</label>
-            <input type="text" name="domicilio" id="domicilio" value="<%= locals.oldData ? oldData.domicilio : null %>">
+            <input type="text" name="domicilio" id="domicilio" value="<%= locals.oldData ? locals.oldData.domicilio : null %>">
           </div>
           <% if (locals.errors && errors.domicilio) { %>
             <div class="red-text">
@@ -54,7 +54,7 @@
 
           <div>
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" value="<%= locals.oldData ? oldData.email : null %>">
+            <input type="email" name="email" id="email" value="<%= locals.oldData ? locals.oldData.email : null %>">
           </div> 
           <% if (locals.errors && errors.email) { %>
             <div class="red-text">
