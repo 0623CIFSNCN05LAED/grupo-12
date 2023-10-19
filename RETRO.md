@@ -59,3 +59,21 @@ RETROSPECTIVA SPRINT 4
 
 // Dejar de hacer //
 -Avanzar individualmente con las tareas para que todo el grupo pueda procesar los nuevos conociemiento y aclarar dudas
+
+RETROSPECTIVA SPRINT 5
+
+// Comenzar a hacer //
+
+- Division equitativa de tareas segun alcance de cada integrante.
+
+// Hacer mas //
+-Usar discord para la comunicación relevante del trabajo grupal.
+
+// Continuar haciendo //
+-Comunicar los momentos de trabajo para avanzar en grupo ya que facilita la codificacion
+
+// Hacer menos //
+Dejar las tareas del Sprint para último momento.
+
+// Dejar de hacer //
+-Avanzar individualmente con las tareas para que todo el grupo pueda procesar los nuevos conociemiento y aclarar dudas
