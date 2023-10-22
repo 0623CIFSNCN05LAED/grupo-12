@@ -1,0 +1,39 @@
+.bg-grey{
+    background-color: #000000;
+}
+.logo{
+    box-sizing:content-box;
+    border-radius: 50%;
+    width: 70%;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+.top-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F3AA21;
+}
+.flex-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    height: 125px;
+}
+.hamburguer-buttom{
+    background-color: black;
+    color: grey;
+    display: block;
+    max-width: 50px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    margin: auto;
+}
+.main-navbar{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+    color: #ffffff;
+    justify-content: center;
+}
