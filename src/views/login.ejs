@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <%- include("partials/head") %>
 </head>
@@ -11,25 +11,44 @@
     </header>
   
 
-    <main class="m-main-log">
-        
-        
-        <form action="" method="GET" class="bg-ligh-grey flex-log">
+    <main class="m-main-log"> 
+      
+
+        <form action="/login" method="POST" class="bg-ligh-grey flex-log">
 
             <div>
+              <h2 class=" center"> Login </h2>
               <div class="font1 mt-5 mb-5">
-                <input type="text" name="user" id="user" placeholder="Nombre de Usuario" required pattern="\w{2,}" title="El nombre de Usuario debe tener al menos 2 letras">
+                <input type="text" 
+                name="email" 
+                id="email" 
+                placeholder="Email" 
+                title="El email de Usuario debe tener al menos 2 letras"
+                value="<%= locals.oldData ? locals.oldData.email : null %>">
               </div>
+              <% if (locals.errors && errors.email) { %>
+                <div class="red-text">
+                  <%= errors.email.msg %> 
+                </div>  
+              <% } %>
+
           
               <div class="font1 mt-5 mb-5">
-                <input type="password" name="password" id="password" placeholder="Contraseña" required pattern=".{6,}" title="La contraseña deberá tener al menos 6 letras">
+                <input type="password" name="password" id="password" placeholder="Contraseña" title="La contraseña deberá tener al menos 6 letras">
+                <% if (locals.errors && errors.contraseña) { %>
+                  <div class="red-text">
+                    <%= errors.contraseña.msg %> 
+                  </div>  
+                <% } %>
                 <p class="center"><a href="#"> Olvidé mi contraseña </a></p>
               </div>
-              <div class="flex-send">
-                <button type="submit" value="Enviar" formaction="/"> Enviar </button>
-              </div>
-            </div>
-            <p class="ml mt-2 bold boton-formulario"> Ingresá </p>
+              
+            </div> 
+            <label for="recordame"> Recordame
+              <input type="checkbox" name="recordame" value="true">  
+            </label>
+             
+            <input type="submit" value="Ingresá" class="ml mt-2 bold boton-formulario">
           <div class="ml relative p-10">
             <a href="#" class="mr"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class=""><i class="fab fa-google-plus-g"></i></a>
@@ -44,12 +63,7 @@
         </p>
       </div>    
           </form>       
-          
-          
-
-    
-          
-    </main>    
+</main>    
     
 </body>
 <footer class="bg-grey padding-footer">

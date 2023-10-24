@@ -12,11 +12,6 @@ const productService = {
       return db.products.findById(id);
     },  
 
-    getBikeForID: function(id){
-      const bike = db.products.findById(id);
-      return bike;
-    },
-
     createBike: (product) => {
       db.products.create(product)
     },

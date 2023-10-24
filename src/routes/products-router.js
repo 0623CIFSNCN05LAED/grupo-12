@@ -1,41 +1,26 @@
-const { Router } = require("express");
-const path = require('path');
-const multer = require('multer');
-
-const storage = multer.diskStorage({
- destination: path.join(__dirname, '../../public/images/products'),
- filename: function(req, file, cb){
-    cb(
-        null, 
-        file.fieldname + '-' + Date.now() + path.extname(file.originalname) 
-    );
- }
-
-});
-
-const upload = multer({
-    storage : storage  
-})
-
+const express = require("express");
+const upload = require('../middlewares/multer');
+const productsRouter = express.Router();
+const userGuard = require("../middlewares/user-guard");
 
 const productController = require("../controllers/product-controller");
 
-const router = Router();
 
-router.get("/bikes", productController.productListBikes); 
-router.get("/bikes/:id", productController.productDetailBikes);
 
-router.get("/bikes/category/:categoria", productController.filterCategory)
-router.get("/bikes/id:", productController.filterCategory)
+productsRouter.get("/bikes", productController.productListBikes); 
+productsRouter.get("/bikes/:id", productController.productDetailBikes);
 
-router.get("/cart", productController.productCart);
+productsRouter.get("/bikes/category/:categoria", productController.filterCategory)
+productsRouter.get("/bikes/id:", productController.filterCategory)
 
-router.get("/create", productController.productCreate);
-router.post("/bikes", upload.single("img"), productController.productStoreBikes);
+productsRouter.get("/cart",userGuard, productController.productCart);
 
-router.get("/edit/:id", productController.productEdit);
-router.put("/bikes/:id", upload.single("img"), productController.update);
+productsRouter.get("/create", productController.productCreate);
+productsRouter.post("/bikes", upload.single("img"), productController.productStoreBikes);
 
-router.delete("/bikes/:id", productController.destroy)
+productsRouter.get("/edit/:id", productController.productEdit);
+productsRouter.put("/bikes/:id", upload.single("img"), productController.update);
 
-module.exports = router;
+productsRouter.delete("/bikes/:id", productController.destroy)
+
+module.exports = productsRouter;

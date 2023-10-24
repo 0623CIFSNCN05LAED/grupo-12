@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey bg-img">
+    
+    <header class="bg-grey p-20">
+      <%- include("partials/header") %>
+    </header>
+    <main>
+        <form action="/<%= user.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
+        <h1 class="register">Edita tu perfil</h1>
+        <div class="m-pic">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" 
+            value="<%= user.nombre %>">
+          </div>
+          <div class="m-pic">
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" id="apellido" 
+            value="<%= user.apellido %>">
+          </div>
+          <div class="m-pic">
+            <label for="nacimiento">Fecha de nacimiento:</label>
+            <input type="date" name="nacimiento" id="nacimiento" 
+            value="<%= user.nacimiento %>">
+          </div>
+          <div class="m-pic">
+            <label for="domicilio">Domicilio:</label>
+            <input type="text" name="domicilio" id="domicilio" 
+            value="<%= user.domicilio %>">
+          </div>
+          <div class="m-pic">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" 
+            value="<%= user.email %>">
+          </div> 
+          <div class="m-pic">
+            <label for="NumContacto">Numero de contacto:</label>
+            <input type="text" name="NumContacto" id="NumContacto" 
+            value="<%= user.NumContacto %>">
+          </div>
+          <div class="m-pic">
+            <label for="contraseña">Nueva Contraseña:</label>
+            <input type="password" name="contraseña" id="contraseña" 
+            value="<%= user.contraseña %>">
+          </div> 
+
+          <div class="m-pic">
+            <label for="avatar">Avatar:</label>
+            <input type="file" id="avatar" name="avatar" 
+            value="<%= user.avatar %>">
+          </div>
+          <div class="m-pic">
+          <input type="submit" value="Editar" class="boton-formulario"/>
+          <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
+        
+        </div> 
+    </form>
+
+    <form action="/<%= user.id %>?_method=DELETE" method="POST" class="bg-register flex-buttom">
+          <div class="m-pic">
+          <button type="submit" class="boton-formulario m-pic c-red"> DESTROY </button>   
+      </div>    
+      
+          </form>
+  </main>
+    
+</body>
+<footer class="bg-grey padding-footer">
+  <%- include("partials/footer") %>
+</footer>
+</html>

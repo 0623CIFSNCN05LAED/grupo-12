@@ -1,7 +1,8 @@
-const { log } = require("console");
+
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
+
 
 module.exports = {
     getBikes: function () {
@@ -46,7 +47,7 @@ module.exports = {
     },
 
     destroy: function(id){
-      console.log(`destroying produc ${id}`);
+      console.log(`Destroying produc ${id}`);
       const products = this.getBikes();
       const nonDestroyedBikes = products.filter( (product) => product.id != id );
       this.saveBikes(nonDestroyedBikes);

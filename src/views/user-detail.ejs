@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include("partials/head") %>
+</head>
+
+<body class="bg-ligh-grey bg-img">
+    
+    <header class="bg-grey p-20">
+        <%- include("partials/header") %>        
+    </header>
+
+    <main>
+        <article class="mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product"> 
+            <div class="flex-buttom p-10">
+                <button type="button" class="boton-formulario">
+                    <a href="/<%= user.id %>/user" class="c-white">Editar usuario</a>
+                </button>
+            </div>
+        <img class="a-center w-50 mx-auto m-pic" src="<%= user.avatar %>" alt="Imagen del usuario" />
+        <div class="bt-1 mx-auto border-grey p-1 relative flex flex-wrap">
+        
+            <p class="text-xl mr-1">
+                <%= user.nombre%>     
+                </p>
+            <p class="text-xl mr-1">
+                <%= user.apellido%>     
+            </p>
+            <p class="text-xl mr-1">
+                <%= user.email%>
+            </p> 
+            <p class="text-xl mr-1">
+                <%= user.nacimiento%>
+            </p> 
+            <p class="text-xl mr-1">
+                <%= user.NumContacto%>
+            </p> 
+            <p class="text-xl mr-1">
+                <%= user.domicilio%>
+            </p> 
+            <p class="text-xl mr-1">
+                <%= user.avatar%>
+            </p> 
+        </div>
+        </article>
+</main>
+        
+</body>
+
+<footer class="bg-grey padding-footer">
+     <%- include("partials/footer") %>
+    </footer>
+</html>

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <%- include("partials/head") %>
 </head>
 
-<body class="bg-ligh-grey">
+<body class="bg-img">
     
 <header class="bg-grey p-20">
         <%- include("partials/header") %>        
 </header>
 
 <main>
-     <h2> Editar producto </h2>
-    <form action="/bikes/<%= bike.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="create-form">
+     
+    <form action="/bikes/<%= bike.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="vw-90 bg-register">
+    <h2 class="center"> Editar producto </h2>
     <div class="m-pic">
         <label for="nombre">Nombre Del Producto:</label>
         <input type="text" id="nombre"  name="nombre" placeholder="Inserte nombre del producto" class="control box-formulario"
@@ -58,13 +59,13 @@
         <input type="file" id="img" name="img">
     </div>
     <div class="m-pic">
-        <button type="reset" class="boton-formulario m-pic">Borrar</button>
-        <button type="submit" class="boton-formulario m-pic">Editar producto</button>
+        <input type="submit" value="Editar" class="boton-formulario"/>
+        <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
     </div>
     </form>
-    <form action="/bikes/<%= bike.id %>?_method=DELETE" method="POST" class="create-form">
+    <form action="/bikes/<%= bike.id %>?_method=DELETE" method="POST" class="bg-register flex-buttom">
     <div class="m-pic">
-    <button type="submit" class="boton-formulario m-pic"> DESTROY </button>   
+    <button type="submit" class="boton-formulario m-pic c-red"> DESTROY </button>   
 </div>    
 
     </form>     
