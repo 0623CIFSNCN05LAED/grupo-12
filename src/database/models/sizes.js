@@ -2,11 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const Model = sequelize.define(
         "Sizes",
         {
-            id:{
-                field: "id",
-                type: DataTypes.INTEGER,
-                },
-            name:{
+                name:{
                 field: "size",
                 type: DataTypes.STRING,
              },
