@@ -132,7 +132,7 @@ module.exports={
 
   destroy: (req, res) => {
     const id = req.params.id;
-    userServices.destroyUser(id);
+    userServices.destroyUser(id); 
     res.redirect("/");
   }
 

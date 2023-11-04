@@ -13,7 +13,7 @@
     <main>
         <article class="mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product">  
             <h1 class="register">Mi Perfil</h1>
- 
+        <% if (userData) { %> 
         <div class="flex-profile">
             <img class="a-center w-50 mx-auto m-pic img-profile" src="<%= userData.avatar %>" alt="Imagen del usuario" />
         </div>    
@@ -45,12 +45,14 @@
                 <%= userData.domicilio%>
             </p> 
              
-        </div>
+        </div> 
         <div class="flex-buttom p-10">
             <button type="button" class="boton-formulario">
                     <a href="/<%= userData.id %>/user" class="c-white">Editar mi usuario</a>
             </button>
-        </div>
+        </div> 
+        <% } %>
+           
         </article>
 </main>
         

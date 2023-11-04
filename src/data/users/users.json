@@ -96,17 +96,6 @@
     "avatar": "/images/avatars/kipa.jpg"
   },
   {
-    "id": "e95abc02-d0a0-4f0a-963b-f1c2b245c4e3",
-    "nombre": "Sebastian",
-    "apellido": "Montero",
-    "email": "sebamontero@hotmail.es",
-    "nacimiento": "2222-02-22",
-    "password": "$2b$05$.PW.s9mg.6hCxZ6ddhOUteJihjVm299/LtbwMWT.of.yFzpU0kplK",
-    "NumContacto": 1138313027,
-    "domicilio": "Calle falsa 123",
-    "avatar": "/images/users/avatar-1697664483498.jpg"
-  },
-  {
     "id": "1b792bb1-d0d0-4f63-b2dc-9a41d4350d93",
     "nombre": "Sebastian",
     "apellido": "Montero",
@@ -127,5 +116,16 @@
     "NumContacto": 1138313027,
     "domicilio": "Calle falsa 123",
     "avatar": "/images/users/avatar-1697668722097.png"
+  },
+  {
+    "id": "af8bbcc1-2eb3-4ee2-b143-bc0e86f86d09",
+    "nombre": "Sebastian",
+    "apellido": "Montero",
+    "email": "sebamontero@hotmail.es",
+    "nacimiento": "2222-02-22",
+    "password": "$2b$05$1eY9kmVgsB8QC2XhqotVZ.yaFHHIlkEvdJjgAhady9MqJe0dVyl22",
+    "NumContacto": 1138313027,
+    "domicilio": "Calle falsa 123",
+    "avatar": "/images/users/avatar-1698709679663.jpg"
   }
 ]
