@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         UpdatedAt: "updated_at",
          });
 
-//Relaciones acá
+//Relaciones acá 
+Model.belongsTo(models.Bikes, { foreignKey: 'id_brand' });
 
-    return Model;
+return Model;
      };

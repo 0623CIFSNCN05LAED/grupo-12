@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
          });
 
 //Relaciones acá
+Model.belongsTo(models.Colors, { foreignKey: 'id_color' });
 
     return Model;
      };

@@ -14,6 +14,6 @@ module.exports = (sequelize, DataTypes) => {
          });
 
 //Relaciones acá
-
+Model.belongsTo(models.Categories, { foreignKey: 'id_category' });
     return Model;
      };

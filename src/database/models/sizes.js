@@ -14,6 +14,6 @@ module.exports = (sequelize, DataTypes) => {
          });
 
 //Relaciones acá
-
+Model.belongsTo(models.Sizes, { foreignKey: 'id_size' });
     return Model;
      };

@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const Model = sequelize.define(
         "Bikes",
         {
-                name:{
+            name:{
                 field: "name",
                 type: DataTypes.STRING,
             },
@@ -29,7 +29,11 @@ module.exports = (sequelize, DataTypes) => {
             price:{
                 field: "price",
                 type: DataTypes.DECIMAL,
-            },
+            }, 
+            image:{
+                field: "image",
+                type: DataTypes.STRING
+            }
         },
         { 
         tableName: "bikes",
@@ -38,6 +42,10 @@ module.exports = (sequelize, DataTypes) => {
          });
 
 //Relaciones acá
+Model.belongsTo(models.Brands, { foreignKey: 'id_brand' });
+Model.belongsTo(models.Sizes, { foreignKey: 'id_size' });
+Model.belongsTo(models.Colors, { foreignKey: 'id_color' });
+Model.belongsTo(models.Categories, { foreignKey: 'id_category' });
 
     return Model;
      };
