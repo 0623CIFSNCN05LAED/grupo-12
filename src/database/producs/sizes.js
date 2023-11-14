@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes) => {
     const Model = sequelize.define(
         "Sizes",
         {
+            id: {
+                type: DataTypes.UUID,
+                defaultValue: () => uuidv4(),
+                primaryKey: true,
+            },
                 name:{
                 field: "size",
                 type: DataTypes.STRING,
@@ -14,6 +19,6 @@ module.exports = (sequelize, DataTypes) => {
          });
 
 //Relaciones acá
-Model.belongsTo(models.Sizes, { foreignKey: 'id_size' });
+Model.hasMany(sequelize.models.Bikes, { foreignKey: 'id_size' });
     return Model;
      };

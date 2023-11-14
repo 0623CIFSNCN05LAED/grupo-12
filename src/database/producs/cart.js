@@ -3,11 +3,10 @@ module.exports = (sequelize, DataTypes) => {
       "Carts",
       {
         id: {
-          field: "id",
-          type: DataTypes.INTEGER,
+          type: DataTypes.UUID,
+          defaultValue: () => uuidv4(),
           primaryKey: true,
-          autoIncrement: true,
-        },
+      },
         id_user: {
           field: "id_user",
           type: DataTypes.INTEGER,

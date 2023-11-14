@@ -2,6 +2,12 @@ module.exports = (sequelize, DataTypes) => {
   const Model = sequelize.define(
     "ModelsByBrand",
     {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: () => uuidv4(),
+        primaryKey: true,
+    },
+
       id_brand: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -10,11 +16,7 @@ module.exports = (sequelize, DataTypes) => {
           key: "id_brand",
         },
       },
-      id_modelName: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
+      
       modelName: {
         type: DataTypes.STRING,
         required: true,
@@ -28,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   // Relaciones
-  Model.belongsTo(Brands, { foreignKey: "id_brand" });
-  Model.hasMany(Bikes, { foreignKey: "id_modelName" });
+  Model.belongsTo(sequelize.models.Brands, { foreignKey: "id_brand" });
+  Model.hasMany(sequelize.models.Bikes, { foreignKey: "id_model_name" });
 
   return Model;
 };

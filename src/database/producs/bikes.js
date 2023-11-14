@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes) => {
     const Model = sequelize.define(
         "Bikes",
         {
+            id: {
+                type: DataTypes.UUID,
+                defaultValue: () => uuidv4(),
+                primaryKey: true,
+            },
             modelName:{
                 field: "modelName",
                 type: DataTypes.STRING,
@@ -42,10 +47,10 @@ module.exports = (sequelize, DataTypes) => {
          });
 
 //Relaciones acá
-Model.belongsTo(models.Brands, { foreignKey: 'id_brand' });
-Model.belongsTo(models.Sizes, { foreignKey: 'id_size' });
-Model.belongsTo(models.Colors, { foreignKey: 'id_color' });
-Model.belongsTo(models.Categories, { foreignKey: 'id_category' });
+Model.belongsTo(sequelize.models.Brands, { foreignKey: 'id_brand' });
+Model.belongsTo(sequelize.models.Sizes, { foreignKey: 'id_size' });
+Model.belongsTo(sequelize.models.Colors, { foreignKey: 'id_color' });
+Model.belongsTo(sequelize.models.Categories, { foreignKey: 'id_category' });
 
     return Model;
      };

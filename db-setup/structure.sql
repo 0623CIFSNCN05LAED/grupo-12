@@ -23,6 +23,7 @@ CREATE TABLE colors (
     color VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
+-- Tabla de Categorias
 
 CREATE TABLE categories (
     id INT NOT NULL AUTO_INCREMENT,
@@ -30,12 +31,20 @@ CREATE TABLE categories (
     PRIMARY KEY (id)
 ); 
 
+-- Tabla Modelos por Marca
 
+CREATE TABLE models_by_brand (
+  id INT NOT NULL AUTO_INCREMENT,
+  id_brand INT NOT NULL,
+  modelName VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_brand) REFERENCES brands (id)
+);
 
 -- Tabla Bicicleta
 CREATE TABLE bikes (
     id INT NOT NULL AUTO_INCREMENT,
-    modelName VARCHAR(255) NOT NULL,
+    id_model_name INT NOT NULL,
     description VARCHAR(255) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     id_brand INT NOT NULL,
@@ -47,16 +56,8 @@ CREATE TABLE bikes (
     FOREIGN KEY (id_brand) REFERENCES brands(id),
     FOREIGN KEY (id_size) REFERENCES sizes(id), 
     FOREIGN KEY (id_color) REFERENCES colors(id), 
-    FOREIGN KEY (id_category) REFERENCES categories(id) 
-);
-
-CREATE TABLE models_by_brand (
-  id INT NOT NULL AUTO_INCREMENT,
-  id_brand INT NOT NULL,
-  modelName VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_brand) REFERENCES brands (id),
-  FOREIGN KEY (id) REFERENCES bikes (id)
+    FOREIGN KEY (id_category) REFERENCES categories(id),
+    FOREIGN KEY (id_model_name) REFERENCES models_by_brand(id)  
 );
 
 -- Tabla Usuario

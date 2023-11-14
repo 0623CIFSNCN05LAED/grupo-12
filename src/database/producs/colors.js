@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
          });
 
 //Relaciones acá
-Model.hasOne(models.Bikes, { foreignKey: 'id_color' });
+Model.hasMany(sequelize.models.Bikes, { foreignKey: 'id_color' });
 
     return Model;
      };
