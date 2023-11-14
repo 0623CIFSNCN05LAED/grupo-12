@@ -2,8 +2,8 @@ module.exports = (sequelize, DataTypes) => {
     const Model = sequelize.define(
         "Bikes",
         {
-            name:{
-                field: "name",
+            modelName:{
+                field: "modelName",
                 type: DataTypes.STRING,
             },
             id_category:{

@@ -1,20 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
     const Model = sequelize.define(
-        "Brands",
+        "Colors",
         {
-                name:{
-                field: "name",
+           
+            name:{
+                field: "color",
                 type: DataTypes.STRING,
              },
               },
         { 
-        tableName: "brands",
+        tableName: "colors",
         createdAt: "created_at",
         UpdatedAt: "updated_at",
          });
 
-//Relaciones acá 
-Model.belongsTo(models.Bikes, { foreignKey: 'id_brand' });
+//Relaciones acá
+Model.hasOne(models.Bikes, { foreignKey: 'id_color' });
 
-return Model;
+    return Model;
      };
