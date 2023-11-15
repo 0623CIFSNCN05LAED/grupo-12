@@ -1,32 +1,156 @@
-const db = require("../database/models"); 
+const {  Bikes, Sizes, Colors, Brands, Categories, ModelsByBrand  } = require("../database/models"); 
+const Sequelize = require("sequelize");
+
 
 const productService = {
-    createProduct: (product) => {
-        db.products.create(product);
-      },
-    getAllBikes: function () {
-        return db.products.findAll();
-      },
 
-    getBike: (id) => {
-      return db.products.findById(id);
-    },  
-
-    createBike: (product) => {
-      db.products.create(product)
+    getAllBikes: () => {
+        return Bikes.findAll();
     },
 
-    updateBikes: (id, product) => {
-      db.products.update(id, product);
+    getBike: (id) => {
+      return Bikes.findByPk(id, {
+        include: ["brand", "category", "color", "size"],
+      }).then((bike)=> {
+        return {
+          id: bike.id, 
+          brand: bike.brand.map((brand)=> {
+            return {
+              id: brand.id, 
+              name: brand.name
+            };
+          }), 
+          category: bike.category.map((category)=>{
+            return {
+              id: category.id, 
+              name: category.name
+            }
+          }),
+          color: bike.color.map((color)=>{
+            return {
+              id: color.id,
+              name: color.name
+            }
+          }),
+          size: bike.size.map((size)=>{
+            return {
+              id: size.id, 
+              name: size.name
+            }
+          }), 
+          description: bike.description,
+          price: bike.price, 
+          image: bike.image
+        }
+      })
+        
+    },
+    
+    createBike: async (body, file) => {
+      
+        // Crear la marca si no existe
+        let brand = await Brands.findOne({ where: { name: body.name } });
+        if (!brand) {
+          brand = await Brands.create({ name: body.name });
+        }
+  
+        // Crear el modelo si no existe
+        let model = await ModelsByBrand.findOne({ where: { modelName: body.modelName } });
+        if (!model) {
+          model = await ModelsByBrand.create({ modelName: body.modelName });
+        }
+  
+        // Crear la categoría si no existe
+        let category = await Categories.findOne({ where: { category: body.category } });
+        if (!category) {
+          category = await Categories.create({ category: body.category });
+        }
+  
+        // Crear el tamaño si no existe
+        let size = await Sizes.findOne({ where: { size: body.size } });
+        if (!size) {
+          size = await Sizes.create({ size: body.size });
+        }
+  
+        // Crear el color si no existe
+        let color = await Colors.findOne({ where: { color: body.color } });
+        if (!color) {
+          color = await Colors.create({ color: body.color });
+        }
+  
+        // Crear la bicicleta con los datos del formulario
+        const newBike = await Bikes.create({
+          id_model_name: model.id,
+          id_category: category.id,
+          id_size: size.id,
+          id_brand: brand.id,
+          id_color: color.id,
+          description: body.description,
+          price: body.price,
+          image: file.filename,
+        });
+  
+        return newBike;
+      },
+
+
+    updateBikes: (id, body, file) => {
+      return Bikes.update(
+        {
+        modelName: body.model_name,
+        id_category: body.id_category,
+        id_size: body.id_size, 
+        id_brand: body.id_brand,
+        id_color: body.id_color,
+        description: body.description,
+        price: body.price,
+        image: file ? file.filename : undefined
+        }, 
+        {
+          where: { id: id},
+        }
+      );
     },
 
     destroyProduct: (id) => {
-      db.products.destroy(id);
+      const bikeCategories = Bikes.findByPk(id, {
+        include: ["category"],
+      }).then((bike) => {
+        return bike.category.map((category) => {
+          return category.removeBike(bike);
+        });
+      });
+    
+      return Promise.all([bikeCategories]).then(() => {
+        return Bikes.destroy({
+          where: { id: id },
+        });
+      });
     },
 
     getBikesForCategory: (categoria) =>{
       return db.products.filterCategory(categoria);
-    }
+    },
+
+    getAllCategories: () => {
+      return Categories.findAll();
+    }, 
+
+    getAllSizes: () => {
+      return Sizes.findAll();
+    }, 
+
+    getAllBrands: () => {
+      return Brands.findAll();
+    }, 
+
+    getAllColors: () => {
+      return Colors.findAll();
+    }, 
+
+    getAllModels: () => {
+      return ModelsByBrand.findAll();
+    },
      
 } 
 

@@ -16,10 +16,10 @@ productsRouter.get("/bikes/id:", productController.filterCategory)
 productsRouter.get("/cart",userGuard, productController.productCart);
 
 productsRouter.get("/create", productController.productCreate);
-productsRouter.post("/bikes", upload.single("img"), productController.productStoreBikes);
+productsRouter.post("/bikes", upload.single("image"), productController.productStoreBikes);
 
 productsRouter.get("/edit/:id", productController.productEdit);
-productsRouter.put("/bikes/:id", upload.single("img"), productController.update);
+productsRouter.put("/bikes/:id", upload.single("image"), productController.update);
 
 productsRouter.delete("/bikes/:id", productController.destroy)
 
