@@ -77,3 +77,21 @@ Dejar las tareas del Sprint para último momento.
 
 // Dejar de hacer //
 -Avanzar individualmente con las tareas para que todo el grupo pueda procesar los nuevos conociemiento y aclarar dudas
+
+RETROSPECTIVA SPRINT 6
+
+// Comenzar a hacer //
+
+Pushear los avances que se van haciendo.
+
+// Hacer mas //
+-Usar discord para la comunicación relevante del trabajo grupal. Aunque Whatsapp sea el de comunicación actual.
+
+// Continuar haciendo //
+-Comunicar los momentos de trabajo para avanzar en grupo ya que facilita la codificacion. Reunionen por Meet
+
+// Hacer menos //
+Dejar las tareas del Sprint para último momento o a cargo de una sola persona.
+
+// Dejar de hacer //
+-Avanzar individualmente con las tareas para que todo el grupo pueda procesar los nuevos conociemiento y aclarar dudas.
