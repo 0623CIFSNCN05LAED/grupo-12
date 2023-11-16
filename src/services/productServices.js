@@ -46,53 +46,85 @@ const productService = {
         
     },
     
-    createBike: async (body, file) => {
+    // createBike: async (body, file) => {
       
-        // Crear la marca si no existe
-        let brand = await Brands.findOne({ where: { name: body.name } });
-        if (!brand) {
-          brand = await Brands.create({ name: body.name });
-        }
+    //     // Crear la marca si no existe
+    //     let brand = await Brands.findOne({ where: { name: body.name } });
+    //     if (!brand) {
+    //       brand = await Brands.create({ name: body.name });
+    //     }
   
-        // Crear el modelo si no existe
-        let model = await ModelsByBrand.findOne({ where: { modelName: body.modelName } });
-        if (!model) {
-          model = await ModelsByBrand.create({ modelName: body.modelName });
-        }
+    //     // Crear el modelo si no existe
+    //     let model = await ModelsByBrand.findOne({ where: { modelName: body.modelName } });
+    //     if (!model) {
+    //       model = await ModelsByBrand.create({ modelName: body.modelName });
+    //     }
   
-        // Crear la categoría si no existe
-        let category = await Categories.findOne({ where: { category: body.category } });
-        if (!category) {
-          category = await Categories.create({ category: body.category });
-        }
+    //     // Crear la categoría si no existe
+    //     let category = await Categories.findOne({ where: { category: body.category } });
+    //     if (!category) {
+    //       category = await Categories.create({ category: body.category });
+    //     }
   
-        // Crear el tamaño si no existe
-        let size = await Sizes.findOne({ where: { size: body.size } });
-        if (!size) {
-          size = await Sizes.create({ size: body.size });
-        }
+    //     // Crear el tamaño si no existe
+    //     let size = await Sizes.findOne({ where: { size: body.size } });
+    //     if (!size) {
+    //       size = await Sizes.create({ size: body.size });
+    //     }
   
-        // Crear el color si no existe
-        let color = await Colors.findOne({ where: { color: body.color } });
-        if (!color) {
-          color = await Colors.create({ color: body.color });
-        }
+    //     // Crear el color si no existe
+    //     let color = await Colors.findOne({ where: { color: body.color } });
+    //     if (!color) {
+    //       color = await Colors.create({ color: body.color });
+    //     }
   
-        // Crear la bicicleta con los datos del formulario
-        const newBike = await Bikes.create({
-          id_model_name: model.id,
-          id_category: category.id,
-          id_size: size.id,
-          id_brand: brand.id,
-          id_color: color.id,
-          description: body.description,
-          price: body.price,
-          image: file.filename,
-        });
+    //     // Crear la bicicleta con los datos del formulario
+    //     const newBike = await Bikes.create({
+    //       id_model_name: model.id,
+    //       id_category: category.id,
+    //       id_size: size.id,
+    //       id_brand: brand.id,
+    //       id_color: color.id,
+    //       description: body.description,
+    //       price: body.price,
+    //       image: file.filename,
+    //     });
   
-        return newBike;
-      },
+    //     return newBike;
+    //   },
 
+    createBike: async (name, modelName, category, size, color, description, price, image) => {
+      const [brand, createdBrand] = await Brands.findOrCreate({
+        where: { name: name },
+      });
+    
+      let model = await ModelsByBrand.findOne({
+        where: {
+          modelName: modelName,
+          id_brand: brand.id,
+        },
+      });
+    
+      if (!model) {
+        model = await ModelsByBrand.create({
+          modelName: modelName,
+          id_brand: brand.id,
+        });
+      }
+    
+      const newBike = await Bikes.create({
+        id_model_name: req.body.modelName,
+        id_category: bikeCategory.id, 
+        id_size: bikeSize.id, 
+        id_brand: brand.id,
+        id_color: bikeColor.id, 
+        description: description,
+        price: price,
+        image: image,
+      });
+    
+      return newBike;
+    },
 
     updateBikes: (id, body, file) => {
       return Bikes.update(

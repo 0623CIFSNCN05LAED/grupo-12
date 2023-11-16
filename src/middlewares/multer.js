@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
       );
     },
   });
-
+// cambiar, todas las imagenes llegan a la carpeta de users
 
   
   const upload = multer({

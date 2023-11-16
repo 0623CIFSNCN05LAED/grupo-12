@@ -35,7 +35,7 @@ module.exports={
 
     //Create Post
     productStoreBikes: (req, res) => {
-     productService.createBike(req.body, req.file).then((bike)=>{
+      productService.createBike(req.body, req.file).then((bike)=>{
       res.redirect("/bikes")
      });
     },
