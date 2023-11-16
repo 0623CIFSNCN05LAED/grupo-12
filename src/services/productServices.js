@@ -93,27 +93,45 @@ const productService = {
     //     return newBike;
     //   },
 
-    createBike: async (name, modelName, category, size, color, description, price, image) => {
-      const [brand, createdBrand] = await Brands.findOrCreate({
-        where: { name: name },
+    createBike: async (bike, image) => { // usar solo los find
+     
+      const [modelName, createdModel] = await ModelsByBrand.findOrCreate({
+        where: { modelName: bike.modelName }
       });
+
     
-      let model = await ModelsByBrand.findOne({
+      // const model = await ModelsByBrand.findOne({
+      //   where: {
+      //     modelName: bike.modelName,
+      //     id_brand: brand.id,
+      //   }})
+
+      const category = await Categories.findOne({
         where: {
-          modelName: modelName,
-          id_brand: brand.id,
-        },
-      });
-    
-      if (!model) {
-        model = await ModelsByBrand.create({
-          modelName: modelName,
-          id_brand: brand.id,
-        });
-      }
-    
+          category: bike.category,
+          id_category: category.id,
+        }})
+
+        const size = await Sizes.findOne({
+          where: {
+            size: bike.size,
+            id_size: size.id,
+          }})
+
+        const brand = await Brands.findOne({
+            where: {
+              brand: bike.brand,
+              id_category: category.id,
+            }})    
+  
+        const color = await Colors.findOne({
+            where: {
+              color: bike.color,
+              id_color: color.id,
+            }})
+      
       const newBike = await Bikes.create({
-        id_model_name: req.body.modelName,
+        id_model_name: bike.modelName,
         id_category: bikeCategory.id, 
         id_size: bikeSize.id, 
         id_brand: brand.id,
@@ -122,7 +140,12 @@ const productService = {
         price: price,
         image: image,
       });
-    
+      newBike.set(modelName || createdModel)
+      newBike.set(category)
+      newBike.set(size)
+      newBike.set(brand)
+      newBike.set(color)
+
       return newBike;
     },
 
