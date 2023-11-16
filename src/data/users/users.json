@@ -127,5 +127,16 @@
     "NumContacto": 1138313027,
     "domicilio": "Calle falsa 123",
     "avatar": "/images/users/avatar-1697668722097.png"
+  },
+  {
+    "id": "b0063e64-d62f-4e65-b44c-ae754cd19370",
+    "nombre": "Euge",
+    "apellido": "Prueba",
+    "email": "euge@prueba.com",
+    "nacimiento": "1990-03-02",
+    "password": "$2b$05$HRdxTMjaAw.pPiJaQUiG8ubHy/qPlvvUueizvCaKbYz3KYQwj3gYi",
+    "NumContacto": 123456789,
+    "domicilio": "calle prueba",
+    "avatar": "/images/users/avatar-1700172693317.jpg"
   }
 ]
