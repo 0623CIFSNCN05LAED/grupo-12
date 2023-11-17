@@ -118,7 +118,6 @@
     "avatar": "/images/users/avatar-1697668722097.png"
   },
   {
-<<<<<<< HEAD
     "id": "b0063e64-d62f-4e65-b44c-ae754cd19370",
     "nombre": "Euge",
     "apellido": "Prueba",
@@ -128,16 +127,5 @@
     "NumContacto": 123456789,
     "domicilio": "calle prueba",
     "avatar": "/images/users/avatar-1700172693317.jpg"
-=======
-    "id": "af8bbcc1-2eb3-4ee2-b143-bc0e86f86d09",
-    "nombre": "Sebastian",
-    "apellido": "Montero",
-    "email": "sebamontero@hotmail.es",
-    "nacimiento": "2222-02-22",
-    "password": "$2b$05$1eY9kmVgsB8QC2XhqotVZ.yaFHHIlkEvdJjgAhady9MqJe0dVyl22",
-    "NumContacto": 1138313027,
-    "domicilio": "Calle falsa 123",
-    "avatar": "/images/users/avatar-1698709679663.jpg"
->>>>>>> origin/db
   }
 ]
