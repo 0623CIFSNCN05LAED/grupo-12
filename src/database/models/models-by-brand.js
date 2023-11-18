@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       id_brand: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true,
       },
       modelName: {
         type: DataTypes.STRING,

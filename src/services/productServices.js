@@ -5,45 +5,51 @@ const Sequelize = require("sequelize");
 const productService = {
 
     getAllBikes: () => {
-        return Bikes.findAll();
+        return Bikes.findAll({
+          include: [
+          {
+            model: ModelsByBrand,
+            attributes: ['modelName'], // Incluye solo la propiedad 'modelName'
+            as: 'ModelsByBrand', // Alias para la relación
+          },
+        ],
+        });
     },
 
     getBike: (id) => {
       return Bikes.findByPk(id, {
-        include: ["brand", "category", "color", "size"],
-      }).then((bike)=> {
+        include: [{
+          model: ModelsByBrand,
+          attributes: ['modelName'], // Incluye solo la propiedad 'modelName'
+          as: 'ModelsByBrand', // Alias para la relación
+        },"brand", "category", "color", "size",  ],
+      }).then((bike) => { 
+        if (!bike) {
+          return null; // Manejar el caso en que no se encuentra la bicicleta
+        }
+    
         return {
           id: bike.id, 
-          brand: bike.brand.map((brand)=> {
-            return {
-              id: brand.id, 
-              name: brand.name
-            };
-          }), 
-          category: bike.category.map((category)=>{
-            return {
-              id: category.id, 
-              name: category.name
-            }
-          }),
-          color: bike.color.map((color)=>{
-            return {
-              id: color.id,
-              name: color.name
-            }
-          }),
-          size: bike.size.map((size)=>{
-            return {
-              id: size.id, 
-              name: size.name
-            }
-          }), 
+          ModelsByBrand: bike.ModelsByBrand
+        ? {name: bike.ModelsByBrand.modelName} 
+        : null,  
+          brand: bike.brand
+        ? { id: bike.brand.id, name: bike.brand.name }
+        : null,
+          category: bike.category
+        ? { id: bike.category.id, name: bike.category.name }
+        : null,
+          color: bike.color
+        ? { id: bike.color.id, name: bike.color.name }
+        : null,
+          size: bike.size
+        ? { id: bike.size.id, name: bike.size.name }
+        : null,
           description: bike.description,
-          price: bike.price, 
-          image: bike.image
-        }
-      })
-        
+          price: bike.price,
+          image: bike.image,
+        };
+      });
     },
     
     // createBike: async (body, file) => {
@@ -92,62 +98,61 @@ const productService = {
   
     //     return newBike;
     //   },
-
-    createBike: async (bike, image) => { // usar solo los find
-     
-      const [modelName, createdModel] = await ModelsByBrand.findOrCreate({
-        where: { modelName: bike.modelName }
-      });
-
     
-      // const model = await ModelsByBrand.findOne({
+    // const model = await ModelsByBrand.findOne({
       //   where: {
       //     modelName: bike.modelName,
       //     id_brand: brand.id,
       //   }})
 
-      const category = await Categories.findOne({
-        where: {
-          category: bike.category,
-          id_category: category.id,
-        }})
-
-        const size = await Sizes.findOne({
-          where: {
-            size: bike.size,
-            id_size: size.id,
-          }})
-
-        const brand = await Brands.findOne({
-            where: {
-              brand: bike.brand,
-              id_category: category.id,
-            }})    
-  
-        const color = await Colors.findOne({
-            where: {
-              color: bike.color,
-              id_color: color.id,
-            }})
+      createBike: async (bike, image) => { 
+        try {
+          const brand = await Brands.findOne({
+            where: { name: bike.brand },
+        });
       
-      const newBike = await Bikes.create({
-        id_model_name: bike.modelName,
-        id_category: bikeCategory.id, 
-        id_size: bikeSize.id, 
-        id_brand: brand.id,
-        id_color: bikeColor.id, 
-        description: description,
-        price: price,
-        image: image,
-      });
-      newBike.set(modelName || createdModel)
-      newBike.set(category)
-      newBike.set(size)
-      newBike.set(brand)
-      newBike.set(color)
-
-      return newBike;
-    },
+          // Asegúrate de que brand tenga un valor y brand.id sea accesible
+          if (!brand || !brand.id) {
+            console.log("La marca no fue encontrada o no tiene un ID válido.");
+            return null;  // O maneja de otra manera la falta de marca
+          }
+      
+          console.log("Brand ID:", brand.id);
+      
+          const [modelName, createdModel] = await ModelsByBrand.findOrCreate({
+            where: { modelName: bike.modelName }, 
+            defaults: { id_brand: brand.id },
+          });
+      
+          const category = await Categories.findOne({
+            where: { category: bike.category },
+          });
+      
+          const size = await Sizes.findOne({
+            where: { size: bike.size },
+          });
+      
+          const color = await Colors.findOne({
+            where: { color: bike.color },
+          });
+      
+          const newBike = await Bikes.create({
+            id_model_name: modelName.id,
+            id_category: category.id,
+            id_size: size.id,
+            id_brand: brand.id,
+            id_color: color.id,
+            description: bike.description,
+            price: bike.price,
+            image: image,
+          });
+      
+          return newBike;
+        } catch (error) {
+          console.error("Error al crear la bicicleta:", error);
+          return null;  // O maneja de otra manera el error
+        }
+      },
 
     updateBikes: (id, body, file) => {
       return Bikes.update(

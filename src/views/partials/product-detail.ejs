@@ -4,17 +4,27 @@
             <a href="/edit/<%= bike.id %>" class="c-white">Editar producto</a>
         </button>
     </div>
-<img class="a-center w-50 mx-auto m-pic" src="<%= bike.img %>" alt="Imagen del producto" />
+<img class="a-center w-50 mx-auto m-pic" src="<%= bike.image %>" alt="Imagen del producto" />
 <div class="bt-1 mx-auto border-grey p-1 relative flex flex-wrap">
     <i class="fa-solid fa-truck truck-icon"></i>
-    <p class="text-xl mr-1"> $
-        <%= bike.precio%>     
-        </p>
     <h3 class="text-lg description w-100">
-        <%= bike.modelo%>     
+        <%= bike.brand.name %>
+    </h3> 
+    <h3 class="text-lg description w-100">
+        <%= bike.ModelsByBrand ? bike.ModelsByBrand.name : 'Modelo no disponible' %>     
      </h3>
+     <p class="text-xl mr-1"> $
+        <%= bike.price %>     
+        </p>
+     
     <p class="p-10 ">
-        <%= bike.descripcion%>
+        <%= bike.size.name %>
+    </p>
+    <p class="p-10 ">
+        <%= bike.color.name %>
+    </p>
+    <p class="p-10 ">
+        <%= bike.category.name %>
     </p>
 </div>
 </article>
