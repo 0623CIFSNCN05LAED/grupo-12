@@ -1,63 +1,74 @@
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <%- include("partials/head") %>
 </head>
 
-<body class="bg-img">
-    
-<header class="bg-grey p-20">
-        <%- include("partials/header") %>        
-</header>
+<body class="bg-light-grey">
 
-<main>
-     
-    <form action="/bikes/<%= bike.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="vw-90 bg-register">
-    <h2 class="center"> Editar producto </h2>
-    <div class="m-pic">
-        <label for="nombre">Nombre Del Producto:</label>
-        <input type="text" id="nombre"  name="nombre" placeholder="Inserte nombre del producto" class="control box-formulario"
-        value="<%= bike.nombre %>">
-    </div>
-    <div class="m-pic">
-        <label for="marca">Marca del producto:</label>
-        <input type="text" id="marca" name="marca" placeholder="Vairo" class="control box-formulario"
-        value="<%= bike.marca %>">
-    </div>
-    <div class="m-pic">
-        <label for="rodado">Rodado:</label>
-        <input type="text" id="rodado" name="rodado" placeholder="29" class="control box-formulario"
-        value="<%= bike.rodado %>">
-    </div>
-    <div class="m-pic">
-        <label for="tamaño">Tamaño del cuadro:</label>
-        <input type="text" name="tamaño" id="tamaño" placeholder="XL" class="control box-formulario"
-        value="<%= bike.tamaño %>">
-    </div>
-    <div class="m-pic">
-        <label for="categoria">Categoría de Bicicleta</label>
-        <select name="categoria" id="categoria">
-            <option value="electrica">Eléctrica</option>
-            <option value="freestyle">Freestyle/BMX </option>
-            <option value="mountain-bike">Mountain Bike</option>
-            <option value="paseo">Paseo/Urban</option>
-            <option value="ruta">Ruta/Triatlon</option>
-            
-        </select>    
-    </div>
-    <div class="m-pic">
-        <label for="precio">Precio del producto:</label>
-        <input type="text" id= "precio" name="precio" placeholder="$159.700" class="control box-formulario"
-        value="<%= bike.precio %>">
-    </div>
-    <div class="m-pic">
-        <label for="descripcion">Descripcion:</label>
-        <textarea id="descripcion" name="descripcion" class="control box-formulario"><%= bike.descripcion %></textarea>
-    </div>
-    <div class="m-pic">
-        <label for="img">Imagen del producto</label>
-        <input type="file" id="img" name="img">
-    </div>
+    <header class="bg-grey p-20">
+        <%- include("partials/header") %>
+    </header>
+
+    <main>
+        <form action="/bikes/<%= bike.id %>?_method=PUT" method="POST" class="create-form" enctype="multipart/form-data">
+            <div class="m-pic">
+                <label for="modelName">Nombre del modelo:</label>
+                <input type="text" id="modelName" name="modelName" placeholder="Bicicleta BW Race" class="control box-formulario"
+                value="<%= bike.ModelsByBrand.name %>">
+            </div>
+            <div class="m-pic">
+                <label for="category">Categoría de la bicicleta:</label> 
+                <select name="category" id="category"> 
+                 
+                    <% categories.forEach(category => { %>
+                      <option value="<%= category.name %>" <%= bike.category && bike.category.name === category.name ? 'selected' : '' %>><%= category.name %></option>
+                    <% }); %>
+                 
+                </select>
+              </div>
+              
+              <!-- Tamaños -->
+              <div class="m-pic">
+                <label for="size">Tamaño del cuadro:</label>
+                <select name="size" id="size">
+                    <% sizes.forEach(size => { %>
+                      <option value="<%= size.name %>" <%= bike.size && bike.size.name === size.name ? 'selected' : '' %>><%= size.name %></option>
+                    <% }); %>
+                </select>
+              </div>
+              
+              <!-- Colores -->
+              <div class="m-pic">
+                <label for="color">Color:</label>
+                <select name="color" id="color">
+                    <% colors.forEach(color => { %>
+                      <option value="<%= color.name %>" <%= bike.color && bike.color.name === color.name ? 'selected' : '' %>><%= color.name %></option>
+                    <% }); %>
+                </select>
+              </div>
+              
+              <!-- Marcas -->
+              <div class="m-pic">
+                <label for="brand">Marca del producto:</label>
+                <select name="brand" id="brand">
+                    <% brands.forEach(brand => { %>
+                      <option value="<%= brand.name %>" <%= bike.brand && bike.brand.name === brand.name ? 'selected' : '' %>><%= brand.name %></option>
+                    <% }); %>
+                </select>
+              </div>
+            <div class="m-pic">
+                <label for="price">Precio del producto:</label>
+                <input type="text" id="price" name="price" placeholder="$159.700" class="control box-formulario" 
+                value="<%=bike.price%>">
+            </div>
+            <div class="m-pic">
+                <label for="description">Descripción:</label>
+                <textarea id="description" name="description" class="control box-formulario"><%= bike.description %></textarea>
+            </div>
+            <div class="m-pic">
+                <label for="image">Imagen del producto</label>
+                <input type="file" id="image" name="image" 
+                value="<%= bike.image %>">
+            </div>
     <div class="m-pic">
         <input type="submit" value="Editar" class="boton-formulario"/>
         <input type="reset" value="Borrar Formulario" class="boton-formulario"/>

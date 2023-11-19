@@ -30,88 +30,22 @@ const productService = {
     
         return {
           id: bike.id, 
-          ModelsByBrand: bike.ModelsByBrand
-        ? {name: bike.ModelsByBrand.modelName} 
-        : null,  
-          brand: bike.brand
-        ? { id: bike.brand.id, name: bike.brand.name }
-        : null,
-          category: bike.category
-        ? { id: bike.category.id, name: bike.category.name }
-        : null,
-          color: bike.color
-        ? { id: bike.color.id, name: bike.color.name }
-        : null,
-          size: bike.size
-        ? { id: bike.size.id, name: bike.size.name }
-        : null,
+          ModelsByBrand: bike.ModelsByBrand ? {name: bike.ModelsByBrand.modelName} : null,  
+          brand: bike.brand ? { id: bike.brand.id, name: bike.brand.name } : null,
+          category: bike.category ? { id: bike.category.id, name: bike.category.name } : null,
+          color: bike.color ? { id: bike.color.id, name: bike.color.name } : null,
+          size: bike.size ? { id: bike.size.id, name: bike.size.name } : null,
           description: bike.description,
           price: bike.price,
-          image: bike.image,
+          image: bike.image.filename,
         };
       });
     },
     
-    // createBike: async (body, file) => {
-      
-    //     // Crear la marca si no existe
-    //     let brand = await Brands.findOne({ where: { name: body.name } });
-    //     if (!brand) {
-    //       brand = await Brands.create({ name: body.name });
-    //     }
-  
-    //     // Crear el modelo si no existe
-    //     let model = await ModelsByBrand.findOne({ where: { modelName: body.modelName } });
-    //     if (!model) {
-    //       model = await ModelsByBrand.create({ modelName: body.modelName });
-    //     }
-  
-    //     // Crear la categoría si no existe
-    //     let category = await Categories.findOne({ where: { category: body.category } });
-    //     if (!category) {
-    //       category = await Categories.create({ category: body.category });
-    //     }
-  
-    //     // Crear el tamaño si no existe
-    //     let size = await Sizes.findOne({ where: { size: body.size } });
-    //     if (!size) {
-    //       size = await Sizes.create({ size: body.size });
-    //     }
-  
-    //     // Crear el color si no existe
-    //     let color = await Colors.findOne({ where: { color: body.color } });
-    //     if (!color) {
-    //       color = await Colors.create({ color: body.color });
-    //     }
-  
-    //     // Crear la bicicleta con los datos del formulario
-    //     const newBike = await Bikes.create({
-    //       id_model_name: model.id,
-    //       id_category: category.id,
-    //       id_size: size.id,
-    //       id_brand: brand.id,
-    //       id_color: color.id,
-    //       description: body.description,
-    //       price: body.price,
-    //       image: file.filename,
-    //     });
-  
-    //     return newBike;
-    //   },
-    
-    // const model = await ModelsByBrand.findOne({
-      //   where: {
-      //     modelName: bike.modelName,
-      //     id_brand: brand.id,
-      //   }})
-
       createBike: async (bike, image) => { 
         try {
 
         const brand = await Brands.findByPk(bike.brand);
-        //   const brand = await Brands.findOne({
-        //     where: { name: bike.brand },
-        // });
       
           // Asegúrate de que brand tenga un valor y brand.id sea accesible
           if (!brand || !brand.id) {
@@ -156,7 +90,7 @@ const productService = {
             id_color: color.id,
             description: bike.description,
             price: bike.price,
-            image: image,
+            image: image.filename,
           });
       
           return newBike;

@@ -50,12 +50,26 @@ module.exports={
      });
     },
 
-    productEdit: (req, res) => {        // Aca obtenes la bici que vas a editar, mediante el id 
-      const categories = productService.getAllCategories(); 
-      const bike = productService.getBike(req.params.id); 
-      Promise.all([categories, bike]).then(([categories, bike]) => {
-        res.render("product-edit-form", { bike, categories }); 
-      }) 
+    productEdit: (req, res) => {
+      // Aca obtenes la bici que vas a editar, mediante el id
+      productService.getBike(req.params.id).then((bike) => {
+        const brandsPromise = productService.getAllBrands();
+        const sizesPromise = productService.getAllSizes();
+        const colorsPromise = productService.getAllColors();
+        const categoriesPromise = productService.getAllCategories();
+        const modelsPromise = productService.getAllModels();
+    
+        // Espera a que todas las promesas se resuelvan antes de renderizar la vista
+        Promise.all([brandsPromise, sizesPromise, colorsPromise, categoriesPromise, modelsPromise])
+          .then(([brands, sizes, colors, categories, models]) => {
+            console.log(bike);
+            res.render("product-edit-form", { bike, categories, brands, sizes, colors, models });
+          })
+          .catch((error) => {
+            console.error(error);
+            res.status(500).send("Error interno del servidor");
+          });
+      });
     },
 
     update: (req, res) => {
