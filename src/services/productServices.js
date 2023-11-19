@@ -107,34 +107,46 @@ const productService = {
 
       createBike: async (bike, image) => { 
         try {
-          const brand = await Brands.findOne({
-            where: { name: bike.brand },
-        });
+
+        const brand = await Brands.findByPk(bike.brand);
+        //   const brand = await Brands.findOne({
+        //     where: { name: bike.brand },
+        // });
       
           // Asegúrate de que brand tenga un valor y brand.id sea accesible
           if (!brand || !brand.id) {
             console.log("La marca no fue encontrada o no tiene un ID válido.");
             return null;  // O maneja de otra manera la falta de marca
           }
-      
-          console.log("Brand ID:", brand.id);
+
+          console.log("Datos de la bicicleta antes de crear:", bike);
+          
       
           const [modelName, createdModel] = await ModelsByBrand.findOrCreate({
             where: { modelName: bike.modelName }, 
             defaults: { id_brand: brand.id },
           });
       
-          const category = await Categories.findOne({
-            where: { category: bike.category },
-          });
+          const category = await Categories.findByPk(bike.category);
+
+          // Asegúrate de que category tenga un valor y category.id sea accesible
+          if (!category || !category.id) {
+            console.log("La categoría no fue encontrada o no tiene un ID válido.");
+            return null;  // O maneja de otra manera la falta de categoría
+          }
       
-          const size = await Sizes.findOne({
-            where: { size: bike.size },
-          });
+          const size = await Sizes.findByPk(bike.size);
+
+          if (!size || !size.id){
+            console.log("El size no fue encontrado o no tiene un ID válido.");
+            return null; 
+          }
       
-          const color = await Colors.findOne({
-            where: { color: bike.color },
-          });
+          const color = await Colors.findByPk(bike.color);
+          if (!color || !color.id){
+            console.log("El color no fue encontrado o no tiene un ID válido.");
+            return null; 
+          }
       
           const newBike = await Bikes.create({
             id_model_name: modelName.id,
