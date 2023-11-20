@@ -22,5 +22,6 @@ productsRouter.get("/edit/:id", productController.productEdit);
 productsRouter.put("/bikes/:id", upload.single("image"), productController.update);
 
 productsRouter.delete("/bikes/:id", productController.destroy)
+productsRouter.delete('/:id', productController.destroy);
 
 module.exports = productsRouter;

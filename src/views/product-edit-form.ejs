@@ -71,15 +71,15 @@
             </div>
     <div class="m-pic">
         <input type="submit" value="Editar" class="boton-formulario"/>
+
         <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
     </div>
-    </form>
-    <form action="/bikes/<%= bike.id %>?_method=DELETE" method="POST" class="bg-register flex-buttom">
-    <div class="m-pic">
-    <button type="submit" class="boton-formulario m-pic c-red"> DESTROY </button>   
-</div>    
-
-    </form>     
+    <form action="/bikes/<%= bike.id %>" method="POST" class="bg-register flex-buttom">
+      <input type="hidden" name="_method" value="DELETE">
+      <div class="m-pic">
+          <button type="submit" class="boton-formulario m-pic c-red"> DESTROY </button>
+      </div>
+  </form>   
 </main>
 
     
