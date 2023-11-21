@@ -27,12 +27,14 @@ module.exports = (sequelize, DataTypes) => {
   Model.associate = (db) => {
     Model.belongsTo(db.Brands, { 
       as: "brand",
-      foreignKey: "id_brand"
+      foreignKey: "id_brand", 
+      onDelete: 'CASCADE',
     }); 
 
     Model.hasMany(db.Bikes, { 
       as: "bikes",
-      foreignKey: "id_model_name"
+      foreignKey: "id_model_name", 
+      onDelete: 'CASCADE',
     }); 
   };
 

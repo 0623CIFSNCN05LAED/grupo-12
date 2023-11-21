@@ -72,7 +72,8 @@ module.exports = (sequelize, DataTypes) => {
 
     Model.belongsTo(db.ModelsByBrand, {
       as: "ModelsByBrand",
-      foreignKey: 'id_model_name'
+      foreignKey: 'id_model_name', 
+      onDelete: 'CASCADE',
     });
   };
 

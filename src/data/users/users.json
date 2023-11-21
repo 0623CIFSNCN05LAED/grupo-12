@@ -127,5 +127,16 @@
     "NumContacto": 1138313027,
     "domicilio": "Calle falsa 123",
     "avatar": "/images/users/avatar-1698709679663.jpg"
+  },
+  {
+    "id": "7032fcb4-ff17-46c9-a462-e2b8281ad68c",
+    "nombre": "Sebastian",
+    "apellido": "Montero",
+    "email": "12345@hotmail.es",
+    "nacimiento": "1111-11-11",
+    "password": "$2b$05$L6tONTPRXRuMZi3tiYgnre4mMdW099vGFYfqRKnj1nodjhGd1JXRy",
+    "NumContacto": 5491138313027,
+    "domicilio": "Calle falsa 123",
+    "avatar": "/images/users/avatar-1700527964356.jpg"
   }
 ]

@@ -78,30 +78,8 @@ module.exports={
       })
     }, 
 
-    destroyProduct: async (id) => {
-      try {
-        // Buscar la bicicleta por su ID
-        const bike = await Bikes.findByPk(id);
-  
-        // Asegurarse de que la bicicleta existe
-        if (!bike) {
-          console.log("Bicicleta no encontrada.");
-          return null; // O manejar la falta de bicicleta de otra manera
-        }
-  
-        // Eliminar la bicicleta de la base de datos
-        await bike.destroy();
-  
-        console.log("Bicicleta eliminada exitosamente.");
-        return bike;
-      } catch (error) {
-        console.error("Error al eliminar la bicicleta:", error);
-        return null; // O manejar de otra manera el error
-      }
-    },
-
     destroy: (req, res) => {
-      productService.destroyProduct(req.params.id).then(() =>{
+      productService.destroyProduct(req.params.id).then(() =>{ 
         res.redirect("/bikes");
       })
     },

@@ -100,45 +100,95 @@ const productService = {
         }
       },
 
-    updateBikes: (id, body, file) => {
-      return Bikes.update(
-        {
-        modelName: body.model_name,
-        id_category: body.id_category,
-        id_size: body.id_size, 
-        id_brand: body.id_brand,
-        id_color: body.id_color,
-        description: body.description,
-        price: body.price,
-        image: file ? file.filename : undefined
-        }, 
-        {
-          where: { id: id},
-        }
-      );
-    },
+      updateBikes: async (id, body, file) => { 
+
+              const bike = await Bikes.findByPk(id, {
+                  include: [
+                      { model: ModelsByBrand, as: 'ModelsByBrand' },
+                      { model: Brands, as: 'brand' },
+                      { model: Categories, as: 'category' },
+                      { model: Colors, as: 'color' },
+                      { model: Sizes, as: 'size' },
+                  ],
+              });
+      
+              if (!bike) {
+                  throw new Error('Bicicleta no encontrada');
+              }
+      
+              // Actualizar o crear el modelo
+              let model;
+      
+              // Verificar si el modelo existe en el cuerpo de la solicitud
+              if (body.modelName) {
+                  model = await ModelsByBrand.findOne({ where: { modelName: body.modelName } });
+      
+                  if (!model) {
+                      // Si no existe, actualizar el modelo actual con el nuevo nombre (si existe)
+                      if (bike.ModelsByBrand) {
+                          bike.ModelsByBrand.modelName = body.modelName;
+                          await bike.ModelsByBrand.save();
+                      }
+                  }
+              }
+      
+              // Actualizar otros campos relacionados
+              if (model) {
+                  bike.id_model_name = model.id;
+              }
+      
+              // Verificar y actualizar las otras relaciones
+              if (body.brand) {
+                  const brand = await Brands.findOne({ where: { name: body.brand } });
+                  if (brand) {
+                      bike.id_brand = brand.id;
+                  }
+              }
+      
+              if (body.size) {
+                  const size = await Sizes.findOne({ where: { name: body.size } });
+                  if (size) {
+                      bike.id_size = size.id;
+                  }
+              }
+      
+              if (body.color) {
+                  const color = await Colors.findOne({ where: { name: body.color } });
+                  if (color) {
+                      bike.id_color = color.id;
+                  }
+              }
+      
+              if (body.category) {
+                  const category = await Categories.findOne({ where: { name: body.category } });
+                  if (category) {
+                      bike.id_category = category.id;
+                  }
+              }
+      
+              bike.description = body.description;
+              bike.price = body.price;
+      
+              // Si se proporciona una nueva imagen, actualizarla
+              if (file) {
+                  bike.image = file.filename;
+              }
+      
+              // Guardar los cambios en la base de datos
+              await bike.save();
+      
+              return bike; // Devolver la bicicleta actualizada
+          
+          },
 
     destroyProduct: async (id) => {
-      try {
-        // Buscar la bicicleta por su ID
-        const bike = await Bikes.findByPk(id);
-  
-        // Asegurarse de que la bicicleta existe
-        if (!bike) {
-          console.log("Bicicleta no encontrada.");
-          return null; // O manejar la falta de bicicleta de otra manera
-        }
-  
-        // Eliminar la bicicleta de la base de datos
-        await bike.destroy();
-  
-        console.log("Bicicleta eliminada exitosamente.");
-        return bike;
-      } catch (error) {
-        console.error("Error al eliminar la bicicleta:", error);
-        return null; // O manejar de otra manera el error
-      }
-    },
+      
+      await Bikes.destroy({where: {id : id}} )
+
+      return;
+   
+  },
+
 
     // destroyProduct: (id) => {
     //   const bikeCategories = Bikes.findByPk(id, {
