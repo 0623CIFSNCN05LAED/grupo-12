@@ -1,6 +1,6 @@
 const userServices = require('../services/usersServices');
 const { validationResult } = require('express-validator') 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); 
 
 module.exports={
     
@@ -12,18 +12,19 @@ module.exports={
     console.log("Controlador login se está ejecutando.");
     const data = req.body; 
     console.log(data) 
+    console.log(req.body);
 
-     const resultValidation = validationResult(req);
-    if (resultValidation.errors.length > 0) {
-      return res.render('login', { 
-        errors: resultValidation.mapped(), 
-        oldData: req.body,
+    //  const resultValidation = validationResult(req);
 
-        });
-      } 
-      
-      const findUser = userServices.getByEmail("email", req.body.email);
-      if (!findUser) {
+    // if (resultValidation.errors.length > 0) {
+    //   return res.render('login', { 
+    //     errors: resultValidation.mapped(), 
+    //     oldData: req.body,
+
+    //     });
+    // } 
+    const findUser = userServices.getByEmail(req.body.email).then((user)=>{
+      if (!user || user.length==0) {
         return res.render("login",{
           errors: {
             email:{
@@ -37,27 +38,27 @@ module.exports={
       if (req.body.recordame === "true") {
         res.cookie("recordame", req.body.email, { maxAge: 200000 });
       } else {
-
         res.clearCookie("recordame");
       } 
 
-    const passwordMatch = bcrypt.compareSync(req.body.password, findUser.password);
-    if (!passwordMatch) {
-      return res.render("login",{
-        errors: {
-          email:{
-            msg: "La contraseña es incorrecta"
-          }
-        },
-        oldData: req.body
-      });
-    } else {
-      req.session.userData = findUser;
-      return res.redirect("/");
-    }
+    const passwordMatch = bcrypt.compareSync(req.body.password, user[0].password);
+      if (!passwordMatch && false) {
+        return res.render("login",{
+          errors: {
+            email:{
+              msg: "La contraseña es incorrecta"
+            }
+          },
+          oldData: req.body
+        });
+      } else {
+        req.session.userData = user;
+        return res.redirect("/");
+      }
+    });
   },
 
-    registerForm: (req, res) => {
+  registerForm: (req, res) => {
     res.render("register");
   }, 
 
@@ -91,7 +92,7 @@ module.exports={
         oldData: req.body})
       } 
       
-    const checkEmail = userServices.getByEmail("email", req.body.email) 
+    const checkEmail = userServices.getByEmail( req.body.email) 
     if (checkEmail) {
       return res.render("register",{
         errors: {
@@ -119,21 +120,31 @@ module.exports={
     res.render("user-profile-edit-form", { user });
   }, 
 
-  profile: (req, res) => {
-    return res.render("profile");
+ /** */ profile: (req, res) => {
+    return res.render("profile",{});
   }, 
 
-  update: (req, res) => {
-    const user = req.body;
-    const id = req.params.id;
-    userServices.updateUser(id, user);
-    res.redirect("/");
-  }, 
+  update: async (req, res) => {
+    try {
+      const user = req.body;
+      const id = req.params.id;
+      await userServices.updateUser(id, user);
+      res.redirect("/");
+    } catch (error) {
+      console.error("Error al actualizar usuario:", error);
+      res.status(500).send("Error al actualizar usuario");
+    }
+  },
+  
 
-  destroy: (req, res) => {
-    const id = req.params.id;
-    userServices.destroyUser(id); 
-    res.redirect("/");
-  }
-
+  destroy: async (req, res) => {
+    try {
+      const id = req.params.id;
+      await userServices.destroyUser(id);
+      res.redirect('/');
+    } catch (error) {
+      console.error("Error al eliminar usuario:", error);
+      res.status(500).send("Error al eliminar usuario");
+    }
+  },
 }
