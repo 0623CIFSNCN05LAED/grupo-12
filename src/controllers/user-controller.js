@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 module.exports={
     
-    showLogin: (req, res) => {
+  showLogin: (req, res) => {
     res.render("login");
   }, 
 
@@ -14,15 +14,15 @@ module.exports={
     console.log(data) 
     console.log(req.body);
 
-    //  const resultValidation = validationResult(req);
+     const resultValidation = validationResult(req);
 
-    // if (resultValidation.errors.length > 0) {
-    //   return res.render('login', { 
-    //     errors: resultValidation.mapped(), 
-    //     oldData: req.body,
+     if (resultValidation.errors.length > 0) {
+       return res.render('login', { 
+         errors: resultValidation.mapped(), 
+         oldData: req.body,
 
-    //     });
-    // } 
+         });
+     } 
     const findUser = userServices.getByEmail(req.body.email).then((user)=>{
       if (!user || user.length==0) {
         return res.render("login",{
@@ -42,7 +42,7 @@ module.exports={
       } 
 
     const passwordMatch = bcrypt.compareSync(req.body.password, user[0].password);
-      if (!passwordMatch && false) {
+      if (!passwordMatch) {
         return res.render("login",{
           errors: {
             email:{
@@ -76,23 +76,23 @@ module.exports={
 
   register: async (req, res) => { 
     const user = {
-      id:Number(req.body.NumContacto),
-      firstName: req.body.nombre,
-      lastName: req.body.apellido,
+      //id:(req.body.),
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
-      birthday: req.body.nacimiento,
+      birthday: req.body.birthday,
       password: bcrypt.hashSync(req.body.password, 5),
-      phone: Number(req.body.NumContacto),
-      address: req.body.domicilio,
+      phone:(req.body.phone),
+      address: req.body.address,
       avatar: req.file ? "/images/users/" + req.file.filename : null,
     }
     
-    // const resultValidation = validationResult(req);
-    // if (resultValidation.errors.length > 0) {
-    //   return res.render("register", { 
-    //     errors: resultValidation.mapped(), 
-    //     oldData: req.body})
-    //   } 
+    const resultValidation = validationResult(req);
+    if (resultValidation.errors.length > 0) {
+    return res.render("register", { 
+    errors: resultValidation.mapped(), 
+    oldData: req.body})
+    } 
       
     const checkEmail = userServices.getByEmail( req.body.email)
     .then(async (response)=>{
@@ -131,8 +131,9 @@ module.exports={
   update: async (req, res) => {
     try {
       const user = req.body;
+      const password = bcrypt.hashSync(req.body.password, 5);
       const id = req.params.id;
-      await userServices.updateUser(id, user);
+      await userServices.updateUser(id, user, password);
       res.redirect("/");
     } catch (error) {
       console.error("Error al actualizar usuario:", error);
