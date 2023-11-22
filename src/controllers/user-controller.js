@@ -52,7 +52,7 @@ module.exports={
           oldData: req.body
         });
       } else {
-        req.session.userData = user;
+        req.session.userData = user[0];
         return res.redirect("/");
       }
     });
@@ -62,50 +62,54 @@ module.exports={
     res.render("register");
   }, 
 
-  userList: (req, res) => {
-    const users = userServices.getAllUsers();
+  userList: async (req, res) => {
+    const users = await userServices.getAllUsers();
+    console.log(users)
     res.render("users-list", { users });
   }, 
 
-  userDetail: (req, res) =>{ 
+  userDetail: async (req, res) =>{ 
     const id = req.params.id;
-    const user = userServices.getUserById(id); 
+    const user = await userServices.getUser(id); 
     res.render("user-detail", { user });
   },
 
-  register: (req, res) => { 
+  register: async (req, res) => { 
     const user = {
-      nombre: req.body.nombre,
-      apellido: req.body.apellido,
+      id:Number(req.body.NumContacto),
+      firstName: req.body.nombre,
+      lastName: req.body.apellido,
       email: req.body.email,
-      nacimiento: req.body.nacimiento,
+      birthday: req.body.nacimiento,
       password: bcrypt.hashSync(req.body.password, 5),
-      NumContacto: Number(req.body.NumContacto),
-      domicilio: req.body.domicilio,
+      phone: Number(req.body.NumContacto),
+      address: req.body.domicilio,
       avatar: req.file ? "/images/users/" + req.file.filename : null,
     }
     
-     const resultValidation = validationResult(req);
-    if (resultValidation.errors.length > 0) {
-      return res.render("register", { 
-        errors: resultValidation.mapped(), 
-        oldData: req.body})
-      } 
+    // const resultValidation = validationResult(req);
+    // if (resultValidation.errors.length > 0) {
+    //   return res.render("register", { 
+    //     errors: resultValidation.mapped(), 
+    //     oldData: req.body})
+    //   } 
       
-    const checkEmail = userServices.getByEmail( req.body.email) 
-    if (checkEmail) {
-      return res.render("register",{
-        errors: {
-          email:{
-            msg: "Este email se encuentra registrado"
-          }
-        },
-        oldData: req.body
-      });
-    } else {
-      userServices.createUser(user);
-      return res.redirect("/");
-    }  
+    const checkEmail = userServices.getByEmail( req.body.email)
+    .then(async (response)=>{
+      if (response && response.length>0) {
+        return res.render("register",{
+          errors: {
+            email:{
+              msg: "Este email se encuentra registrado"
+            }
+          },
+          oldData: req.body
+        });
+      } else {
+        await userServices.createUser(user);
+        return res.redirect("/");
+      }  
+    })
       
     }, 
     logout: (req, res) => {
@@ -114,14 +118,14 @@ module.exports={
       return res.redirect("/");
     },
 
-  profileEdit: (req, res) => {
+  profileEdit:async (req, res) => {
     const id = req.params.id;
-    const user = userServices.getUser(id);
+    const user = await userServices.getUser(id);
     res.render("user-profile-edit-form", { user });
   }, 
 
- /** */ profile: (req, res) => {
-    return res.render("profile",{});
+  profile: (req, res) => {
+    return res.render("profile",{userData: req.session.userData});
   }, 
 
   update: async (req, res) => {

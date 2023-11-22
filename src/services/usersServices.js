@@ -2,12 +2,12 @@ const { Users } = require("../database/models");
 const Sequelize = require("sequelize");
 
 const userServices = {
-  getAllUsers: () => {
-    return Users.findAll();
+  getAllUsers: async () => {
+    return await Users.findAll();
   },
 
-  getUser: (id) => {
-    return Users.findById(id);
+  getUser: async (id) => {
+    return await Users.findByPk(id);
   },
 
   /**  getUserById: (id) => {
@@ -15,11 +15,18 @@ const userServices = {
       return user;
     }, Hace la misma funcion que el getUser*/
 
-  getByEmail: (emailValue) => {
-    return Users.findAll({where: {email: emailValue}});
+  getByEmail: async (emailValue) => {
+    return await Users.findAll({where: {email: emailValue}});
   },
-  createUser: (user) => {
-    Users.create(user);
+  createUser: async (user) => {
+    try
+    {
+      console.log(user);
+      return await Users.create(user);
+    } catch (error) {
+      console.error("Error al crear el usuario:", error);
+      return null;
+    }
   },
   updateUser: (id, user) => {
     return Users.update(user, {where: { id } });
