@@ -17,9 +17,11 @@
                     <a href="/<%= user.id %>/user" class="c-white">Editar usuario</a>
                 </button>
             </div>
-        <img class="a-center w-50 mx-auto m-pic" src="<%= user.avatar %>" alt="Imagen del usuario" />
-        <div class="bt-1 mx-auto border-grey p-1 relative flex flex-wrap">
         
+        <div class="bt-1 mx-auto border-grey p-1 relative flex flex-wrap">
+
+            <img class="a-center w-50 mx-auto m-pic" src="<%= user.avatar %>" alt="Imagen del usuario" />
+            
             <p class="text-xl mr-1">
                 <%= user.firstName>     
                 </p>
@@ -38,9 +40,7 @@
             <p class="text-xl mr-1">
                 <%= user.address%>
             </p> 
-            <p class="text-xl mr-1">
-                <%= user.avatar%>
-            </p> 
+            
         </div>
         </article>
 </main>

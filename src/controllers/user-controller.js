@@ -70,7 +70,7 @@ module.exports={
 
   userDetail: async (req, res) =>{ 
     const id = req.params.id;
-    const user = await userServices.getUser(id); 
+    const user = await userServices.getUser(id);  
     res.render("user-detail", { user });
   },
 
@@ -130,16 +130,26 @@ module.exports={
 
   update: async (req, res) => {
     try {
-      const user = req.body;
-      const password = bcrypt.hashSync(req.body.password, 5);
       const id = req.params.id;
-      await userServices.updateUser(id, user, password);
+      const userData = req.body;
+
+      // Verificar si se proporcionó una nueva contraseña
+      if (userData.password) {
+          // Hashear la nueva contraseña
+          const hashedPassword = bcrypt.hashSync(userData.password, 5);
+          // Asignar la contraseña hasheada al objeto del usuario
+          userData.password = hashedPassword;
+      }
+
+      // Llamar al servicio para actualizar el usuario
+      await userServices.updateUser(id, userData);
+
       res.redirect("/");
-    } catch (error) {
+  } catch (error) {
       console.error("Error al actualizar usuario:", error);
       res.status(500).send("Error al actualizar usuario");
-    }
-  },
+  }
+},
   
 
   destroy: async (req, res) => {
