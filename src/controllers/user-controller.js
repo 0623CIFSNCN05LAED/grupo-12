@@ -1,10 +1,10 @@
 const userServices = require('../services/usersServices');
 const { validationResult } = require('express-validator') 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); 
 
 module.exports={
     
-    showLogin: (req, res) => {
+  showLogin: (req, res) => {
     res.render("login");
   }, 
 
@@ -12,18 +12,19 @@ module.exports={
     console.log("Controlador login se está ejecutando.");
     const data = req.body; 
     console.log(data) 
+    console.log(req.body);
 
      const resultValidation = validationResult(req);
-    if (resultValidation.errors.length > 0) {
-      return res.render('login', { 
-        errors: resultValidation.mapped(), 
-        oldData: req.body,
 
-        });
-      } 
-      
-      const findUser = userServices.getByEmail("email", req.body.email);
-      if (!findUser) {
+     if (resultValidation.errors.length > 0) {
+       return res.render('login', { 
+         errors: resultValidation.mapped(), 
+         oldData: req.body,
+
+         });
+     } 
+    const findUser = userServices.getByEmail(req.body.email).then((user)=>{
+      if (!user || user.length==0) {
         return res.render("login",{
           errors: {
             email:{
@@ -37,74 +38,78 @@ module.exports={
       if (req.body.recordame === "true") {
         res.cookie("recordame", req.body.email, { maxAge: 200000 });
       } else {
-
         res.clearCookie("recordame");
       } 
 
-    const passwordMatch = bcrypt.compareSync(req.body.password, findUser.password);
-    if (!passwordMatch) {
-      return res.render("login",{
-        errors: {
-          email:{
-            msg: "La contraseña es incorrecta"
-          }
-        },
-        oldData: req.body
-      });
-    } else {
-      req.session.userData = findUser;
-      return res.redirect("/");
-    }
+    const passwordMatch = bcrypt.compareSync(req.body.password, user[0].password);
+      if (!passwordMatch) {
+        return res.render("login",{
+          errors: {
+            email:{
+              msg: "La contraseña es incorrecta"
+            }
+          },
+          oldData: req.body
+        });
+      } else {
+        req.session.userData = user[0];
+        return res.redirect("/");
+      }
+    });
   },
 
-    registerForm: (req, res) => {
+  registerForm: (req, res) => {
     res.render("register");
   }, 
 
-  userList: (req, res) => {
-    const users = userServices.getAllUsers();
+  userList: async (req, res) => {
+    const users = await userServices.getAllUsers();
+    console.log(users)
     res.render("users-list", { users });
   }, 
 
-  userDetail: (req, res) =>{ 
+  userDetail: async (req, res) =>{ 
     const id = req.params.id;
-    const user = userServices.getUserById(id); 
+    const user = await userServices.getUser(id);  
     res.render("user-detail", { user });
   },
 
-  register: (req, res) => { 
+  register: async (req, res) => { 
     const user = {
-      nombre: req.body.nombre,
-      apellido: req.body.apellido,
+      //id:(req.body.),
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
-      nacimiento: req.body.nacimiento,
+      birthday: req.body.birthday,
       password: bcrypt.hashSync(req.body.password, 5),
-      NumContacto: Number(req.body.NumContacto),
-      domicilio: req.body.domicilio,
+      phone:(req.body.phone),
+      address: req.body.address,
       avatar: req.file ? "/images/users/" + req.file.filename : null,
     }
     
-     const resultValidation = validationResult(req);
+    const resultValidation = validationResult(req);
     if (resultValidation.errors.length > 0) {
-      return res.render("register", { 
-        errors: resultValidation.mapped(), 
-        oldData: req.body})
-      } 
+    return res.render("register", { 
+    errors: resultValidation.mapped(), 
+    oldData: req.body})
+    } 
       
-    const checkEmail = userServices.getByEmail("email", req.body.email) 
-    if (checkEmail) {
-      return res.render("register",{
-        errors: {
-          email:{
-            msg: "Este email se encuentra registrado"
-          }
-        },
-        oldData: req.body
-      });
-    } else {
-      userServices.createUser(user);
-      return res.redirect("/");
-    }  
+    const checkEmail = userServices.getByEmail( req.body.email)
+    .then(async (response)=>{
+      if (response && response.length>0) {
+        return res.render("register",{
+          errors: {
+            email:{
+              msg: "Este email se encuentra registrado"
+            }
+          },
+          oldData: req.body
+        });
+      } else {
+        await userServices.createUser(user);
+        return res.redirect("/");
+      }  
+    })
       
     }, 
     logout: (req, res) => {
@@ -113,27 +118,48 @@ module.exports={
       return res.redirect("/");
     },
 
-  profileEdit: (req, res) => {
+  profileEdit:async (req, res) => {
     const id = req.params.id;
-    const user = userServices.getUser(id);
+    const user = await userServices.getUser(id);
     res.render("user-profile-edit-form", { user });
   }, 
 
   profile: (req, res) => {
-    return res.render("profile");
+    return res.render("profile",{userData: req.session.userData});
   }, 
 
-  update: (req, res) => {
-    const user = req.body;
-    const id = req.params.id;
-    userServices.updateUser(id, user);
-    res.redirect("/");
-  }, 
+  update: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const userData = req.body;
 
-  destroy: (req, res) => {
-    const id = req.params.id;
-    userServices.destroyUser(id); 
-    res.redirect("/");
+      // Verificar si se proporcionó una nueva contraseña
+      if (userData.password) {
+          // Hashear la nueva contraseña
+          const hashedPassword = bcrypt.hashSync(userData.password, 5);
+          // Asignar la contraseña hasheada al objeto del usuario
+          userData.password = hashedPassword;
+      }
+
+      // Llamar al servicio para actualizar el usuario
+      await userServices.updateUser(id, userData);
+
+      res.redirect("/");
+  } catch (error) {
+      console.error("Error al actualizar usuario:", error);
+      res.status(500).send("Error al actualizar usuario");
   }
+},
+  
 
+  destroy: async (req, res) => {
+    try {
+      const id = req.params.id;
+      await userServices.destroyUser(id);
+      res.redirect('/');
+    } catch (error) {
+      console.error("Error al eliminar usuario:", error);
+      res.status(500).send("Error al eliminar usuario");
+    }
+  },
 }

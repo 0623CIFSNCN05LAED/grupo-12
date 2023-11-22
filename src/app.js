@@ -30,15 +30,16 @@ const productRouter = require ("./routes/products-router");
 const userRouter = require ("./routes/user-router"); 
 
 
-app.listen (3000, ()=>{
-    console.log ("Server On 3000");
+const PORT = 3000;
+app.listen (PORT, ()=>{
+  console.log(`Server on ${PORT}`);
 });
 
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
-app.use(mainRoute);
 app.use(productRouter);
+app.use(mainRoute);
 app.use(userRouter);
 
 

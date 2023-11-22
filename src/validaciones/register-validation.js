@@ -2,16 +2,16 @@ const { body } = require("express-validator"); /* podriamos usar check tambien *
 const path = require('path');
 
 module.exports = [ 
-    body("nombre")
+    body("firstName")
     .notEmpty()
     .withMessage("Debe completar este campo"),
-    body("apellido") 
+    body("lastName") 
     .notEmpty()
     .withMessage("Debe completar este campo"),
-    body("nacimiento")
+    body("birthday")
     .notEmpty()
     .withMessage("Debe completar este campo"),
-    body("domicilio")
+    body("address")
     .notEmpty()
     .withMessage("Debe completar este campo"),
     body("email")

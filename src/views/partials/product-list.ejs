@@ -14,12 +14,11 @@
             </div>
             <div class="box-list"> 
                 <a class="a-center w-full" href="/bikes/<%= bike.id %>">
-                    <img class="flex-buy w-50 mx-auto m-pic" src=<%= bike.img %> alt="Imagen del producto" />
+                    <img class="flex-buy w-50 mx-auto m-pic" src="/images/users/<%= bike.image %>" alt="Imagen del producto" />
             </div> 
-                    <h4><%= bike.nombre  %></h4>
-                    <p>    ..</p>
+                    <p class="text-price"><%= bike.ModelsByBrand.modelName %></p>
                     <p class="text-price"> $
-                    <%= bike.precio  %>
+                    <%= bike.price  %>
                     </p>
                 </a>
                 <br />

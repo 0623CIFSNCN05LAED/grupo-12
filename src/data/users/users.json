@@ -129,14 +129,6 @@
     "avatar": "/images/users/avatar-1698709679663.jpg"
   },
   {
-    "id": "fcad362f-1319-4918-a1c6-300d3344caf6",
-    "nombre": "euge",
-    "apellido": "prueba",
-    "email": "euge@prueba.com",
-    "nacimiento": "2023-11-06",
-    "password": "$2b$05$B6uQvoZ.L5ikdE5t/BlUYO.m7.Ypq/G/aPkVBKHTuR/Gd6eSFnE5i",
-    "NumContacto": 453452,
-    "domicilio": "prueba",
-    "avatar": "/images/users/avatar-1700068829411.jpg"
+
   }
 ]

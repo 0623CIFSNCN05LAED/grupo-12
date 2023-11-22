@@ -1,19 +1,29 @@
+const { v4: uuidv4 } = require('uuid');
+
 module.exports = (sequelize, DataTypes) => {
     const Model = sequelize.define(
         "Categories",
         {
-               name:{
+            id: {
+                type: DataTypes.UUID,
+                defaultValue: () => uuidv4(),
+                primaryKey: true,
+            },
+            
+            name:{
                 field: "category",
                 type: DataTypes.STRING,
              },
               },
         { 
         tableName: "categories",
-        createdAt: "created_at",
-        UpdatedAt: "updated_at",
+        timestamps: false,
          });
 
-//Relaciones acá
-
+Model.associate = (db) => {
+Model.hasMany(db.Bikes, {
+    as: "category",
+    foreignKey: 'id_category' });
+};
     return Model;
      };

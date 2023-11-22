@@ -26,6 +26,6 @@
   "description": "Somos el sitio N° 1 de Argentina en ventas online de bicicletas y accesorios.",
   "devDependencies": {
     "ejs": "^3.1.9",
-    "sequelize-cli": "^6.6.1"
+    "sequelize-cli": "^6.6.2"
   }
 }

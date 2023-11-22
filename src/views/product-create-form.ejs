@@ -1,65 +1,95 @@
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <%- include("partials/head") %>
 </head>
 
-<body class="bg-ligh-grey">
-    
-<header class="bg-grey p-20">
-        <%- include("partials/header") %>        
-</header>
+<body class="bg-light-grey">
 
-<main>
-    <form action="/bikes" method="POST" class="create-form" enctype="multipart/form-data">
-    <div class="m-pic">
-        <label for="nombre">Nombre del producto:</label>
-        <input type="text" id="nombre"  name="nombre" placeholder="Bicicleta BW Race" class="control box-formulario">
-    </div>
-    <div class="m-pic">
-        <label for="marca">Marca del producto:</label>
-        <input type="text" id="marca" name="marca" placeholder="Vairo" class="control box-formulario">
-    </div>
-    <div class="m-pic">
-        <label for="rodado">Rodado:</label>
-        <input type="text" id="rodado" name="rodado" placeholder="29" class="control box-formulario">
-    </div>
-    <div class="m-pic">
-        <label for="tamaño">Tamaño del cuadro:</label>
-        <input type="text" name="tamaño" id="tamaño" placeholder="XL" class="control box-formulario">
-    </div>
-    <div class="m-pic">
-        <label for="categoria">Categoria de la bicicleta:</label>
-        <select name="categoria" id="categoria">
-            <option value="electrica">Electrica</option>
-            <option value="freestyle">Freestyle/BMX</option>
-            <option value="mountain-bike">Mountain Bike</option>
-            <option value="paseo">Paseo/Urban</option>
-            <option value="ruta">Ruta/Triatlon</option>
-        </select>
-    </div>
-    <div class="m-pic">
-        <label for="precio">Precio del producto:</label>
-        <input type="text" id= "precio" name="precio" placeholder="$159.700" class="control box-formulario">
-    </div>
-    <div class="m-pic">
-        <label for="descripcion">Descripcion:</label>
-        <textarea id="descripcion" name="descripcion" class="control box-formulario"></textarea>
-    </div>
-    <div class="m-pic">
-        <label for="img">Imagen del producto</label>
-        <input type="file" id="img" name="img">
-    </div>
-    <div class="m-pic">
-        <button type="reset" class="boton-formulario m-pic">Borrar</button>
-        <button type="submit" class="boton-formulario m-pic">Guardar</button>
-    </div>
+    <header class="bg-grey p-20">
+        <%- include("partials/header") %>
+    </header>
 
-    </form> 
-</main>
+    <main>
+        <form action="/bikes" method="POST" class="create-form" enctype="multipart/form-data">
+            <div class="m-pic">
+                <label for="modelName">Nombre del modelo:</label>
+                <input type="text" id="modelName" name="modelName" placeholder="Bicicleta BW Race" class="control box-formulario">
+            </div>
+            <div class="m-pic">
+                <label for="category">Categoría de la bicicleta:</label>
+                <select name="category" id="category">
+                  <% if (categories && categories.length) { %>
+                    <% categories.forEach(category => { %>
+                      <option value="<%= category.id %>"><%= category.name %></option>
+                    <% }); %>
+                  <% } else { %>
+                    <option value="" disabled>No hay categorías disponibles</option>
+                  <% } %>
+                </select>
+              </div>
+              
+              <!-- Tamaños -->
+              <div class="m-pic">
+                <label for="size">Tamaño del cuadro:</label>
+                <select name="size" id="size">
+                  <% if (sizes && sizes.length) { %>
+                    <% sizes.forEach(size => { %>
+                      <option value="<%= size.id %>"><%= size.name %></option>
+                    <% }); %>
+                  <% } else { %>
+                    <option value="" disabled>No hay tamaños disponibles</option>
+                  <% } %>
+                </select>
+              </div>
+              
+              <!-- Colores -->
+              <div class="m-pic">
+                <label for="color">Color:</label>
+                <select name="color" id="color">
+                  <% if (colors && colors.length) { %>
+                    <% colors.forEach(color => { %>
+                      <option value="<%= color.id %>"><%= color.name %></option>
+                    <% }); %>
+                  <% } else { %>
+                    <option value="" disabled>No hay colores disponibles</option>
+                  <% } %>
+                </select>
+              </div>
+              
+              <!-- Marcas -->
+              <div class="m-pic">
+                <label for="brand">Marca del producto:</label>
+                <select name="brand" id="brand">
+                  <% if (brands && brands.length) { %>
+                    <% brands.forEach(brand => { %>
+                      <option value="<%= brand.id %>"><%= brand.name %></option>
+                    <% }); %>
+                  <% } else { %>
+                    <option value="" disabled>No hay marcas disponibles</option>
+                  <% } %>
+                </select>
+              </div>
+            <div class="m-pic">
+                <label for="price">Precio del producto:</label>
+                <input type="text" id="price" name="price" placeholder="$159.700" class="control box-formulario">
+            </div>
+            <div class="m-pic">
+                <label for="description">Descripción:</label>
+                <textarea id="description" name="description" class="control box-formulario"></textarea>
+            </div>
+            <div class="m-pic">
+                <label for="image">Imagen del producto</label>
+                <input type="file" id="image" name="image">
+            </div>
+            <div class="m-pic">
+                <button type="reset" class="boton-formulario m-pic">Borrar</button>
+                <button type="submit" class="boton-formulario m-pic">Guardar</button>
+            </div>
 
-    
-<%- include("partials/footer") %>
+        </form>
+    </main>
 
-</body>  
-</html>
+    <%- include("partials/footer") %>
+
+</body>
+
+</html> 
