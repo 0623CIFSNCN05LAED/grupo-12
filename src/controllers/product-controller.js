@@ -68,18 +68,15 @@ module.exports={
         // Espera a que todas las promesas se resuelvan antes de renderizar la vista
         Promise.all([brandsPromise, sizesPromise, colorsPromise, categoriesPromise, modelsPromise])
           .then(([brands, sizes, colors, categories, models]) => {
-            console.log("id de la bici es", bike.id);
+
             res.render("product-edit-form", { bike, categories, brands, sizes, colors, models, errors });
           })
-          .catch((error) => {
-            console.error(error);
-            res.status(500).send("Error interno del servidor");
-          });
       });
     },
 
-    update: (req, res) => {
-      productService.updateBikes(req.params.id, req.body, req.file).then((bike)=>{
+    update: (req, res) => { 
+      productService.updateBikes(req.params.id, req.body, req.file).then((bike)=>{ 
+        console.log(req.params.id)
         res.redirect("/bikes");
       })
     }, 
