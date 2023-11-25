@@ -1,5 +1,6 @@
 const productService = require("../services/productServices");
 
+
 module.exports={
 
   productCart: (req, res) => { 
@@ -34,8 +35,11 @@ module.exports={
         const colors = await productService.getAllColors();
         const categories = await productService.getAllCategories();
         const models = await productService.getAllModels();
-    
-        res.render("product-create-form", { brands, sizes, colors, categories, models });
+        const errors= req.session.errors || { };
+        delete req.session.errors;
+
+
+        res.render("product-create-form", { brands, sizes, colors, categories, models, errors });
       } catch (error) {
         // Manejar errores
         console.error(error);
@@ -58,12 +62,14 @@ module.exports={
         const colorsPromise = productService.getAllColors();
         const categoriesPromise = productService.getAllCategories();
         const modelsPromise = productService.getAllModels();
-    
+        const errors= req.session.errors || { };
+        delete req.session.errors;
+
         // Espera a que todas las promesas se resuelvan antes de renderizar la vista
         Promise.all([brandsPromise, sizesPromise, colorsPromise, categoriesPromise, modelsPromise])
           .then(([brands, sizes, colors, categories, models]) => {
-            console.log(bike);
-            res.render("product-edit-form", { bike, categories, brands, sizes, colors, models });
+            console.log("id de la bici es", bike.id);
+            res.render("product-edit-form", { bike, categories, brands, sizes, colors, models, errors });
           })
           .catch((error) => {
             console.error(error);

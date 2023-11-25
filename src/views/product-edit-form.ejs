@@ -15,6 +15,11 @@
                 <input type="text" id="modelName" name="modelName" placeholder="Bicicleta BW Race" class="control box-formulario"
                 value="<%= bike.ModelsByBrand.name %>">
             </div>
+            <div class="red-text">
+              <% if (errors && errors.modelName){ %>
+                <%= errors.modelName.msg %>
+              <% } %>
+            </div>
             <div class="m-pic">
                 <label for="category">Categoría de la bicicleta:</label> 
                 <select name="category" id="category"> 
@@ -64,13 +69,24 @@
                 <label for="description">Descripción:</label>
                 <textarea id="description" name="description" class="control box-formulario"><%= bike.description %></textarea>
             </div>
+            <div class="red-text">
+              <% if (errors && errors.description){ %>
+                <p class="red-text"><%= errors.description.msg %> </p>
+              <% } %>
+              </div>  
             <div class="m-pic">
                 <label for="image">Imagen del producto</label>
                 <input type="file" id="image" name="image" 
                 value="<%= bike.image %>">
             </div>
+            <div class="red-text">
+              <% if (errors && errors.image){ %>
+                <p class="red-text"><%= errors.image.msg %> </p>
+              <% } %>
+          </div>
     <div class="m-pic">
         <input type="submit" value="Editar" class="boton-formulario"/>
+
 
         <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
     </div>

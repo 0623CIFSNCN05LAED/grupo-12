@@ -44,6 +44,7 @@ const productService = {
     
       createBike: async (bike, image) => { 
         try {
+          
 
         const brand = await Brands.findByPk(bike.brand);
       
