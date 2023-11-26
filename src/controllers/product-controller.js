@@ -87,10 +87,11 @@ module.exports={
       })
     },
 
-    filterCategory: (req, res) =>{
-      const categoria = req.params.categoria;
-      const bikes= productService.getBikesForCategory(categoria)
-      res.render("product-category", { bikes, categoria });
+    filterCategory: async (req, res) =>{ 
+      
+      const category = req.params.category;
+      const bikes= await productService.getBikesByCategory(category) 
+      res.render("product-category", { bikes, category });
     }
   };
     
