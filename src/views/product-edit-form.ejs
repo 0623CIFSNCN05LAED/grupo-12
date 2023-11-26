@@ -1,5 +1,16 @@
 <head>
     <%- include("partials/head") %>
+    <script type="text/javascript" src="/js/products/product-edit-form-validator.js" defer></script>
+    <style>
+        .errorMsg {
+            display: none;
+            color: red;
+        }
+    
+        .display {
+            display: block;
+        }
+    </style>
 </head>
 
 <body class="bg-light-grey">
@@ -9,11 +20,14 @@
     </header>
 
     <main>
-        <form action="/bikes/<%= bike.id %>?_method=PUT" method="POST" class="create-form" enctype="multipart/form-data">
+        <form action="/bikes/<%= bike.id %>?_method=PUT" method="POST" class="create-form" enctype="multipart/form-data" id="form">
             <div class="m-pic">
                 <label for="modelName">Nombre del modelo:</label>
-                <input type="text" id="modelName" name="modelName" placeholder="Bicicleta BW Race" class="control box-formulario"
+                <p>
+                <input type="text" id="modelName" name="modelName" class="control box-formulario"
                 value="<%= bike.ModelsByBrand.name %>">
+                <span class = "errorMsg" id="modelNameError"> </span>
+                </p>
             </div>
             <div class="red-text">
               <% if (errors && errors.modelName){ %>
@@ -62,12 +76,18 @@
               </div>
             <div class="m-pic">
                 <label for="price">Precio del producto:</label>
+                <p>
                 <input type="text" id="price" name="price" placeholder="$159.700" class="control box-formulario" 
                 value="<%=bike.price%>">
+                <span class = "errorMsg" id="priceError"> </span>
+              </p>
             </div>
             <div class="m-pic">
                 <label for="description">Descripción:</label>
+                <p> 
                 <textarea id="description" name="description" class="control box-formulario"><%= bike.description %></textarea>
+                <span class = "errorMsg" id="descriptionError"> </span>
+                </p>
             </div>
             <div class="red-text">
               <% if (errors && errors.description){ %>

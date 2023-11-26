@@ -2,17 +2,14 @@ const validations = [
     {
       field: "modelName",
       check: (input) => input.value.length >= 3,
-      message: "Debe contener al menos cinco caracteres", 
+      message: "Debe contener al menos tres caracteres", 
     },
     
-
-
     {
       field: "price",
       check: (input) => input.value > 0,
       message: "Debe ser un valor númerico mayor a 0", //Tambien deberia ser un valor numerico y expresado en pesos argentinos
     },
-    
     
     {
       field: "description",
