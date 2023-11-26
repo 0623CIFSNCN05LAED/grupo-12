@@ -21,7 +21,7 @@
                     <% users.forEach(user => { %>
                         <div class="text-xl mr-1 mx-auto box-list">
                             <a class="a-center w-full" href="/<%= user.id %>/users">
-                                <img class="flex-buy w-50 mx-auto m-pic" src="<%= user.avatar %>" alt="Imagen del usuario" />
+                                <img class="flex-buy w-50 mx-auto m-pic" src="/images/users<%= user.avatar %>" alt="Imagen del usuario" />
                                 <h1><%= user.firstName %> <%= user.lastName %></h1>
                             </a>
                         </div>

@@ -37,7 +37,7 @@ const productService = {
           size: bike.size ? { id: bike.size.id, name: bike.size.name } : null,
           description: bike.description,
           price: bike.price,
-          image: bike.image.filename,
+          image: bike.image
         };
       });
     },
@@ -190,26 +190,40 @@ const productService = {
    
   },
 
-
-    // destroyProduct: (id) => {
-    //   const bikeCategories = Bikes.findByPk(id, {
-    //     include: ["category"],
-    //   }).then((bike) => {
-    //     return bike.category.map((category) => {
-    //       return category.removeBike(bike);
-    //     });
-    //   });
-    
-    //   return Promise.all([bikeCategories]).then(() => {
-    //     return Bikes.destroy({
-    //       where: { id: id },
-    //     });
-    //   });
-    // },
-
-    getBikesForCategory: (categoria) =>{
-      return db.products.filterCategory(categoria);
-    },
+    getBikesByCategory: async (categoryName) => {
+          try {
+            // Busca la categoría por nombre
+            const category = await Categories.findOne({
+              where: {
+                name: categoryName,
+              },
+            });
+      
+            if (!category) {
+              // La categoría no fue encontrada
+              return [];
+            }
+      
+            // Utiliza Sequelize para buscar las bicicletas de la categoría específica en la base de datos
+            const bikes = await Bikes.findAll({
+              where: {
+                id_category: category.id, // Suponiendo que la relación entre Bikes y Categories se hace a través de la columna id_category
+              }, 
+              include: [
+                {
+                  model: ModelsByBrand,
+                  as: 'ModelsByBrand', // Nombre de la relación en el modelo Bikes
+                  attributes: ['modelName'], // Selecciona solo el nombre del modelo
+                }
+              ],
+            });
+      
+            return bikes;
+          } catch (error) {
+            console.error('Error al obtener bicicletas por categoría:', error);
+            throw error;
+          } 
+        },
 
     getAllCategories: () => {
       return Categories.findAll();
