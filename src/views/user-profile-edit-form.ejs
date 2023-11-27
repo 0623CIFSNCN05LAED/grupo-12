@@ -2,6 +2,17 @@
 <html lang="es">
 <head>
   <%- include("partials/head") %>
+  <script type="text/javascript" src="/js/users/user-profile-edit-form-validator.js" defer></script>
+  <style>
+      .errorMsg {
+          display: none;
+          color: red;
+      }
+  
+      .display {
+          display: block;
+      }
+  </style>
 </head>
 
 <body class="bg-ligh-grey bg-img">
@@ -10,17 +21,23 @@
       <%- include("partials/header") %>
     </header>
     <main>
-        <form action="/<%= user.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
+        <form action="/<%= user.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data" class="vw-90 bg-register" id="form">
         <h1 class="register">Edita tu perfil</h1>
         <div class="m-pic">
             <label for="firstName">Nombre:</label>
+            <p>
             <input type="text" name="firstName" id="firstName" 
             value="<%= user.firstName %>">
+            <span class = "errorMsg" id="firstNameError"> </span>
+          </p>
           </div>
           <div class="m-pic">
             <label for="lastName">Apellido:</label>
+          <p>
             <input type="text" name="lastName" id="lastName" 
             value="<%= user.lastName %>">
+            <span class = "errorMsg" id="lastNameError"> </span>
+          </p>
           </div>
           <div class="m-pic">
             <label for="birthday">Fecha de nacimiento:</label>
@@ -29,8 +46,11 @@
           </div>
           <div class="m-pic">
             <label for="address">Domicilio:</label>
+          <p>
             <input type="text" name="address" id="address" 
             value="<%= user.address %>">
+            <span class = "errorMsg" id="addressError"> </span>
+          </p>
           </div>
           <div class="m-pic">
             <label for="email">Email:</label>
@@ -39,13 +59,19 @@
           </div> 
           <div class="m-pic">
             <label for="phone">Numero de contacto:</label>
+          <p>
             <input type="text" name="phone" id="phone" 
             value="<%= user.phone %>">
+            <span class = "errorMsg" id="emailError"> </span>
+          </p>
           </div>
           <div class="m-pic">
             <label for="password">Nueva Contraseña:</label>
+          <p>
             <input type="password" name="password" id="password" 
             value="<%= user.password %>">
+            <span class = "errorMsg" id="passwordError"> </span>
+          </p>
           </div> 
 
           <div class="m-pic">
