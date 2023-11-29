@@ -5,23 +5,13 @@ function isValidEmail(email) {
   }
 
   function isValidPassword(password) {
-    // Reglas comunes de contraseñas
-    const minLength = 8;
-    const hasUppercase = /[A-Z]/.test(password);
-    const hasLowercase = /[a-z]/.test(password);
-    const hasNumber = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password);
-  
-    // Verifica la longitud mínima y la presencia de diferentes tipos de caracteres
-    const isValid =
-    password.length >= minLength &&
-    hasUppercase &&
-    hasLowercase &&
-    hasNumber &&
-    hasSpecialChar;
+    // Expresión regular para validar la contraseña
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%?&#.$($)$-$_])[A-Za-z\d$@$!%?&#.$($)$-$_]{8,15}$/;
 
+    // Verifica la contraseña con la expresión regular
+    const isValid = passwordRegex.test(password);
 
-  return isValid;
+    return isValid;
   }
 
 const validations = [
