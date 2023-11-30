@@ -2,6 +2,17 @@
 <html lang="es">
 <head>
   <%- include("partials/head") %>
+  <script type="text/javascript" src="/js/users/register-validator.js" defer></script>
+  <style>
+      .errorMsg {
+          display: none;
+          color: red;
+      }
+  
+      .display {
+          display: block;
+      }
+  </style>
 </head>
 
 <body class="bg-ligh-grey bg-img">
@@ -11,12 +22,14 @@
     </header>
     <main>
 
-        <form action="/register" method="post" enctype="multipart/form-data" class="vw-90 bg-register">
+        <form action="/register" method="post" enctype="multipart/form-data" class="vw-90 bg-register" id="form">
         <h1 class="register">Registrate!</h1>
         <div>
             <label for="nombre">Nombre:</label>
+            <p>
             <input type="text" name="firstName" id="firstName"  value="<%= locals.oldData ? locals.oldData.firstName : null %>">
-
+            <span class = "errorMsg" id="firstNameError"> </span>
+            </p>    
           </div>
           <% if (locals.errors && errors.firstName) { %>
             <div class="red-text">
@@ -27,8 +40,10 @@
           <div>
 
             <label for="lastName">Apellido:</label>
+            <p>
             <input type="text" name="lastName" id="lastName" value="<%= locals.oldData ? locals.oldData.lastName : null %>">
-
+            <span class = "errorMsg" id="lastNameError"> </span> 
+            </p>  
           </div>
           <% if (locals.errors && errors.lastName) { %>
             <div class="red-text">
@@ -50,7 +65,10 @@
 
           <div>
             <label for="address">Domicilio:</label>
+            <p>
             <input type="text" name="address" id="address" value="<%= locals.oldData ? locals.oldData.address : null %>">
+            <span class = "errorMsg" id="addressError"> </span>
+            </p>  
           </div>
           <% if (locals.errors && errors.address) { %>
             <div class="red-text">
@@ -60,7 +78,10 @@
 
           <div>
             <label for="email">Email:</label>
+            <p>
             <input type="email" name="email" id="email" value="<%= locals.oldData ? locals.oldData.email : null %>">
+            <span class = "errorMsg" id="emailError"> </span>
+            </p>
           </div> 
           <% if (locals.errors && errors.email) { %>
             <div class="red-text">
@@ -70,12 +91,18 @@
 
           <div>
             <label for="phone">Numero de contacto:</label>
+            <p>
             <input type="text" name="phone" id="phone">
+            <span class = "errorMsg" id="phoneError"> </span>
+            </p>
           </div>
 
           <div>
             <label for="password">Contraseña:</label>
+            <p>
             <input type="password" name="password" id="password" >
+            <span class = "errorMsg" id="passwordError"> </span>
+            </p>
           </div> 
           <% if (locals.errors && errors.password) { %>
             <div class="red-text">
