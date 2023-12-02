@@ -4,6 +4,7 @@ module.exports = {
   list: async (req, res) => {
     try {
       const bikes = await productService.getAllBikes();
+      console.log("Bicicletas antes del mapeo:", bikes);
       const count = bikes.length;
 
       const response = {
@@ -16,11 +17,11 @@ module.exports = {
           bikes: bikes.map((bike) => ({
             id: bike.id,
             description: bike.description,
-            category: bike.id_category,
-            brand:bike.id_brand,
-            size:bike.id_size,
-            color: bike.id_color,
-            price: bike.price
+            category: bike.category ? bike.category.name : null, // Accede al nombre de la categoría si está presente
+            brand: bike.brand ? bike.brand.name : null, // Accede al nombre de la marca si está presente
+            size: bike.size ? bike.size.name : null, // Accede al nombre del tamaño si está presente
+            color: bike.color ? bike.color.color : null, // Accede al nombre del color si está presente
+            price: bike.price,
             
           })),
         },
