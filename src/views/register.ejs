@@ -31,11 +31,12 @@
             <span class = "errorMsg" id="firstNameError"> </span>
             </p>    
           </div>
-          <% if (locals.errors && errors.firstName) { %>
-            <div class="red-text">
-              <%= errors.firstName.msg %> 
+          <div class="red-text">
+              <% if (errors && errors.firstName) { %>
+              <%= errors.firstName.msg %>
+              <% } %>
             </div>  
-          <% } %>
+          
 
           <div>
 
@@ -45,11 +46,12 @@
             <span class = "errorMsg" id="lastNameError"> </span> 
             </p>  
           </div>
-          <% if (locals.errors && errors.lastName) { %>
-            <div class="red-text">
-              <%= errors.lastName.msg %> 
-            </div>  
+
+          <div class="red-text">
+          <% if (errors && errors.lastName) { %>
+          <%= errors.lastName.msg %> 
           <% } %>
+        </div> 
 
           <div>
 
@@ -57,11 +59,11 @@
             <input type="date" name="birthday" id="birthday" value="<%= locals.oldData ? locals.oldData.birthday : null %>">
 
           </div>
-          <% if (locals.errors && errors.birthday) { %>
-            <div class="red-text">
-              <%= errors.birthday.msg %> 
-            </div>  
+          <div class="red-text">
+          <% if (errors && errors.birthday) { %>
+          <%= errors.birthday.msg %> 
           <% } %>
+        </div>
 
           <div>
             <label for="address">Domicilio:</label>
@@ -70,11 +72,13 @@
             <span class = "errorMsg" id="addressError"> </span>
             </p>  
           </div>
-          <% if (locals.errors && errors.address) { %>
+          
             <div class="red-text">
+              <% if (errors && errors.address) { %>
               <%= errors.address.msg %> 
+              <% } %>
             </div>  
-          <% } %>
+          
 
           <div>
             <label for="email">Email:</label>
@@ -83,11 +87,13 @@
             <span class = "errorMsg" id="emailError"> </span>
             </p>
           </div> 
-          <% if (locals.errors && errors.email) { %>
+          
             <div class="red-text">
-              <%= errors.email.msg %> 
+              <% if (errors && errors.email) { %>
+              <%= errors.email.msg %>
+              <% } %> 
             </div>  
-          <% } %>
+         
 
           <div>
             <label for="phone">Numero de contacto:</label>
@@ -104,22 +110,25 @@
             <span class = "errorMsg" id="passwordError"> </span>
             </p>
           </div> 
-          <% if (locals.errors && errors.password) { %>
-            <div class="red-text">
-              <%= errors.password.msg %> 
+          <div class="red-text">
+          <% if (errors && errors.password) { %>
+          <%= errors.password.msg %> 
+          <% } %>     
             </div>  
-          <% } %>
+          
 
 
           <div>
             <label for="avatar">Avatar:</label>
             <input type="file" id="avatar" name="avatar">
           </div>
-          <% if (locals.errors && errors.avatar) { %>
+          
             <div class="red-text">
-              <%= errors.avatar.msg %> 
+              <% if (errors && errors.avatar) { %>
+              <%= errors.avatar.msg %>
+               <% } %>
             </div>  
-          <% } %>
+         
 
           <div>
           <input type="submit" value="Enviar" class="boton-formulario"/>

@@ -5,7 +5,9 @@ const bcrypt = require('bcrypt');
 module.exports={
     
   showLogin: (req, res) => {
-    res.render("login");
+    const errors = req.session.errors
+    delete req.session.errors
+    res.render("login", { errors });
   }, 
 
   login: (req, res) =>{ 
@@ -45,7 +47,7 @@ module.exports={
       if (!passwordMatch) {
         return res.render("login",{
           errors: {
-            email:{
+            password:{
               msg: "La contraseña es incorrecta"
             }
           },
@@ -58,9 +60,7 @@ module.exports={
     });
   },
 
-  registerForm: (req, res) => {
-    res.render("register");
-  }, 
+  
 
   userList: async (req, res) => {
     const users = await userServices.getAllUsers();
@@ -84,44 +84,51 @@ module.exports={
       password: bcrypt.hashSync(req.body.password, 5),
       phone:(req.body.phone),
       address: req.body.address,
-      avatar: req.file ? "/images/users/" + req.file.filename : null,
-    }
-    
-    const resultValidation = validationResult(req);
-    if (resultValidation.errors.length > 0) {
-    return res.render("register", { 
-    errors: resultValidation.mapped(), 
-    oldData: req.body})
+      avatar: req.file ? "/images/users/" + req.file.filename : null, 
     } 
-      
-    const checkEmail = userServices.getByEmail( req.body.email)
-    .then(async (response)=>{
-      if (response && response.length>0) {
-        return res.render("register",{
-          errors: {
-            email:{
-              msg: "Este email se encuentra registrado"
+
+    const errors = req.session.errors; 
+
+    if (errors) {
+      return res.render('register', {
+        errors,
+        oldData: req.session.oldData || {},
+      });
+    }
+
+    const checkEmail =  await userServices.getByEmail(req.body.email);
+
+    if (checkEmail && checkEmail.length > 0) {
+        req.session.errors = {
+            email: {
+                msg: "Este email se encuentra registrado"
             }
-          },
-          oldData: req.body
-        });
-      } else {
-        await userServices.createUser(user);
-        return res.redirect("/");
-      }  
-    })
-      
-    }, 
-    logout: (req, res) => {
+        };
+        req.session.oldData = req.body;
+        return res.redirect("/register");
+    }
+
+    await userServices.createUser(user);
+    return res.redirect("/");
+}, 
+  registerForm: (req, res) => {
+    const errors =  req.session.errors 
+    delete req.session.errors
+    res.render('register', { errors });  
+  },
+  
+  logout: (req, res) => {
       res.clearCookie("recordame");
       req.session.destroy();
       return res.redirect("/");
     },
 
-  profileEdit:async (req, res) => {
+  profileEdit:async (req, res) => { 
+    const errors = req.session.errors; 
+    delete req.session.errors
     const id = req.params.id;
     const user = await userServices.getUser(id);
-    res.render("user-profile-edit-form", { user });
+    res.render("user-profile-edit-form", { user, errors }); 
   }, 
 
   profile: (req, res) => {

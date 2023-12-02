@@ -51,9 +51,9 @@
                   <input type="password" name="password" id="password" placeholder="Contraseña">
                   <span class = "errorMsg" id="passwordError"> </span>
                 </p>
-                <% if (locals.errors && errors.contraseña) { %>
+                <% if (locals.errors && errors.password) { %>
                   <div class="red-text">
-                    <%= errors.contraseña.msg %> 
+                    <%= errors.password.msg %> 
                   </div>  
                 <% } %>
                 <p class="center"><a href="#"> Olvidé mi contraseña </a></p>

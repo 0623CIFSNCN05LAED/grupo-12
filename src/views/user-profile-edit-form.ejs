@@ -30,7 +30,14 @@
             value="<%= user.firstName %>">
             <span class = "errorMsg" id="firstNameError"> </span>
           </p>
-          </div>
+          </div> 
+
+          <div class="red-text">
+            <% if (errors && errors.firstName) { %>
+            <%= errors.firstName.msg %>
+            <% } %>
+          </div> 
+
           <div class="m-pic">
             <label for="lastName">Apellido:</label>
           <p>
@@ -39,11 +46,25 @@
             <span class = "errorMsg" id="lastNameError"> </span>
           </p>
           </div>
+
+          <div class="red-text">
+            <% if (errors && errors.lastName) { %>
+            <%= errors.lastName.msg %>
+            <% } %>
+          </div>   
+
           <div class="m-pic">
             <label for="birthday">Fecha de nacimiento:</label>
             <input type="date" name="birthday" id="birthday" 
             value="<%= user.birthday %>">
-          </div>
+          </div> 
+
+          <div class="red-text">
+            <% if (errors && errors.birthday) { %>
+            <%= errors.birthday.msg %>
+            <% } %>
+          </div>  
+
           <div class="m-pic">
             <label for="address">Domicilio:</label>
           <p>
@@ -51,13 +72,27 @@
             value="<%= user.address %>">
             <span class = "errorMsg" id="addressError"> </span>
           </p>
-          </div>
+          </div> 
+
+          <div class="red-text">
+            <% if (errors && errors.address) { %>
+            <%= errors.address.msg %>
+            <% } %>
+          </div>  
+
           <div class="m-pic">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" 
             value="<%= user.email %>">
             <span class = "errorMsg" id="emailError"> </span>
-          </div> 
+          </div>  
+
+          <div class="red-text">
+            <% if (errors && errors.email) { %>
+            <%= errors.email.msg %>
+            <% } %>
+          </div>   
+
           <div class="m-pic">
             <label for="phone">Numero de contacto:</label>
           <p>
@@ -65,7 +100,8 @@
             value="<%= user.phone %>">
             <span class = "errorMsg" id="phoneError"> </span>
           </p>
-          </div>
+          </div>  
+
           <div class="m-pic">
             <label for="password">Nueva Contraseña:</label>
           <p>
@@ -73,13 +109,26 @@
             value="<%= user.password %>">
             <span class = "errorMsg" id="passwordError"> </span>
           </p>
-          </div> 
+          </div>  
+
+          <div class="red-text">
+            <% if (errors && errors.password) { %>
+            <%= errors.password.msg %>
+            <% } %>
+          </div>  
 
           <div class="m-pic">
             <label for="avatar">Avatar:</label>
             <input type="file" id="avatar" name="avatar" 
             value="<%= user.avatar %>">
-          </div>
+          </div> 
+
+          <div class="red-text">
+            <% if (errors && errors.avatar) { %>
+            <%= errors.avatar.msg %>
+            <% } %>
+          </div>   
+
           <div class="m-pic">
           <input type="submit" value="Editar" class="boton-formulario"/>
           <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
