@@ -4,17 +4,30 @@ module.exports = {
   list: async (req, res) => {
     try {
       const bikes = await productService.getAllBikes();
-      console.log("Bicicletas antes del mapeo:", bikes);
       const count = bikes.length;
 
-      const response = {
+      const bikesByCategory = bikes.reduce((acc, bike) => {
+        const categoryName = bike.category ? bike.category.name : 'Sin Categoría'; // Si no hay categoría, usar 'Sin Categoría'
+        
+        if (!acc[categoryName]) {
+            acc[categoryName] = { count: 0, bikes: [] };
+        }
+
+        acc[categoryName].count++;
+  
+        return acc;
+    }, {});
+     
+       const response = {
         meta: {
           status: 200,
           url: req.originalUrl,
         },
         data: {
           count,
-          bikes: bikes.map((bike) => ({
+          countByCategory: bikesByCategory,
+          bikes
+          : bikes.map((bike) => ({
             id: bike.id,
             description: bike.description,
             category: bike.category ? bike.category.name : null, // Accede al nombre de la categoría si está presente
@@ -23,7 +36,7 @@ module.exports = {
             color: bike.color ? bike.color.name : null, // Accede al nombre del color si está presente
             price: bike.price,
             bike: bike.ModelsByBrand ? bike.ModelsByBrand.modelName : null,
-            
+            detailUrl: `/api/bike/${bike.id}`
           })),
         },
       };
@@ -40,4 +53,17 @@ module.exports = {
       });
     }
   },
+
+  detail: async (req,res) => {
+    const bike = await productService.getBike(req.params.id);
+    
+    const response = {
+        meta:{
+            status: 200,
+            url: "/api/bike/:id"
+        },
+        data: bike,
+        }
+    res.json(response)
+}
 };
