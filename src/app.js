@@ -7,6 +7,8 @@ const cookieParser = require("cookie-parser");
 const userData = require("./middlewares/user-data")
 const userLogged = require('./middlewares/user-logged'); 
 const recordameMiddleware = require('./middlewares/recordame')
+const apiProductsRouter = require("./routes/api/products")
+const apiUsersRouter = require("./routes/api/users")
 
 
 app.use(express.static(path.join(__dirname,"../public")));
@@ -41,6 +43,6 @@ app.set("views", "./src/views");
 app.use(productRouter);
 app.use(mainRoute);
 app.use(userRouter);
-
-
+app.use(apiProductsRouter)
+app.use(apiUsersRouter)
 
