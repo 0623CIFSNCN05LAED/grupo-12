@@ -4,17 +4,37 @@ const Sequelize = require("sequelize");
 
 const productService = {
 
-    getAllBikes: () => {
-        return Bikes.findAll({
-          include: [
-          {
-            model: ModelsByBrand,
-            attributes: ['modelName'], // Incluye solo la propiedad 'modelName'
-            as: 'ModelsByBrand', // Alias para la relación
-          },
+  getAllBikes: () => {
+    return Bikes.findAll({
+        include: [
+            {
+                model: ModelsByBrand,
+                attributes: ['modelName'],
+                as: 'ModelsByBrand',
+            },
+            {
+                model: Categories,  // Agrega esta parte para incluir la asociación con Categories
+                as: 'category',
+                attributes: ['name'],  // Incluye solo la propiedad 'name'
+            },
+            {
+                model: Sizes,
+                as: 'size',
+                attributes: ['name'],
+            },
+            {
+                model: Colors,
+                as: 'color',
+                attributes: ['name'],
+            },
+            {
+                model: Brands,
+                as: 'brand',
+                attributes: ['name'],
+            },
         ],
-        });
-    },
+    });
+},
 
     getBike: (id) => {
       return Bikes.findByPk(id, {
