@@ -1,6 +1,7 @@
-import React from 'react';
 import "./Dashboard.css";
 import Menu from "./Menu";
+import SearchWrap from "./Search-wrap";
+import ContentWrap from "./Content-wrap";
 
 
 
@@ -8,9 +9,9 @@ function Dashboard () {
 return (
     <div className="dashboard">
 
-    <h1> Probando conección de componentes dashboard </h1>
-    <Menu />
-
+    <SearchWrap />
+      <Menu />
+      <ContentWrap />
     </div>
 );
 

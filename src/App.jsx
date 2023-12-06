@@ -1,14 +1,11 @@
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard"
 import "./App.css";
 
 function App() {
+
   return (
-    <div>
-      <header>
-        <Dashboard />
-      </header>
-    </div>
-  );
+    <Dashboard/>
+  )
 }
 
-export default App;
+export default App
