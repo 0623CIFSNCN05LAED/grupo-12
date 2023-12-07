@@ -1,26 +1,26 @@
 import { Component } from "react";
-import GenreItem from "./Item-genero";
+import CategoryItem from "./ItemCategory";
 
-// import GenreItem from "./Item-genero"; para traer los generos de la base de datos
 
-class Generos extends Component {
+
+class Category extends Component {
     constructor(props) {
       super(props);
-      //Especifico de Generos
+      //Especifico de categorias
       this.state = {
-        genres : []
+        category : []
       };
     }
   
   componentDidMount(){
-    // fetch('http://localhost:3001/api/genres').then((response) => {
+    // fetch('http://localhost:3001/api/category').then((response) => {
     //   return response.json();
     // })
     // .then((json) => {
-    //   const genres = json.data;
-    //   console.log('genres', genres);
+    //   const category = json.data;
+    //   console.log('category', category);
     //   this.setState({
-    //     genres: genres
+    //     category: category
     //   })
     // })
   }
@@ -29,19 +29,19 @@ class Generos extends Component {
     // render() {
     //   return (
     //     <section className="content">
-    //       <h2 className="mt-3">Géneros</h2>
+    //       <h2 className="mt-3">Categoria</h2>
     //       <div className="list-group shadow-sm p-3 mb-5 bg-body-tertiary rounded">
     //         <button
     //           type="button"
     //           className="list-group-item list-group-item-action active text-center"
     //           aria-current="true"
     //         >
-    //           Listado de géneros de las películas
+    //           Listado de Categoria de las películas
     //         </button>
-    //         {this.state.genres.length === 0 ?
+    //         {this.state.category.length === 0 ?
     //           "Cargando..." :
-    //         this.state.genres.map((genre) => (
-    //           <GenreItem key={genre.id} name={genre.name} />
+    //         this.state.category.map((category) => (
+    //           <categoryItem key={category.id} name={category.name} />
     //         ))}
     //       </div>
     //     </section>
@@ -49,5 +49,5 @@ class Generos extends Component {
    // }
   }
   
-  export default Generos;
+  export default Category;
   

@@ -1,17 +1,18 @@
+import React from 'react';
 import "./Dashboard.css";
-import Menu from "./Menu";
-import SearchWrap from "./Search-wrap";
-import ContentWrap from "./Content-wrap";
+//import Bikes from "./Products/Bikes";
+//import Header from "./Header";
+
 
 
 
 function Dashboard () {
 return (
     <div className="dashboard">
-
-    <SearchWrap />
-      <Menu />
-      <ContentWrap />
+<h2>Probando dashboard</h2>
+{/* <Header />
+    <Bikes /> */}
+      
     </div>
 );
 

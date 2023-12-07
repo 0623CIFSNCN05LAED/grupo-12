@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function GenreItem({ name }) {
+function CategoryItem({ name }) {
   return (
     <button
       type="button"
@@ -11,8 +11,8 @@ function GenreItem({ name }) {
   );
 }
 
-GenreItem.propTypes = {
+CategoryItem.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default GenreItem;
+export default CategoryItem;
