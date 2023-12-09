@@ -48,10 +48,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     );
   
-    // Relaciones acá
-    /** no es necesario esta relacion porque bikes no tiene idUser y cart esta hecha en carts 
-    Model.hasMany(models.Bikes, { foreignKey: 'id_user' });
-    Model.hasMany(models.Carts, { foreignKey: 'id_user' });
-  */
+  
     return Model;
   };
