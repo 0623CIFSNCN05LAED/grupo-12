@@ -1,21 +1,25 @@
+
 const multer = require('multer'); 
 const path = require('path');
 
-
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, '../../public/images/users'),
-    filename: function (req, file, cb) {
+  destination: (req, file, cb) => {
+          const destinationFolder = file.fieldname === 'avatar' 
+          ? '../../public/images/users' 
+          : '../../public/images/products';
+      console.log('Destination Folder:', path.join(__dirname, destinationFolder));
+      cb(null, path.join(__dirname, destinationFolder));
+  },
+  filename: (req, file, cb) => {
       cb(
-        null,
-        file.fieldname + '-' + Date.now() + path.extname(file.originalname)
+          null,
+          file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    },
-  });
-// cambiar, todas las imagenes llegan a la carpeta de users
+  },
+});
 
-  
-  const upload = multer({
+const upload = multer({
     storage: storage,
-  }); 
+});
 
-module.exports= upload;  
+module.exports = upload;
