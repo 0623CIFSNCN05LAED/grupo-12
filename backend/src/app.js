@@ -40,9 +40,11 @@ app.listen (PORT, ()=>{
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
+
+app.use(apiUsersRouter)
 app.use(productRouter);
 app.use(mainRoute);
 app.use(userRouter);
 app.use(apiProductsRouter)
-app.use(apiUsersRouter)
+
 
