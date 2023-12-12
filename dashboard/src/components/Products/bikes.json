@@ -1,0 +1,12 @@
+
+  {
+    "id": 2,
+    "marca": "specialized",
+    "nombre": "E-MTB",
+    "rodado": "27.5",
+    "tamaño": "m",
+    "categoria": "electrica",
+    "precio": 5138500,
+    "descripcion": "La bicicleta E-MTB cuenta con asistencia eléctrica. Te permite recorrer terrenos mucho más complejos y realizar recorridos más largos sin tanto desgaste físico. La mejor parte: desde el punto de vista ambiental son inofensivas, ya que no contaminan, no generan ruido ni emisiones. VELOCIDAD MÁXIMA: 25km/hAUTONOMÍA DE BATERÍA: 40kmTIEMPO DE CARGA: 5-6HS POTENCIA: 240W, 36V",
+    "img": "/images/products/Electrica-1.jpg"
+  }
