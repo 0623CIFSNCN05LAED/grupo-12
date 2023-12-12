@@ -34,6 +34,15 @@ const userServices = {
   destroyUser: (id) => {
     return Users.destroy({where: { id } });
   },
+
+  getAllUsersAndCount: ({
+    pageSize, offset
+  }) => {
+    return Users.findAndCountAll({
+      limit: pageSize, 
+      offset: offset
+    })
+  },
 };
 
 module.exports = userServices;
