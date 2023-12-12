@@ -1,29 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Bike from "./bikes.json";
+import  { useState, useEffect } from 'react';
 
+const Bikes = () => {
+  const [bikesData, setBikesData] = useState([]);
 
-const Bikes = ({ marca, nombre, categoria,img, precio, descripcion }) => {
+  useEffect(() => {
+    // Realiza la solicitud al backend para obtener datos de bicicletas
+    fetch('http://localhost:3030/api/bikes') // Ajusta la URL según tu backend
+      .then(response => response.json())
+      .then(data => setBikesData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
   return (
-    <div className="bike">
-      <img src={img} alt={nombre} />
-      <h2>{nombre}</h2>
-      <h2>{marca}</h2>
-      <h2>{categoria}</h2>
-      <p>${precio}</p>
-      <p>{descripcion}</p>
-
+    <div>
+      {bikesData.map((bike, index) => (
+        <div key={index}>
+          <h2>{bike.name}</h2>
+          <p>Marca: {bike.brand}</p>
+          <p>Categoría: {bike.category}</p>
+          <img src={bike.image} alt={bike.name} />
+          <p>Descripción: {bike.description}</p>
+          <p>Precio: ${bike.price}</p>
+        </div>
+      ))}
     </div>
   );
-};
-
-Bike.propTypes = {
-  nombre: PropTypes.string.isRequired,
-  marca: PropTypes.string.isRequired,
-  categoria: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  descripcion: PropTypes.string.isRequired,
-  precio: PropTypes.number.isRequired,
 };
 
 export default Bikes;

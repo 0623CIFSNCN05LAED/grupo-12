@@ -4,7 +4,7 @@ function CategoryItem({ name }) {
   return (
     <button
       type="button"
-      className="list-group-item list-group-item-action text-center"
+      className=""
     >
       {name}
     </button>
