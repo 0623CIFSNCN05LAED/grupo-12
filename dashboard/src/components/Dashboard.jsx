@@ -5,7 +5,7 @@ import Card from './Card';
 import Footer from "./Footer";
 
 import Bikes from "./Products/Bikes";
-
+import CategoryItem  from "./Categories/ItemCategory";
 
 
 
@@ -20,9 +20,11 @@ return (
 
 <Card />
 
+<CategoryItem />
+
+<Bikes /> 
 
 
-<Bikes />
    
  
 <Footer />
