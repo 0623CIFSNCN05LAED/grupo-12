@@ -1,7 +1,7 @@
 import  { useState, useEffect } from 'react';
 
 const Users = () => {
-  const [UsersData, setUsersData] = useState({});
+  const [UsersData, setUsersData] = useState({ users: [] });
 console.log(UsersData)
   useEffect(() => {
     // Realiza la solicitud al backend para obtener datos de bicicletas
@@ -17,19 +17,23 @@ console.log(UsersData)
   
  }, []);
 
-  return (
+ return (
     <div>
+        
       <div className="card">
-        { UsersData.length === 0 ? (
+        <h3>Datos de Usuarios</h3>
+        {UsersData.length === 0 ? (
           <p>Cargando...</p>
-        ) : (   
-            <p>Hola</p>
-        //     UsersData.users.map(user => (
-        //      <div key={user.id}>
-        //     <h2>{user.name}{user.lastName}</h2>
-        //      <p>Email: {user.email}</p>
-        //     </div>
-        //    ))
+        ) : (
+        
+          UsersData.users.map(user => (
+            <div key={user.id}>
+              <h2>Id N°{user.id}</h2>
+              <p>Nombre: {user.name}</p>
+              <p>Apellido: {user.lastName}</p>
+              <p>Email: {user.email}</p>
+            </div>
+          ))
         )}
       </div>
     </div>
