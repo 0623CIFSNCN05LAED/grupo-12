@@ -96,8 +96,11 @@
               </div>  
             <div class="m-pic">
                 <label for="image">Imagen del producto</label>
+                <p>
                 <input type="file" id="image" name="image" 
                 value="<%= bike.image %>">
+                <span class = "errorMsg" id="imageError"> </span>  
+                </p>
             </div>
             <div class="red-text">
               <% if (errors && errors.image){ %>

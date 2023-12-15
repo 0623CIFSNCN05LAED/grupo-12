@@ -264,7 +264,44 @@ const productService = {
     getAllModels: () => {
       return ModelsByBrand.findAll();
     },
-     
-} 
+
+    search: async (query) => {     //no funciona, VER
+      const bike = await Bikes.findAll({
+        where: {
+          id_model_name: {
+            [Sequelize.Op.like]: "%" + query + "%",
+          },
+        },
+        include: [
+          {
+              model: ModelsByBrand,
+              attributes: ['modelName'],
+              as: 'ModelsByBrand',
+          },
+          {
+              model: Categories,  // Agrega esta parte para incluir la asociación con Categories
+              as: 'category',
+              attributes: ['name'],  // Incluye solo la propiedad 'name'
+          },
+          {
+              model: Sizes,
+              as: 'size',
+              attributes: ['name'],
+          },
+          {
+              model: Colors,
+              as: 'color',
+              attributes: ['name'],
+          },
+          {
+              model: Brands,
+              as: 'brand',
+              attributes: ['name'],
+          },
+      ]
+      });
+      return bike;
+     }
+  }   
 
 module.exports = productService;

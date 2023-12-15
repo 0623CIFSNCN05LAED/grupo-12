@@ -14,6 +14,26 @@ function isValidEmail(email) {
     return isValid;
   }
 
+  function isValidImage(input) {
+    // Obtén el primer archivo seleccionado (asumimos que solo se permite seleccionar un archivo)
+    const file = input.files[0];
+  
+    if (!file) {
+      console.error("No se seleccionó ningún archivo");
+      return false; // No se seleccionó ningún archivo
+    }
+  
+    // Verifica la extensión del archivo
+    const validExtensions = ["jpg", "jpeg", "png", "gif"];
+    const fileExtension = file.name.split(".").pop().toLowerCase();
+    console.log("Extensión del archivo:", fileExtension);
+  
+    const hasValidExtension = validExtensions.includes(fileExtension);
+    console.log("Extensión válida:", hasValidExtension);
+  
+    return hasValidExtension;
+  }
+
 const validations = [
     {
       field: "firstName",
@@ -50,14 +70,29 @@ const validations = [
       check: (input) => isValidPassword(input.value),
       message: "Debe tener un mínimo de ocho caracteres, una mayúscula, una minúscula, un número y caracteres especiales", 
     },
+
+    {
+      field: "avatar",
+      check: (input) => isValidImage(input),
+      message: "Debe seleccionar una imagen válida (jpg, jpeg, png, etc.)",
+    },
   ];
   
   validations.forEach((validation) => {
     const inputId = validation.field;
     const input = document.getElementById(inputId);
-    const inputErrorMsg = document.getElementById(inputId + "Error");
+    
   
     function validate() {
+      const inputId = validation.field;
+      const input = document.getElementById(inputId);
+      const inputErrorMsg = document.getElementById(inputId + "Error");
+
+  // Asegurarse de que inputErrorMsg se seleccione correctamente
+       if (!inputErrorMsg) {
+       console.error("No se pudo encontrar el elemento de error para", inputId);
+       return;
+      }
       console.log("input.value", input.value);
       inputValidation(validation, input, inputErrorMsg);
     }
@@ -102,4 +137,8 @@ const validations = [
     inputErrorMsg.innerText = "";
     inputErrorMsg.classList.remove("display");
     return true;
+
+
   }
+
+  

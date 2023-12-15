@@ -106,12 +106,18 @@
                 <% if (errors && errors.description){ %>
                   <p class="red-text"><%= errors.description.msg %> </p>
                 <% } %>
-                </div>            
+                </div> 
+
             <div class="m-pic">
                 <label for="image">Imagen del producto</label>
-                <input type="file" id="image" name="image">
-              </div>
-              <div class="red-text">
+                <p>
+                  <input type="file" id="image" name="image">
+                  <span class = "errorMsg" id="imageError"> </span>
+                </p>  
+                
+            </div>
+
+            <div class="red-text">
                 <% if (errors && errors.image){ %>
                   <p class="red-text"><%= errors.image.msg %> </p>
                 <% } %>
