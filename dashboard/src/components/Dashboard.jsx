@@ -1,34 +1,26 @@
 
 import "./Dashboard.css";
-import Header from "./Header";
+import Menu from "./Menu";
 import Card from './Card';
-import Footer from "./Footer";
+import Footer from "./Footer"; 
+import ContentWrap from "./content-wrap";
 
-import Bikes from "./Products/Bikes";
-import CategoryItem  from "./Categories/ItemCategory";
+// import Bikes from "./Products/Bikes";
+// import CategoryItem  from "./Categories/ItemCategory";
 
 
 
 function Dashboard () {
 return (
 
-    <div className="dashboard">
+<div className="dashboard">
 
-
-<Header />
-
-
+<Menu />
+<ContentWrap />
 <Card />
-
-<CategoryItem />
-
-<Bikes /> 
-
-
-   
- 
+{/* <CategoryItem /> */}
+{/* <Bikes />  */}
 <Footer />
-
 
 </div>
 

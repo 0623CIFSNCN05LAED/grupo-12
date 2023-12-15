@@ -12,7 +12,7 @@ const cardData = [
 
 function Card ({ title, metric }){
     return (
-        <div className="card">
+        <div className="card card-container">
       <h2 className="card-title">{title}</h2>
       <p className="card-metric">{metric}</p>
     </div>
