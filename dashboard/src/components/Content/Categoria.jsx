@@ -36,7 +36,6 @@ function Categories() {
           </div>
         </div> 
         <div className="col-6 list-group shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-        <h2>Categoria Seleccionada:</h2>
 
           <Route path="/categorias/:name" component={CategoryDetail} /> 
         

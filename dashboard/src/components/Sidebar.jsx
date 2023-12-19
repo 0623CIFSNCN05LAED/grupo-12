@@ -34,7 +34,12 @@ export default function Sidebar() {
             <Link to="/usuarios">
               <i className="bi bi-people-fill" style={iconStyle}></i> Usuarios
             </Link>
-          </li> 
+          </li>  
+          <li>
+            <Link to= "/createBike">
+            <i className="bi bi-patch-plus-fill" style={iconStyle}></i> Crear Bicicleta
+            </Link>
+          </li>
         </ul>
       </section>
     </nav>

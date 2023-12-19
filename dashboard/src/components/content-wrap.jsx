@@ -2,6 +2,7 @@ import Bikes from "./Products/Bikes";
 import Categories from './Content/Categoria';
 import { Route, Switch } from 'react-router-dom';
 import Users from './Content/Usuarios'
+import CreateBike from './Content/CreateBike';
 
 export default function ContentWrap() {
     return (
@@ -20,6 +21,9 @@ export default function ContentWrap() {
         </Route> 
         <Route path='/usuarios'>
           <Users />
+        </Route>
+        <Route path="/createBike">
+           <CreateBike />
         </Route>
         <Route path="*" >
           <p>404 - página no encontrada</p>
