@@ -8,7 +8,16 @@ const userData = require("./middlewares/user-data")
 const userLogged = require('./middlewares/user-logged'); 
 const recordameMiddleware = require('./middlewares/recordame')
 const apiProductsRouter = require("./routes/api/products")
-const apiUsersRouter = require("./routes/api/users")
+const apiUsersRouter = require("./routes/api/users") 
+const cors = require("cors");
+
+app.use(
+  cors(
+    // (corsOptions = {
+    //   origin: "*",
+    // })
+  )
+);
 
 
 app.use(express.static(path.join(__dirname,"../public")));

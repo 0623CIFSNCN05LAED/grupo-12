@@ -16,7 +16,7 @@ productsRouter.get("/bikes/:id", productController.productDetailBikes);
 productsRouter.get("/bikes/category/:category", productController.filterCategory);
 productsRouter.get("/bikes/id:", productController.filterCategory);
 
-productsRouter.get("/cart",userGuard, productController.productCart);
+productsRouter.get("/cart", userGuard, productController.productCart);
 
 productsRouter.get("/create", productController.productCreate);
 productsRouter.post("/bikes", upload.single("image"), createEditValidation, validateForm("/create"), productController.productStoreBikes);
@@ -24,7 +24,9 @@ productsRouter.post("/bikes", upload.single("image"), createEditValidation, vali
 productsRouter.get("/edit/:id", productController.productEdit);
 productsRouter.put("/bikes/:id", upload.single("image"),createEditValidation, validateForm("/edit/:id"), productController.update);
 
-productsRouter.delete("/bikes/delete/:id", productController.destroy)
+productsRouter.delete("/bikes/delete/:id", productController.destroy) 
+
+
 
 
 module.exports = productsRouter;
