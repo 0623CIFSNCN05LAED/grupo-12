@@ -63,7 +63,6 @@ const productService = {
     },
     
       createBike: async (bike, image) => { 
-        try {
           
 
         const brand = await Brands.findByPk(bike.brand);
@@ -102,7 +101,7 @@ const productService = {
             console.log("El color no fue encontrado o no tiene un ID válido.");
             return null; 
           }
-      
+          console.log(image);
           const newBike = await Bikes.create({
             id_model_name: modelName.id,
             id_category: category.id,
@@ -115,10 +114,7 @@ const productService = {
           });
       
           return newBike;
-        } catch (error) {
-          console.error("Error al crear la bicicleta:", error);
-          return null;  // O maneja de otra manera el error
-        }
+      
       },
 
       updateBikes: async (id, body, file) => { 

@@ -106,11 +106,12 @@ module.exports = {
     res.json(response)
 }, 
 
-createProduct : async (req, res) => {
-  try {
+createBike : async (req, res) => {
     // Extraer datos del cuerpo de la solicitud
     const { description, category, brand, size, color, price, modelName } = req.body;
-    const imageFilename = req.file.filename;
+    const image = req.file.filename
+
+    console.log(image);
 
     // Lógica para crear un nuevo producto usando productService
     const newProduct = await productService.createBike({
@@ -120,31 +121,19 @@ createProduct : async (req, res) => {
       size,
       color,
       price,
-      image,
-      modelName,
-      imageFilename
+      modelName
     }, 
-    
+    image
     );
 
     res.status(201).json({
       meta: {
         status: 201,
-        message: 'Producto creado con éxito',
-        url: `/api/products/${newProduct.id}`,
+        message: 'Producto creado con éxito',  
       },
       data: newProduct,
     });
-  } catch (error) {
-    console.error('Error al crear el producto:', error);
-    res.status(500).json({
-      meta: {
-        status: 500,
-        error: 'Error interno del servidor',
-      },
-      data: null,
-    });
-  }
+  
 }
 
 };

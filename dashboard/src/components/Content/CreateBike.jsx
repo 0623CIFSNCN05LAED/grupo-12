@@ -8,31 +8,27 @@ const CreateBike = () => {
   const [colors, setColors] = useState([]);
   
   const [bikeData, setBikeData] = useState({
+    modelName:'',
     brand: '',
     category: '',
     size: '',
     color: '',
     description: '',
     price: '',
-    image: null,
+    image: '',
   });
 
   useEffect(() => {
-    // Fetch brands, categories, sizes, and colors from your API
     const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/products');
+      
+        const response = await axios.get('http://localhost:3030/api/products');
         const { brands, categories, sizes, colors } = response.data.data;
-        
-        // Ajusta aquí para reflejar la estructura correcta
-        const allCategories = Object.keys(categories);
-        setCategories(allCategories);
+
+        setCategories(categories);
         setBrands(brands);
         setSizes(sizes);
         setColors(colors);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+     
     };
 
     fetchData();
@@ -43,17 +39,18 @@ const CreateBike = () => {
     setBikeData({ ...bikeData, [name]: value });
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e) => { 
     const file = e.target.files[0];
+    console.log(file);
     setBikeData({ ...bikeData, image: file });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Implement logic to send bikeData to your API for creating a new bike
-    try {
+    
       const formData = new FormData();
+      formData.append('modelName', bikeData.modelName);
       formData.append('brand', bikeData.brand);
       formData.append('category', bikeData.category);
       formData.append('size', bikeData.size);
@@ -62,18 +59,19 @@ const CreateBike = () => {
       formData.append('price', bikeData.price);
       formData.append('image', bikeData.image);
 
-      // Use axios or your preferred HTTP library to make a POST request
-      const response = await axios.post('/api/createBike', formData);
+      const response = await axios.post('http://localhost:3030/api/createBike', formData);
       console.log('Bike created:', response.data);
       
-      // Optionally, you can reset the form or perform other actions after successful creation
-    } catch (error) {
-      console.error('Error creating bike:', error);
-    }
+    
+    
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card card-container">
+    <form onSubmit={handleSubmit} className="card card-container"> 
+     <label>
+        Nombre del modelo:
+        <input type="text" name="modelName" value={bikeData.name} onChange={handleInputChange} />
+      </label>
       <label>
         Brand:
         <select name="brand" value={bikeData.brand} onChange={handleInputChange}>
@@ -91,8 +89,8 @@ const CreateBike = () => {
         <select name="category" value={bikeData.category} onChange={handleInputChange}>
           <option value="">Select Category</option>
           {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
+            <option key={category.id} value={category.id}>
+              {category.name}
             </option>
           ))}
         </select>
