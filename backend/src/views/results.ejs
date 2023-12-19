@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include("partials/head") %>
+    <title>Search Result</title>
+  </head>
+  <body>
+    <header><%- include("partials/header") %></header>
+    <div>
+      <div>
+        <h2>Resultados de la búsqueda:</h2>
+      </div>
+
+      <div>
+        <% if(bike.length == 0) {%>
+        <div>
+          <h2 style="color: tomato">
+            No hay productos que coincidan con esa búsqueda
+          </h2>
+        </div>
+        <% } else {%> <%- include("partials/product-detail", {bike}) %> <% } %>
+      </div>
+    </div>
+    <footer class="footer"><%- include("partials/footer") %></footer>
+  </body>
+</html>
