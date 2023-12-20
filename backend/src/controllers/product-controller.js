@@ -92,8 +92,13 @@ module.exports={
       const category = req.params.category;
       const bikes= await productService.getBikesByCategory(category) 
       res.render("product-category", { bikes, category });
+    },
+
+    addToCart: async (req, res) => {
+       res.redirect("/product-cart");
     }
-  };
+
+     };
     
     
 
