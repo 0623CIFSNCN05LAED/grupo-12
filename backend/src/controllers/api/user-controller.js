@@ -5,44 +5,23 @@ const pageSize = 5
 module.exports = {
   list:async (req, res) => {
 
-    const page = Number(req.query.page) || 1;
-    const offset = (page - 1) * pageSize;
- 
-    const {count} = await usersServices.getAllUsersAndCount({
-        pageSize, offset })
-
-
-        const users = await usersServices.getAllUsers({ limit: pageSize, offset
-        })
-       
-        const totalPages = Math.ceil(count / pageSize);
-    const nextPage = page < totalPages ? `/api/users?page=${page + 1}` : null;
-
-    // Reorganiza los usuarios para mostrar solo 5 por fila
-    const organizedUsers = [];
-    for (let i = 0; i < users.length; i += pageSize) {
-      organizedUsers.push(users.slice(i, i + pageSize));
-    }
-
+const users = await usersServices.getAllUsers() 
 
     res.json({
         meta: {
             status: 200,
-            total: count,
-            url: req.originalUrl, 
-            nextPage
+            url: req.originalUrl 
+           
             }, 
         //data:{ users, count: users.length}
-        count,
         data: {
-          users: organizedUsers.map((row) =>
-          row.map((user) => ({
+          users: users.map((user) => ({
             id: user.id,
             name:user.firstName,
             lastName:user.lastName,
             email: user.email,
             detailUrl: `/api/user/${user.id}`
-          }))),
+          })),
 
          } 
     })
