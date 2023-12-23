@@ -101,6 +101,8 @@ body{
 
 .p-10{
     padding: 10px;
+    color: black;
+
 }
 
 .f-navbar{
@@ -426,7 +428,14 @@ justify-content: center;
 .m-right{
     margin-right: 40px;
 } 
-
+.imagen-con-zoom {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .imagen-con-zoom:hover {
+    transform: scale(1.1);
+  }
+  
 
 @media(max-width: 768px){
     .user-cart{

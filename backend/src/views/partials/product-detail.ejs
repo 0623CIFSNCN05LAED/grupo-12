@@ -4,13 +4,13 @@
             <a href="/edit/<%= bike.id %>" class="c-white">Editar producto</a>
         </button>
     </div> 
-    <div>
-        <img class="a-center w-50 mx-auto m-pic" src="/images/products/<%= bike.image %>" alt="Imagen del producto" />
+    <div class="imagen-con-zoom">
+        <img class="a-center w-50 mx-auto " src="/images/products/<%= bike.image %>" alt="Imagen del producto" />
     </div>
 
 <div class="bt-1 mx-auto border-grey p-1 relative flex flex-wrap">
     <i class="fa-solid fa-truck truck-icon"></i>
-    <h3 class="text-lg description w-100">
+    <h3 class="text-lg description w-100"> 
         <%= bike.brand.name %>
     </h3> 
     <h3 class="text-lg description w-100">
@@ -20,16 +20,16 @@
         <%= bike.price %>     
         </p>
      
-    <p class="p-10 ">
+    <p class="p-10 "> Talle Cuadro:
         <%= bike.size.name %>
     </p>
-    <p class="p-10 ">
+    <p class="p-10 "> Color: 
         <%= bike.color.name %>
     </p>
-    <p class="p-10 ">
+    <p class="p-10 "> Categoria: 
         <%= bike.category.name %>
     </p> 
-    <p class="p-10 ">
+    <p class="p-10 "> Descripcion: 
         <%= bike.description %>
     </p>
 </div>

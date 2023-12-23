@@ -88,8 +88,9 @@ body {
   }
   
   .card-title {
-    font-size: 1rem;
+    font-size: 1.1rem; /* Ajusta el tamaño según sea necesario */
     margin-bottom: 8px;
+    color: rgb(247, 137, 4); /* Cambiado a negro */
   }
   .card-metric { 
     padding-left: 5px;

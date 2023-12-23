@@ -16,13 +16,13 @@ const userServices = {
     }, Hace la misma funcion que el getUser*/
 
   getByEmail: async (emailValue) => {
-    return await Users.findAll({where: {email: emailValue}});
+    return await Users.findOne({where: {email: emailValue}});
   },
   createUser: async (user) => {
-    try
-    {
+    try {
       console.log(user);
-      return await Users.create(user);
+      const createdUser = await Users.create(user);
+      return createdUser; // Puedes ajustar esto según tus necesidades
     } catch (error) {
       console.error("Error al crear el usuario:", error);
       return null;
