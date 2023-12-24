@@ -95,7 +95,7 @@ module.exports={
     },
 
     addToCart: async (req, res) => {
-       res.redirect("/product-cart");
+       res.render("/product-cart");
     }
 
      };
