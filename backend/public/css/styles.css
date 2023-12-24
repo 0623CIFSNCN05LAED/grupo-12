@@ -395,6 +395,10 @@ justify-content: center;
     color: red;
 } 
 
+.blue-text{
+    color: blue;
+} 
+
 .img-perfil{
     width: 10% ; 
     border-radius: 50%; 
