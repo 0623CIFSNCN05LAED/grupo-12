@@ -21,18 +21,18 @@ const Bikes = () => {
 
   return (
     <div>
-      <div className="card">
+      <div>
         { bikesData.length === 0 ? (
           <p>Cargando...</p>
         ) : (
-          bikesData.bikes.map(bike => (
-            <div key={bike.id}>
-            <h2>{bike.name}</h2>
-            <p>Marca: {bike.brand}</p>
-            <p>Categoría: {bike.category}</p>
-            <img src={bike.image} alt={bike.name} />
-            <p>Descripción: {bike.description}</p>
-            <p>Precio: ${bike.price}</p>
+          bikesData.bikes.map((bike) => (
+            <div className="bike-card" key={bike.id}>
+              <h2 className="bike-title">{bike.name}</h2>
+              <p className="bike-info">Marca: {bike.brand}</p>
+              <p className="bike-info">Categoría: {bike.category}</p>
+              <img className="bike-image" src={bike.image} alt={bike.name} />
+              <p className="bike-info">Descripción: {bike.description}</p>
+              <p className="bike-info">Precio: ${bike.price}</p>
             </div>
           ))
         )}
@@ -40,20 +40,6 @@ const Bikes = () => {
     </div>
   );
       
-
-
-      // {/* {bikesData.length === 0 
-      // ? "Cargando..."
-      // :bikesData.map((bike, index) => (
-      //   <div key={index}>
-      //     <h2>{bike.name}</h2>
-      //     <p>Marca: {bike.brand}</p>
-      //     <p>Categoría: {bike.category}</p>
-      //     <img src={bike.image} alt={bike.name} />
-      //     <p>Descripción: {bike.description}</p>
-      //     <p>Precio: ${bike.price}</p>
-      //   </div>
-      // ))} */}
     
 
 };
