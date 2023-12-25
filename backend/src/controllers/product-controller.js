@@ -96,7 +96,19 @@ module.exports={
 
     addToCart: async (req, res) => {
        res.render("/product-cart");
+    },
+
+  search: async (req, res) => { 
+    try {
+      const keywords = req.query.search;
+      const foundBikes = await productService.search(keywords);
+      console.log(foundBikes);
+      res.render("results", { bikes: foundBikes });
+    } catch (error) {
+      console.error('Error al procesar la búsqueda:', error);
+      res.status(500).send('Error interno del servidor');
     }
+  },
 
      };
     

@@ -12,14 +12,18 @@
       </div>
 
       <div>
-        <% if(bike.length == 0) {%>
-        <div>
-          <h2 style="color: tomato">
-            No hay productos que coincidan con esa búsqueda
-          </h2>
-        </div>
-        <% } else {%> <%- include("partials/product-detail", {bike}) %> <% } %>
-      </div>
+        <% if (!bikes || bikes.length === 0) { %>
+          <div>
+              <h2 style="color: tomato">
+                  No hay productos que coincidan con esa búsqueda
+              </h2>
+          </div>
+      <% } else { %>
+          <% bikes.forEach(bike => { %>
+            <%- console.log(bike) %>
+              <%- include("partials/product-detail", { bike }) %>
+          <% }); %>
+      <% } %>
     </div>
     <footer class="footer"><%- include("partials/footer") %></footer>
   </body>
