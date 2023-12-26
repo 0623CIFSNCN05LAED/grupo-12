@@ -264,6 +264,10 @@ const productService = {
 
     search: async (query) => {
       try {
+        if (!query || query.trim() === '') {
+          throw new Error('Completa el campo de búsqueda');
+        }
+
         const bikes = await Bikes.findAll({
           where: {
             '$ModelsByBrand.modelName$': {

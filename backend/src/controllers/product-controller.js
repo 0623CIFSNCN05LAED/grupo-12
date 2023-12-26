@@ -101,6 +101,11 @@ module.exports={
   search: async (req, res) => { 
     try {
       const keywords = req.query.search;
+
+      if (!keywords || keywords.trim() === '') {
+        alert('Completa el campo de búsqueda');
+      }
+
       const foundBikes = await productService.search(keywords);
       console.log(foundBikes);
       res.render("results", { bikes: foundBikes });
