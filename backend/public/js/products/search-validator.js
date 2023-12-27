@@ -1,5 +1,5 @@
 function validateSearch() {
-    var searchInput = document.getElementById('search').value.trim();
+    const searchInput = document.getElementById('search').value.trim();
 
     if (searchInput === '') {
       alert('Completa el campo de búsqueda');
