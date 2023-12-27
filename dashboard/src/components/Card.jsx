@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import "./Dashboard.css";
 
 // Componente Card sin cambios
 function Card({ title, metric }) {

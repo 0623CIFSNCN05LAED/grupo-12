@@ -42,6 +42,11 @@ body{
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.search-input {
+    display: flex;
+    max-width: 100%;
+}
+
 #search {
     flex: 1;
     padding: 5px 10px 5px 10px;
@@ -101,6 +106,8 @@ body{
 
 .p-10{
     padding: 10px;
+    color: black;
+
 }
 
 .f-navbar{
@@ -393,6 +400,10 @@ justify-content: center;
     color: red;
 } 
 
+.blue-text{
+    color: blue;
+} 
+
 .img-perfil{
     width: 10% ; 
     border-radius: 50%; 
@@ -427,14 +438,13 @@ justify-content: center;
     margin-right: 40px;
 } 
 
-/* efectos zoom*/
-
-.zoom-image:hover {
-    transform: scale(1.1); 
-    transition: transform 0.3s ease; 
+.imagen-con-zoom {
+    transition: transform 0.3s ease-in-out;
   }
-
-
+  
+  .imagen-con-zoom:hover {
+    transform: scale(1.1);
+  }
   
 
 @media(max-width: 768px){

@@ -50,7 +50,8 @@ const productService = {
     
         return {
           id: bike.id, 
-          ModelsByBrand: bike.ModelsByBrand ? {name: bike.ModelsByBrand.modelName} : null,  
+          ModelsByBrand: bike.ModelsByBrand ? { modelName: bike.ModelsByBrand.modelName } : null,
+          // ModelsByBrand: bike.ModelsByBrand ? {name: bike.ModelsByBrand.modelName} : null,  ACA HICE UN CAMBIO QUIZAS SUSTANCIAL, VER SI LO DEMAS SIGUE FUNCIONANDO
           brand: bike.brand ? { id: bike.brand.id, name: bike.brand.name } : null,
           category: bike.category ? { id: bike.category.id, name: bike.category.name } : null,
           color: bike.color ? { id: bike.color.id, name: bike.color.name } : null,
@@ -260,7 +261,54 @@ const productService = {
     getAllModels: () => {
       return ModelsByBrand.findAll();
     },
-     
-} 
+
+    search: async (query) => {
+      try {
+        if (!query || query.trim() === '') {
+          throw new Error('Completa el campo de búsqueda');
+        }
+
+        const bikes = await Bikes.findAll({
+          where: {
+            '$ModelsByBrand.modelName$': {
+              [Sequelize.Op.like]: `%${query}%`,
+            },
+          },
+          include: [
+            {
+              model: ModelsByBrand,
+              as: 'ModelsByBrand',
+              attributes: ['modelName'], 
+            },
+            {
+              model: Categories,
+              as: 'category',
+              attributes: ['name'],
+            },
+            {
+              model: Sizes,
+              as: 'size',
+              attributes: ['name'],
+            },
+            {
+              model: Colors,
+              as: 'color',
+              attributes: ['name'],
+            },
+            {
+              model: Brands,
+              as: 'brand',
+              attributes: ['name'],
+            },
+          ],
+        });
+    
+        return bikes;
+      } catch (error) {
+        console.error('Error al buscar bicicletas:', error);
+        throw error;
+      }
+    },
+  }   
 
 module.exports = productService;

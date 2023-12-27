@@ -1,11 +1,27 @@
+function isValidImage(input) {
+  // Obtén el primer archivo seleccionado (asumimos que solo se permite seleccionar un archivo)
+  const file = input.files[0];
+
+  if (!file) {
+    console.error("No se seleccionó ningún archivo");
+    return false; // No se seleccionó ningún archivo
+  }
+
+  // Verifica la extensión del archivo
+  const validExtensions = ["jpg", "jpeg", "png", "gif"];
+  const fileExtension = file.name.split(".").pop().toLowerCase();
+  
+  const hasValidExtension = validExtensions.includes(fileExtension);
+
+  return hasValidExtension;
+}
+
 const validations = [
     {
       field: "modelName",
       check: (input) => input.value.length >= 3,
       message: "Debe contener al menos tres caracteres", 
     },
-    
-
 
     {
       field: "price",
@@ -19,14 +35,28 @@ const validations = [
       check: (input) => input.value.length > 20,
       message: "Debe tener minimo 20 caracteres", 
       },
+
+    {
+        field: "image",
+        check: (input) => isValidImage(input),
+        message: "Debe seleccionar una imagen válida (jpg, jpeg, png, etc.)",
+    },  
   ];
   
   validations.forEach((validation) => {
     const inputId = validation.field;
-    const input = document.getElementById(inputId);
-    const inputErrorMsg = document.getElementById(inputId + "Error");
+    const input = document.getElementById(inputId); 
   
     function validate() {
+      const inputId = validation.field;
+      const input = document.getElementById(inputId);
+      const inputErrorMsg = document.getElementById(inputId + "Error");
+
+  // Asegurarse de que inputErrorMsg se seleccione correctamente
+       if (!inputErrorMsg) {
+       console.error("No se pudo encontrar el elemento de error para", inputId);
+       return;
+      }
       console.log("input.value", input.value);
       inputValidation(validation, input, inputErrorMsg);
     }

@@ -11,8 +11,10 @@
     </header>
     
     <main><form action="" class="box-cart">
+
       
-        <h1>Carrito de compras</h1>
+        <h1>Carrito de compras </h1>
+        
   <table class="font1 mt-5 mb-5">
     <thead class="font1 mt-5 mb-5">
       <tr>
@@ -24,7 +26,10 @@
     </thead>
     <tbody>
       <tr>
-        <td>Producto 1</td>
+        <div>
+        <td>Producto 1 </td>
+        <img class="w-50 mx-auto m-pic" src="/images/enviobici.png" alt="Imagen del producto" />
+      </div>
         <td><select name="Cantidad" id="">
           <% for (let i = 0; i <= 10; i++) { %>
             <option value="<%= i %>"><%= i %></option>
@@ -33,7 +38,8 @@
       </td>
         <td>$ --</td>
         <td>$ --</td>
-      </tr>
+
+          </tr>
       <tr>
         <td>Producto 2</td>
         <td><select name="Cantidad" id="">
@@ -48,7 +54,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <th colspan="2">Total</th>
+        <th colspan="2">Total </th>
         <th>$ --</th>
       </tr>
     </tfoot>
@@ -63,14 +69,18 @@
     <label>Envío por encomienda ($3.000)</label>
     <input type="radio" name="shipping_method" value="shipping"> 
   </div>
+
+ <button class="blue-text" >Eliminar compras</button>
   
-  
+  <p class="center my-1 shipment">Total: $0.00</p>
+
     <div class="flex-buy">
-    <input type="submit" value="Pagar" class="center" formaction="/home">
+    <input type="submit" value="Finalizar compra" class="boton-formulario" formaction="/home">
   
 </form>
-  
-  
+
+
+
 </div>
       
 </main>

@@ -92,8 +92,30 @@ module.exports={
       const category = req.params.category;
       const bikes= await productService.getBikesByCategory(category) 
       res.render("product-category", { bikes, category });
+    },
+
+    addToCart: async (req, res) => {
+       res.render("/product-cart");
+    },
+
+  search: async (req, res) => { 
+    try {
+      const keywords = req.query.search;
+
+      if (!keywords || keywords.trim() === '') {
+        alert('Completa el campo de búsqueda');
+      }
+
+      const foundBikes = await productService.search(keywords);
+      console.log(foundBikes);
+      res.render("results", { bikes: foundBikes });
+    } catch (error) {
+      console.error('Error al procesar la búsqueda:', error);
+      res.status(500).send('Error interno del servidor');
     }
-  };
+  },
+
+     };
     
     
 

@@ -13,6 +13,8 @@ const { validate } = require("uuid");
 productsRouter.get("/bikes", productController.productListBikes); 
 productsRouter.get("/bikes/:id", productController.productDetailBikes);
 
+productsRouter.get("/search", productController.search); 
+
 productsRouter.get("/bikes/category/:category", productController.filterCategory);
 productsRouter.get("/bikes/id:", productController.filterCategory);
 

@@ -13,10 +13,17 @@
       <div class="m-logo">
           <img src="/images/logo.png" class="logo" alt="Logo BikeWorld" onclick="window.location='/'">
       </div>
-          <div class="search-container">
-        <input type="text" id="search" placeholder="Buscar bicicletas...">
-        <button type="button" id="search-button">Buscar</button>
-          </div>
+        
+      
+      <div class="search-container">
+        <form action="/search" method="GET" onsubmit="return validateSearch()">
+          <input type="text" name="search" id="search" placeholder="Buscar bicicletas..." class="search-input">
+          <button type="submit" id="search-button">Buscar</button>
+        </form>    
+      </div>
+
+
+
      <div class="m-hamburger">
         <a href="#" class="hamburguer-buttom">
         <i class="fa-solid fa-bars"></i>
@@ -57,5 +64,7 @@
           <li><a href="/cart">SHOP</a></li>
       </ul>
   </nav>        
+
+  <script type="text/javascript" src="/js/products/search-validator.js" defer></script>
       
 </header>

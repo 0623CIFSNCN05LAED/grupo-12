@@ -3,6 +3,7 @@
         <button type="button" class="boton-formulario">
             <a href="/edit/<%= bike.id %>" class="c-white">Editar producto</a>
         </button>
+        <% console.log(JSON.stringify(bike, null, 2)) %>
     </div> 
     <div>
         <img class="a-center w-50 mx-auto m-pic" src="<%= bike.image %>" alt="Imagen del producto" />
@@ -10,27 +11,35 @@
 
 <div class="bt-1 mx-auto border-grey p-1 relative flex flex-wrap">
     <i class="fa-solid fa-truck truck-icon"></i>
-    <h3 class="text-lg description w-100">
-        <%= bike.brand.name %>
+    <h3 class="text-lg description w-100"> 
+      Marca:  <%= bike.brand.name %>
     </h3> 
-    <h3 class="text-lg description w-100">
-        <%= bike.ModelsByBrand ? bike.ModelsByBrand.name : 'Modelo no disponible' %>     
-     </h3>
+    
+    <h3 class="text-lg description w-100"> 
+        Modelo: <%= bike.ModelsByBrand && bike.ModelsByBrand.modelName ? bike.ModelsByBrand.modelName : 'Modelo no disponible' %>
+    </h3>
+    
      <p class="text-xl mr-1"> $
         <%= bike.price %>     
         </p>
      
-    <p class="p-10 ">
+    <p class="p-10 "> Talle Cuadro:
         <%= bike.size.name %>
     </p>
-    <p class="p-10 ">
+    <p class="p-10 "> Color: 
         <%= bike.color.name %>
     </p>
-    <p class="p-10 ">
+    <p class="p-10 "> Categoria: 
         <%= bike.category.name %>
     </p> 
-    <p class="p-10 ">
+    <p class="p-10 "> Descripcion: 
         <%= bike.description %>
     </p>
+
+    <div class="flex-buttom p-10">
+        <button type="button" class="boton-formulario">
+            <a href="/cart" class="c-white">Agregar al carrito</a>
+        </button>
+    </div> 
 </div>
 </article>
