@@ -78,10 +78,12 @@ body {
     display: flex;
     justify-content: space-evenly; 
   }
-  .card {  
+  .card {
+    width: 300px; /* Ajusta el ancho según tus necesidades */
+    height: 350px; /* Ajusta la altura según tus necesidades */
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 15px;
+    padding: 20px; /* Aumenta el espacio interno */
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 0.8);
@@ -93,12 +95,74 @@ body {
     color: rgb(247, 137, 4); /* Cambiado a negro */
   }
   .card-metric { 
-    padding-left: 5px;
+    padding-left: 20px;
     font-size: 1rem;
     color: #333;
     text-align: center;
   }
-  
+   /*bikes*/
+/* Estilos para el componente bikes.ejs */
+.bike-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bike-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: black;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.bike-info {
+  font-size: 1rem;
+  color: #333;
+}
+
+.bike-image {
+  width: 100%; /* Asegura que la imagen ocupe el ancho completo de su contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+
+
+/* Estilos para la lista de usuarios */
+
+
+
+.user-card {
+  width: 250px; /* Ajusta el ancho según tus necesidades */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.user-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.user-card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.user-image {
+  width: 50%; 
+  border-radius: 8px; 
+  margin-top: 10px;
+}
+
 
   /*footer*/
   .footer {

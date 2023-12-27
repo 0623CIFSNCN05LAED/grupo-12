@@ -111,7 +111,7 @@ const productService = {
             id_color: color.id,
             description: bike.description,
             price: bike.price,
-            image: image.filename,
+            image: image ? "http://localhost:3030/images/products/" + image.filename : null,
           });
       
           return newBike;
@@ -119,7 +119,7 @@ const productService = {
       },
 
       updateBikes: async (id, body, file) => { 
-
+              console.log(body);
               const bike = await Bikes.findByPk(id, {
                   include: [
                       { model: ModelsByBrand, as: 'ModelsByBrand' },
@@ -189,7 +189,7 @@ const productService = {
       
               // Si se proporciona una nueva imagen, actualizarla
               if (file) {
-                  bike.image = file.filename;
+                bike.image = file ? "http://localhost:3030/images/products/" + file.filename : null;
               }
       
               // Guardar los cambios en la base de datos
