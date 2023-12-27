@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const CreateBike = () => {
   const [brands, setBrands] = useState([]);
@@ -21,14 +20,15 @@ const CreateBike = () => {
   useEffect(() => {
     const fetchData = async () => {
       
-        const response = await axios.get('http://localhost:3030/api/products');
-        const { brands, categories, sizes, colors } = response.data.data;
+        const response = await fetch('http://localhost:3030/api/products');
+
+        const data = await response.json();
+        const { brands, categories, sizes, colors } = data.data;
 
         setCategories(categories);
         setBrands(brands);
         setSizes(sizes);
         setColors(colors);
-     
     };
 
     fetchData();
@@ -40,15 +40,14 @@ const CreateBike = () => {
   };
 
   const handleImageChange = (e) => { 
-    const file = e.target.files[0];
-    console.log(file);
-    setBikeData({ ...bikeData, image: file });
+    const file = e.target.files[0]; 
+    console.log('file', file);
+    setBikeData({ ...bikeData, image: file});
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
       const formData = new FormData();
       formData.append('modelName', bikeData.modelName);
       formData.append('brand', bikeData.brand);
@@ -59,11 +58,12 @@ const CreateBike = () => {
       formData.append('price', bikeData.price);
       formData.append('image', bikeData.image);
 
-      const response = await axios.post('http://localhost:3030/api/createBike', formData);
-      console.log('Bike created:', response.data);
-      
-    
-    
+      const response = await fetch('http://localhost:3030/api/createBike', {
+        method: 'POST',
+        body: formData,
+      });
+      console.log('Bike created:', response);
+  
   };
 
   return (

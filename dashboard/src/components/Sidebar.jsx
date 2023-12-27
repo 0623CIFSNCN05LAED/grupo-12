@@ -39,7 +39,7 @@ export default function Sidebar() {
             <Link to= "/createBike">
             <i className="bi bi-patch-plus-fill" style={iconStyle}></i> Crear Bicicleta
             </Link>
-          </li>
+          </li> 
         </ul>
       </section>
     </nav>
