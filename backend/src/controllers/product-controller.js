@@ -113,7 +113,7 @@ module.exports={
       console.error('Error al procesar la búsqueda:', error);
       res.status(500).send('Error interno del servidor');
     }
-  },
+  }, 
 
      };
     
