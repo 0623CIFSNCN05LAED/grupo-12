@@ -43,7 +43,7 @@ module.exports={
         res.clearCookie("recordame");
       } 
 
-    const passwordMatch = bcrypt.compareSync(req.body.password, user[0].password);
+    const passwordMatch = bcrypt.compareSync(req.body.password, user.password);
       if (!passwordMatch) {
         return res.render("login",{
           errors: {
@@ -54,7 +54,7 @@ module.exports={
           oldData: req.body
         });
       } else {
-        req.session.userData = user[0];
+        req.session.userData = user;
         return res.redirect("/");
       }
     });
@@ -76,7 +76,6 @@ module.exports={
 
   register: async (req, res) => { 
     const user = {
-      //id:(req.body.),
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
@@ -84,6 +83,7 @@ module.exports={
       password: bcrypt.hashSync(req.body.password, 5),
       phone:(req.body.phone),
       address: req.body.address,
+      rol: req.body.email.includes('@bikeworld.com') ? 1 : 0,
       avatar: req.file ? "/images/users/" + req.file.filename : null, 
     } 
 

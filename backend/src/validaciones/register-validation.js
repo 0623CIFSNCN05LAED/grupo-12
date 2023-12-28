@@ -24,6 +24,9 @@ module.exports = [
     .notEmpty()
     .withMessage("Debe completar este campo") 
     .isLength({ min: 6 }),
+    body("rol")
+    .isInt({ min: 0, max: 1 })
+    .withMessage("El campo 'rol' debe ser 0 (usuario común) o 1 (administrador)"),
     body('avatar').custom((value, { req }) => {
 		let file = req.file;
 		let acceptedExtensions = ['.jpg', '.png', '.gif'];

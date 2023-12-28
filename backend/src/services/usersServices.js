@@ -10,19 +10,17 @@ const userServices = {
     return await Users.findByPk(id);
   },
 
-  /**  getUserById: (id) => {
-      const user = Users.findById(id);
-      return user;
-    }, Hace la misma funcion que el getUser*/
 
   getByEmail: async (emailValue) => {
     return await Users.findOne({where: {email: emailValue}});
   },
+ 
   createUser: async (user) => {
     try {
-      console.log(user);
+      console.log('Creando usuario con la siguiente información:', user);
       const createdUser = await Users.create(user);
-      return createdUser; // Puedes ajustar esto según tus necesidades
+      console.log('Usuario creado con éxito:', createdUser);
+      return createdUser;
     } catch (error) {
       console.error("Error al crear el usuario:", error);
       return null;
