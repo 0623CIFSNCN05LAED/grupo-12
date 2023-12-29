@@ -43,7 +43,7 @@ module.exports={
         res.clearCookie("recordame");
       } 
 
-    const passwordMatch = bcrypt.compareSync(req.body.password, user[0].password);
+    const passwordMatch = bcrypt.compareSync(req.body.password, user.password);
       if (!passwordMatch) {
         return res.render("login",{
           errors: {
@@ -54,7 +54,7 @@ module.exports={
           oldData: req.body
         });
       } else {
-        req.session.userData = user[0];
+        req.session.userData = user;
         return res.redirect("/");
       }
     });
@@ -84,7 +84,7 @@ module.exports={
       password: bcrypt.hashSync(req.body.password, 5),
       phone:(req.body.phone),
       address: req.body.address,
-      avatar: req.file ? "/images/users/" + req.file.filename : null, 
+      avatar: req.file ? "http://localhost:3030/images/users/" + req.file.filename : null, 
     } 
 
     const errors = req.session.errors; 

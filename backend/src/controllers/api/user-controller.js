@@ -20,6 +20,7 @@ const users = await usersServices.getAllUsers()
             name:user.firstName,
             lastName:user.lastName,
             email: user.email,
+            avatar: user.avatar,
             detailUrl: `/api/user/${user.id}`
           })),
 

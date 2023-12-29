@@ -15,7 +15,8 @@ const Users = () => {
     };
 
     fetchData();
-  }, []);
+  }, []); 
+
 
   return (
     <div >
@@ -28,7 +29,7 @@ const Users = () => {
             <h3>Nombre: {user.name}</h3>
             <h3>Apellido: {user.lastName}</h3>
             <p>Email: {user.email}</p>
-            <img className="user-image" src={user.image} alt={user.name} />
+            <img className="user-image" src={user.avatar} alt={user.name} />
           </div>
         ))
       )}
