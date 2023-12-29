@@ -13,14 +13,13 @@ const users = await usersServices.getAllUsers()
             url: req.originalUrl 
            
             }, 
-     
+        //data:{ users, count: users.length}
         data: {
           users: users.map((user) => ({
             id: user.id,
             name:user.firstName,
             lastName:user.lastName,
             email: user.email,
-            rol: user.rol,
             detailUrl: `/api/user/${user.id}`
           })),
 
@@ -44,7 +43,6 @@ const users = await usersServices.getAllUsers()
       email: user.email,
       birthday: user.birthday,
       phone: user.phone,
-      rol: user.rol,
       avatar: user.avatar,
       adress: user.adress
 
