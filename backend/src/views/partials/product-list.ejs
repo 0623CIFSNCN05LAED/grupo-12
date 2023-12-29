@@ -12,20 +12,22 @@
                       
             <% bikes.forEach(bike =>{ %>
             </div>
-            <div class="box-list"> 
-                <a class="a-center w-full" href="/bikes/<%= bike.id %>">
-                    <img class="imagen-con-zoom flex-buy w-50 mx-auto m-pic" src="/images/products/<%= bike.image %>" alt="Imagen del producto" />
+            <div class="box-list imagen-con-zoom  "> 
+                <a class="a-center w-full " href="/bikes/<%= bike.id %>">
+
+                <img class="flex-buy w-50 mx-auto m-pic" src="<%= bike.image %>" alt="Imagen del producto" />
+                <p class="text-price"><%= bike.ModelsByBrand.modelName %></p>
+                <p class="text-price"> $
+                <%= bike.price  %> 
+                </p> 
+                <p class="text-price"> $
+                    <%= bike.description  %>
+                    </p>
+            </a>
+            
+                <% }) %>
             </div> 
-                    <p class="text-price"><%= bike.ModelsByBrand.modelName %></p>
-                    <p class="text-price"> $
-                    <%= bike.price  %> 
-                    </p> 
-                    <p class="text-price"> $
-                        <%= bike.description  %>
-                        </p>
-                </a>
-                <br />
-                    <% }) %>
+                  
         </div>
    
 </article>

@@ -5,8 +5,6 @@ import Card from './Card';
 import Footer from "./Footer"; 
 import ContentWrap from "./content-wrap";
 
-// import Bikes from "./Products/Bikes";
-// import CategoryItem  from "./Categories/ItemCategory";
 
 
 
@@ -18,8 +16,6 @@ return (
 <Menu />
 <ContentWrap />
 <Card />
-{/* <CategoryItem /> */}
-{/* <Bikes />  */}
 <Footer />
 
 </div>

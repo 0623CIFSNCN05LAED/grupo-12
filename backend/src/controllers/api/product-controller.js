@@ -31,7 +31,7 @@ module.exports = {
           color: bike.color ? bike.color.name : null,
           price: bike.price,
           image: bike.image,
-          name: bike.ModelsByBrand ? bike.ModelsByBrand.modelName : null,
+          modelName: bike.ModelsByBrand ? bike.ModelsByBrand.modelName : null,
           detailUrl: `/api/bike/${bike.id}`,
         });
   
@@ -57,7 +57,7 @@ module.exports = {
             color: bike.color ? bike.color.name : null, // Accede al nombre del color si está presente
             price: bike.price,
             image: bike.image,
-            name: bike.ModelsByBrand ? bike.ModelsByBrand.modelName : null,
+            modelName: bike.ModelsByBrand ? bike.ModelsByBrand.modelName : null,
             detailUrl: `/api/bike/${bike.id}`
           })), 
           categories: categories.map((category) => ({
@@ -106,13 +106,13 @@ module.exports = {
     res.json(response)
 }, 
 
-createBike : async (req, res) => {
-    // Extraer datos del cuerpo de la solicitud
+createBike : async (req, res, file ) => {
+    // Extraer datos del cuerpo de la solicitud 
     const { description, category, brand, size, color, price, modelName } = req.body;
-    const image = req.file.filename
+    const image = req.file 
 
     console.log(image);
-
+    
     // Lógica para crear un nuevo producto usando productService
     const newProduct = await productService.createBike({
       description,
@@ -121,7 +121,8 @@ createBike : async (req, res) => {
       size,
       color,
       price,
-      modelName
+      modelName,
+      
     }, 
     image
     );
@@ -134,6 +135,66 @@ createBike : async (req, res) => {
       data: newProduct,
     });
   
-}
+}, 
+updateBike: async (req, res, file) => {
+ 
+    const bikeId = req.params.id;
+    const { description, category, brand, size, color, price, modelName } = req.body;  
+    const image = req.file
+    console.log('image', req.body); 
+
+
+    
+    // Verificar si la bicicleta existe antes de intentar actualizarla
+    const existingBike = await productService.getBike(bikeId);
+    if (!existingBike) {
+      return res.status(404).json({
+        meta: {
+          status: 404,
+          error: 'Bicicleta no encontrada',
+        },
+        data: null,
+      });
+    }
+
+    // Lógica para actualizar la bicicleta usando productService
+    const updatedBike = await productService.updateBikes(bikeId, {
+      description,
+      category,
+      brand,
+      size,
+      color,
+      price,
+      modelName,
+    }, 
+    image
+    );
+
+    res.json({
+      meta: {
+        status: 200,
+        message: 'Bicicleta actualizada con éxito',
+      },
+      data: updatedBike,
+    });
+  
+},
+      
+destroyBike : async (req, res) => {
+    const bikeId = req.params.id;
+  
+    // Lógica para eliminar la bicicleta usando productService
+    await productService.destroyProduct(bikeId);
+  
+    res.json({
+      meta: {
+        status: 200,
+        message: 'Bicicleta eliminada con éxito',
+      },
+      data: null,
+    });
+  },
+
+
 
 };
