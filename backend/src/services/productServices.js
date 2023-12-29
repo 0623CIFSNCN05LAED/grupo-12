@@ -260,7 +260,46 @@ const productService = {
 
     getAllModels: () => {
       return ModelsByBrand.findAll();
+    }, 
+
+    getAllBikesRandom: async () => {
+      
+        const bikes = await Bikes.findAll({
+          order: Sequelize.literal('RAND()'), 
+          limit: 3, 
+          include: [
+            {
+              model: ModelsByBrand,
+              attributes: ['modelName'],
+              as: 'ModelsByBrand',
+          },
+          {
+              model: Categories,  
+              as: 'category',
+              attributes: ['name'],  
+          },
+          {
+              model: Sizes,
+              as: 'size',
+              attributes: ['name'],
+          },
+          {
+              model: Colors,
+              as: 'color',
+              attributes: ['name'],
+          },
+          {
+              model: Brands,
+              as: 'brand',
+              attributes: ['name'],
+          },
+          ],
+        });
+  
+        return bikes; 
     },
+    
+  
 
     search: async (query) => {
       try {
