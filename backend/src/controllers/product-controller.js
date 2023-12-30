@@ -1,5 +1,5 @@
 const productService = require("../services/productServices");
-
+const findIndexById = (array, id) => array.findIndex(item => item.productId === id);
 
 module.exports={
 
@@ -20,24 +20,16 @@ module.exports={
       const productId = req.body.productId;
       const productBrand = req.body.productBrand;
       const productModel = req.body.productModel;
-
       const productColor = req.body.productColor;
-
-
-       const productPrice = parseFloat(req.body.productPrice);
-
-
-       const productSize = req.body.productSize;
-       
-       const productImage = req.body.productImage;
-       const productCategory = req.body.productCategory;
-
+      const productPrice = parseFloat(req.body.productPrice);
+      const productSize = req.body.productSize;
+      const productImage = req.body.productImage;
+      const productCategory = req.body.productCategory;
        
        if (!req.session.cart) {
         req.session.cart = [];
       }
     
-
       const cartProducts = req.session.cart || [];
 
         cartProducts.push({
@@ -59,6 +51,7 @@ module.exports={
        res.render("product-cart", {cartProducts, total});
     },
 
+    
 
     productDetailBikes: (req, res) =>{
       productService.getBike(req.params.id).then((bike)=>{ 

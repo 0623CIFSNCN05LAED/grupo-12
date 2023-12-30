@@ -24,41 +24,42 @@
     <% for (let i = 0; i < cartProducts.length; i++) { %>
     
     <tr>
+
+      
       <div class="box-list imagen-con-zoom  ">
        
+        
         <img class="w-50 mx-auto m-pic" src="<%= cartProducts[i].productImage %>" alt="Imagen del producto" />
 
-        <th> Marca</th> 
+        <th> Marca:</th> 
         <td><%= cartProducts[i].productBrand %></td>
        
-        <th> Modelo</th> 
+        <th> Modelo:</th> 
         <td><%= cartProducts[i].productModel %></td>
 
-        <th> Precio</th>
+        <th> Precio:</th>
         <td >$ <%= cartProducts[i].productPrice %></td>
         
-        <th> Tamaño</th>
+        <th> Tamaño:</th>
         <td>$ <%= cartProducts[i].productSize %></td>
 
-       <th> Color</th> 
+       <th> Color:</th> 
         <td><%= cartProducts[i].productColor %></td>
 
-        <th> Cat</th> 
+        <th> Categoria:</th> 
         <td><%= cartProducts[i].productCategory %></td>
+   
+        <label for="quantity<%= i %>">Cantidad:</label>
+        <input type="number" id="quantity<%= i %>" name="quantity<%= i %>"  value="1" min="1">
+      
+        <button class="blue-text" >Eliminar producto</button>
+
       </div>
     </tr>
       <% } %>
 
     </tbody>
   
-   <tfoot>
-      <tr>
-        <th colspan="2">Total </th>
-        
-        <th>$ </th>
-      
-      </tr>
-    </tfoot>
   
   
   <h2 class="flex-buy">Método de envío</h2>
@@ -71,21 +72,17 @@
     <input type="radio" name="shipping_method" value="shipping"> 
   </div>
 
- <button class="blue-text" >Eliminar compras</button>
+ <button class="blue-text boton-formulario" >Vaciar Carrito</button>
   
- <tr>
-  <th colspan="2">Total </th>
-  <th>$ <%= total.toFixed(2) %></th>
+ <tr >
+  <h2>Total $ <%= total.toFixed(2) %></h2> <th></th>
 </tr>
 
-
-  <p class="center my-1 shipment">Total: $0.00</p>
 
     <div class="flex-buy">
     <input type="submit" value="Finalizar compra" class="boton-formulario" formaction="/home">
   
 </form>
-
 
 
 </div>
