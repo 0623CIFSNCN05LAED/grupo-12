@@ -4,7 +4,7 @@
         <h2 class="flex-buttom p-10">Categoria <%= category %> </h2>
         <% bikes.forEach(bike => { %> 
           <a href="/bikes/<%= bike.id %>">
-            <img class="w-50 mx-auto m-pic" src="/images/products/<%= bike.image%>" alt="Imagen del producto" />
+            <img class="w-50 mx-auto m-pic" src="<%= bike.image%>" alt="Imagen del producto" />
             <h4><%= bike.ModelsByBrand.modelName %></h4>
             <p class="ps-text-grey"> $<%= bike.price %></p>
           </a>

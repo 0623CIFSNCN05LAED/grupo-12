@@ -24,7 +24,7 @@
       <% bikes.forEach((bike, index) => { %>
         <div class="carousel-item <%= index === 0 ? 'active' : '' %>"> 
           <a href="/bikes/<%= bike.id %>">
-          <img src="/images/products/<%= bike.image %>" class="d-block mx-auto" alt="<%= bike.ModelsByBrand.modelName %>">
+          <img src="<%= bike.image %>" class="d-block mx-auto" alt="<%= bike.ModelsByBrand.modelName %>">
           <div class="carousel-caption d-none d-md-block">
             <h5><%= bike.ModelsByBrand.modelName %></h5>
             <p><%= bike.description %></p>

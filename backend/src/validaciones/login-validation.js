@@ -10,8 +10,6 @@ module.exports = [
     body("password")
     .notEmpty()
     .withMessage("Debe completar este campo") 
-    .isLength({ min: 6 }),
-    
-
+    .isLength({ min: 6 })
 ]
     

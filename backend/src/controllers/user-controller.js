@@ -76,6 +76,7 @@ module.exports={
 
   register: async (req, res) => { 
     const user = {
+      //id:(req.body.),
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
@@ -83,8 +84,7 @@ module.exports={
       password: bcrypt.hashSync(req.body.password, 5),
       phone:(req.body.phone),
       address: req.body.address,
-      rol: req.body.email.includes('@bikeworld.com') ? 1 : 0,
-      avatar: req.file ? "/images/users/" + req.file.filename : null, 
+      avatar: req.file ? "http://localhost:3030/images/users/" + req.file.filename : null, 
     } 
 
     const errors = req.session.errors; 
