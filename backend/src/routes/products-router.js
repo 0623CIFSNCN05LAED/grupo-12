@@ -19,6 +19,8 @@ productsRouter.get("/bikes/category/:category", productController.filterCategory
 productsRouter.get("/bikes/id:", productController.filterCategory);
 
 productsRouter.get("/cart", userGuard, productController.productCart);
+productsRouter.post("/cart", userGuard, productController.addToCart)
+
 
 productsRouter.get("/create", productController.productCreate);
 productsRouter.post("/bikes", upload.single("image"), createEditValidation, validateForm("/create"), productController.productStoreBikes);

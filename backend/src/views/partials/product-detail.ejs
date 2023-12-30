@@ -1,4 +1,6 @@
 <article class="mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product"> 
+    
+    
     <div class="flex-buttom p-10">
         <button type="button" class="boton-formulario">
             <a href="/edit/<%= bike.id %>" class="c-white">Editar producto</a>
@@ -37,9 +39,13 @@
     </p>
 
     <div class="flex-buttom p-10">
-        <button type="button" class="boton-formulario">
-            <a href="/cart" class="c-white">Agregar al carrito</a>
-        </button>
+            <form action="/cart" method="POST" class="boton-formulario">
+            <input type="hidden" name="productId" value="<%= bike.id %>">
+            <input type="hidden" name="productName" value="<%= bike.brand.name %> <%= bike.ModelsByBrand ? bike.ModelsByBrand.modelName : 'Modelo no disponible' %>">
+            <input type="hidden" name="productPrice" value="<%= bike.price %>">
+            <button type="submit" class="c-white">Agregar al carrito</button>
+        </form>
+
     </div> 
 </div>
 </article>

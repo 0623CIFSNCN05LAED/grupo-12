@@ -4,14 +4,39 @@ const productService = require("../services/productServices");
 module.exports={
 
   productCart: (req, res) => { 
-    console.log(req.session); 
+    console.log(req.session, "soy la sessionnnnnnnnnnnnnnnnnnnnnnnnnnn"); 
     const data = req.session.userData; 
+    const cartProducts = req.session.cart || [];
       res.render("product-cart", {
         email: data.email, 
         password: data.password,
+        
+        cartProducts
       }); 
     },
       
+    addToCart: (req, res) => {
+      console.log(req.session, "soy la sessionnnnnnnnnnnnnnnnnnnnnnnnnnn")
+      const productId = req.body.productId;
+      const productName = req.body.brands;
+       const productPrice = req.body.productPrice;
+
+       if (!req.session.cart) {
+        req.session.cart = [];
+      }
+    
+      const cartProducts = req.session.cart || [];
+
+        cartProducts.push({
+        productId,
+        productName,
+        productPrice,
+      });
+
+       res.render("product-cart", {cartProducts});
+    },
+
+
     productDetailBikes: (req, res) =>{
       productService.getBike(req.params.id).then((bike)=>{ 
         console.log(bike);
@@ -94,9 +119,7 @@ module.exports={
       res.render("product-category", { bikes, category });
     },
 
-    addToCart: async (req, res) => {
-       res.render("/product-cart");
-    },
+
 
   search: async (req, res) => { 
     try {
