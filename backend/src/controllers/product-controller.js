@@ -4,7 +4,7 @@ const productService = require("../services/productServices");
 module.exports={
 
   productCart: (req, res) => { 
-    console.log(req.session, "soy la sessionnnnnnnnnnnnnnnnnnnnnnnnnnn"); 
+    console.log(req.session,); 
     const data = req.session.userData; 
     const cartProducts = req.session.cart || [];
       res.render("product-cart", {
@@ -16,10 +16,17 @@ module.exports={
     },
       
     addToCart: (req, res) => {
-      console.log(req.session, "soy la sessionnnnnnnnnnnnnnnnnnnnnnnnnnn")
+      console.log(req.params, "SOy el bodyyyyy")
       const productId = req.body.productId;
-      const productName = req.body.brands;
+      const productBrand = req.body.productBrand;
+      const productModel = req.body.productModel;
+      
+      const productColor = req.body.productColor;
        const productPrice = req.body.productPrice;
+       const productSize = req.body.productSize;
+       
+       const productImage = req.body.productImage;
+       const productCategory = req.body.productCategory;
 
        if (!req.session.cart) {
         req.session.cart = [];
@@ -29,8 +36,16 @@ module.exports={
 
         cartProducts.push({
         productId,
-        productName,
+        productBrand,
+        productColor,
         productPrice,
+        productSize,
+        productImage,
+        productCategory,
+        productModel
+
+
+        
       });
 
        res.render("product-cart", {cartProducts});

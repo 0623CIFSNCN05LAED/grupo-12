@@ -25,13 +25,33 @@
     <tbody>
       <% for (let i = 0; i < cartProducts.length; i++) { %>
         <tr>
-          <th> Producto</th>
-          <td><%= cartProducts[i].productId %></td>
-          <th> Precio</th>
-          <td><%= cartProducts[i].productPrice %></td>
+          <div>
+            <th> Marca</th> 
+            <td><%= cartProducts[i].productBrand %></td>
+        </div>
 
-          <td>$ <%= cartProducts[i].productPrice %></td>
-          
+        <th> Modelo</th> 
+          <td><%= cartProducts[i].productModel %></td>
+
+        <div>
+          <th> Precio</th>
+          <td >$ <%= cartProducts[i].productPrice %></td>
+        </div>
+
+        <th> Tamaño</th>
+          <td>$ <%= cartProducts[i].productSize %></td>
+
+
+          <th> Color</th> 
+          <td><%= cartProducts[i].productColor %></td>
+
+          <th> Cat</th> 
+          <td><%= cartProducts[i].productCategory %></td>
+
+          <th> Imagen</th> 
+          <td><%= cartProducts[i].productImage %></td>
+       
+
         </tr>
       <% } %>
     </tbody>

@@ -41,8 +41,17 @@
     <div class="flex-buttom p-10">
             <form action="/cart" method="POST" class="boton-formulario">
             <input type="hidden" name="productId" value="<%= bike.id %>">
-            <input type="hidden" name="productName" value="<%= bike.brand.name %> <%= bike.ModelsByBrand ? bike.ModelsByBrand.modelName : 'Modelo no disponible' %>">
+            <input type="hidden" name="productBrand" value="<%= bike.brand.name %>">
+            <input type="hidden" name="productModel" value="<%= bike.ModelsByBrand.name %>">
+
+            <input type="hidden" name="productColor" value="<%= bike.color.name %>">
             <input type="hidden" name="productPrice" value="<%= bike.price %>">
+            <input type="hidden" name="productSize" value="<%= bike.size.name %>">
+            <input type="hidden" name="productCategory" value="<%= bike.category.name %>">
+            <input type="hidden" name="productImage" value="<%= bike.image %>">
+
+
+           
             <button type="submit" class="c-white">Agregar al carrito</button>
         </form>
 
