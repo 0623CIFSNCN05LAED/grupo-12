@@ -8,21 +8,20 @@
                 </div>
 
         <div>
-        <div class="text-xl mr-1 mx-auto">
-                      
-            <% bikes.forEach(bike =>{ %>
+            <div class="text-xl mr-1 mx-auto">
+               <% bikes.forEach(bike =>{ %>
             </div>
+            
             <div class="box-list imagen-con-zoom  "> 
-                <a class="a-center w-full " href="/bikes/<%= bike.id %>">
+                
+                <a class=" " href="/bikes/<%= bike.id %>">
 
-                <img class="flex-buy w-50 mx-auto m-pic" src="<%= bike.image %>" alt="Imagen del producto" />
+                <img class="flex-buy w-50 mx-auto m-pic a-center w-full" src="<%= bike.image %>" alt="Imagen del producto" />
+
+                <p class="text-price"><%= bike.brand.name %></p>
                 <p class="text-price"><%= bike.ModelsByBrand.modelName %></p>
-                <p class="text-price"> $
-                <%= bike.price  %> 
-                </p> 
-                <p class="text-price"> $
-                    <%= bike.description  %>
-                    </p>
+                <p class="text-price"> $ <%= bike.price  %> </p> 
+                <p class="text-price"><%= bike.description  %> </p>
             </a>
             
                 <% }) %>

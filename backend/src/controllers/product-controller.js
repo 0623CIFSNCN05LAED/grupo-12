@@ -20,18 +20,24 @@ module.exports={
       const productId = req.body.productId;
       const productBrand = req.body.productBrand;
       const productModel = req.body.productModel;
-      
+
       const productColor = req.body.productColor;
-       const productPrice = req.body.productPrice;
+
+
+       const productPrice = parseFloat(req.body.productPrice);
+
+
        const productSize = req.body.productSize;
        
        const productImage = req.body.productImage;
        const productCategory = req.body.productCategory;
 
+       
        if (!req.session.cart) {
         req.session.cart = [];
       }
     
+
       const cartProducts = req.session.cart || [];
 
         cartProducts.push({
@@ -42,13 +48,15 @@ module.exports={
         productSize,
         productImage,
         productCategory,
-        productModel
-
-
-        
+        productModel,
+       
+       
       });
 
-       res.render("product-cart", {cartProducts});
+      const total = cartProducts.reduce((acc, product) => acc + product.productPrice, 0);
+      req.session.total = total;
+
+       res.render("product-cart", {cartProducts, total});
     },
 
 

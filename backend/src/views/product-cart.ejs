@@ -18,53 +18,48 @@
         <img class="w-50 mx-auto m-pic" src="/images/enviobici.png" alt="Imagen del producto" />
 
 
-  <table class="font1 mt-5 mb-5">
-    <thead class="font1 mt-5 mb-5">
- 
-    </thead>
+  
     <tbody>
-      <% for (let i = 0; i < cartProducts.length; i++) { %>
-        <tr>
-          <div>
-            <th> Marca</th> 
-            <td><%= cartProducts[i].productBrand %></td>
-        </div>
 
-        <th> Modelo</th> 
-          <td><%= cartProducts[i].productModel %></td>
-
-        <div>
-          <th> Precio</th>
-          <td >$ <%= cartProducts[i].productPrice %></td>
-        </div>
-
-        <th> Tamaño</th>
-          <td>$ <%= cartProducts[i].productSize %></td>
-
-
-          <th> Color</th> 
-          <td><%= cartProducts[i].productColor %></td>
-
-          <th> Cat</th> 
-          <td><%= cartProducts[i].productCategory %></td>
-
-          <th> Imagen</th> 
-          <td><%= cartProducts[i].productImage %></td>
+    <% for (let i = 0; i < cartProducts.length; i++) { %>
+    
+    <tr>
+      <div class="box-list imagen-con-zoom  ">
        
+        <img class="w-50 mx-auto m-pic" src="<%= cartProducts[i].productImage %>" alt="Imagen del producto" />
 
-        </tr>
+        <th> Marca</th> 
+        <td><%= cartProducts[i].productBrand %></td>
+       
+        <th> Modelo</th> 
+        <td><%= cartProducts[i].productModel %></td>
+
+        <th> Precio</th>
+        <td >$ <%= cartProducts[i].productPrice %></td>
+        
+        <th> Tamaño</th>
+        <td>$ <%= cartProducts[i].productSize %></td>
+
+       <th> Color</th> 
+        <td><%= cartProducts[i].productColor %></td>
+
+        <th> Cat</th> 
+        <td><%= cartProducts[i].productCategory %></td>
+      </div>
+    </tr>
       <% } %>
+
     </tbody>
-
-
-
-    <tfoot>
+  
+   <tfoot>
       <tr>
         <th colspan="2">Total </th>
-        <th>$ --</th>
+        
+        <th>$ </th>
+      
       </tr>
     </tfoot>
-  </table>
+  
   
   <h2 class="flex-buy">Método de envío</h2>
   <div class="center my-1 shipment">
@@ -78,6 +73,12 @@
 
  <button class="blue-text" >Eliminar compras</button>
   
+ <tr>
+  <th colspan="2">Total </th>
+  <th>$ <%= total.toFixed(2) %></th>
+</tr>
+
+
   <p class="center my-1 shipment">Total: $0.00</p>
 
     <div class="flex-buy">
