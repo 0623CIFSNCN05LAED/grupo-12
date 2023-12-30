@@ -5,7 +5,6 @@ const CreateBike = () => {
   const [categories, setCategories] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [colors, setColors] = useState([]);
-  
   const [bikeData, setBikeData] = useState({
     modelName:'',
     brand: '',
@@ -16,6 +15,7 @@ const CreateBike = () => {
     price: '',
     image: '',
   });
+  const [bikeCreated, setBikeCreated] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,18 +62,24 @@ const CreateBike = () => {
         method: 'POST',
         body: formData,
       });
+
       console.log('Bike created:', response);
-  
+      
+         if (response.ok) {
+      setBikeCreated(true);
+    }
   };
 
-  return (
-    <form onSubmit={handleSubmit} className="card card-container"> 
-     <label>
-        Nombre del modelo:
+
+ return (
+   
+     <div>  
+    <form onSubmit={handleSubmit} className="create-bike"> 
+     <label> Nombre del modelo:
         <input type="text" name="modelName" value={bikeData.name} onChange={handleInputChange} />
       </label>
-      <label>
-        Brand:
+
+      <label>  Brand:
         <select name="brand" value={bikeData.brand} onChange={handleInputChange}>
           <option value="">Select Brand</option>
           {brands.map((brand) => (
@@ -84,8 +90,7 @@ const CreateBike = () => {
         </select>
       </label>
 
-      <label>
-        Category:
+      <label> Category:
         <select name="category" value={bikeData.category} onChange={handleInputChange}>
           <option value="">Select Category</option>
           {categories.map((category) => (
@@ -96,8 +101,7 @@ const CreateBike = () => {
         </select>
       </label>
 
-      <label>
-        Size:
+      <label> Size:
         <select name="size" value={bikeData.size} onChange={handleInputChange}>
           <option value="">Select Size</option>
           {sizes.map((size) => (
@@ -108,8 +112,7 @@ const CreateBike = () => {
         </select>
       </label>
 
-      <label>
-        Color:
+      <label> Color:
         <select name="color" value={bikeData.color} onChange={handleInputChange}>
           <option value="">Select Color</option>
           {colors.map((color) => (
@@ -120,24 +123,28 @@ const CreateBike = () => {
         </select>
       </label>
 
-      <label>
-        Description:
-        <input type="text" name="description" value={bikeData.description} onChange={handleInputChange} />
+      <label> Description:
+        <input type="text" name="description" value={bikeData.description} onChange={handleInputChange}/>
       </label>
 
-      <label>
-        Price:
+      <label> Price:
         <input type="text" name="price" value={bikeData.price} onChange={handleInputChange} />
       </label>
 
-      <label>
-        Image:
+      <label> Image:
         <input type="file" name="image" onChange={handleImageChange} />
       </label>
 
-      <button type="submit">Create Bike</button>
+      <button className= "button" type="submit">Create Bike</button>
     </form>
-  );
-};
+    {bikeCreated && (
+        <div className="success-message">
+          <h2>Bicicleta creada con éxito!!!!!</h2>
+        </div>
+      )}
+    </div>
+) 
+}
+
 
 export default CreateBike;
