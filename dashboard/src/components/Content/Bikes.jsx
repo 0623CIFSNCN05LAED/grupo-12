@@ -33,7 +33,7 @@ const Bikes = () => {
         ) : (
           bikesData.bikes.map((bike) => (
             <div className="bike-card "key={bike.id}>
-              <h2>{bike.name}</h2>
+              <h2>{bike.modelName}</h2>
               <p className="bike-title" >Marca: {bike.brand}</p>
               <p className="bold">Categoría: {bike.category}</p>
               <img src={bike.image} alt={bike.name} />
