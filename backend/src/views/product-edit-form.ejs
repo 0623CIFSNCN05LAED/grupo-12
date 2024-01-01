@@ -19,9 +19,10 @@
         <%- include("partials/header") %>
     </header>
 
-    <main>
+    <main class="bg-img">
         <form action="/bikes/<%= bike.id %>?_method=PUT" method="POST" class="create-form" enctype="multipart/form-data" id="form">
-            <div class="m-pic">
+          <h2 class="center">Editar Bicicleta</h2>
+          <div class="m-pic">
                 <label for="modelName">Nombre del modelo:</label>
                 <p>
                 <input type="text" id="modelName" name="modelName" class="control box-formulario"
@@ -114,7 +115,7 @@
         <input type="reset" value="Borrar Formulario" class="boton-formulario"/>
     </div>
         </form>
-    <form action="/bikes/delete/<%= bike.id %>?_method=DELETE" method="POST" class="bg-register flex-buttom">
+    <form action="/bikes/delete/<%= bike.id %>?_method=DELETE" method="POST" class="create-form">
       <div class="m-pic">
           <button type="submit" class="boton-formulario m-pic c-red"> ELIMINAR </button>
       </div>

@@ -5,68 +5,68 @@ ul{
 *{
     box-sizing: border-box;
 }
-.search-container, ul a:link {color: rgb(255, 255, 255); text-decoration: none }
-.search-container, ul a:hover {color: rgb(255, 255, 255); text-decoration: none }
-.search-container,ul a:visited {color: rgb(255, 255, 255); text-decoration: none }
+.search-container, ul a:link {color: rgb(255, 255, 255) !important; text-decoration: none !important}
+.search-container, ul a:hover {color: rgb(255, 255, 255) !important; text-decoration: none !important}
+.search-container,ul a:visited {color: rgb(255, 255, 255) !important; text-decoration: none !important}
 
-nav a[href="/cart"]:link {color: rgb(255, 255, 255); text-decoration: none }
-nav a[href="/cart"]:hover {color: rgb(255, 255, 255); text-decoration: none }
-nav a[href="/cart"]:visited {color: rgb(255, 255, 255); text-decoration: none }
+nav a[href="/cart"]:link {color: rgb(255, 255, 255) !important; text-decoration: none !important}
+nav a[href="/cart"]:hover {color: rgb(255, 255, 255) !important; text-decoration: none !important}
+nav a[href="/cart"]:visited {color: rgb(255, 255, 255) !important; text-decoration: none !important}
 
-a[href="/login"], a[href="/cart"]:link {color: rgb(0, 0, 0); text-decoration: none}
-a[href="/login"], a[href="/cart"]:hover {color: rgb(0, 0, 0); text-decoration: none }
-a[href="/login"], a[href="/cart"]:visited {color: rgb(0, 0, 0); text-decoration: none }
+a[href="/login"], a[href="/cart"], a[href= "/logout"]:link {color: rgb(0, 0, 0) !important; text-decoration: none !important}
+a[href="/login"], a[href="/cart"], a[href= "/logout"]:hover {color: rgb(0, 0, 0) !important; text-decoration: none !important}
+a[href="/login"], a[href="/cart"], a[href= "/logout"]:visited {color: rgb(0, 0, 0) !important; text-decoration: none !important}
 
-body a:link {text-decoration: none;} 
+body a:link {text-decoration: none !important;} 
 
-a.c-white:visited{ color: #ffffff;}
-a.c-white:hover{ color: #ffffff;}
-a.c-white:link{ color: #ffffff;}
+a.c-white:visited{ color: #ffffff !important;}
+a.c-white:hover{ color: #ffffff !important;}
+a.c-white:link{ color: #ffffff !important;}
 
-article a:link {color: rgb(0, 0, 20); text-decoration: none }
-article a:hover {color: rgb(0, 0, 0); text-decoration: none }
-article a:visited {color: rgb(0, 0, 0); text-decoration: none } 
+article a:link {color: rgb(0, 0, 20)!important; text-decoration: none !important}
+article a:hover {color: rgb(0, 0, 0)!important; text-decoration: none !important}
+article a:visited {color: rgb(0, 0, 0)!important; text-decoration: none !important} 
 
 body{
     font-family: 'Roboto Condensed', sans-serif !important;
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .search-container {
-    display: flex;
-    align-items: center;
-    max-width: 40%;
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex !important;
+    align-items: center !important;
+    max-width: 40% !important;
+    background-color: #ffffff !important;
+    border-radius: 5px !important;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3) !important;
 }
 
 .search-input {
-    display: flex;
-    max-width: 100%;
+    display: flex !important ;
+    max-width: 100% !important;
 }
 
 #search {
-    flex: 1;
-    padding: 5px 10px 5px 10px;
-    border: none;
-    border-radius: 5px 0 0 5px;
-    width: 1000px;
+    flex: 1 !important;
+    padding: 5px 10px 5px 10px !important;
+    border: none !important;
+    border-radius: 5px 0 0 5px !important;
+    width: 1000px !important;
 }
 
 #search-button {
-    padding: 10px 15px;
-    background-color: black;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    color: #ffffff;
-    cursor: pointer;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px 15px !important;
+    background-color: black !important;
+    border: none !important;
+    border-radius: 0 5px 5px 0 !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3) !important;
 }
 
 #search-button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3 !important;
 }
 
 .m-user-cart{
@@ -103,7 +103,6 @@ body{
     background-color: #ebebeb;
 } 
 
-
 .p-10{
     padding: 10px;
     color: black;
@@ -120,6 +119,7 @@ body{
     background-color: #000000;
     border-radius: 5px;
 }
+
 .text-price{
     color: gray;
     font-size: 16px;
@@ -150,9 +150,9 @@ body{
 }
 
 .fotos-main{
-    width: 200%;
-    height: 200%;
-    padding: 20px;
+    width: 200% !important;
+    height: 200% !important;
+    padding: 20px !important;
 }
 
 .flex-home{
@@ -166,7 +166,6 @@ body{
     margin: 40px;
     transition: box-shadow 0.5s ease;
 }
-
 
 .box{
     display: flex;
@@ -214,6 +213,23 @@ form {
     padding: 10px;
     border-radius: 5px;
   }
+
+  form#form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    max-width: 350px;
+}
+.create-form{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    max-width: 350px;
+}
   
   label {
     display: block;
@@ -311,6 +327,7 @@ form {
     display: flex;
     flex-direction: row-reverse;
 } 
+
 .w-full{
     width: 100%;
 }
@@ -404,19 +421,17 @@ justify-content: center;
 } 
 
 .img-perfil{
-    width: 10% ; 
-    border-radius: 50%; 
+    width: 10% !important; 
+    border-radius: 50% !important; 
 } 
 
 .w{
-    width: 75%;
+    width: 75% !important;
 } 
 
-
-
 .flex-img{
-    display: flex; 
-    justify-content: flex-end; 
+    display: flex !important; 
+    justify-content: flex-end !important; 
     
 } 
 
@@ -427,28 +442,26 @@ justify-content: center;
 } 
 
 .img-profile{ 
-    border-radius: 50%;
+    border-radius: 50% !important;
 
 } 
 
-.m-5{
-    margin: 2px;
+.m-6{
+    margin: 2px !important;
 }  
 
 .m-right{
-    margin-right: 40px;
-} 
+    margin-right: 40px !important;
+}  
 
 .imagen-con-zoom {
     transition: transform 0.3s ease-in-out;
-  }
+ }
   
   .imagen-con-zoom:hover {
     transform: scale(1.1);
-  }
-
-
-  
+ }
+ 
 .container-fluid {
     position: relative;
     width: 100%;
@@ -483,8 +496,21 @@ justify-content: center;
     color: #ffffff !important; 
     text-align: center; 
     padding: 20px; 
+  } 
+
+  .contenedor {
+    width: 40%;
+    margin: 0 auto;
   }
   
+  .center-h2 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #000000;
+    margin: 20px 0;
+  }
 
 @media(max-width: 768px){
     .user-cart{

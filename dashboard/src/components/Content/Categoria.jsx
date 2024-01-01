@@ -18,16 +18,17 @@ function Categories() {
 
     return (
       <section className="content row">
+
         <div className="col-6">
-          <div className="list-group shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-            <h2 className="mt-3">Géneros</h2>
+          <div className="list-group">
+            <h2 className=""></h2>
             <button
               type="button"
-              className="list-group-item list-group-item-action active text-center"
-              aria-current="true"
-            >
-              Listado de categorias de bicicletas
+              className="button"
+              aria-current="true">
+              Categorías
             </button>
+            
             {categories.length === 0
               ? "Cargando..."
               : categories.map((category) => (

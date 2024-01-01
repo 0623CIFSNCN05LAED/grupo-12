@@ -27,20 +27,24 @@ const CategoryDetail = ({ match }) => {
 
   return (
     <div>
-      <h2>Categoría Seleccionada: {name}</h2>
-      <p>Cantidad de Bicicletas en la Categoría: {categoryData.count}</p>
-      <h3>Bicicletas en la Categoría:</h3>
-      <ul>
+      <h2>Categoría Seleccionada: 
+       <p>{name}</p> 
+       </h2>
+      <h4>Cantidad: {categoryData.count}</h4>
+      <h3>Listado:</h3>
+      <ul className="category-list">
         {categoryData.bikes.map((bike) => (
-          <li key={bike.id}>
+          <li key={bike.id} className="category-item">
             
-            <div>
-              <h4>{bike.name}</h4>
+         
+              
+              <div className="bike-info">
+              <h4>{bike.modelName}</h4>
               <p>{bike.description}</p>
-              <p>Precio: {bike.price}</p>
+              <p>Precio: $ {bike.price}</p>
             </div>
             <div>
-              <img src={bike.image} alt={bike.name} style={{ maxWidth: "100px" }} />
+              <img src={bike.image} alt={bike.name} className="bike-image" style={{ maxWidth: "100px" }} />
             </div>
           </li>
         ))}

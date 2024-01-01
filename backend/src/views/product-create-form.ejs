@@ -19,10 +19,11 @@
         <%- include("partials/header") %>
     </header>
 
-    <main>
+    <main class="bg-img">
         <form action="/bikes" method="POST" class="create-form" enctype="multipart/form-data" id="form">
-            <div class="m-pic">
-                <label for="modelName">Nombre del modelo:</label>
+          <h2 class="center">Crear Bicicleta</h2>  
+          <div class="m-pic">
+                <label for="modelName">Nombre del Modelo:</label>
               <p> 
                 <input type="text" id="modelName" name="modelName" placeholder="Bicicleta BW Race" class="control box-formulario">
                 <span class = "errorMsg" id="modelNameError"> </span>
