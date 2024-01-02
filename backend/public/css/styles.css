@@ -389,13 +389,13 @@ td{
 }
 
 .truck-icon {
-    color:#F3AA21;
-    border: #F3AA21 solid 1px;
+    color:blue;
+    border: #2821f3 solid 1px;
     border-radius: 50%;
-    padding: 5px;
+    padding: 5px; 
     position: absolute;
-    right: 15px;
-    top: -15px;
+    right: 20px;
+    top: -20px;
     transition: transform 0.5s ease-in-out;
   }
 
