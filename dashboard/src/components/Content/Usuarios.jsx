@@ -29,6 +29,7 @@ const Users = () => {
             <h3>Nombre: {user.name}</h3>
             <h3>Apellido: {user.lastName}</h3>
             <p>Email: {user.email}</p>
+            <p> Perfil de usuario: {user.role}</p>
             <img className="user-image" src={user.avatar} alt={user.name} />
           </div>
         ))
