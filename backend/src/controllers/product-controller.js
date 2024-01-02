@@ -51,7 +51,33 @@ module.exports={
        res.render("product-cart", {cartProducts, total});
     },
 
+
+
+
+    emptyCart: (req, res) => {
+      // Vaciar la sesión del carrito
+      req.session.cart = [];
+      req.session.total = 0;
     
+      // Enviar una respuesta JSON al cliente
+      res.render("product-cart", {cartProducts, total});
+    },
+    
+    payCart: (req, res) => { 
+      const data = req.session.userData; 
+      const cartProducts = req.session.cart || [];
+        res.render("payment", {
+          email: data.email, 
+          password: data.password,
+          total: req.session.total,
+          cartProducts
+        }); 
+    },
+
+    deliveryCart: (req, res) => { 
+         res.render("delivery"); 
+    },
+
 
     productDetailBikes: (req, res) =>{
       productService.getBike(req.params.id).then((bike)=>{ 

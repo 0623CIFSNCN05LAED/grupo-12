@@ -52,8 +52,11 @@
         <label for="quantity<%= i %>">Cantidad:</label>
         <input type="number" id="quantity<%= i %>" name="quantity<%= i %>"  value="1" min="1">
       
-        <button class="blue-text" >Eliminar producto</button>
 
+<!-- BOTON ELIMINAR PRODUCTOO -->
+        <!-- <button class="blue-text" >Eliminar producto</button> -->
+
+ 
       </div>
     </tr>
       <% } %>
@@ -75,6 +78,7 @@
 
   <script>
     function updateTotal(shippingCost) {
+      
       let total = parseFloat("<%= total %>");
   
       total += shippingCost;
@@ -84,8 +88,23 @@
   </script>
 
 
- <button class="blue-text boton-formulario" >Vaciar Carrito</button>
+ <button class="blue-text boton-formulario" formaction="/empty">Vaciar Carrito</button>
   
+
+ <button class="blue-text boton-formulario" onclick="vaciarCarrito()">Vaciar Carrito</button>
+
+ <script>
+  function vaciarCarrito() {
+    // Realizar una solicitud al servidor para vaciar el carrito
+    req.session.cart = [];
+      req.session.total = 0;
+    
+      // Enviar una respuesta JSON al cliente
+      res.render("product-cart", {cartProducts, total});
+  }
+</script>
+
+
 
 <div class="flex-buy">
   <h2>Total $ <span id="totalAmount"><%= total.toFixed(2) %></span></h2>
@@ -93,8 +112,8 @@
 
 
     <div class="flex-buy">
-    <input type="submit" value="Finalizar compra" class="boton-formulario" formaction="/home">
-  
+    <a href="/pay">FINALIZAR COMPRA</a></li> 
+      </div>
 </form>
 
 

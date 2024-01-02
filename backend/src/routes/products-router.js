@@ -18,9 +18,11 @@ productsRouter.get("/search", productController.search);
 productsRouter.get("/bikes/category/:category", productController.filterCategory);
 productsRouter.get("/bikes/id:", productController.filterCategory);
 
-productsRouter.get("/cart", userGuard, productController.productCart);
+productsRouter.get("/carte", userGuard, productController.productCart);
 productsRouter.post("/cart", userGuard, productController.addToCart)
-
+productsRouter.post("/empty", userGuard, productController.emptyCart )
+productsRouter.get("/pay", userGuard, productController.payCart )
+productsRouter.get("/delivery", productController.deliveryCart )
 
 productsRouter.get("/create", productController.productCreate);
 productsRouter.post("/bikes", upload.single("image"), createEditValidation, validateForm("/create"), productController.productStoreBikes);
