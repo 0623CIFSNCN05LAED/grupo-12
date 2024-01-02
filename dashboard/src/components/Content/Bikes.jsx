@@ -27,25 +27,26 @@ const Bikes = () => {
 
   return (
     <div>
-      <div className="card">
+      <div className="bike-card-list">
         {bikesData.bikes.length === 0 ? (
           <p>Cargando...</p>
         ) : (
           bikesData.bikes.map((bike) => (
-            <div key={bike.id}>
-              <h2>{bike.name}</h2>
-              <p>Marca: {bike.brand}</p>
-              <p>Categoría: {bike.category}</p>
+            <div className="bike-card "key={bike.id}>
+              <h2>{bike.modelName}</h2>
+              <p className="bike-title" >Marca: {bike.brand}</p>
+              <p className="bold">Categoría: {bike.category}</p>
               <img src={bike.image} alt={bike.name} />
-              <p>Descripción: {bike.description}</p>
-              <p>Precio: ${bike.price}</p>
+              <p  className="bike-info">Descripción: {bike.description}</p>
+              <p  className="bold">Precio: $ {bike.price}</p>
               <Link to={{
                 pathname: `/editBike/${bike.id}`,
                 state: { bikeData: bike }
               }}>
-              <button>
+              <button className="button">
                Editar
               </button>
+
               </Link>
             </div>
           ))
