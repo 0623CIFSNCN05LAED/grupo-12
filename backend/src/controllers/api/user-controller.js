@@ -42,6 +42,7 @@ module.exports = {
         email: user.email,
         birthday: user.birthday,
         phone: user.phone,
+        rol: user.role,
         avatar: user.avatar,
         adress: user.adress,
       },
