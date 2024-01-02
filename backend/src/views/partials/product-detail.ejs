@@ -7,35 +7,43 @@
         </button>
         <% console.log(JSON.stringify(bike, null, 2)) %>
     </div> 
+   
+<div class="box-list">
+
     <div>
-        <img class="a-center w-50 mx-auto m-pic" src="<%= bike.image %>" alt="Imagen del producto" />
+        <img class="flex-buy w-50 mx-auto m-pic a-center w-full" src="<%= bike.image %>" alt="Imagen del producto" />
     </div>
 
-<div class="bt-1 mx-auto border-grey p-1 relative flex flex-wrap">
-    <i class="fa-solid fa-truck truck-icon"></i>
-    <h3 class="text-lg description w-100"> 
+    <div class="bt-1 mx-auto border-grey p-1 relative flex flex-wrap">
+
+     <i class="fa-solid fa-truck truck-icon"></i>
+
+     <h3 class="p-10 "> 
       Marca:  <%= bike.brand.name %>
     </h3> 
     
-    <h3 class="text-lg description w-100"> 
+    <h3 class="p-10 "> 
         Modelo: <%= bike.ModelsByBrand && bike.ModelsByBrand.modelName ? bike.ModelsByBrand.modelName : 'Modelo no disponible' %>
     </h3>
     
-     <p class="text-xl mr-1"> $ <%= bike.price %>     
-        </p>
+    <h3 class="text-xl mr-1">Precio $ <%= bike.price %>     
+     </h3>
      
-    <p class="p-10 "> Talle Cuadro:
+    <h3 class="p-10 "> Talle:
         <%= bike.size.name %>
-    </p>
-    <p class="p-10 "> Color: 
+    </h3>
+
+    <h3 class="p-10 "> Color: 
         <%= bike.color.name %>
-    </p>
-    <p class="p-10 "> Categoria: 
+    </h3>
+
+    <h3 class="p-10 "> Categoria: 
         <%= bike.category.name %>
-    </p> 
-    <p class="p-10 "> Descripcion: 
+    </h3> 
+
+    <h3 class="p-10 "> Descripción: 
         <%= bike.description %>
-    </p>
+    </h3>
 
     <div class="flex-buttom p-10">
             <form action="/cart" method="POST" class="boton-formulario">
@@ -50,10 +58,14 @@
             <input type="hidden" name="productImage" value="<%= bike.image %>">
 
 
-           
-            <button type="submit" class="c-white">Agregar al carrito</button>
-        </form>
+            <div class="flex-buttom p-10">
+            <button type="submit" class=" boton-formulario">Agregar al carrito</button>
+            </div>
 
-    </div> 
+
+            
+            </form>
+        </div> 
+    </div>
 </div>
 </article>

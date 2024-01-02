@@ -11,6 +11,7 @@
     </header>
     
     <main>
+
       <form action="/process-payment" method="POST" class="box-cart">
         <h1>Pagá Aquí </h1>
         
@@ -19,66 +20,92 @@
             <tr>
               <th>Producto</th>
               <th>Precio unitario</th>
-              <th>Total</th>
-            </tr>
+             </tr>
           </thead>
           <tbody>
             <% for (let i = 0; i < cartProducts.length; i++) { %>
               <tr>
                 <td><%= cartProducts[i].productBrand %> <%= cartProducts[i].productModel %></td>
                 <td>$ <%= cartProducts[i].productPrice.toFixed(2) %></td>
-                <td>$ <%= (cartProducts[i].quantity * cartProducts[i].productPrice).toFixed(2) %></td>
               </tr>
             <% } %>
           </tbody>
         </table>
+
+
+        <h2 class="flex-buy">Método de envío</h2>
+        <div class="center my-1 shipment">
+            <label> Envío en 24 horas ($5.000) </label>
+            <input type="radio" name="shipping_method" value="24_hours" onclick="updateTotal(5000)"> 
+        </div>
+        <div class="center my-1 shipment">
+            <label>Envío por encomienda ($3.000)</label>
+            <input type="radio" name="shipping_method" value="shipping" onclick="updateTotal(3000)"> 
+        </div>
+
+            <script>
+                function updateTotal(shippingCost) {
+                
+                let total = parseFloat("<%= total %>");
+            
+                total += shippingCost;
+            
+                document.getElementById('totalAmount').innerText = total.toFixed(2);
+                }
+            </script>
+
+
+
 
  
         <div class="flex-buy">
           <h2>Total $ <span id="totalAmount"><%= total.toFixed(2) %></span></h2>
         </div>
 
+        <div class="p-10">
+        <label for="cardType">Selecciona tu tarjeta:</label>
+        <select id="cardType" name="cardType">
+            <option value="visa">Visa</option>
+            <option value="mastercard">MasterCard</option>
+            <option value="amex">American Express</option>
+            <option value="cabal">Cabal</option>
+            <option value="naranja">Naranja</option>
+        </select>
+        </div>
 
-  <label for="cardType">Selecciona tu tarjeta:</label>
-  <select id="cardType" name="cardType">
-    <option value="visa">Visa</option>
-    <option value="mastercard">MasterCard</option>
-    <option value="amex">American Express</option>
-    <option value="cabal">Cabal</option>
-    <option value="naranja">Naranja</option>
-  </select>
+        <div >
 
-    <div id="cardDetails" >
-        <h3>Detalles de la tarjeta</h3>
+            <h3>Detalles de la tarjeta</h3>
     
-        <form id="cardDetailsForm">
-          <label for="cardHolderName">Nombre y Apellido del Titular:</label>
-          <input type="text" id="cardHolderName" name="cardHolderName" required>
-    
-          <label for="cardNumber">Número de Tarjeta:</label>
-          <input type="text" id="cardNumber" name="cardNumber" required>
-    
-          <label for="securityCode">Código de Seguridad:</label>
-          <input type="text" id="securityCode" name="securityCode" required>
-    
-          <label for="billingAddress">Dirección de Facturación:</label>
-          <input type="text" id="billingAddress" name="billingAddress" required>
-        </form>
+            <form id="cardDetailsForm">
+                <label for="cardHolderName">Nombre y Apellido del Titular:</label>
+                <input type="text" id="cardHolderName" name="cardHolderName" pattern="[A-Za-z ]+" required>
+        
+                <label for="cardNumber">Número de Tarjeta:</label>
+                <input type="number" id="cardNumber" name="cardNumber" pattern="[0-9]{16}" required>
+        
+                <label for="securityCode">Código de Seguridad:</label>
+                <input type="number" id="securityCode" name="securityCode" pattern="[0-9]{3}" required>
+        
+                <label for="billingAddress">Dirección de entrega:</label>
+                <input type="text" id="billingAddress" name="billingAddress" required>
+            </form>
 
-  <label for="installments">Selecciona las cuotas:</label>
-  <select id="installments" name="installments">
-    <option value="1">1 cuota</option>
-    <option value="3">3 cuotas</option>
-    <option value="6">6 cuotas</option>
-    <option value="12">12 cuotas</option>
-  </select>
+        <div class="p-10 center">
+        <label for="cuotas">Selecciona las cuotas:</label>
+            <select id="cuotas" name="cuotas">
+             <option value="1">1 cuota</option>
+             <option value="3">3 cuotas</option>
+             <option value="6">6 cuotas</option>
+             <option value="12">12 cuotas</option>
+            </select>
+        </div>
 
-
-  <a href="/delivery">PAGAR</a></li> 
+        <a class="blue-text boton-formulario" href="/delivery">PAGAR</a></li> 
   
-  
-</div>
-      </form>
+        </div>
+
+   </form>
     </main>
 
     <%- include("partials/footer") %>

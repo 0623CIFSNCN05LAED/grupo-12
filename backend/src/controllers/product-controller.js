@@ -10,16 +10,16 @@ module.exports={
       res.render("product-cart", {
         email: data.email, 
         password: data.password,
-        
+        total: req.session.total = 0,
         cartProducts
       }); 
     },
       
     addToCart: (req, res) => {
-      console.log(req.params, "SOy el bodyyyyy")
+      console.log(req.body, "SOy el bodyyyyy")
       const productId = req.body.productId;
       const productBrand = req.body.productBrand;
-      const productModel = req.body.productModel;
+      const productModel = req.body.productModelsByBrand;
       const productColor = req.body.productColor;
       const productPrice = parseFloat(req.body.productPrice);
       const productSize = req.body.productSize;
@@ -35,14 +35,13 @@ module.exports={
         cartProducts.push({
         productId,
         productBrand,
+        productModel,
         productColor,
         productPrice,
         productSize,
         productImage,
         productCategory,
-        productModel,
-       
-       
+                     
       });
 
       const total = cartProducts.reduce((acc, product) => acc + product.productPrice, 0);
@@ -52,15 +51,26 @@ module.exports={
     },
 
 
+    removeProduct: (req, res) => {
+      const productIdToRemove = req.body.productId;
 
+  // Filtrar el carrito para excluir el producto que se va a eliminar
+  req.session.cart = req.session.cart.filter(product => product.productId !== productIdToRemove);
+
+  // Recalcular el total
+  const total = req.session.cart.reduce((acc, product) => acc + product.productPrice, 0);
+  req.session.total = total;
+
+  // Redirigir a la página del carrito
+  res.redirect('/product-cart');
+
+
+    },
 
     emptyCart: (req, res) => {
-      // Vaciar la sesión del carrito
-      req.session.cart = [];
-      req.session.total = 0;
-    
-      // Enviar una respuesta JSON al cliente
-      res.render("product-cart", {cartProducts, total});
+      const cartProducts= req.session.cart = [];
+      total = req.session.total = 0;
+      res.render("product-cart", {cartProducts:[], total:0});
     },
     
     payCart: (req, res) => { 

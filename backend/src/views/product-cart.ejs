@@ -10,7 +10,9 @@
       <%- include("partials/header") %>  
     </header>
     
-    <main><form action="" class="box-cart">
+    <main>
+      
+      <form action="" class="box-cart">
 
       
         <h1>Carrito de compras </h1>
@@ -26,18 +28,19 @@
     <tr>
 
       
-      <div class="box-list imagen-con-zoom  ">
+      <div class="box-list imagen-con-zoom">
        
         
-        <img class="w-50 mx-auto m-pic" src="<%= cartProducts[i].productImage %>" alt="Imagen del producto" />
+        <img class="w-50 mx-auto m-pic center m-pic" src="<%= cartProducts[i].productImage %>" alt="Imagen del producto" />
 
+      <div class="p-10 m-right ">
         <th> Marca:</th> 
         <td><%= cartProducts[i].productBrand %></td>
        
-        <th> Modelo:</th> 
-        <td><%= cartProducts[i].productModel %></td>
+        <!-- <th> Modelo:</th> 
+        <td><%= cartProducts[i].productModel %></td> -->
 
-        <th> Precio:</th>
+        <th class="p-10 m-right "> Precio:</th>
         <td >$ <%= cartProducts[i].productPrice %></td>
         
         <th> Tamaño:</th>
@@ -48,10 +51,9 @@
 
         <th> Categoria:</th> 
         <td><%= cartProducts[i].productCategory %></td>
-   
-        <label for="quantity<%= i %>">Cantidad:</label>
-        <input type="number" id="quantity<%= i %>" name="quantity<%= i %>"  value="1" min="1">
-      
+      </div>
+
+             
 
 <!-- BOTON ELIMINAR PRODUCTOO -->
         <!-- <button class="blue-text" >Eliminar producto</button> -->
@@ -64,56 +66,17 @@
     </tbody>
   
   
+  <button class="blue-text boton-formulario" formaction="/empty">Vaciar Carrito</button>
   
 
-  <h2 class="flex-buy">Método de envío</h2>
-  <div class="center my-1 shipment">
-    <label> Envío en 24 horas ($5.000) </label>
-    <input type="radio" name="shipping_method" value="24_hours" onclick="updateTotal(5000)"> 
-  </div>
-  <div class="center my-1 shipment">
-    <label>Envío por encomienda ($3.000)</label>
-    <input type="radio" name="shipping_method" value="shipping" onclick="updateTotal(3000)"> 
-  </div>
 
-  <script>
-    function updateTotal(shippingCost) {
-      
-      let total = parseFloat("<%= total %>");
-  
-      total += shippingCost;
-  
-      document.getElementById('totalAmount').innerText = total.toFixed(2);
-    }
-  </script>
-
-
- <button class="blue-text boton-formulario" formaction="/empty">Vaciar Carrito</button>
-  
-
- <button class="blue-text boton-formulario" onclick="vaciarCarrito()">Vaciar Carrito</button>
-
- <script>
-  function vaciarCarrito() {
-    // Realizar una solicitud al servidor para vaciar el carrito
-    req.session.cart = [];
-      req.session.total = 0;
-    
-      // Enviar una respuesta JSON al cliente
-      res.render("product-cart", {cartProducts, total});
-  }
-</script>
-
-
-
-<div class="flex-buy">
+<div class="flex-buy p-20">
   <h2>Total $ <span id="totalAmount"><%= total.toFixed(2) %></span></h2>
 </div>
 
 
-    <div class="flex-buy">
-    <a href="/pay">FINALIZAR COMPRA</a></li> 
-      </div>
+    <button class="blue-text boton-formulario" formaction="/pay">FINALIZAR COMPRA</button>
+      
 </form>
 
 
