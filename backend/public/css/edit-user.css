@@ -8,17 +8,18 @@
 
 /* Estilos CSS para el botón de editar usuario */
 .boton-formulario {
-    background-color: #3498db;
+    background-color: #d5b516;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color  0.3s ease, ;
 }
 
 .boton-formulario:hover {
-    background-color: #2980b9;
+    background-color: #4aa0da;
+    color: #000000;
 }
 
 /* Estilos CSS para la imagen del usuario */

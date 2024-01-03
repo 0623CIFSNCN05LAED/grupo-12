@@ -69,15 +69,6 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL, 
     avatar varchar(200) DEFAULT NULL, 
     address varchar(200) DEFAULT NULL,
+    role varchar(200) DEFAULT 0,
     PRIMARY KEY (id)
-);
-
--- Tabla Carrito
-CREATE TABLE cart (
-    id CHAR(36) NOT NULL,
-    id_bike CHAR(36) NOT NULL,
-    id_user CHAR(36) NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_bike) REFERENCES bikes (id),
-    FOREIGN KEY (id_user) REFERENCES users (id)
 );

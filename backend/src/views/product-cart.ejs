@@ -10,75 +10,79 @@
       <%- include("partials/header") %>  
     </header>
     
-    <main><form action="" class="box-cart">
+    <main>
+      
+      <form action="" class="box-cart">
 
       
         <h1>Carrito de compras </h1>
         
-  <table class="font1 mt-5 mb-5">
-    <thead class="font1 mt-5 mb-5">
-      <tr>
-        <th> Producto</th>
-        <th> Cantidad</th>
-        <th> Precio</th>
-        <th> Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <div>
-        <td>Producto 1 </td>
         <img class="w-50 mx-auto m-pic" src="/images/enviobici.png" alt="Imagen del producto" />
+
+
+  
+    <tbody>
+
+    <% for (let i = 0; i < cartProducts.length; i++) { %>
+    
+    <tr>
+
+      
+      <div class="box-list imagen-con-zoom">
+       
+        
+        <img class="w-50 mx-auto m-pic center m-pic" src="<%= cartProducts[i].productImage %>" alt="Imagen del producto" />
+
+      <div class="p-10 m-right ">
+        <th> Marca:</th> 
+        <td><%= cartProducts[i].productBrand %></td>
+       
+        <!-- <th> Modelo:</th> 
+        <td><%= cartProducts[i].productModel %></td> -->
+
+        <th class="p-10 m-right "> Precio:</th>
+        <td >$ <%= cartProducts[i].productPrice %></td>
+        
+        <th> Tamaño:</th>
+        <td>$ <%= cartProducts[i].productSize %></td>
+
+       <th> Color:</th> 
+        <td><%= cartProducts[i].productColor %></td>
+
+        <th> Categoria:</th> 
+        <td><%= cartProducts[i].productCategory %></td>
       </div>
-        <td><select name="Cantidad" id="">
-          <% for (let i = 0; i <= 10; i++) { %>
-            <option value="<%= i %>"><%= i %></option>
-          <% } %>
-      </select>
-      </td>
-        <td>$ --</td>
-        <td>$ --</td>
 
-          </tr>
-      <tr>
-        <td>Producto 2</td>
-        <td><select name="Cantidad" id="">
-          <% for (let i = 0; i <= 10; i++) { %>
-            <option value="<%= i %>"><%= i %></option>
-          <% } %>
-      </select>
-      </td>
-        <td>$ --</td>
-        <td>$ --</td>
-      </tr>
+             
+
+<!-- BOTON ELIMINAR PRODUCTOO -->
+        <!-- <button class="blue-text" >Eliminar producto</button> -->
+
+ 
+      </div>
+    </tr>
+      <% } %>
+
     </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="2">Total </th>
-        <th>$ --</th>
-      </tr>
-    </tfoot>
-  </table>
   
-  <h2 class="flex-buy">Método de envío</h2>
-  <div class="center my-1 shipment">
-    <label> Envío en 24 horas ($5.000) </label>
-    <input type="radio" name="shipping_method" value="24_hours"> 
-  </div>
-  <div class="center my-1 shipment">
-    <label>Envío por encomienda ($3.000)</label>
-    <input type="radio" name="shipping_method" value="shipping"> 
-  </div>
+  
+  <button class="blue-text boton-formulario" formaction="/empty">Vaciar Carrito</button>
+  
 
- <button class="blue-text" >Eliminar compras</button>
-  
-  <p class="center my-1 shipment">Total: $0.00</p>
 
-    <div class="flex-buy">
-    <input type="submit" value="Finalizar compra" class="boton-formulario" formaction="/home">
-  
+<div class="flex-buy p-20"> 
+  <% if ( total ) { %> 
+  <h2>Total $ <span id="totalAmount"><%= total.toFixed(2) %></span><h2>
+  <% } else { %>
+    <h2>Total: $ 0 <h2>
+  <% } %> 
+
+</div>
+
+
+    <button class="blue-text boton-formulario" formaction="/pay">FINALIZAR COMPRA</button>
+      
 </form>
-
 
 
 </div>
@@ -87,5 +91,11 @@
 
 <%- include("partials/footer") %>
 
+
 </body>  
 </html>
+
+
+
+
+

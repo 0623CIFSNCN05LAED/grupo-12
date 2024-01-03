@@ -31,9 +31,9 @@
 
         <div class="flex-img m-right">
           <% if (userData) { %> 
-          <h4 class="m-6">Hola!</h4>
-          <p class="m-6"><%= userData.firstName %></p>
-          <p class="m-6"><%= userData.lastName %></p> 
+          <h4 class="m-6">Hola </h4>
+          <h4 class="m-6"><%= userData.firstName %></h4>
+          <h4 class="m-6"><%= userData.lastName %></h4> 
         <% } %>
       </div>
         
@@ -46,7 +46,9 @@
             <% } else { %>
               <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i>Login</a>
             <% } %>
-            <a href="/cart"><i class="fa-solid fa-cart-shopping fa-lg m-left"></i>$ 0</a>
+            <% if (userData) { %>
+            <a href="/cart"><i class="fa-solid fa-cart-shopping fa-lg m-left"></i>$ <%= total %></a>
+            <% } %>
           </div>
       </div>          
   </div> 

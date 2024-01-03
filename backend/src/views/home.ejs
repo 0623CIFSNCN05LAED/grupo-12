@@ -16,17 +16,18 @@
   <div class="contenedor">
     <h2 class="center-h2">Nuestros Productos Recomendados</h2>
   </div>
-  <div id="carouselExampleCaptions" class="carousel slide mx-auto pd-main carousel-container m-carousel" data-bs-ride="carousel" data-bs-theme="dark">
+  <div id="carouselExampleCaptions" class="carousel slide mx-auto pd-main carousel-container w-50 m-carousel" data-bs-ride="carousel" data-bs-theme="dark">
     <div class="carousel-indicators">
       <% bikes.forEach((bike, index) => { %>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>" aria-label="Slide <%= index + 1 %>"></button>
       <% }); %>
     </div>
-    <div class="carousel-inner">
+
+    <div class="carousel-inner mx-auto w-full">
       <% bikes.forEach((bike, index) => { %>
-        <div class="carousel-item <%= index === 0 ? 'active' : '' %>"> 
+        <div class="carousel-item  <%= index === 0 ? 'active' : '' %>"> 
           <a href="/bikes/<%= bike.id %>">
-          <img src="<%= bike.image %>" class="d-block mx-auto" alt="<%= bike.ModelsByBrand.modelName %>">
+          <img src="<%= bike.image %>" class="d-block carousel-img  mx-auto" alt="<%= bike.ModelsByBrand.modelName %>">
           <div class="carousel-caption d-none d-md-block">
             <h5><%= bike.ModelsByBrand.modelName %></h5>
             <p><%= bike.description %></p>
@@ -76,6 +77,14 @@
                 <img src="/images/electrica-home.jpg" class="fotos-main " alt="stores">
             </div>
         </section>
+
+        <section class="flex-home"> 
+                
+          <div class="flex-main">
+              <a href="/bikes/category/bmx" class="box zoom-image">BMX</a>
+              <img src="/images/freestyle-home.jpg" class="fotos-main " alt="stores">
+          </div>
+      </section>
     </main>
 
     <%- include("./partials/footer.ejs") %>
