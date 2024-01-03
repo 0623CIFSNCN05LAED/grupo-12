@@ -4,9 +4,8 @@ const methodOverride = require('method-override')
 const session = require("express-session");
 const app = express();  
 const cookieParser = require("cookie-parser"); 
-const userData = require("./middlewares/user-data")
+const userDataMiddleware = require("./middlewares/user-data")
 const userLogged = require('./middlewares/user-logged'); 
-const recordameMiddleware = require('./middlewares/recordame')
 const apiProductsRouter = require("./routes/api/products")
 const apiUsersRouter = require("./routes/api/users") 
 const cors = require("cors");
@@ -31,14 +30,15 @@ app.use(session({ // Configura express-session
     saveUninitialized: false,
   })); 
 
-app.use(userData); 
+app.use(userDataMiddleware); 
 app.use(userLogged); 
-app.use(recordameMiddleware);
+
 
 
 const mainRoute = require("./routes/main-router");
 const productRouter = require ("./routes/products-router");
 const userRouter = require ("./routes/user-router"); 
+
 
 
 const PORT = 3030;

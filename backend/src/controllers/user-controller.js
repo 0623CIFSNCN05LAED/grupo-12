@@ -43,18 +43,20 @@ module.exports={
         res.clearCookie("recordame");
       } 
 
-    const passwordMatch = bcrypt.compareSync(req.body.password, user.password);
+      const passwordMatch = bcrypt.compareSync(req.body.password, user.password);
+
       if (!passwordMatch) {
-        return res.render("login",{
-          errors: {
-            password:{
-              msg: "La contraseña es incorrecta"
-            }
+        req.session.errors = {
+          password: {
+            msg: "Contraseña incorrecta",
           },
-          oldData: req.body
-        });
+        };
+        return res.redirect("/login");
       } else {
         req.session.userData = user;
+        if (req.body.recordame){
+          res.cookie('userEmail', req.body.email, { maxAge: 1000 * 30 })
+        }
         return res.redirect("/");
       }
     });
