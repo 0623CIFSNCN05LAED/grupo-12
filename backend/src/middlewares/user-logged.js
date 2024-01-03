@@ -4,7 +4,8 @@ const userLoggedMiddleware = (req, res, next) => {
   res.locals.logueado = false;
 
   const emailCookie = req.cookies.userEmail;
-  const userCookie = usersServices.getByEmail("email", emailCookie);
+  const userCookie = usersServices.getByEmail("email", emailCookie); 
+  console.log(emailCookie);
 
   if(userCookie){
     req.session.userLogged = userCookie;

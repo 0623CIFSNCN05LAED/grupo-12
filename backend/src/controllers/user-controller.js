@@ -33,12 +33,6 @@ module.exports = {
         });
       }
 
-      if (req.body.recordame === "true") {
-        res.cookie("recordame", req.body.email, { maxAge: 200000 });
-      } else {
-        res.clearCookie("recordame");
-      }
-
       const passwordMatch = bcrypt.compareSync(
         req.body.password,
         user.password
