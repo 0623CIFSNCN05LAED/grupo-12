@@ -1,139 +1,154 @@
-const userServices = require('../services/usersServices');
-const { validationResult } = require('express-validator') 
-const bcrypt = require('bcrypt'); 
+const userServices = require("../services/usersServices");
+const { validationResult } = require("express-validator");
+const bcrypt = require("bcrypt");
 
-module.exports={
-    
+module.exports = {
   showLogin: (req, res) => {
-    const errors = req.session.errors
-    delete req.session.errors
+    const errors = req.session.errors;
+    delete req.session.errors;
     res.render("login", { errors });
-  }, 
+  },
 
-  login: (req, res) =>{ 
-    console.log("Controlador login se está ejecutando.");
-    const data = req.body; 
-    console.log(data) 
-    console.log(req.body);
+  login: async (req, res) => {
+    const resultValidation = validationResult(req);
 
-     const resultValidation = validationResult(req);
+    if (resultValidation.errors.length > 0) {
+      return res.render("login", {
+        errors: resultValidation.mapped(),
+        oldData: req.body,
+      });
+    }
 
-     if (resultValidation.errors.length > 0) {
-       return res.render('login', { 
-         errors: resultValidation.mapped(), 
-         oldData: req.body,
+    try {
+      const user = await userServices.getByEmail(req.body.email);
 
-         });
-     } 
-    const findUser = userServices.getByEmail(req.body.email).then((user)=>{
-      if (!user || user.length==0) {
-        return res.render("login",{
+      if (!user || user.length == 0) {
+        return res.render("login", {
           errors: {
-            email:{
-              msg: "Este email no se encuentra registrado"
-            }
+            email: {
+              msg: "Este email no se encuentra registrado",
+            },
           },
-          oldData: req.body
+          oldData: req.body,
         });
-      } 
-    
+      }
+
       if (req.body.recordame === "true") {
         res.cookie("recordame", req.body.email, { maxAge: 200000 });
       } else {
         res.clearCookie("recordame");
-      } 
+      }
 
-    const passwordMatch = bcrypt.compareSync(req.body.password, user.password);
+      const passwordMatch = bcrypt.compareSync(
+        req.body.password,
+        user.password
+      );
+
       if (!passwordMatch) {
-        return res.render("login",{
+        return res.render("login", {
           errors: {
-            password:{
-              msg: "La contraseña es incorrecta"
-            }
+            password: {
+              msg: "La contraseña es incorrecta",
+            },
           },
-          oldData: req.body
+          oldData: req.body,
         });
       } else {
+        // Asignar el rol según la dirección de correo electrónico
+        user.role = user.email.endsWith("@bikeworld.com") ? 1 : 0;
+
         req.session.userData = user;
         return res.redirect("/");
       }
-    });
+    } catch (error) {
+      console.error("Error al obtener usuario por email:", error);
+      res.status(500).send("Error al obtener usuario por email");
+    }
   },
-
-  
 
   userList: async (req, res) => {
     const users = await userServices.getAllUsers();
-    console.log(users)
+    console.log(users);
     res.render("users-list", { users });
-  }, 
-
-  userDetail: async (req, res) =>{ 
-    const id = req.params.id;
-    const user = await userServices.getUser(id);  
-    res.render("user-detail", { user });
   },
 
-  register: async (req, res) => { 
+  userDetail: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const user = await userServices.getUser(id);
+      if (!user) {
+        return res
+          .status(404)
+          .render("error", { message: "Usuario no encontrado" });
+      }
+      res.render("user-detail", { user });
+    } catch (error) {
+      res.status(500).send("Error al obtener usuario por ID");
+    }
+  },
+
+  register: async (req, res) => {
     const user = {
-      //id:(req.body.),
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
       birthday: req.body.birthday,
       password: bcrypt.hashSync(req.body.password, 5),
-      phone:(req.body.phone),
+      phone: req.body.phone,
       address: req.body.address,
-      avatar: req.file ? "http://localhost:3030/images/users/" + req.file.filename : null, 
-    } 
+      avatar: req.file
+        ? "http://localhost:3030/images/users/" + req.file.filename
+        : null,
+    };
 
-    const errors = req.session.errors; 
+    const errors = req.session.errors;
 
     if (errors) {
-      return res.render('register', {
+      return res.render("register", {
         errors,
         oldData: req.session.oldData || {},
       });
     }
 
-    const checkEmail =  await userServices.getByEmail(req.body.email);
+    const checkEmail = await userServices.getByEmail(req.body.email);
 
     if (checkEmail && checkEmail.length > 0) {
-        req.session.errors = {
-            email: {
-                msg: "Este email se encuentra registrado"
-            }
-        };
-        req.session.oldData = req.body;
-        return res.redirect("/register");
+      req.session.errors = {
+        email: {
+          msg: "Este email se encuentra registrado",
+        },
+      };
+      req.session.oldData = req.body;
+      return res.redirect("/register");
     }
 
     await userServices.createUser(user);
     return res.redirect("/");
-}, 
-  registerForm: (req, res) => {
-    const errors =  req.session.errors 
-    delete req.session.errors
-    res.render('register', { errors });  
   },
-  
-  logout: (req, res) => {
-      res.clearCookie("recordame");
-      req.session.destroy();
-      return res.redirect("/");
-    },
 
-  profileEdit:async (req, res) => { 
-    const errors = req.session.errors; 
-    delete req.session.errors
+  registerForm: (req, res) => {
+    const errors = req.session.errors;
+    delete req.session.errors;
+    res.render("register", { errors });
+  },
+
+  logout: (req, res) => {
+    res.clearCookie("recordame");
+    req.session.destroy();
+    return res.redirect("/");
+  },
+
+  profileEdit: async (req, res) => {
+    const errors = req.session.errors;
+    delete req.session.errors;
     const id = req.params.id;
     const user = await userServices.getUser(id);
-    res.render("user-profile-edit-form", { user, errors }); 
-  }, 
+    res.render("user-profile-edit-form", { user, errors });
+  },
 
   profile: (req, res) => {
-    return res.render("profile",{userData: req.session.userData});
-  }, 
+    return res.render("profile", { userData: req.session.userData });
+  },
 
   update: async (req, res) => {
     try {
@@ -142,31 +157,30 @@ module.exports={
 
       // Verificar si se proporcionó una nueva contraseña
       if (userData.password) {
-          // Hashear la nueva contraseña
-          const hashedPassword = bcrypt.hashSync(userData.password, 5);
-          // Asignar la contraseña hasheada al objeto del usuario
-          userData.password = hashedPassword;
+        // Hashear la nueva contraseña
+        const hashedPassword = bcrypt.hashSync(userData.password, 5);
+        // Asignar la contraseña hasheada al objeto del usuario
+        userData.password = hashedPassword;
       }
 
       // Llamar al servicio para actualizar el usuario
       await userServices.updateUser(id, userData);
 
       res.redirect("/");
-  } catch (error) {
+    } catch (error) {
       console.error("Error al actualizar usuario:", error);
       res.status(500).send("Error al actualizar usuario");
-  }
-},
-  
+    }
+  },
 
   destroy: async (req, res) => {
     try {
       const id = req.params.id;
       await userServices.destroyUser(id);
-      res.redirect('/');
+      res.redirect("/");
     } catch (error) {
       console.error("Error al eliminar usuario:", error);
       res.status(500).send("Error al eliminar usuario");
     }
   },
-}
+};

@@ -1,11 +1,12 @@
 <article class="mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product"> 
-    
-    
-    <div class="flex-buttom p-10">
+
+    <% if (userData.role == 1) { %> 
+    <div class="flex-buttom p-10"> 
         <button type="button" class="boton-formulario">
             <a href="/edit/<%= bike.id %>" class="c-white">Editar producto</a>
-        </button>
-        <% console.log(JSON.stringify(bike, null, 2)) %>
+        </button> 
+        <% } %>  
+        
     </div> 
    
 <div class="box-list">
