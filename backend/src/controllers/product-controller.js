@@ -2,7 +2,7 @@ const productService = require("../services/productServices");
 
 module.exports = {
   productCart: (req, res) => {
-    console.log(req.session);
+
     const data = req.session.userData;
     res.render("product-cart", {
       email: data.email,
@@ -12,7 +12,6 @@ module.exports = {
 
   productDetailBikes: (req, res) => {
     productService.getBike(req.params.id).then((bike) => {
-      console.log(bike);
       res.render("product-detail-bikes", { bike });
     });
   },
@@ -92,7 +91,6 @@ module.exports = {
     productService
       .updateBikes(req.params.id, req.body, req.file)
       .then((bike) => {
-        console.log(req.params.id);
         res.redirect("/bikes");
       });
   },
@@ -122,7 +120,7 @@ module.exports = {
       }
 
       const foundBikes = await productService.search(keywords);
-      console.log(foundBikes);
+    
       res.render("results", { bikes: foundBikes });
     } catch (error) {
       console.error("Error al procesar la búsqueda:", error);

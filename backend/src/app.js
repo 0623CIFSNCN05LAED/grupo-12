@@ -14,12 +14,6 @@ const mainRoute = require("./routes/main-router");
 const productRouter = require("./routes/products-router");
 const userRouter = require("./routes/user-router");
 
-// para rol
-const authMiddleware = require("./middlewares/auth");
-app.use(authMiddleware.authenticateUser);
-app.use(authMiddleware.isAdmin);
-//fin rol
-
 app.use(
   cors()
   // (corsOptions = {

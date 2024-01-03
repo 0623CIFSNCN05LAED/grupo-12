@@ -70,11 +70,9 @@ const productService = {
       
           // Asegúrate de que brand tenga un valor y brand.id sea accesible
           if (!brand || !brand.id) {
-            console.log("La marca no fue encontrada o no tiene un ID válido.");
+        
             return null;  // O maneja de otra manera la falta de marca
           }
-
-          console.log("Datos de la bicicleta antes de crear:", bike);
           
       
           const [modelName, createdModel] = await ModelsByBrand.findOrCreate({
@@ -86,23 +84,19 @@ const productService = {
 
           // Asegúrate de que category tenga un valor y category.id sea accesible
           if (!category || !category.id) {
-            console.log("La categoría no fue encontrada o no tiene un ID válido.");
             return null;  // O maneja de otra manera la falta de categoría
           }
       
           const size = await Sizes.findByPk(bike.size);
 
           if (!size || !size.id){
-            console.log("El size no fue encontrado o no tiene un ID válido.");
             return null; 
           }
       
           const color = await Colors.findByPk(bike.color);
           if (!color || !color.id){
-            console.log("El color no fue encontrado o no tiene un ID válido.");
             return null; 
           }
-          console.log(image);
           const newBike = await Bikes.create({
             id_model_name: modelName.id,
             id_category: category.id,
@@ -119,7 +113,6 @@ const productService = {
       },
 
       updateBikes: async (id, body, file) => { 
-              console.log(body);
               const bike = await Bikes.findByPk(id, {
                   include: [
                       { model: ModelsByBrand, as: 'ModelsByBrand' },
