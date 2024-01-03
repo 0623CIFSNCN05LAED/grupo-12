@@ -42,25 +42,18 @@
             <label>Envío por encomienda ($3.000)</label>
             <input type="radio" name="shipping_method" value="shipping" onclick="updateTotal(3000)"> 
         </div>
-
-            <script>
-                function updateTotal(shippingCost) {
-                
-                let total = parseFloat("<%= total %>");
-            
-                total += shippingCost;
-            
-                document.getElementById('totalAmount').innerText = total.toFixed(2);
-                }
-            </script>
-
-
-
-
- 
+        <div class="center my-1 shipment">
+          <label>Sin envío</label>
+          <input type="radio" name="shipping_method" id="sinEnvio" value="none" onclick="updateTotal(0)">
+      </div>
+        
         <div class="flex-buy">
+          <h2>Total $ <span id="totalAmountWithoutFees"><%= total.toFixed(2) %></span></h2>
+      </div>
+      <div class="flex-buy">
           <h2>Total $ <span id="totalAmount"><%= total.toFixed(2) %></span></h2>
-        </div>
+        </div> 
+        
 
         <div class="p-10">
         <label for="cardType">Selecciona tu tarjeta:</label>
@@ -70,6 +63,17 @@
             <option value="amex">American Express</option>
             <option value="cabal">Cabal</option>
             <option value="naranja">Naranja</option>
+        </select>
+        </div> 
+        <div class="p-10 center"> 
+          <label for="cuotas">Cantidad de cuotas:</label>
+          <select id="cuotas" name="cuotas" onchange="updateTotalWithCuotas()">
+            <option value="1">1 cuota</option>
+            <option value="3">Ahora 3 </option>
+            <option value="6"> Ahora 6 </option>
+            <option value="12">Ahora 12 </option>
+            <option value="18">Ahora 18 </option>
+            <option value="24">Ahora 24 </option>
         </select>
         </div>
 
@@ -91,15 +95,65 @@
                 <input type="text" id="billingAddress" name="billingAddress" required>
             </form>
 
-        <div class="p-10 center">
-        <label for="cuotas">Selecciona las cuotas:</label>
-            <select id="cuotas" name="cuotas">
-             <option value="1">1 cuota</option>
-             <option value="3">3 cuotas</option>
-             <option value="6">6 cuotas</option>
-             <option value="12">12 cuotas</option>
-            </select>
-        </div>
+            <script>
+              // Inicializa el costo de envío
+              let costoEnvio = 0;
+              let envioAplicado = false; // Variable para rastrear si se aplicó un envío
+          
+              function updateTotal(shippingCost) {
+
+                resetForm();
+
+                  let total = parseFloat("<%= total %>");
+
+                  // Actualiza el costo de envío solo si se especifica un nuevo costo
+                  if (shippingCost !== undefined) {
+                      costoEnvio = shippingCost;
+                  }
+          
+                  // Suma el nuevo costo de envío
+                  if (envioAplicado) {
+                  total += costoEnvio;
+                  }
+          
+                  // Actualiza la variable de estado del envío
+                  envioAplicado = true;
+          
+                  document.getElementById('totalAmount').innerText = total.toFixed(2);
+                  document.getElementById('totalAmountWithoutFees').innerText = total.toFixed(2);
+              }
+          
+              function updateTotalWithCuotas() {
+                  let cuotas = parseInt(document.getElementById("cuotas").value);
+                  let total = parseFloat("<%= total %>") + costoEnvio; // Asegúrate de agregar el costo de envío
+          
+                  // Agregar interés del 9.61% para 3 cuotas 
+                  switch (cuotas) {
+                      case 1: total *= 1; break;
+                      case 3: total *= 1.0961; break;
+                      case 6: total *= 1.1778; break;
+                      case 12: total *= 1.3131; break;
+                      case 18: total *= 1.4186; break;
+                      case 24: total *= 1.5019; break;
+                  }
+          
+                  // Calcula el nuevo total dividiendo por el número de cuotas
+                  let nuevoTotal = total / cuotas;
+          
+                  var cuotasTexto = cuotas === 1 ? 'cuota' : 'cuotas';
+          
+                  // Actualiza el elemento HTML con el nuevo total y el número de cuotas
+                  document.getElementById('totalAmount').innerText = ` ${nuevoTotal.toFixed(2)} (${cuotas} ${cuotasTexto})`;
+                  document.getElementById('totalAmountWithoutFees').innerText = total.toFixed(2);
+              }
+              function resetForm() {
+               // Resetea los campos del formulario de tarjeta y cuotas
+              document.getElementById('cardType'). selectedIndex = 0;
+              document.getElementById('cuotas').selectedIndex = 0; // Reinicia el valor del select de cuotas
+    }
+          </script>
+      
+        
 
         <a class="blue-text boton-formulario" href="/delivery">PAGAR</a></li> 
   

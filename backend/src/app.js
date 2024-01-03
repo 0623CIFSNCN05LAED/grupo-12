@@ -4,7 +4,8 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const app = express();
 const cookieParser = require("cookie-parser");
-const userData = require("./middlewares/user-data");
+const {userData} = require("./middlewares/user-data");
+const {totalCart} = require("./middlewares/user-data");
 const userLogged = require("./middlewares/user-logged");
 const recordameMiddleware = require("./middlewares/recordame");
 const apiProductsRouter = require("./routes/api/products");
@@ -36,6 +37,7 @@ app.use(
 );
 
 app.use(userData);
+app.use(totalCart);
 app.use(userLogged);
 app.use(recordameMiddleware);
 

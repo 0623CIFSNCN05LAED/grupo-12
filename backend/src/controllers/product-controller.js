@@ -1,3 +1,4 @@
+const userData = require("../middlewares/user-data");
 const productService = require("../services/productServices");
 
 module.exports = {
@@ -15,35 +16,40 @@ module.exports = {
   },
 
   //Render Create
-  productCreate: async (req, res) => {
-    try {
-      const brands = await productService.getAllBrands();
-      const sizes = await productService.getAllSizes();
-      const colors = await productService.getAllColors();
-      const categories = await productService.getAllCategories();
-      const models = await productService.getAllModels();
-      const errors = req.session.errors || {};
-      delete req.session.errors;
+  productCreate: async (req, res) =>{ 
+      try {
+        const brands = await productService.getAllBrands();
+        const sizes = await productService.getAllSizes();
+        const colors = await productService.getAllColors();
+        const categories = await productService.getAllCategories();
+        const models = await productService.getAllModels();
+        const errors= req.session.errors || { };
+        delete req.session.errors;
 
-      res.render("product-create-form", {
-        brands,
-        sizes,
-        colors,
-        categories,
-        models,
-        errors,
-=======
-const findIndexById = (array, id) => array.findIndex(item => item.productId === id);
+
+        res.render("product-create-form", { brands, sizes, colors, categories, models, errors });
+      } catch (error) {
+        // Manejar errores
+        console.error(error);
+        res.status(500).send("Error interno del servidor");
+      }
+    },
+
 
   productCart: (req, res) => { 
     console.log(req.session,); 
     const data = req.session.userData; 
-    const cartProducts = req.session.cart || [];
+    const cartProducts = req.session.cart || []; 
+    let total = 0; 
+     if (cartProducts.length > 0) {
+    total = cartProducts.reduce((acc, product) => acc + product.productPrice, 0);
+  }
       res.render("product-cart", {
         email: data.email, 
         password: data.password,
-        total: req.session.total = 0,
-        cartProducts
+        total: req.session.total,
+        cartProducts, 
+        headerTotal: total,
       }); 
     },
       

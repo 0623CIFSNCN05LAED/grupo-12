@@ -70,8 +70,13 @@
   
 
 
-<div class="flex-buy p-20">
-  <h2>Total $ <span id="totalAmount"><%= total.toFixed(2) %></span></h2>
+<div class="flex-buy p-20"> 
+  <% if ( total ) { %> 
+  <h2>Total $ <span id="totalAmount"><%= total.toFixed(2) %></span><h2>
+  <% } else { %>
+    <h2>Total: $ 0 <h2>
+  <% } %> 
+
 </div>
 
 

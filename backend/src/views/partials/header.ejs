@@ -46,7 +46,9 @@
             <% } else { %>
               <a href="/login"><i class="fa-solid fa-user fa-lg p-right"></i>Login</a>
             <% } %>
-            <a href="/cart"><i class="fa-solid fa-cart-shopping fa-lg m-left"></i>$ 0</a>
+            <% if (userData) { %>
+            <a href="/cart"><i class="fa-solid fa-cart-shopping fa-lg m-left"></i>$ <%= total %></a>
+            <% } %>
           </div>
       </div>          
   </div> 
