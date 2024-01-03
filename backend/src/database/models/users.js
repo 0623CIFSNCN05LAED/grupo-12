@@ -41,6 +41,13 @@ module.exports = (sequelize, DataTypes) => {
           field: "address",
           type: DataTypes.STRING,
         },
+        role: {
+          type: DataTypes.INTEGER,
+          defaultValue: 0, role: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0, // 0 para usuario común, 1 para administrador
+          },
+        },
       },
       {
         tableName: "users",
