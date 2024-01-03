@@ -2,7 +2,7 @@
     <div class="bt-1 border-grey p-1 relative flex flex-wrap">
         <h2 class="flex-buttom p-10">Listado de Bicicletas</h2>
 
-        <% if (userData.role == 1) { %> 
+        <% if (userData && userData.role == 1) { %> 
        <div class="flex-buttom p-10">
                     <button type="button" class="boton-formulario">
                         <a href="/create" class="c-white">Crear producto</a>
