@@ -69,6 +69,6 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL, 
     avatar varchar(200) DEFAULT NULL, 
     address varchar(200) DEFAULT NULL,
-    rol varchar(200) DEFAULT 0,
+    role varchar(200) DEFAULT 0,
     PRIMARY KEY (id)
 );
