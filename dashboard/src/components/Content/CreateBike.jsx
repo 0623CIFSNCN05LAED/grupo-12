@@ -135,7 +135,9 @@ const CreateBike = () => {
         <input type="file" name="image" onChange={handleImageChange} />
       </label>
 
-      <button className= "button" type="submit">Create Bike</button>
+      <label className='row' >
+        <button className= "button" type="submit">Create Bike</button>
+      </label>   
     </form>
     {bikeCreated && (
         <div className="success-message">

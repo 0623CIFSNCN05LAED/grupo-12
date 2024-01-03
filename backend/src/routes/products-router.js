@@ -22,6 +22,11 @@ productsRouter.get("/bikes/id:", productController.filterCategory);
 
 // Rutas protegidas (requieren autenticación)
 productsRouter.get("/cart", userGuard, productController.productCart);
+productsRouter.post("/cart", userGuard, productController.addToCart)
+productsRouter.get("/empty", userGuard, productController.emptyCart )
+productsRouter.get("/remove", userGuard, productController.removeProduct )
+productsRouter.get("/pay", userGuard, productController.payCart )
+productsRouter.get("/delivery", productController.deliveryCart )
 
 // Rutas para administradores
 productsRouter.get("/create", isAdmin, productController.productCreate);

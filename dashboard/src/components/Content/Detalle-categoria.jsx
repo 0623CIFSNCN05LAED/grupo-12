@@ -37,8 +37,9 @@ const CategoryDetail = ({ match }) => {
           <li key={bike.id} className="category-item">
             
          
-              <h4>{bike.name}</h4>
+              
               <div className="bike-info">
+              <h4>{bike.modelName}</h4>
               <p>{bike.description}</p>
               <p>Precio: $ {bike.price}</p>
             </div>

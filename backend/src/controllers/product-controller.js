@@ -1,14 +1,6 @@
 const productService = require("../services/productServices");
 
 module.exports = {
-  productCart: (req, res) => {
-
-    const data = req.session.userData;
-    res.render("product-cart", {
-      email: data.email,
-      password: data.password,
-    });
-  },
 
   productDetailBikes: (req, res) => {
     productService.getBike(req.params.id).then((bike) => {
@@ -40,13 +32,93 @@ module.exports = {
         categories,
         models,
         errors,
+=======
+const findIndexById = (array, id) => array.findIndex(item => item.productId === id);
+
+  productCart: (req, res) => { 
+    console.log(req.session,); 
+    const data = req.session.userData; 
+    const cartProducts = req.session.cart || [];
+      res.render("product-cart", {
+        email: data.email, 
+        password: data.password,
+        total: req.session.total = 0,
+        cartProducts
+      }); 
+    },
+      
+    addToCart: (req, res) => {
+      console.log(req.body, "SOy el bodyyyyy")
+      const productId = req.body.productId;
+      const productBrand = req.body.productBrand;
+      const productModel = req.body.productModelsByBrand;
+      const productColor = req.body.productColor;
+      const productPrice = parseFloat(req.body.productPrice);
+      const productSize = req.body.productSize;
+      const productImage = req.body.productImage;
+      const productCategory = req.body.productCategory;
+       
+       if (!req.session.cart) {
+        req.session.cart = [];
+      }
+    
+      const cartProducts = req.session.cart || [];
+
+        cartProducts.push({
+        productId,
+        productBrand,
+        productModel,
+        productColor,
+        productPrice,
+        productSize,
+        productImage,
+        productCategory,
+                     
       });
-    } catch (error) {
-      // Manejar errores
-      console.error(error);
-      res.status(500).send("Error interno del servidor");
-    }
-  },
+
+      const total = cartProducts.reduce((acc, product) => acc + product.productPrice, 0);
+      req.session.total = total;
+
+       res.render("product-cart", {cartProducts, total});
+    },
+
+
+    removeProduct: (req, res) => {
+      const productIdToRemove = req.body.productId;
+
+  // Filtrar el carrito para excluir el producto que se va a eliminar
+  req.session.cart = req.session.cart.filter(product => product.productId !== productIdToRemove);
+
+  // Recalcular el total
+  const total = req.session.cart.reduce((acc, product) => acc + product.productPrice, 0);
+  req.session.total = total;
+
+  // Redirigir a la página del carrito
+  res.redirect('/product-cart');
+
+
+    },
+
+    emptyCart: (req, res) => {
+      const cartProducts= req.session.cart = [];
+      total = req.session.total = 0;
+      res.render("product-cart", {cartProducts:[], total:0});
+    },
+    
+    payCart: (req, res) => { 
+      const data = req.session.userData; 
+      const cartProducts = req.session.cart || [];
+        res.render("payment", {
+          email: data.email, 
+          password: data.password,
+          total: req.session.total,
+          cartProducts
+        }); 
+    },
+
+    deliveryCart: (req, res) => { 
+         res.render("delivery"); 
+    },
 
   //Create Post
   productStoreBikes: (req, res) => {
@@ -105,10 +177,6 @@ module.exports = {
     const category = req.params.category;
     const bikes = await productService.getBikesByCategory(category);
     res.render("product-category", { bikes, category });
-  },
-
-  addToCart: async (req, res) => {
-    res.render("/product-cart");
   },
 
   search: async (req, res) => {
