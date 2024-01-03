@@ -1,21 +1,21 @@
 const usersServices = require("../services/usersServices");
 
-const userLogged = (req, res, next) => {
+const userLoggedMiddleware = (req, res, next) => {
   res.locals.logueado = false;
 
-  const emailCookie = req.cookies.recordame;
+  const emailCookie = req.cookies.userEmail;
   const userCookie = usersServices.getByEmail("email", emailCookie);
 
-  if (userCookie !== undefined) {
-    res.locals.userLogged = userCookie;
+  if(userCookie){
+    req.session.userLogged = userCookie;
   }
 
-  if (req.session.usuario !== undefined) {
-    res.locals.logueado = true;
-    res.locals.userLogged = req.session.usuario;
+  if(req.session.userLogged){
+    res.locals.logueado= true; 
+    res.locals.userLogged = req.session.userLogged;
   }
 
   next();
 }
 
-module.exports = userLogged;
+module.exports = userLoggedMiddleware;

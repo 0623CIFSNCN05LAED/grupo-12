@@ -44,6 +44,8 @@ module.exports = {
         user.password
       );
 
+
+
       if (!passwordMatch) {
         return res.render("login", {
           errors: {
@@ -58,6 +60,9 @@ module.exports = {
         user.role = user.email.endsWith("@bikeworld.com") ? 1 : 0;
 
         req.session.userData = user;
+        if (req.body.recordame){
+          res.cookie('userEmail', req.body.email, { maxAge: 1000 * 30 })
+        }
         return res.redirect("/");
       }
     } catch (error) {
