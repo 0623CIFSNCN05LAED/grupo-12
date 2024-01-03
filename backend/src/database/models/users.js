@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 module.exports = (sequelize, DataTypes) => {
     const Model = sequelize.define(
@@ -41,6 +41,13 @@ module.exports = (sequelize, DataTypes) => {
           field: "address",
           type: DataTypes.STRING,
         },
+        role: {
+          type: DataTypes.INTEGER,
+          defaultValue: 0, role: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0, // 0 para usuario común, 1 para administrador
+          },
+        },
       },
       {
         tableName: "users",
@@ -51,3 +58,4 @@ module.exports = (sequelize, DataTypes) => {
   
     return Model;
   };
+
