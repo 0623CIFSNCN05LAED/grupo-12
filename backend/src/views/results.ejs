@@ -4,11 +4,16 @@
     <%- include("partials/head") %>
     <title>Search Result</title>
   </head>
-  <body>
+  <body class="bg-ligh-grey bg-img">
     <header><%- include("partials/header") %></header>
-    <div>
+
+    <article>
+    <div class="bt-1 border-grey p-1 relative flex flex-wrap mx-auto bg-white my-1 w-50 md-w-50 lg-w-25 b-product">
+
+      
+
       <div>
-        <h2>Resultados de la búsqueda:</h2>
+        <h2 class="flex-buttom p-10">Resultados de la búsqueda:</h2>
       </div>
 
       <div>
@@ -25,6 +30,7 @@
           <% }); %>
       <% } %>
     </div>
+  </article>
     <footer class="footer"><%- include("partials/footer") %></footer>
   </body>
 </html>
